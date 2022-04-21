@@ -25,8 +25,8 @@ module.exports = {
     config.plugins.push(
       // https://github.com/antfu/unplugin-auto-import
       AutoImport({
-        imports: ['vue', 'vue/macros', 'vue-router', '@vueuse/core', '@vueuse/head'],
-        dts: true,
+        imports: ['vue', 'vue/macros', 'vue-router', '@vueuse/core', '@vueuse/head', 'vue-i18n'],
+        dts: false,
       })
     )
 
