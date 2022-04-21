@@ -13623,6 +13623,7 @@ __metadata:
     unplugin-auto-import: ^0.7.1
     vite: ^2.9.5
     vite-plugin-pages: ^0.23.0
+    vite-plugin-turbosnap: ^1.0.0
     vitest: ^0.9.3
     vue: ^3.2.33
     vue-eslint-parser: ^8.3.0
@@ -15572,6 +15573,13 @@ __metadata:
     "@vue/compiler-sfc":
       optional: true
   checksum: a63b15194895bbdc020af4fcabc1505977a7746f15cc1d595fb4cb1b2140136446c37fee97661b39ffec6fb6b7127a24c39c57959c11ba55d97fa4e432a9769d
+  languageName: node
+  linkType: hard
+
+"vite-plugin-turbosnap@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "vite-plugin-turbosnap@npm:1.0.0"
+  checksum: 784e10f8b7c4de8705b6c1cf4639a946bd6aa1ff8c88268ad4935178fc48f1f019fe503465d3c5e99cb358bb014b7d209a8040d680eaf1270ea35b866038aa97
   languageName: node
   linkType: hard
 
