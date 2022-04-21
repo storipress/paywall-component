@@ -7,6 +7,7 @@ const go = () => {
     router.push(`/hi/${encodeURIComponent(name.value)}`)
   }
 }
+const { t } = useI18n()
 </script>
 
 <template>
@@ -24,7 +25,7 @@ const go = () => {
     <input
       id="input"
       v-model="name"
-      placeholder="What's your name?"
+      :placeholder="t('ask-name')"
       type="text"
       autocomplete="false"
       class="w-[250px] rounded border-gray-200 bg-transparent px-4 py-2 text-center outline-none active:outline-none"
