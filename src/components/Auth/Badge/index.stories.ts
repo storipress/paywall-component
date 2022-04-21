@@ -19,7 +19,7 @@ NoLogin.args = {}
 
 export const NoLoginWithComment = Template.bind({})
 NoLoginWithComment.args = {
-  commentCount: 666,
+  commentCount: 27,
 }
 
 export const Login = Template.bind({})
@@ -32,5 +32,5 @@ LoginWithComment.args = {
   loginState: true,
   accountAvatar:
     'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  commentCount: 666,
+  commentCount: 27,
 }
