@@ -41,6 +41,7 @@
     "@vue/test-utils": "^2.0.0-rc.21",
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.5.4",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-antfu": "^0.20.6",
