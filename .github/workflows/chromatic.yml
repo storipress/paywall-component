@@ -7,8 +7,6 @@ on: push
 # List of jobs
 jobs:
   chromatic-deployment:
-    # Please enable this after you have configured your CI/CD pipeline
-    if: 'false'
     env:
       NODE_OPTIONS: --max-old-space-size=6144
     runs-on: ubuntu-latest
