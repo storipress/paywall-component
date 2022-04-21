@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "antfu.vite",
+    "johnsoncodehk.volar",
+    "dbaeumer.vscode-eslint",
+    "csstools.postcss",
+    "arcanis.vscode-zipfs",
+    "esbenp.prettier-vscode",
+    "graphql.vscode-graphql",
+    "atlassian.atlascode",
+    "aaron-bond.better-comments",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
