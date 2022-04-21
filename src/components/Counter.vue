@@ -1,3 +1,4 @@
+<!-- incremental comments -->
 <script setup lang="ts">
 const props = defineProps<{
   initial: number
