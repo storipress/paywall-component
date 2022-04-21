@@ -1,3 +1,6 @@
+import '../src/styles/main.css'
+import '../assets/styles/iconfont.css'
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
