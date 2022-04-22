@@ -11,7 +11,7 @@ const Template: Story = (args) => ({
   setup() {
     return { args }
   },
-  template: '<Badge v-bind="args" :user="user" />',
+  template: '<Badge v-bind="args" />',
 })
 
 export const NoLogin = Template.bind({})
