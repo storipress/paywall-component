@@ -21,6 +21,13 @@ const props = defineProps({
     default: false,
   },
 })
+const emit = defineEmits<{
+  (event: 'onClick'): void
+}>()
+
+const onClick = () => {
+  emit('onClick')
+}
 
 const isPrimary = computed(() => {
   return props.primary
@@ -38,6 +45,7 @@ const isRounded = computed(() => {
     :style="isPrimary"
     :class="isRounded"
     class="bg-white/25 text-zinc-50 inline-flex items-center justify-center h-12 px-5 text-lg font-medium border"
+    @click="onClick"
   >
     {{ text }}
   </button>
