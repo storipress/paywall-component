@@ -44,7 +44,7 @@ const isRounded = computed(() => {
     :disables="disabled"
     :style="isPrimary"
     :class="isRounded"
-    class="inline-flex h-12 items-center justify-center border bg-white/25 px-5 text-lg font-medium text-zinc-50"
+    class="bg-white/25 text-zinc-50 inline-flex items-center justify-center h-12 px-5 text-sm font-medium border"
     @click="onClick"
   >
     {{ text }}

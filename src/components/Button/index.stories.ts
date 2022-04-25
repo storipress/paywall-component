@@ -18,7 +18,7 @@ export const Primary = Template.bind({})
 Primary.args = {
   text: 'Sign Up',
   primary: true,
-  class: 'w-[25.125rem] font-semibold',
+  class: 'w-[25.125rem] font-semibold text-base',
 }
 
 export const Secondary = Template.bind({})
