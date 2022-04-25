@@ -5,13 +5,13 @@
 
 @layer base {
   .layer-0 {
-    @apply border border-black/[.05] shadow-0-layer;
+    @apply border border-black/5 shadow-0-layer;
   }
   .layer-1 {
-    @apply border border-black/[.05] shadow-1-layer;
+    @apply border border-black/5 shadow-1-layer;
   }
   .layer-2 {
-    @apply border border-black/[.05] shadow-2-layer;
+    @apply border border-black/5 shadow-2-layer;
   }
   .layer-3 {
     @apply shadow-3-layer
