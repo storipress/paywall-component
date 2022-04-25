@@ -22,11 +22,11 @@ const props = defineProps({
   },
 })
 const emit = defineEmits<{
-  (event: 'onClick'): void
+  (event: 'click'): void
 }>()
 
 const onClick = () => {
-  emit('onClick')
+  emit('click')
 }
 
 const isPrimary = computed(() => {
