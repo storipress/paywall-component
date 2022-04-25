@@ -15,28 +15,28 @@ const props = defineProps({
   },
 })
 const emit = defineEmits<{
-  (event: 'onClickPill'): void
+  (event: 'click'): void
 }>()
 
 const pillText = computed(() => {
   return props.loginState ? 'Account settings' : 'Login'
 })
 
-const onClickPill = () => {
-  emit('onClickPill')
+const onClick = () => {
+  emit('click')
 }
 </script>
 
 <template>
-  <div class="layer-2 text-subheading flex h-10 w-fit items-center overflow-hidden rounded-full bg-white text-zinc-500">
+  <div class="layer-2 text-subheading w-fit text-zinc-500 flex items-center h-10 overflow-hidden bg-white rounded-full">
     <!-- left text -->
     <div
       role="button"
       class="flex h-full items-center px-3.5 transition duration-100 hover:bg-stone-100"
-      @click="onClickPill"
+      @click="onClick"
     >
       <!-- if avatar, show photo -->
-      <img v-if="accountAvatar" :src="accountAvatar" class="overflow-none mr-2 h-5 w-5 rounded-full" />
+      <img v-if="accountAvatar" :src="accountAvatar" class="overflow-none w-5 h-5 mr-2 rounded-full" />
       <!-- if no avatar, show icon -->
       <i v-else class="icon-user mr-2 text-base" />
       <span>{{ pillText }}</span>
