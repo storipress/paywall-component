@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import defaultBackground from '../../../assets/subs-default.png'
 import { data } from './data'
 
 const props = defineProps({
@@ -12,7 +13,7 @@ const props = defineProps({
   },
   backgroundImage: {
     type: String,
-    default: '../../../../assets/subs-default.png',
+    default: defaultBackground,
   },
 })
 
