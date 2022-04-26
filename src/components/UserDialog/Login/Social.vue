@@ -4,7 +4,7 @@ import spLogo from '../../../../assets/sp-logo-white.svg'
 </script>
 
 <template>
-  <UserDialog title="Welcome back." description="Don’t have an account? Sign up" :logo="spLogo">
+  <UserDialog type="welcomeInSocial" :logo="spLogo">
     <Button primary rounded color-hex="#55acee" class="layer-1 w-full mb-6">
       <template #buttonText>
         <img src="../../../../assets/icons-twitter.svg" />

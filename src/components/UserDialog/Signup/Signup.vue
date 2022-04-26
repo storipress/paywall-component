@@ -12,12 +12,7 @@ const selected = ref(plans[0])
 </script>
 
 <template>
-  <UserDialog
-    title="Complete 
-your account."
-    description="Sign up to Vice to gain access to the story."
-    :logo="spLogo"
-  >
+  <UserDialog type="signup" :logo="spLogo">
     <div class="mt-8">
       <!-- choose a paid plan -->
       <RadioGroup v-model="selected" class="flex justify-between mb-4">

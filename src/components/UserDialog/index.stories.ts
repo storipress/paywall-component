@@ -39,8 +39,11 @@ const ManageAccountTemplate: Story = (args) => ({
   template: '<ManageAccount v-bind="args" />',
 })
 export const ManageFreeAccount = ManageAccountTemplate.bind({})
-ManageFreeAccount.args = {}
+ManageFreeAccount.args = {
+  type: 'freeAccount',
+}
 export const ManagePaidAccount = ManageAccountTemplate.bind({})
 ManagePaidAccount.args = {
   isPaidPlan: true,
+  type: 'paidAccound',
 }

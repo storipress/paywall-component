@@ -9,26 +9,23 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  type: {
+    type: String,
+  },
 })
 
 const newsletter = ref(false) // TODO api subscriber.newsletter
 const onSwitch = () => {
   newsletter.value = !newsletter.value
 }
-const subscriptionType = 'monthly' // TODO api
-const subscriberRenew = '2022-05-20' // TODO api subscriber.renew_on
-const accountDescription = computed(() => {
-  return props.isPaidPlan
-    ? `You are currently on a ${subscriptionType} membership. Your subscription renews on ${subscriberRenew}.`
-    : 'You are currently on a free membership. Upgrade to a paid subscription for full access.'
-})
+
 const newsletterStatus = computed(() => {
   return newsletter.value ? 'Subscribed' : 'Unsubscribed'
 })
 </script>
 
 <template>
-  <UserDialog title="Your account." :description="accountDescription" :logo="spLogo">
+  <UserDialog :type="type" :logo="spLogo">
     <Button v-if="!isPaidPlan" text="View plans" primary class="w-full mb-4 text-lg font-semibold" />
 
     <ul class="layer-1 w-full bg-white rounded-sm">

@@ -4,7 +4,7 @@ import spLogo from '../../../../assets/sp-logo-white.svg'
 </script>
 
 <template>
-  <UserDialog title="Welcome back." description="Enter your email below" :logo="spLogo">
+  <UserDialog type="welcome" :logo="spLogo">
     <Button primary rounded color-hex="#ffffff" class="layer-1 w-full mb-6">
       <template #buttonText>
         <i class="icon-email text-zinc-700 text-2xl" />

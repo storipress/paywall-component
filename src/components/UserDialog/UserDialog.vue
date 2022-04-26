@@ -1,10 +1,8 @@
 <script setup lang="ts">
+import { data } from './data'
+
 const props = defineProps({
-  title: {
-    type: String,
-    default: '',
-  },
-  description: {
+  type: {
     type: String,
     default: '',
   },
@@ -16,6 +14,25 @@ const props = defineProps({
     type: String,
     default: '../../../../assets/subs-default.png',
   },
+})
+
+const publicationName = 'Storipress' // TODO api
+const subscriptionType = 'monthly' // TODO api
+const subscriberRenew = '2022-05-20' // TODO api subscriber.renew_on
+const result: Record<string, string> = {
+  __PAID_PLAN__: subscriptionType,
+  __RENEWS_DATE__: subscriberRenew,
+  __PUBLICATION_NAME__: publicationName,
+}
+
+const currentData = computed(() => {
+  const current = data[props.type]
+  return {
+    title: current.title,
+    sub: current.sub.replace(/\b(__PAID_PLAN__|__RENEWS_DATE__|__PUBLICATION_NAME__)\b/g, (match) => {
+      return result[match]
+    }),
+  }
 })
 </script>
 
@@ -31,8 +48,8 @@ const props = defineProps({
 
     <div class="rounded-bl-2xl bg-zinc-50 p-6 pt-8">
       <div class="text-zinc-700 mb-8">
-        <div class="text-display-x-large mb-4 font-black">{{ title }}</div>
-        <div class="text-heading">{{ description }}</div>
+        <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
+        <div class="text-heading">{{ currentData.sub }}</div>
       </div>
       <slot />
     </div>
