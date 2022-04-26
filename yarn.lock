@@ -1840,6 +1840,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@headlessui/vue@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@headlessui/vue@npm:1.5.0"
+  peerDependencies:
+    vue: ^3.2.0
+  checksum: 0aab7484326ae4a4bea379618ad08a8b03408edf8d48500bfcf6cad433dd29735687073ba3518be6a37da3c84fdee049fc3f68bf9e6870d67bb2ed508a93f548
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.9.2":
   version: 0.9.5
   resolution: "@humanwhocodes/config-array@npm:0.9.5"
@@ -3360,6 +3369,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stripe/stripe-js@npm:^1.13.2":
+  version: 1.29.0
+  resolution: "@stripe/stripe-js@npm:1.29.0"
+  checksum: 413ae9541a3612166edcdf9cc7d62f3d3cac3f301e723b1da9aec618d0a11a31e30725f334e7498b8a42496e01a6e9254d4c5e1a748d41b7d46e038257d625c4
+  languageName: node
+  linkType: hard
+
 "@tailwindcss/aspect-ratio@npm:^0.4.0":
   version: 0.4.0
   resolution: "@tailwindcss/aspect-ratio@npm:0.4.0"
@@ -3555,6 +3571,13 @@ __metadata:
   version: 17.0.25
   resolution: "@types/node@npm:17.0.25"
   checksum: 6a820bd624e69ea772f52a6cdb326484eff5829443dc981939373929ade109f58c21698b9f0a831bd6ceea799e722a75dc49c5fa7a6bc32a81e1cbdfc6507b64
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:>=8.1.0":
+  version: 17.0.26
+  resolution: "@types/node@npm:17.0.26"
+  checksum: 59f92f46cc76703921ddf50d34b920afe3bbf916360e46321d54507b28c0ead4c3aed57cfdc64eee7c089ed12321dc4a728aa63a1205f7c1115105467f7a2b31
   languageName: node
   linkType: hard
 
@@ -3919,6 +3942,16 @@ __metadata:
     "@vue/compiler-sfc": ^3.2.31
     "@vue/reactivity": ^3.2.31
   checksum: 1ca530d819b4aec8e12c80113101d12a2e48e6dbb152f80f29bf944053ba29eada6562df7826839b8255af3c270579ace8b69487e85f33c844eaea3ba7837457
+  languageName: node
+  linkType: hard
+
+"@vue-stripe/vue-stripe@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "@vue-stripe/vue-stripe@npm:4.4.2"
+  dependencies:
+    "@stripe/stripe-js": ^1.13.2
+    vue-coerce-props: ^1.0.0
+  checksum: f866087b9958fa0b5438ff704bde12979925f8151fa58fb411ef6909998c24095f0276b1f8a112a3344d9c2cc5fd1d44a66d3d0d62f5c38cb4964f78df50fe2f
   languageName: node
   linkType: hard
 
@@ -12888,7 +12921,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.10.0":
+"qs@npm:^6.10.0, qs@npm:^6.10.3":
   version: 6.10.3
   resolution: "qs@npm:6.10.3"
   dependencies:
@@ -13707,6 +13740,7 @@ __metadata:
   dependencies:
     "@antfu/eslint-config": ^0.20.6
     "@babel/core": ^7.17.9
+    "@headlessui/vue": ^1.5.0
     "@intlify/vite-plugin-vue-i18n": ^3.4.0
     "@storybook/addon-actions": ^6.4.22
     "@storybook/addon-docs": ^6.4.22
@@ -13721,6 +13755,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.20.0
     "@typescript-eslint/parser": ^5.20.0
     "@vitejs/plugin-vue": ^2.3.1
+    "@vue-stripe/vue-stripe": ^4.4.2
     "@vue/compiler-dom": ^3.2.33
     "@vue/compiler-sfc": ^3.2.33
     "@vue/eslint-config-prettier": ^7.0.0
@@ -13753,6 +13788,7 @@ __metadata:
     postcss: ^8.4.12
     prettier: ^2.6.2
     prettier-plugin-tailwindcss: ^0.1.10
+    stripe: ^8.219.0
     tailwind-scrollbar-hide: ^1.1.7
     tailwindcss: ^3.0.24
     typescript: ^4.6.3
@@ -14586,6 +14622,16 @@ __metadata:
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: 492f73e27268f9b1c122733f28ecb0e7e8d8a531a6662efbd08e22cccb3f9475e90a1b82cab06a392f6afae6d2de636f977e231296400d0ec5304ba70f166443
+  languageName: node
+  linkType: hard
+
+"stripe@npm:^8.219.0":
+  version: 8.219.0
+  resolution: "stripe@npm:8.219.0"
+  dependencies:
+    "@types/node": ">=8.1.0"
+    qs: ^6.10.3
+  checksum: aefe91ca4b97ec202cdc0b268e233426ed56a5ca3460aad469bb49d3ed2076232277ca95d55d34f58320f54a3a08ac159b562e28642f5c63dd650cd4d9480580
   languageName: node
   linkType: hard
 
@@ -15791,6 +15837,13 @@ __metadata:
   version: 3.1.0
   resolution: "void-elements@npm:3.1.0"
   checksum: 0390f818107fa8fce55bb0a5c3f661056001c1d5a2a48c28d582d4d847347c2ab5b7f8272314cac58acf62345126b6b09bea623a185935f6b1c3bbce0dfd7f7f
+  languageName: node
+  linkType: hard
+
+"vue-coerce-props@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "vue-coerce-props@npm:1.0.0"
+  checksum: 50a1a6fd858b99d669eeabe076bf60000189405f5358e197a321ed7cd4a3ba17e0620eb8d9d43cda88d10c160e9c6984379ef121df33528520525c19516e0549
   languageName: node
   linkType: hard
 
