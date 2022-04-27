@@ -38,16 +38,19 @@ const currentData = computed(() => {
 </script>
 
 <template>
-  <div class="layer-3 h-full w-[28.125rem] rounded-l-2xl">
+  <div class="layer-3 relative h-full w-full rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
     <div
-      class="flex h-[15.75rem] justify-between rounded-tl-2xl bg-cover p-6"
+      class="flex hidden h-[15.75rem] justify-between rounded-tl-2xl bg-cover p-6 md:block"
       :style="`background-image:url('${backgroundImage}')`"
-    >
+    />
+    <div class="md:absolute md:top-0 flex justify-between w-full px-6 pt-6">
       <img :src="logo" class="max-h-8" />
-      <button class="icon-cross_thin ease-in-out' h-fit text-white/30 transition duration-75 hover:text-white" />
+      <button
+        class="icon-cross_thin ease-in-out' h-fit text-black/30 transition duration-75 md:text-white/30 md:hover:text-white"
+      />
     </div>
 
-    <div class="rounded-bl-2xl bg-zinc-50 p-6 pt-8">
+    <div class="rounded-bl-2xl p-6 pt-8">
       <div class="text-zinc-700 mb-8">
         <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
         <div class="text-heading">{{ currentData.sub }}</div>

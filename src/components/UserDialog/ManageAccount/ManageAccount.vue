@@ -14,6 +14,14 @@ const props = defineProps({
   },
 })
 
+// TODO api subscriber
+const subscriber = {
+  full_name: 'Alex Pan',
+  email: 'alex@storipress.com',
+  plan: '$15.00/month',
+  billing: '**** **** **** 4242',
+}
+
 const newsletter = ref(false) // TODO api subscriber.newsletter
 const onSwitch = () => {
   newsletter.value = !newsletter.value
@@ -29,12 +37,17 @@ const newsletterStatus = computed(() => {
     <Button v-if="!isPaidPlan" text="View plans" primary class="w-full mb-4 text-lg font-semibold" />
 
     <ul class="layer-1 w-full bg-white rounded-sm">
-      <ListItem title="Alex Pan" info="alex@storipress.com" button-text="Edit" class="border-b border-[#e3e3e3]" />
+      <ListItem
+        :title="subscriber.full_name"
+        :info="subscriber.email"
+        button-text="Edit"
+        class="border-b border-[#e3e3e3]"
+      />
       <template v-if="isPaidPlan">
-        <ListItem title="Plan" info="$15.00/month" button-text="Change" class="border-b border-[#e3e3e3]" />
+        <ListItem title="Plan" :info="subscriber.plan" button-text="Change" class="border-b border-[#e3e3e3]" />
         <ListItem
           title="Billing Info"
-          info="**** **** **** 4242"
+          :info="subscriber.billing"
           button-text="Update"
           class="border-b border-[#e3e3e3]"
         />
@@ -48,7 +61,12 @@ const newsletterStatus = computed(() => {
 
     <div class="mt-[7.625rem] flex justify-between">
       <Button text="Sign out" rounded />
-      <Button text="Contact Support" primary rounded />
+      <Button primary rounded>
+        <template #buttonText>
+          <!-- TODO api mailto user provided email -->
+          <a href="mailto:#" class="flex items-center h-full">Contact Support</a>
+        </template>
+      </Button>
     </div>
   </UserDialog>
 </template>
