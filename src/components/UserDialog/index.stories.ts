@@ -9,13 +9,29 @@ export default {
   title: 'UserDialog',
 }
 
-export const SignupFreeArticle: Story = (args) => ({
+const SignupTemplate: Story = (args) => ({
   components: { Signup },
   setup() {
     return { args }
   },
-  template: '<Signup />',
+  template: '<Signup v-bind="args" />',
 })
+export const SignupFreeArticle = SignupTemplate.bind({})
+SignupFreeArticle.args = {
+  type: 'signupFree',
+  buttonText: 'Complete account',
+}
+export const SignupPaid = SignupTemplate.bind({})
+SignupPaid.args = {
+  type: 'signupPremium',
+  buttonText: 'Sign up',
+}
+export const UpgradeAccount = SignupTemplate.bind({})
+UpgradeAccount.args = {
+  type: 'upgradeAccount',
+  buttonText: 'Upgrade',
+}
+
 export const EmailLogin: Story = (args) => ({
   components: { LoginWithEmail },
   setup() {
@@ -44,6 +60,5 @@ ManageFreeAccount.args = {
 }
 export const ManagePaidAccount = ManageAccountTemplate.bind({})
 ManagePaidAccount.args = {
-  isPaidPlan: true,
   type: 'paidAccound',
 }

@@ -38,9 +38,9 @@ const currentData = computed(() => {
 </script>
 
 <template>
-  <div class="layer-3 relative h-full w-full rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
+  <div class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
     <div
-      class="flex hidden h-[15.75rem] justify-between rounded-tl-2xl bg-cover p-6 md:block"
+      class="hidden h-[15.75rem] w-full rounded-tl-2xl bg-cover p-6 md:block"
       :style="`background-image:url('${backgroundImage}')`"
     />
     <div class="md:absolute md:top-0 flex justify-between w-full px-6 pt-6">
@@ -50,7 +50,7 @@ const currentData = computed(() => {
       />
     </div>
 
-    <div class="rounded-bl-2xl p-6 pt-8">
+    <div class="rounded-bl-2xl flex flex-col flex-auto px-6 pb-6 mt-8 overflow-scroll">
       <div class="text-zinc-700 mb-8">
         <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
         <div class="text-heading">{{ currentData.sub }}</div>

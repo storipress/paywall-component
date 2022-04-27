@@ -5,10 +5,6 @@ import spLogo from '../../../../assets/sp-logo-white.svg'
 
 // TODO api subscriber.subscribed
 const props = defineProps({
-  isPaidPlan: {
-    type: Boolean,
-    default: false,
-  },
   type: {
     type: String,
   },
@@ -30,36 +26,41 @@ const onSwitch = () => {
 const newsletterStatus = computed(() => {
   return newsletter.value ? 'Subscribed' : 'Unsubscribed'
 })
+const isPaidPlan = computed(() => {
+  return props.type === 'paidAccound'
+})
 </script>
 
 <template>
   <UserDialog :type="type" :logo="spLogo">
-    <Button v-if="!isPaidPlan" text="View plans" primary class="w-full mb-4 text-lg font-semibold" />
+    <div class="flex-auto">
+      <Button v-if="!isPaidPlan" text="View plans" primary class="w-full mb-4 text-lg font-semibold" />
 
-    <ul class="layer-1 w-full bg-white rounded-sm">
-      <ListItem
-        :title="subscriber.full_name"
-        :info="subscriber.email"
-        button-text="Edit"
-        class="border-b border-[#e3e3e3]"
-      />
-      <template v-if="isPaidPlan">
-        <ListItem title="Plan" :info="subscriber.plan" button-text="Change" class="border-b border-[#e3e3e3]" />
+      <ul class="layer-1 w-full bg-white rounded-sm">
         <ListItem
-          title="Billing Info"
-          :info="subscriber.billing"
-          button-text="Update"
+          :title="subscriber.full_name"
+          :info="subscriber.email"
+          button-text="Edit"
           class="border-b border-[#e3e3e3]"
         />
-      </template>
-      <ListItem title="Email Newsletter" :info="newsletterStatus">
-        <template #itemRight>
-          <Toggle :checked="newsletter" type="simple" color="bg-green-600" @click="onSwitch" />
+        <template v-if="isPaidPlan">
+          <ListItem title="Plan" :info="subscriber.plan" button-text="Change" class="border-b border-[#e3e3e3]" />
+          <ListItem
+            title="Billing Info"
+            :info="subscriber.billing"
+            button-text="Update"
+            class="border-b border-[#e3e3e3]"
+          />
         </template>
-      </ListItem>
-    </ul>
+        <ListItem title="Email Newsletter" :info="newsletterStatus">
+          <template #itemRight>
+            <Toggle :checked="newsletter" type="simple" color="bg-green-600" @click="onSwitch" />
+          </template>
+        </ListItem>
+      </ul>
+    </div>
 
-    <div class="mt-[7.625rem] flex justify-between">
+    <div class="flex justify-between mt-12">
       <Button text="Sign out" rounded />
       <Button primary rounded>
         <template #buttonText>
