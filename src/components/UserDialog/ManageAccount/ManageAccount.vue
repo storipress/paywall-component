@@ -63,7 +63,7 @@ const newsletterStatus = computed(() => {
       <Button text="Sign out" rounded />
       <Button primary rounded>
         <template #buttonText>
-          <!-- TODO api mailto user provided email -->
+          <!-- TODO api site.email -->
           <a href="mailto:#" class="flex items-center h-full">Contact Support</a>
         </template>
       </Button>

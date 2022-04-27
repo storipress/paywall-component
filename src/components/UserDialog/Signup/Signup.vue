@@ -6,8 +6,8 @@ import spLogo from '../../../../assets/sp-logo-white.svg'
 // TODO api
 const plans = [
   { planName: 'Free', value: '0' },
-  { planName: '$5/Month', value: '5' },
-  { planName: '$100/Year', value: '100' },
+  { planName: '$5/Month', value: '5' }, // site.monthly_price
+  { planName: '$100/Year', value: '100' }, // site.yearly_price
 ]
 const selected = ref(plans[0])
 const publicationName = 'Storipress' // TODO api
