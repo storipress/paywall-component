@@ -1,5 +1,5 @@
-import '../src/styles/main.css'
 import '../assets/styles/iconfont.css'
+import '../src/styles/main.css'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

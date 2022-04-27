@@ -47,7 +47,9 @@ const isRounded = computed(() => {
     class="text-button bg-white/25 text-zinc-50 inline-flex items-center justify-center h-12 px-5 font-medium border"
     @click="onClick"
   >
-    {{ text }}
+    <slot name="buttonText">
+      {{ text }}
+    </slot>
   </button>
 </template>
 
