@@ -54,7 +54,10 @@ const publicationName = 'Storipress' // TODO api
       </div>
       <!-- if choose a paid plan, show card number input  -->
       <div v-if="selected.planName !== 'Free'" class="mb-4">
-        <div ref="reference" class="text-inputs border-zinc-700 h-12 px-4 py-3 bg-transparent border" />
+        <div
+          ref="reference"
+          class="text-inputs border-zinc-700 grid items-center h-12 px-4 py-3 bg-transparent border"
+        />
       </div>
 
       <div class="text-zinc-700 text-xs">
