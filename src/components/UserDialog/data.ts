@@ -19,7 +19,7 @@ export const data: Record<string, Record<string, string>> = {
     title: 'Your account.',
     sub: 'Update your account details:',
   },
-  signup: {
+  signupFree: {
     title: 'Complete your account.',
     sub: 'Sign up to __PUBLICATION_NAME__ to gain access to the story.',
   },

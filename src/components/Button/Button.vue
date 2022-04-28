@@ -44,7 +44,7 @@ const isRounded = computed(() => {
     :disables="disabled"
     :style="isPrimary"
     :class="isRounded"
-    class="text-button bg-white/25 text-zinc-50 inline-flex items-center justify-center h-12 px-5 font-medium border"
+    class="text-button inline-flex h-12 min-h-[3rem] items-center justify-center border bg-white/25 px-5 font-medium text-zinc-50"
     @click="onClick"
   >
     <slot name="buttonText">
