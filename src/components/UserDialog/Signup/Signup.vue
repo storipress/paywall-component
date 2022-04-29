@@ -2,7 +2,7 @@
 import { RadioGroup, RadioGroupOption } from '@headlessui/vue'
 import { Button, UserDialog } from '../../index'
 import spLogo from '../../../../assets/sp-logo-white.svg'
-import { useStripe } from '../../../composables'
+// import { useStripe } from '../../../composables'
 
 const props = defineProps({
   type: {
@@ -14,7 +14,7 @@ const props = defineProps({
   },
 })
 
-const { reference } = useStripe()
+// const { reference } = useStripe()
 
 // TODO api
 const plans = [
