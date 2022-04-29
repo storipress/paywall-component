@@ -2638,7 +2638,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/builder-vite@npm:^0.1.13":
+"@storybook/builder-vite@npm:^0.1.32":
   version: 0.1.32
   resolution: "@storybook/builder-vite@npm:0.1.32"
   dependencies:
@@ -13729,7 +13729,7 @@ __metadata:
     "@storybook/addon-docs": ^6.4.22
     "@storybook/addon-essentials": ^6.4.22
     "@storybook/addon-links": ^6.4.22
-    "@storybook/builder-vite": ^0.1.13
+    "@storybook/builder-vite": ^0.1.32
     "@storybook/vue3": ^6.4.22
     "@stripe/stripe-js": ^1.29.0
     "@tailwindcss/aspect-ratio": ^0.4.0
