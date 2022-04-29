@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
 import { data } from './data'
 
@@ -38,26 +39,29 @@ const currentData = computed(() => {
 </script>
 
 <template>
-  <div class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
-    <div
-      class="hidden h-[15.75rem] w-full rounded-tl-2xl bg-cover p-6 md:block"
-      :style="`background-image:url('${backgroundImage}')`"
-    />
-    <div class="md:absolute md:top-0 flex justify-between w-full px-6 pt-6">
-      <img :src="logo" class="max-h-8" />
-      <button
-        class="icon-cross_thin ease-in-out' h-fit text-black/30 transition duration-75 md:text-white/30 md:hover:text-white"
+  <SlideOver v-slot="{ onCloseDialog }" v-bind="$attrs">
+    <div class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
+      <div
+        class="hidden h-[15.75rem] w-full rounded-tl-2xl bg-cover p-6 md:block"
+        :style="`background-image:url('${backgroundImage}')`"
       />
-    </div>
-
-    <div class="rounded-bl-2xl flex flex-col flex-auto px-6 pb-6 mt-8 overflow-scroll">
-      <div class="text-zinc-700 mb-8">
-        <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
-        <div class="text-heading">{{ currentData.sub }}</div>
+      <div class="md:absolute md:top-0 flex justify-between w-full px-6 pt-6">
+        <img :src="logo" class="max-h-8" />
+        <button
+          class="icon-cross_thin ease-in-out' h-fit text-black/30 transition duration-75 md:text-white/30 md:hover:text-white"
+          @click="onCloseDialog"
+        />
       </div>
-      <slot />
+
+      <div class="rounded-bl-2xl flex flex-col flex-auto px-6 pb-6 mt-8 overflow-scroll">
+        <div class="text-zinc-700 mb-8">
+          <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
+          <div class="text-heading">{{ currentData.sub }}</div>
+        </div>
+        <slot />
+      </div>
     </div>
-  </div>
+  </SlideOver>
 </template>
 
 <style scoped></style>

@@ -1,6 +1,7 @@
 import type { Story } from '@storybook/vue3'
+import { ref } from 'vue'
 
-import Badge from '../Auth/Badge/Badge.vue'
+import LoginDialog from '../UserDialog/Login/Email.vue'
 import Paywall from './Paywall.vue'
 
 export default {
@@ -8,15 +9,14 @@ export default {
 }
 
 const PaywallTemplate: Story = (args) => ({
-  components: { Paywall, Badge },
+  components: { Paywall, LoginDialog },
   setup() {
-    return { args }
+    const visible = ref(false)
+    return { args, visible }
   },
   template: `
-  <Paywall v-bind="args" />
-  <div class="flex justify-center">
-    <Badge commentCount="2" class="absolute bottom-14 md:bottom-4" />
-  </div>
+  <Paywall v-bind="args" @click-sign-in="visible = true" />
+  <LoginDialog v-model="visible" />
   `,
 })
 export const Free = PaywallTemplate.bind({})

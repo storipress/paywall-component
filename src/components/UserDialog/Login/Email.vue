@@ -19,8 +19,7 @@ import spLogo from '../../../../assets/sp-logo-white.svg'
         class="text-inputs border-zinc-700 w-full h-12 px-4 py-3 bg-transparent border"
       />
     </div>
-
-    <Button text="Sign in" primary rounded class="w-full mt-12" />
+    <Button text="Sign in" primary rounded class="w-full mt-32" />
   </UserDialog>
 </template>
 
