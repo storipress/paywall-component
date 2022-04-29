@@ -2638,9 +2638,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/builder-vite@npm:^0.1.29":
-  version: 0.1.29
-  resolution: "@storybook/builder-vite@npm:0.1.29"
+"@storybook/builder-vite@npm:^0.1.13":
+  version: 0.1.32
+  resolution: "@storybook/builder-vite@npm:0.1.32"
   dependencies:
     "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.4
     "@mdx-js/mdx": ^1.6.22
@@ -2658,7 +2658,7 @@ __metadata:
   peerDependencies:
     "@storybook/core-common": ^6.4.3
     vite: ">=2.6.7"
-  checksum: f2fa111004be676c51369202781366b3f545f3914fbb780bb9741dcb95033752f2aeff75f9a795a1fcdb2f2922005dea89e780d0e9c3142f9654f5d256bf9ce9
+  checksum: aea4f2e9f40bbc83f1cc51d61edf941ff49d356135df2ada5654a14b84e4fa941c90c56db96a667359bb37a705542e2e74b9be67d11c7e7aaf02ed5681116029
   languageName: node
   linkType: hard
 
@@ -13729,7 +13729,7 @@ __metadata:
     "@storybook/addon-docs": ^6.4.22
     "@storybook/addon-essentials": ^6.4.22
     "@storybook/addon-links": ^6.4.22
-    "@storybook/builder-vite": ^0.1.29
+    "@storybook/builder-vite": ^0.1.13
     "@storybook/vue3": ^6.4.22
     "@stripe/stripe-js": ^1.29.0
     "@tailwindcss/aspect-ratio": ^0.4.0
