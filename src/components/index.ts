@@ -1,4 +1,6 @@
 export * from './Button'
-export * from './Toggle'
 export * from './ListItem'
+export * from './Paywall'
+export * from './SlideOver'
+export * from './Toggle'
 export * from './UserDialog'

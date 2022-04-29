@@ -1,4 +1,5 @@
 import type { Story } from '@storybook/vue3'
+import { onMounted, ref, watch } from 'vue'
 
 import LoginWithEmail from './Login/Email.vue'
 import LoginWithSocial from './Login/Social.vue'
@@ -9,34 +10,67 @@ export default {
   title: 'UserDialog',
 }
 
-export const SignupFreeArticle: Story = (args) => ({
+function useDialog() {
+  const visible = ref(false)
+  onMounted(() => (visible.value = true))
+  watch(visible, (val) => {
+    if (!val) {
+      setTimeout(() => {
+        visible.value = true
+      }, 1000)
+    }
+  })
+  return { visible }
+}
+
+const SignupTemplate: Story = (args) => ({
   components: { Signup },
   setup() {
-    return { args }
+    const { visible } = useDialog()
+    return { args, visible }
   },
-  template: '<Signup />',
+  template: '<Signup v-model="visible" v-bind="args" />',
 })
+export const SignupFreeArticle = SignupTemplate.bind({})
+SignupFreeArticle.args = {
+  type: 'signupFree',
+  buttonText: 'Complete account',
+}
+export const SignupPaid = SignupTemplate.bind({})
+SignupPaid.args = {
+  type: 'signupPremium',
+  buttonText: 'Sign up',
+}
+export const UpgradeAccount = SignupTemplate.bind({})
+UpgradeAccount.args = {
+  type: 'upgradeAccount',
+  buttonText: 'Upgrade',
+}
+
 export const EmailLogin: Story = (args) => ({
   components: { LoginWithEmail },
   setup() {
-    return { args }
+    const { visible } = useDialog()
+    return { args, visible }
   },
-  template: '<LoginWithEmail />',
+  template: '<LoginWithEmail v-model="visible" />',
 })
 export const SocialLogin: Story = (args) => ({
   components: { LoginWithSocial },
   setup() {
-    return { args }
+    const { visible } = useDialog()
+    return { args, visible }
   },
-  template: '<LoginWithSocial />',
+  template: '<LoginWithSocial v-model="visible" />',
 })
 
 const ManageAccountTemplate: Story = (args) => ({
   components: { ManageAccount },
   setup() {
-    return { args }
+    const { visible } = useDialog()
+    return { args, visible }
   },
-  template: '<ManageAccount v-bind="args" />',
+  template: '<ManageAccount v-model="visible" v-bind="args" />',
 })
 export const ManageFreeAccount = ManageAccountTemplate.bind({})
 ManageFreeAccount.args = {
@@ -44,6 +78,5 @@ ManageFreeAccount.args = {
 }
 export const ManagePaidAccount = ManageAccountTemplate.bind({})
 ManagePaidAccount.args = {
-  isPaidPlan: true,
   type: 'paidAccound',
 }
