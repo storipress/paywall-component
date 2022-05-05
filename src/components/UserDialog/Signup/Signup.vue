@@ -4,37 +4,45 @@ import { Button, UserDialog } from '../../index'
 import spLogo from '../../../../assets/sp-logo-white.svg'
 import { useStripe } from '../../../composables'
 
-const props = defineProps({
-  type: {
-    type: String,
-  },
-  buttonText: {
-    type: String,
-    default: '',
-  },
+type TProps = {
+  type?: string,
+  buttonText?: string,
+  useSlideOver?: boolean,
+  plans?: { planName: string, value: string}[],
+}
+const props = withDefaults(defineProps<TProps>(), {
+  buttonText: '',
+  useSlideOver: true,
 })
 
 const { reference } = useStripe()
 
 // TODO api
-const plans = [
-  { planName: 'Free', value: '0' },
-  { planName: '$5/Month', value: '5' }, // site.monthly_price
-  { planName: '$100/Year', value: '100' }, // site.yearly_price
-]
+const plans = computed(
+  () =>
+    props.plans || [
+      { planName: "Free", value: "0" },
+      { planName: "$5/Month", value: "5" }, // site.monthly_price
+      { planName: "$100/Year", value: "100" }, // site.yearly_price
+    ]
+);
+
+watch(plans, (value) => {
+  selected.value = plans.value[isPaidPlan.value]
+})
 
 const isPaidPlan = computed(() => {
   return props.type !== 'signupFree' ? 1 : 0
 })
-const selected = ref(plans[isPaidPlan.value])
+const selected = ref(plans.value[isPaidPlan.value])
 const publicationName = 'Storipress' // TODO api
 </script>
 
 <template>
-  <UserDialog :type="type" :logo="spLogo">
+  <UserDialog :type="type" :logo="spLogo" :useSlideOver="useSlideOver">
     <div class="flex-auto">
       <!-- choose a paid plan -->
-      <RadioGroup v-model="selected" class="mb-4 grid grid-cols-3 gap-x-1.5 md:gap-x-[9px]">
+      <RadioGroup v-if="plans.length" v-model="selected" class="mb-4 grid grid-cols-3 gap-x-1.5 md:gap-x-[9px]">
         <RadioGroupOption v-for="plan in plans" :key="plan.value" v-slot="{ checked }" :value="plan">
           <Button :text="plan.planName" rounded :primary="checked" class="w-full" />
         </RadioGroupOption>
@@ -53,7 +61,7 @@ const publicationName = 'Storipress' // TODO api
         />
       </div>
       <!-- if choose a paid plan, show card number input  -->
-      <div v-if="selected.planName !== 'Free'" class="mb-4">
+      <div v-if="selected && selected?.planName !== 'Free'" class="mb-4">
         <div
           ref="reference"
           class="text-inputs border-zinc-700 grid items-center h-12 px-4 py-3 bg-transparent border"

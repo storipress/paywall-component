@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { noop } from 'lodash'
 import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
 import { data } from './data'
@@ -15,6 +16,10 @@ const props = defineProps({
   backgroundImage: {
     type: String,
     default: defaultBackground,
+  },
+  useSlideOver: {
+    type: Boolean,
+    default: true,
   },
 })
 
@@ -39,8 +44,8 @@ const currentData = computed(() => {
 </script>
 
 <template>
-  <SlideOver v-slot="{ onCloseDialog }" v-bind="$attrs">
-    <div class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
+  <component :is="useSlideOver ? SlideOver : 'div'" v-slot="receiveProps" v-bind="$attrs">
+    <div class="layer-3 relative flex h-full w-full flex-col rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
       <div
         class="hidden h-[15.75rem] w-full rounded-tl-2xl bg-cover p-6 md:block"
         :style="`background-image:url('${backgroundImage}')`"
@@ -49,7 +54,7 @@ const currentData = computed(() => {
         <img :src="logo" class="max-h-8" />
         <button
           class="icon-cross_thin ease-in-out' focus-none h-fit text-black/30 transition duration-100 md:text-white/30 md:hover:text-white"
-          @click="onCloseDialog"
+          @click="receiveProps?.onCloseDialog ? receiveProps.onCloseDialog() : noop()"
         />
       </div>
 
@@ -61,7 +66,7 @@ const currentData = computed(() => {
         <slot />
       </div>
     </div>
-  </SlideOver>
+  </component>
 </template>
 
 <style scoped></style>

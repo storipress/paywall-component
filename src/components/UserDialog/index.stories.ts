@@ -46,6 +46,17 @@ UpgradeAccount.args = {
   type: 'upgradeAccount',
   buttonText: 'Upgrade',
 }
+export const SubscribeInPreview = SignupTemplate.bind({})
+SubscribeInPreview.args = {
+  type: 'subscribe',
+  buttonText: 'Subscribe',
+  useSlideOver: false,
+  plans: [
+    { planName: 'Free', value: '0' },
+    { planName: '$10/Month', value: '10' }, // site.monthly_price
+    { planName: '$100/Year', value: '100' }, // site.yearly_price
+  ]
+}
 
 export const EmailLogin: Story = (args) => ({
   components: { LoginWithEmail },

@@ -31,4 +31,8 @@ export const data: Record<string, Record<string, string>> = {
     title: 'Upgrade your account',
     sub: 'Upgrade your account to gain access to the story.',
   },
+  subscribe: {
+    title: 'This post is for subscribers only.',
+    sub: 'Sign up to Vice to gain access to the story.',
+  }
 }
