@@ -13,6 +13,9 @@ const props = defineProps({
     default: '',
   },
 })
+const emit = defineEmits<{
+  (event: 'click'): void
+}>()
 </script>
 
 <template>
@@ -22,7 +25,7 @@ const props = defineProps({
       <span class="text-caption text-gray-400">{{ info }}</span>
     </div>
     <slot name="itemRight">
-      <div role="button" class="text-button text-sky-600">{{ buttonText }}</div>
+      <div role="button" class="text-button text-sky-600" @click="emit('click')">{{ buttonText }}</div>
     </slot>
   </li>
 </template>

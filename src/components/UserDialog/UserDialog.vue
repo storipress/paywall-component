@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { SlideOver } from '../index'
+import { Button, SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
+import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount } from './components/index'
 import { data } from './data'
 
 const props = defineProps({
@@ -17,7 +18,12 @@ const props = defineProps({
     default: defaultBackground,
   },
 })
+const emit = defineEmits<{
+  (event: 'applyHandler', result: any): void
+}>()
 
+const currentType = ref('')
+const type = toRef(props, 'type')
 const publicationName = 'Storipress' // TODO api
 const subscriptionType = 'monthly' // TODO api
 const subscriberRenew = '2022-05-20' // TODO api subscriber.renew_on
@@ -27,15 +33,52 @@ const result: Record<string, string> = {
   __PUBLICATION_NAME__: publicationName,
 }
 
+watch(
+  type,
+  (type) => {
+    currentType.value = type
+  },
+  { immediate: true }
+)
+
+const dialogType = computed(() => {
+  switch (currentType.value) {
+    case 'welcome':
+      return LoginInEmail
+    case 'welcomeInSocial':
+      return LoginInSocial
+    case 'accountPlan':
+      return AccountDetail
+    case 'signupFree':
+      return AccountDetail
+    case 'signupPremium':
+      return AccountDetail
+    case 'upgradeAccount':
+      return AccountDetail
+    case 'freeAccount':
+      return ManageAccount
+    case 'paidAccound':
+      return ManageAccount
+  }
+})
+
 const currentData = computed(() => {
-  const current = data[props.type]
+  const current = data[currentType.value]
   return {
     title: current.title,
     sub: current.sub.replace(/\b(__PAID_PLAN__|__RENEWS_DATE__|__PUBLICATION_NAME__)\b/g, (match) => {
       return result[match]
     }),
+    button: current.button,
   }
 })
+
+const onApply = (result: any) => {
+  emit('applyHandler', result)
+}
+const onChangeDialogType = (type: string) => {
+  currentType.value = type
+}
 </script>
 
 <template>
@@ -45,7 +88,7 @@ const currentData = computed(() => {
         class="hidden h-[15.75rem] w-full rounded-tl-2xl bg-cover p-6 md:block"
         :style="`background-image:url('${backgroundImage}')`"
       />
-      <div class="flex w-full justify-between px-6 pt-6 md:absolute md:top-0">
+      <div class="md:absolute md:top-0 flex justify-between w-full px-6 pt-6">
         <img :src="logo" class="max-h-8" />
         <button
           class="icon-cross_thin ease-in-out' focus-none h-fit text-black/30 transition duration-100 md:text-white/30 md:hover:text-white"
@@ -53,12 +96,17 @@ const currentData = computed(() => {
         />
       </div>
 
-      <div class="mt-8 flex flex-auto flex-col overflow-scroll rounded-bl-2xl px-6 pb-6">
-        <div class="mb-8 text-zinc-700">
+      <div class="rounded-bl-2xl flex flex-col flex-auto px-6 pb-6 mt-8 overflow-scroll">
+        <div class="text-zinc-700 mb-8">
           <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
           <div class="text-heading">{{ currentData.sub }}</div>
         </div>
-        <slot />
+        <component
+          :is="dialogType"
+          v-bind="{ type, button: currentData.button }"
+          @apply="onApply"
+          @change-dialog-type="onChangeDialogType"
+        />
       </div>
     </div>
   </SlideOver>

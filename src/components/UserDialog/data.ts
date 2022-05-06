@@ -2,6 +2,7 @@ export const data: Record<string, Record<string, string>> = {
   welcome: {
     title: 'Welcome back.',
     sub: 'Enter your email below',
+    button: 'Sign in',
   },
   welcomeInSocial: {
     title: 'Welcome back.',
@@ -18,17 +19,21 @@ export const data: Record<string, Record<string, string>> = {
   accountPlan: {
     title: 'Your account.',
     sub: 'Update your account details:',
+    button: 'Update account',
   },
   signupFree: {
     title: 'Complete your account.',
     sub: 'Sign up to __PUBLICATION_NAME__ to gain access to the story.',
+    button: 'Complete account',
   },
   signupPremium: {
     title: 'Sign up for premium articles.',
     sub: 'Sign up to __PUBLICATION_NAME__ to gain access to the story.',
+    button: 'Sign up',
   },
   upgradeAccount: {
     title: 'Upgrade your account',
     sub: 'Upgrade your account to gain access to the story.',
+    button: 'Upgrade',
   },
 }
