@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, SlideOver } from '../index'
+import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
 import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount } from './components/index'
 import { data } from './data'
