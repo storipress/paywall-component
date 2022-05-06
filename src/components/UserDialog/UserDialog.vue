@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { noop } from 'lodash'
+import { noop } from 'lodash-es'
 import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
 import { data } from './data'
