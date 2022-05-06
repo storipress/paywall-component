@@ -57,7 +57,7 @@ const isUpgrade = computed(() => {
             primary
             class="w-full text-lg font-semibold"
             :class="isUpgrade ? 'md:w-[16.125rem]' : 'md:w-[7.5rem]'"
-            @click="emit('click', email)"
+            @click="emit('click', { email })"
           />
         </div>
         <div v-if="!isUpgrade" class="mt-1.5 text-xs text-zinc-600 md:mt-2.5">

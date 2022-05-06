@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useMutation } from '@vue/apollo-composable'
-import gql from 'graphql-tag'
 import { Button } from '../../index'
 
 const props = defineProps({
@@ -10,28 +8,10 @@ const props = defineProps({
   },
 })
 const emit = defineEmits<{
-  (event: 'apply', result: any): void
+  (event: 'apply', handler: any): void
 }>()
 
 const email = ref('')
-
-const { mutate } = useMutation(gql`
-  mutation RequestSignInSubscriber($email: Email!, $referer: String!, $from: String!) {
-    requestSignInSubscriber(input: { email: $email, referer: $referer, from: $from })
-  }
-`)
-const onLogin = async () => {
-  try {
-    const result = await mutate({
-      email: email.value,
-      referer: location.origin,
-      from: document.referrer,
-    })
-    emit('apply', result?.data.requestSignInSubscriber)
-  } catch (e) {
-    console.log('e: ', e)
-  }
-}
 </script>
 
 <template>
@@ -51,7 +31,7 @@ const onLogin = async () => {
     />
   </div>
 
-  <Button :text="button" primary rounded class="w-full mt-32" @click="onLogin" />
+  <Button :text="button" primary rounded class="w-full mt-32" @click="emit('apply', { email })" />
 </template>
 
 <style scoped></style>

@@ -2,6 +2,7 @@ import type { Story } from '@storybook/vue3'
 import { onMounted, ref, watch } from 'vue'
 
 import { UserDialog } from '../index'
+import { useUserDialog } from '../../composables'
 import spLogo from '../../../assets/sp-logo-white.svg'
 
 export default {
@@ -27,9 +28,12 @@ const UserDialogTemplate: Story = (args) => ({
     args.logo = spLogo
 
     const { visible } = useDialog()
-    const onApplyHandler = (result) => {
-      console.log('result: ', result)
+    const { switchApplyHandler } = useUserDialog(args.type)
+
+    const onApplyHandler = (handler) => {
+      switchApplyHandler()?.(handler)
     }
+
     return { args, visible, onApplyHandler }
   },
   template: '<UserDialog v-model="visible" v-bind="args" @apply-handler="onApplyHandler"/>',

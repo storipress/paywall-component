@@ -73,8 +73,8 @@ const currentData = computed(() => {
   }
 })
 
-const onApply = (result: any) => {
-  emit('applyHandler', result)
+const onApply = (handler: any) => {
+  emit('applyHandler', handler)
 }
 const onChangeDialogType = (type: string) => {
   currentType.value = type
