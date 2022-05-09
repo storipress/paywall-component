@@ -87,8 +87,33 @@ ManagePaidAccount.args = {
   type: 'paidAccound',
 }
 
-export const PreviewDefault = UserDialogTemplate.bind({})
+const PreviewTemplate: Story = (args) => ({
+  components: { UserDialog },
+  setup() {
+    args.logo = spLogo
+
+    return { args }
+  },
+  template: '<UserDialog v-bind="args" />',
+})
+
+export const PreviewFree = PreviewTemplate.bind({})
+PreviewFree.args = {
+  type: 'subscribe',
+  useSlideOver: false,
+  siteData: {
+    name: 'Storipress',
+    subscription: false,
+  },
+}
+export const PreviewDefault = PreviewTemplate.bind({})
 PreviewDefault.args = {
   type: 'subscribe',
   useSlideOver: false,
+  siteData: {
+    name: 'Storipress',
+    subscription: true,
+    monthly_price: '10',
+    yearly_price: '100',
+  },
 }
