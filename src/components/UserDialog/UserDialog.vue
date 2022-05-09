@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { noop } from 'lodash-es'
 import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
 import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount } from './components/index'
@@ -9,6 +10,14 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  colorHex: {
+    type: String,
+    default: '#fafafa',
+  },
+  useSlideOver: {
+    type: Boolean,
+    default: true,
+  },
   logo: {
     type: String,
     default: '',
@@ -17,20 +26,28 @@ const props = defineProps({
     type: String,
     default: defaultBackground,
   },
+  siteData: {
+    type: Object,
+    default: () => {},
+  },
+  subscriberData: {
+    type: Object,
+  },
+  auth: {
+    type: String,
+  },
 })
 const emit = defineEmits<{
   (event: 'applyHandler', result: any): void
+  (event: 'signOut'): void
 }>()
 
 const currentType = ref('')
 const type = toRef(props, 'type')
-const publicationName = 'Storipress' // TODO api
-const subscriptionType = 'monthly' // TODO api
-const subscriberRenew = '2022-05-20' // TODO api subscriber.renew_on
 const result: Record<string, string> = {
-  __PAID_PLAN__: subscriptionType,
-  __RENEWS_DATE__: subscriberRenew,
-  __PUBLICATION_NAME__: publicationName,
+  __PAID_PLAN__: props.subscriberData?.subscription?.interval ?? '',
+  __RENEWS_DATE__: props.subscriberData?.subscription?.renew_on ?? '',
+  __PUBLICATION_NAME__: props.siteData?.name,
 }
 
 watch(
@@ -41,26 +58,19 @@ watch(
   { immediate: true }
 )
 
-const dialogType = computed(() => {
-  switch (currentType.value) {
-    case 'welcome':
-      return LoginInEmail
-    case 'welcomeInSocial':
-      return LoginInSocial
-    case 'accountPlan':
-      return AccountDetail
-    case 'signupFree':
-      return AccountDetail
-    case 'signupPremium':
-      return AccountDetail
-    case 'upgradeAccount':
-      return AccountDetail
-    case 'freeAccount':
-      return ManageAccount
-    case 'paidAccound':
-      return ManageAccount
-  }
-})
+const dialogMap: Record<string, unknown> = {
+  welcome: LoginInEmail,
+  welcomeInSocial: LoginInSocial,
+  accountPlan: AccountDetail,
+  signupFree: AccountDetail,
+  signupPremium: AccountDetail,
+  upgradeAccount: AccountDetail,
+  freeAccount: ManageAccount,
+  paidAccound: ManageAccount,
+  subscribe: AccountDetail,
+}
+
+const dialogType = computed(() => dialogMap[currentType.value])
 
 const currentData = computed(() => {
   const current = data[currentType.value]
@@ -73,17 +83,17 @@ const currentData = computed(() => {
   }
 })
 
-const onApply = (handler: any) => {
-  emit('applyHandler', handler)
-}
 const onChangeDialogType = (type: string) => {
   currentType.value = type
 }
 </script>
 
 <template>
-  <SlideOver v-slot="{ onCloseDialog }" v-bind="$attrs">
-    <div class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
+  <component :is="useSlideOver ? SlideOver : 'div'" v-slot="receiveProps" v-bind="$attrs">
+    <div
+      class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl md:w-[28.125rem]"
+      :style="{ 'background-color': colorHex }"
+    >
       <div
         class="hidden h-[15.75rem] w-full rounded-tl-2xl bg-cover p-6 md:block"
         :style="`background-image:url('${backgroundImage}')`"
@@ -92,7 +102,7 @@ const onChangeDialogType = (type: string) => {
         <img :src="logo" class="max-h-8" />
         <button
           class="icon-cross_thin ease-in-out' focus-none h-fit text-black/30 transition duration-100 md:text-white/30 md:hover:text-white"
-          @click="onCloseDialog"
+          @click="receiveProps?.onCloseDialog ? receiveProps.onCloseDialog() : noop()"
         />
       </div>
 
@@ -103,13 +113,14 @@ const onChangeDialogType = (type: string) => {
         </div>
         <component
           :is="dialogType"
-          v-bind="{ type, button: currentData.button }"
-          @apply="onApply"
+          v-bind="{ type, siteData, subscriberData, auth, button: currentData.button }"
           @change-dialog-type="onChangeDialogType"
+          @apply="(handler:any) => emit('applyHandler', handler)"
+          @sign-out="emit('signOut')"
         />
       </div>
     </div>
-  </SlideOver>
+  </component>
 </template>
 
 <style scoped></style>

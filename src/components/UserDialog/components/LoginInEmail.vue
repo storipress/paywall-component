@@ -13,6 +13,11 @@ const emit = defineEmits<{
 
 const email = ref('')
 </script>
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+}
+</script>
 
 <template>
   <div class="flex-auto">

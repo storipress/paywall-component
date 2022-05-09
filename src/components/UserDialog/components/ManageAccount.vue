@@ -1,31 +1,31 @@
 <script setup lang="ts">
 import { Button, ListItem, Toggle } from '../../index'
 
-// TODO api subscriber.subscribed
 const props = defineProps({
   type: {
     type: String,
   },
+  subscriberData: {
+    type: Object,
+  },
 })
 const emit = defineEmits<{
   (event: 'changeDialogType', type: string): void
+  (event: 'signOut'): void
+  (event: 'apply', handler: any): void
 }>()
 
-// TODO api subscriber
-const subscriber = {
-  full_name: 'Alex Pan',
-  email: 'alex@storipress.com',
-  plan: '$15.00/month',
-  billing: '**** **** **** 4242',
-}
+const subscriptionPlan = computed(() => {
+  const { interval = '', price = '' } = props.subscriberData?.subscription ?? {}
+  return props.subscriberData?.subscription && `$${price}/${interval}`
+})
 
-const newsletter = ref(false) // TODO api subscriber.newsletter
-const onSwitch = () => {
-  newsletter.value = !newsletter.value
-}
+const subscriberCardInfo = computed(() => {
+  return props.subscriberData?.card_last_four && `**** **** **** ${props.subscriberData?.card_last_four}`
+})
 
 const newsletterStatus = computed(() => {
-  return newsletter.value ? 'Subscribed' : 'Unsubscribed'
+  return props.subscriberData?.newsletter ? 'Subscribed' : 'Unsubscribed'
 })
 const isPaidPlan = computed(() => {
   return props.type === 'paidAccound'
@@ -33,6 +33,11 @@ const isPaidPlan = computed(() => {
 
 const onChangeDialogType = () => {
   emit('changeDialogType', 'accountPlan')
+}
+</script>
+<script lang="ts">
+export default {
+  inheritAttrs: false,
 }
 </script>
 
@@ -48,8 +53,8 @@ const onChangeDialogType = () => {
 
     <ul class="layer-1 w-full bg-white rounded-sm">
       <ListItem
-        :title="subscriber.full_name"
-        :info="subscriber.email"
+        :title="subscriberData?.full_name"
+        :info="subscriberData?.email"
         button-text="Edit"
         class="border-b border-[#e3e3e3]"
         @click="onChangeDialogType"
@@ -57,14 +62,14 @@ const onChangeDialogType = () => {
       <template v-if="isPaidPlan">
         <ListItem
           title="Plan"
-          :info="subscriber.plan"
+          :info="subscriptionPlan"
           button-text="Change"
           class="border-b border-[#e3e3e3]"
           @click="onChangeDialogType"
         />
         <ListItem
           title="Billing Info"
-          :info="subscriber.billing"
+          :info="subscriberCardInfo"
           button-text="Update"
           class="border-b border-[#e3e3e3]"
           @click="onChangeDialogType"
@@ -72,14 +77,19 @@ const onChangeDialogType = () => {
       </template>
       <ListItem title="Email Newsletter" :info="newsletterStatus">
         <template #itemRight>
-          <Toggle :checked="newsletter" type="simple" color="bg-green-600" @click="onSwitch" />
+          <Toggle
+            :checked="subscriberData?.newsletter"
+            type="simple"
+            color="bg-green-600"
+            @click="emit('apply', { input: { newsletter: !subscriberData?.newsletter } })"
+          />
         </template>
       </ListItem>
     </ul>
   </div>
 
   <div class="flex justify-between mt-12">
-    <Button text="Sign out" rounded />
+    <Button text="Sign out" rounded @click="emit('signOut')" />
     <Button primary rounded>
       <template #buttonText>
         <!-- TODO api site.email -->

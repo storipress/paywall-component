@@ -36,4 +36,9 @@ export const data: Record<string, Record<string, string>> = {
     sub: 'Upgrade your account to gain access to the story.',
     button: 'Upgrade',
   },
+  subscribe: {
+    title: 'This post is for subscribers only.',
+    sub: 'Sign up to __PUBLICATION_NAME__ to gain access to the story.',
+    button: 'Subscribe',
+  },
 }

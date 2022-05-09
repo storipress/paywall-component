@@ -2,7 +2,7 @@ import type { Story } from '@storybook/vue3'
 import { onMounted, ref, watch } from 'vue'
 
 import { UserDialog } from '../index'
-import { useUserDialog } from '../../composables'
+import { useAuth, useSite, useSubscription, useUserDialog } from '../../composables'
 import spLogo from '../../../assets/sp-logo-white.svg'
 
 export default {
@@ -25,18 +25,35 @@ function useDialog() {
 const UserDialogTemplate: Story = (args) => ({
   components: { UserDialog },
   setup() {
-    args.logo = spLogo
-
     const { visible } = useDialog()
     const { switchApplyHandler } = useUserDialog(args.type)
+    const { siteSubscriptionInfo } = useSite()
+    const { isAuth, onSignOut } = useAuth()
+    const { subscriberProfile } = useSubscription()
+
+    args.logo = spLogo
+    args.auth = isAuth
+    // if (!isAuth) {
+    //   args.type = 'welcome'
+    // }
 
     const onApplyHandler = (handler) => {
       switchApplyHandler()?.(handler)
     }
 
-    return { args, visible, onApplyHandler }
+    return { args, visible, onApplyHandler, onSignOut, siteSubscriptionInfo, subscriberProfile, isAuth }
   },
-  template: '<UserDialog v-model="visible" v-bind="args" @apply-handler="onApplyHandler"/>',
+  template: `
+  login status: {{ !!isAuth }}
+  <UserDialog
+    v-model="visible"
+    v-bind="args"
+    :site-data="siteSubscriptionInfo"
+    :subscriber-data="subscriberProfile"
+    @apply-handler="onApplyHandler"
+    @sign-out="onSignOut"
+  />
+  `,
 })
 
 export const EmailLogin = UserDialogTemplate.bind({})
@@ -68,4 +85,10 @@ ManageFreeAccount.args = {
 export const ManagePaidAccount = UserDialogTemplate.bind({})
 ManagePaidAccount.args = {
   type: 'paidAccound',
+}
+
+export const PreviewDefault = UserDialogTemplate.bind({})
+PreviewDefault.args = {
+  type: 'subscribe',
+  useSlideOver: false,
 }
