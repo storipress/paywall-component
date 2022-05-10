@@ -6,7 +6,7 @@ export function useSite() {
     query SiteSubscriptionInfo {
       siteSubscriptionInfo {
         name
-        # email
+        email
         subscription
         monthly_price
         yearly_price

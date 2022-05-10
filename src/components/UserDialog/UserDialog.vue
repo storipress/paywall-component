@@ -28,7 +28,6 @@ const props = defineProps({
   },
   siteData: {
     type: Object,
-    default: () => {},
   },
   subscriberData: {
     type: Object,

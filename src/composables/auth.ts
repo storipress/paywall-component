@@ -2,7 +2,7 @@ import { useMutation } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
 
 export function useAuth() {
-  const { mutate: signInSubscriberMutate } = useMutation(gql`
+  const { mutate: requestSignInSubscriberMutate } = useMutation(gql`
     mutation RequestSignInSubscriber($email: Email!, $referer: String!, $from: String!) {
       requestSignInSubscriber(input: { email: $email, referer: $referer, from: $from })
     }
@@ -17,10 +17,20 @@ export function useAuth() {
       signOutSubscriber
     }
   `)
+  const { mutate: verifySubscriberEmailMutate } = useMutation(gql`
+    mutation VerifySubscriberEmail($token: String!) {
+      verifySubscriberEmail(token: $token)
+    }
+  `)
+  const { mutate: signInSubscriberMutate } = useMutation(gql`
+    mutation SignInSubscriber($token: String!) {
+      signInSubscriber(token: $token)
+    }
+  `)
 
   const onLogin = async ({ email }: { email: string }) => {
     try {
-      const result = await signInSubscriberMutate({
+      const result = await requestSignInSubscriberMutate({
         email,
         referer: location.origin,
         from: document.referrer,
@@ -57,6 +67,24 @@ export function useAuth() {
       console.log('e: ', e)
     }
   }
+  const onVerifyEmail = async (token: string) => {
+    try {
+      const result = await verifySubscriberEmailMutate({ token })
+      return result
+    } catch (e) {
+      console.log('e: ', e)
+    }
+  }
+  const onSignInSubscriber = async (token: string) => {
+    try {
+      const result = await signInSubscriberMutate({ token })
+      if (result?.data.signInSubscriber) {
+        localStorage.setItem('test-token', result?.data.signInSubscriber)
+      }
+    } catch (e) {
+      console.log('e: ', e)
+    }
+  }
 
   const isAuth = localStorage.getItem('test-token')
 
@@ -65,5 +93,7 @@ export function useAuth() {
     onLogin,
     onSignup,
     onSignOut,
+    onVerifyEmail,
+    onSignInSubscriber,
   }
 }

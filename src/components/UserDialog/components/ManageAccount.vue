@@ -5,6 +5,9 @@ const props = defineProps({
   type: {
     type: String,
   },
+  siteData: {
+    type: Object,
+  },
   subscriberData: {
     type: Object,
   },
@@ -93,7 +96,7 @@ export default {
     <Button primary rounded>
       <template #buttonText>
         <!-- TODO api site.email -->
-        <a href="mailto:#" class="flex items-center h-full">Contact Support</a>
+        <a :href="`mailto:#${siteData?.email}`" class="flex items-center h-full">Contact Support</a>
       </template>
     </Button>
   </div>

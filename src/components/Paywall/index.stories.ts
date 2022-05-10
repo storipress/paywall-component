@@ -13,24 +13,23 @@ export default {
 const PaywallTemplate: Story = (args) => ({
   components: { Paywall, UserDialog, Modal },
   setup() {
-    args.publicationName = 'Storipress' // TODO api
-
     const visible = ref(false)
     const modalVisible = ref(false)
     const dialogType = ref('welcome')
     const { siteSubscriptionInfo } = useSite()
     const { subscriberProfile } = useSubscription()
-    const { isAuth, onSignup } = useAuth()
+    const { isAuth, onLogin, onSignup, onVerifyEmail, onSignInSubscriber } = useAuth()
     const { switchApplyHandler } = useUserDialog(dialogType.value)
 
     const onClick = async ({ email }) => {
-      switch (args.paywallType) {
+      switch (args.type) {
         case 'free': {
           const result = await onSignup({ email })
           if (result?.data.signUpSubscriber) {
             dialogType.value = 'signupFree'
             visible.value = true
           } else {
+            onLogin({ email })
             modalVisible.value = true
           }
           break
@@ -55,6 +54,20 @@ const PaywallTemplate: Story = (args) => ({
       }
     }
 
+    const urlParams = new URLSearchParams(window.location.search)
+    const actionQuery = urlParams.get('action')
+    const token = urlParams.get('token')
+    if (actionQuery && token) {
+      switch (actionQuery) {
+        case 'verify-email':
+          onVerifyEmail(token)
+          break
+        case 'sign-in':
+          onSignInSubscriber(token)
+          break
+      }
+    }
+
     // onUnmounted(() => {
     //   localStorage.removeItem('test-token')
     // })
@@ -74,23 +87,20 @@ const PaywallTemplate: Story = (args) => ({
   },
   template: `
   login status: {{ !!isAuth }}
-  <Paywall v-bind="args" @click="onClick" @click-sign-in="visible = true" />
+  <Paywall v-bind="args" :publication-name="siteSubscriptionInfo?.name" @click="onClick" @click-sign-in="visible = true" />
   <UserDialog v-model="visible" :type="dialogType" :logo="spLogo" :site-data="siteSubscriptionInfo" :subscriber-data="subscriberProfile" @apply-handler="onApplyHandler" />
   <Modal v-model="modalVisible" :logo="spLogo" title="We’ve sent you a login link!" sub="If the email doesn't arrive in 3 minutes, check your spam folder." button="Close" @click="modalVisible = false" />
   `,
 })
 export const Free = PaywallTemplate.bind({})
 Free.args = {
-  paywallType: 'free',
   type: 'free',
 }
 export const Paid = PaywallTemplate.bind({})
 Paid.args = {
-  paywallType: 'paid',
   type: 'paid',
 }
 export const Upgrade = PaywallTemplate.bind({})
 Upgrade.args = {
-  paywallType: 'upgrade',
   type: 'upgrade',
 }
