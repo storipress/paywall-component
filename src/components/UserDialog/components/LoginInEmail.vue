@@ -13,14 +13,9 @@ const emit = defineEmits<{
 
 const email = ref('')
 </script>
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-}
-</script>
 
 <template>
-  <div class="flex-auto">
+  <div class="flex-auto" v-bind="$attrs">
     <Button primary rounded color-hex="#ffffff" class="layer-1 w-full mb-6">
       <template #buttonText>
         <i class="icon-email text-zinc-700 text-2xl" />

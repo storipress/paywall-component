@@ -38,14 +38,9 @@ const onChangeDialogType = () => {
   emit('changeDialogType', 'accountPlan')
 }
 </script>
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-}
-</script>
 
 <template>
-  <div class="flex-auto">
+  <div class="flex-auto" v-bind="$attrs">
     <Button
       v-if="!isPaidPlan"
       text="View plans"

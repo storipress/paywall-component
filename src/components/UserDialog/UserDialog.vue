@@ -108,15 +108,17 @@ const onChangeDialogType = (type: string) => {
       <div class="rounded-bl-2xl flex flex-col flex-auto px-6 pb-6 mt-8 overflow-scroll">
         <div class="text-zinc-700 mb-8">
           <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
-          <div class="text-heading">{{ currentData.sub }}</div>
+          <div class="text-heading" v-html="currentData.sub" />
         </div>
-        <component
-          :is="dialogType"
-          v-bind="{ type, siteData, subscriberData, auth, button: currentData.button }"
-          @change-dialog-type="onChangeDialogType"
-          @apply="(handler:any) => emit('applyHandler', handler)"
-          @sign-out="emit('signOut')"
-        />
+        <slot>
+          <component
+            :is="dialogType"
+            v-bind="{ type, siteData, subscriberData, auth, button: currentData.button }"
+            @change-dialog-type="onChangeDialogType"
+            @apply="(handler:any) => emit('applyHandler', handler)"
+            @sign-out="emit('signOut')"
+          />
+        </slot>
       </div>
     </div>
   </component>

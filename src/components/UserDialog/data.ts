@@ -41,4 +41,13 @@ export const data: Record<string, Record<string, string>> = {
     sub: 'Sign up to __PUBLICATION_NAME__ to gain access to the story.',
     button: 'Subscribe',
   },
+  confirmation: {
+    title: 'One last step — verify your email',
+    sub: `
+    Thanks for subscribing! One last step before accessing this article — please verify your email to ensure you don’t get locked out of your account.
+    <br /><br />
+    Didn’t receive an email? Double-check your spam, or if you made a typo, change your email by clicking the button below.
+    `,
+    button: 'Subscribe',
+  },
 }

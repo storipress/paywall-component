@@ -49,14 +49,9 @@ const first_name = toRef(props, 'subscriberData').value?.first_name
 const last_name = toRef(props, 'subscriberData').value?.last_name
 const selected = ref(plans.value[isPaidPlan.value])
 </script>
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-}
-</script>
 
 <template>
-  <div class="flex-auto">
+  <div class="flex-auto" v-bind="$attrs">
     <!-- choose a paid plan -->
     <RadioGroup v-if="siteData?.subscription" v-model="selected" class="mb-4 grid grid-cols-3 gap-x-1.5 md:gap-x-[9px]">
       <RadioGroupOption v-for="plan in plans" :key="plan.value" v-slot="{ checked }" :value="plan">
