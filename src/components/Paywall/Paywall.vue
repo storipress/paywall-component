@@ -13,7 +13,7 @@ const props = defineProps({
   },
 })
 const emit = defineEmits<{
-  (event: 'click', val: string): void
+  (event: 'click', val: object): void
   (event: 'clickSignIn'): void
 }>()
 
