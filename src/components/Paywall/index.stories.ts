@@ -21,10 +21,10 @@ const PaywallTemplate: Story = (args) => ({
     const { isAuth, onLogin, onSignup, onVerifyEmail, onSignInSubscriber } = useAuth()
     const { switchApplyHandler } = useUserDialog(dialogType.value)
 
-    const onClick = async ({ email }) => {
+    const onClick = async (email) => {
       switch (args.type) {
         case 'free': {
-          const result = await onSignup({ email })
+          const result = await onSignup(email)
           if (result?.data.signUpSubscriber) {
             dialogType.value = 'signupFree'
             visible.value = true
@@ -35,7 +35,7 @@ const PaywallTemplate: Story = (args) => ({
           break
         }
         case 'paid':
-          await onSignup({ email })
+          await onSignup(email)
           dialogType.value = 'signupPremium'
           visible.value = true
           break

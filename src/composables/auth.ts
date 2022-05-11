@@ -42,7 +42,7 @@ export function useAuth() {
       console.log('e: ', e)
     }
   }
-  const onSignup = async ({ email }: { email: string }) => {
+  const onSignup = async (email: string) => {
     try {
       const result = await signUpSubscriberMutate({
         email,
