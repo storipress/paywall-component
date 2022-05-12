@@ -2,6 +2,7 @@ export const data: Record<string, Record<string, string>> = {
   welcome: {
     title: 'Welcome back.',
     sub: 'Enter your email below',
+    button: 'Sign in',
   },
   welcomeInSocial: {
     title: 'Welcome back.',
@@ -18,17 +19,35 @@ export const data: Record<string, Record<string, string>> = {
   accountPlan: {
     title: 'Your account.',
     sub: 'Update your account details:',
+    button: 'Update account',
   },
   signupFree: {
     title: 'Complete your account.',
     sub: 'Sign up to __PUBLICATION_NAME__ to gain access to the story.',
+    button: 'Complete account',
   },
   signupPremium: {
     title: 'Sign up for premium articles.',
     sub: 'Sign up to __PUBLICATION_NAME__ to gain access to the story.',
+    button: 'Sign up',
   },
   upgradeAccount: {
     title: 'Upgrade your account',
     sub: 'Upgrade your account to gain access to the story.',
+    button: 'Upgrade',
+  },
+  subscribe: {
+    title: 'This post is for subscribers only.',
+    sub: 'Sign up to __PUBLICATION_NAME__ to gain access to the story.',
+    button: 'Subscribe',
+  },
+  confirmation: {
+    title: 'One last step — verify your email',
+    sub: `
+    Thanks for subscribing! One last step before accessing this article — please verify your email to ensure you don’t get locked out of your account.
+    <br /><br />
+    Didn’t receive an email? Double-check your spam, or if you made a typo, change your email by clicking the button below.
+    `,
+    button: 'Subscribe',
   },
 }

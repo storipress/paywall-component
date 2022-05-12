@@ -1,10 +1,9 @@
 import type { Story } from '@storybook/vue3'
 import { onMounted, ref, watch } from 'vue'
 
-import LoginWithEmail from './Login/Email.vue'
-import LoginWithSocial from './Login/Social.vue'
-import Signup from './Signup/Signup.vue'
-import ManageAccount from './ManageAccount/ManageAccount.vue'
+import { UserDialog } from '../index'
+import { useAuth, useSite, useSubscription, useUserDialog } from '../../composables'
+import spLogo from '../../../assets/sp-logo-white.svg'
 
 export default {
   title: 'UserDialog',
@@ -23,60 +22,98 @@ function useDialog() {
   return { visible }
 }
 
-const SignupTemplate: Story = (args) => ({
-  components: { Signup },
+const UserDialogTemplate: Story = (args) => ({
+  components: { UserDialog },
   setup() {
     const { visible } = useDialog()
-    return { args, visible }
+    const { switchApplyHandler } = useUserDialog(args.type)
+    const { siteSubscriptionInfo } = useSite()
+    const { isAuth, onSignOut } = useAuth()
+    const { subscriberProfile } = useSubscription()
+
+    args.logo = spLogo
+    args.auth = isAuth
+    // if (!isAuth) {
+    //   args.type = 'welcome'
+    // }
+
+    const onApplyHandler = (handler) => {
+      switchApplyHandler()?.(handler)
+    }
+
+    return { args, visible, onApplyHandler, onSignOut, siteSubscriptionInfo, subscriberProfile, isAuth }
   },
-  template: '<Signup v-model="visible" v-bind="args" />',
+  template: `
+  login status: {{ !!isAuth }}
+  <UserDialog
+    v-model="visible"
+    v-bind="args"
+    :site-data="siteSubscriptionInfo"
+    :subscriber-data="subscriberProfile"
+    @apply-handler="onApplyHandler"
+    @sign-out="onSignOut"
+  />
+  `,
 })
-export const SignupFreeArticle = SignupTemplate.bind({})
+
+export const EmailLogin = UserDialogTemplate.bind({})
+EmailLogin.args = {
+  type: 'welcome',
+}
+export const SocialLogin = UserDialogTemplate.bind({})
+SocialLogin.args = {
+  type: 'welcomeInSocial',
+}
+
+export const SignupFreeArticle = UserDialogTemplate.bind({})
 SignupFreeArticle.args = {
   type: 'signupFree',
-  buttonText: 'Complete account',
 }
-export const SignupPaid = SignupTemplate.bind({})
+export const SignupPaid = UserDialogTemplate.bind({})
 SignupPaid.args = {
   type: 'signupPremium',
-  buttonText: 'Sign up',
 }
-export const UpgradeAccount = SignupTemplate.bind({})
+export const UpgradeAccount = UserDialogTemplate.bind({})
 UpgradeAccount.args = {
   type: 'upgradeAccount',
-  buttonText: 'Upgrade',
 }
 
-export const EmailLogin: Story = (args) => ({
-  components: { LoginWithEmail },
-  setup() {
-    const { visible } = useDialog()
-    return { args, visible }
-  },
-  template: '<LoginWithEmail v-model="visible" />',
-})
-export const SocialLogin: Story = (args) => ({
-  components: { LoginWithSocial },
-  setup() {
-    const { visible } = useDialog()
-    return { args, visible }
-  },
-  template: '<LoginWithSocial v-model="visible" />',
-})
-
-const ManageAccountTemplate: Story = (args) => ({
-  components: { ManageAccount },
-  setup() {
-    const { visible } = useDialog()
-    return { args, visible }
-  },
-  template: '<ManageAccount v-model="visible" v-bind="args" />',
-})
-export const ManageFreeAccount = ManageAccountTemplate.bind({})
+export const ManageFreeAccount = UserDialogTemplate.bind({})
 ManageFreeAccount.args = {
   type: 'freeAccount',
 }
-export const ManagePaidAccount = ManageAccountTemplate.bind({})
+export const ManagePaidAccount = UserDialogTemplate.bind({})
 ManagePaidAccount.args = {
   type: 'paidAccound',
+}
+
+const PreviewTemplate: Story = (args) => ({
+  components: { UserDialog },
+  setup() {
+    args.logo = spLogo
+
+    return { args }
+  },
+  template: '<UserDialog v-bind="args" />',
+})
+
+export const PreviewFree = PreviewTemplate.bind({})
+PreviewFree.args = {
+  type: 'subscribe',
+  useSlideOver: false,
+  siteData: {
+    name: 'Storipress',
+    subscription: false,
+  },
+}
+export const PreviewDefault = PreviewTemplate.bind({})
+PreviewDefault.args = {
+  type: 'subscribe',
+  useSlideOver: false,
+  siteData: {
+    name: 'Storipress',
+    subscription: true,
+    monthly_price: '10',
+    yearly_price: '100',
+  },
 }

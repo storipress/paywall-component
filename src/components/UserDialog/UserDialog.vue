@@ -1,12 +1,22 @@
 <script setup lang="ts">
+import { noop } from 'lodash-es'
 import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
+import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount } from './components/index'
 import { data } from './data'
 
 const props = defineProps({
   type: {
     type: String,
     default: '',
+  },
+  colorHex: {
+    type: String,
+    default: '#fafafa',
+  },
+  useSlideOver: {
+    type: Boolean,
+    default: true,
   },
   logo: {
     type: String,
@@ -16,52 +26,102 @@ const props = defineProps({
     type: String,
     default: defaultBackground,
   },
+  siteData: {
+    type: Object,
+  },
+  subscriberData: {
+    type: Object,
+  },
+  auth: {
+    type: String,
+  },
 })
+const emit = defineEmits<{
+  (event: 'applyHandler', result: any): void
+  (event: 'signOut'): void
+}>()
 
-const publicationName = 'Storipress' // TODO api
-const subscriptionType = 'monthly' // TODO api
-const subscriberRenew = '2022-05-20' // TODO api subscriber.renew_on
+const currentType = ref('')
+const type = toRef(props, 'type')
 const result: Record<string, string> = {
-  __PAID_PLAN__: subscriptionType,
-  __RENEWS_DATE__: subscriberRenew,
-  __PUBLICATION_NAME__: publicationName,
+  __PAID_PLAN__: props.subscriberData?.subscription?.interval ?? '',
+  __RENEWS_DATE__: props.subscriberData?.subscription?.renew_on ?? '',
+  __PUBLICATION_NAME__: props.siteData?.name,
 }
 
+watch(
+  type,
+  (type) => {
+    currentType.value = type
+  },
+  { immediate: true }
+)
+
+const dialogMap: Record<string, unknown> = {
+  welcome: LoginInEmail,
+  welcomeInSocial: LoginInSocial,
+  accountPlan: AccountDetail,
+  signupFree: AccountDetail,
+  signupPremium: AccountDetail,
+  upgradeAccount: AccountDetail,
+  freeAccount: ManageAccount,
+  paidAccound: ManageAccount,
+  subscribe: AccountDetail,
+}
+
+const dialogType = computed(() => dialogMap[currentType.value])
+
 const currentData = computed(() => {
-  const current = data[props.type]
+  const current = data[currentType.value]
   return {
     title: current.title,
     sub: current.sub.replace(/\b(__PAID_PLAN__|__RENEWS_DATE__|__PUBLICATION_NAME__)\b/g, (match) => {
       return result[match]
     }),
+    button: current.button,
   }
 })
+
+const onChangeDialogType = (type: string) => {
+  currentType.value = type
+}
 </script>
 
 <template>
-  <SlideOver v-slot="{ onCloseDialog }" v-bind="$attrs">
-    <div class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl bg-zinc-50 md:w-[28.125rem]">
+  <component :is="useSlideOver ? SlideOver : 'div'" v-slot="receiveProps" v-bind="$attrs">
+    <div
+      class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl md:w-[28.125rem]"
+      :style="{ 'background-color': colorHex }"
+    >
       <div
         class="hidden h-[15.75rem] w-full rounded-tl-2xl bg-cover p-6 md:block"
         :style="`background-image:url('${backgroundImage}')`"
       />
-      <div class="flex w-full justify-between px-6 pt-6 md:absolute md:top-0">
+      <div class="md:absolute md:top-0 flex justify-between w-full px-6 pt-6">
         <img :src="logo" class="max-h-8" />
         <button
           class="icon-cross_thin ease-in-out' focus-none h-fit text-black/30 transition duration-100 md:text-white/30 md:hover:text-white"
-          @click="onCloseDialog"
+          @click="receiveProps?.onCloseDialog ? receiveProps.onCloseDialog() : noop()"
         />
       </div>
 
-      <div class="mt-8 flex flex-auto flex-col overflow-scroll rounded-bl-2xl px-6 pb-6">
-        <div class="mb-8 text-zinc-700">
+      <div class="rounded-bl-2xl flex flex-col flex-auto px-6 pb-6 mt-8 overflow-scroll">
+        <div class="text-zinc-700 mb-8">
           <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
-          <div class="text-heading">{{ currentData.sub }}</div>
+          <div class="text-heading" v-html="currentData.sub" />
         </div>
-        <slot />
+        <slot>
+          <component
+            :is="dialogType"
+            v-bind="{ type, siteData, subscriberData, auth, button: currentData.button }"
+            @change-dialog-type="onChangeDialogType"
+            @apply="(handler:any) => emit('applyHandler', handler)"
+            @sign-out="emit('signOut')"
+          />
+        </slot>
       </div>
     </div>
-  </SlideOver>
+  </component>
 </template>
 
 <style scoped></style>
