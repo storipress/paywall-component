@@ -43,11 +43,11 @@ const emit = defineEmits<{
 
 const currentType = ref('')
 const type = toRef(props, 'type')
-const result: Record<string, string> = {
+const result = computed<Record<string, string>>(() => ({
   __PAID_PLAN__: props.subscriberData?.subscription?.interval ?? '',
   __RENEWS_DATE__: props.subscriberData?.subscription?.renew_on ?? '',
-  __PUBLICATION_NAME__: props.siteData?.name,
-}
+  __PUBLICATION_NAME__: props.siteData?.name ?? '',
+}))
 
 watch(
   type,
@@ -76,7 +76,7 @@ const currentData = computed(() => {
   return {
     title: current.title,
     sub: current.sub.replace(/\b(__PAID_PLAN__|__RENEWS_DATE__|__PUBLICATION_NAME__)\b/g, (match) => {
-      return result[match]
+      return result.value[match]
     }),
     button: current.button,
   }
