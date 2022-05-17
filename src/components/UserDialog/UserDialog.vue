@@ -90,7 +90,7 @@ const onChangeDialogType = (type: string) => {
 <template>
   <component :is="useSlideOver ? SlideOver : 'div'" v-slot="receiveProps" v-bind="$attrs">
     <div
-      class="layer-3 relative flex h-screen w-full flex-col rounded-l-2xl md:w-[28.125rem]"
+      class="layer-3 relative flex h-full w-full flex-col rounded-l-2xl md:w-[28.125rem]"
       :style="{ 'background-color': colorHex }"
     >
       <div
@@ -105,7 +105,7 @@ const onChangeDialogType = (type: string) => {
         />
       </div>
 
-      <div class="rounded-bl-2xl flex flex-col flex-auto px-6 pb-6 mt-8 overflow-scroll">
+      <div class="rounded-bl-2xl flex flex-col flex-auto px-6 pb-6 mt-8 overflow-auto">
         <div class="text-zinc-700 mb-8">
           <div class="text-display-x-large mb-4 font-black">{{ currentData.title }}</div>
           <div class="text-heading" v-html="currentData.sub" />
