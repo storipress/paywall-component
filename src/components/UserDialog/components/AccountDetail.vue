@@ -47,7 +47,16 @@ const isPaidPlan = computed(() => {
 
 const first_name = toRef(props, 'subscriberData').value?.first_name
 const last_name = toRef(props, 'subscriberData').value?.last_name
-const selected = ref(plans.value[isPaidPlan.value])
+
+const selectedID = ref(isPaidPlan.value)
+const selected = computed({
+  get: () => {
+    return plans.value[selectedID.value]
+  },
+  set: (val) => {
+    selectedID.value = plans.value.findIndex((plan) => plan === val)
+  },
+})
 </script>
 
 <template>
