@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
 
 export function useSubscription() {
-  const { result } = useQuery(gql`
+  const { result, refetch } = useQuery(gql`
     query SubscriberProfile {
       subscriberProfile {
         id
@@ -37,7 +37,6 @@ export function useSubscription() {
         first_name
         last_name
         full_name
-        # newsletter
       }
     }
   `)
@@ -45,9 +44,10 @@ export function useSubscription() {
     try {
       await updateSubscriberMutate(input)
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('e: ', e)
     }
   }
 
-  return { subscriberProfile, onUpdateSubscriber }
+  return { subscriberProfile, refetchSubscriber: refetch, onUpdateSubscriber }
 }

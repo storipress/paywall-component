@@ -25,7 +25,7 @@ const PaywallTemplate: Story = (args) => ({
       switch (args.type) {
         case 'free': {
           const result = await onSignup(email)
-          if (result?.data.signUpSubscriber) {
+          if (result && result?.data.signUpSubscriber) {
             dialogType.value = 'signupFree'
             visible.value = true
           } else {
@@ -46,8 +46,8 @@ const PaywallTemplate: Story = (args) => ({
       }
     }
 
-    const onApplyHandler = async (handler) => {
-      const result = await switchApplyHandler()?.(handler)
+    const onApplyHandler = async (params: any) => {
+      const result = await switchApplyHandler()?.(params)
       if (result) {
         visible.value = false
         modalVisible.value = true
@@ -67,10 +67,6 @@ const PaywallTemplate: Story = (args) => ({
           break
       }
     }
-
-    // onUnmounted(() => {
-    //   localStorage.removeItem('test-token')
-    // })
 
     return {
       args,

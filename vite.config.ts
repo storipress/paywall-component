@@ -13,8 +13,18 @@ export default defineConfig({
       '~/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
+  build: {
+    lib: {
+      entry: './src/entry.ts',
+      formats: ['es'],
+      fileName: 'builder-component',
+      name: 'BuilderComponent',
+    },
+  },
   plugins: [
-    Vue(),
+    Vue({
+      reactivityTransform: true,
+    }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),

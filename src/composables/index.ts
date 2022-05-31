@@ -1,4 +1,3 @@
-export * from './dark'
 export * from './stripe'
 export * from './on-dialog'
 export * from './auth'
