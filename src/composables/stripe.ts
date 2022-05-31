@@ -1,8 +1,9 @@
+import type { Stripe } from '@stripe/stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 
 export function useStripe() {
   const reference = ref()
-  const createCard = (stripe) => {
+  const createCard = (stripe: Stripe) => {
     const elements = stripe.elements()
     const style = {
       base: {
@@ -28,7 +29,7 @@ export function useStripe() {
 
   onMounted(async () => {
     const stripe = await loadStripe('pk_test_qblFNYngBkEdjEZ16jxxoWSM')
-    createCard(stripe)
+    createCard(stripe!)
   })
 
   return {

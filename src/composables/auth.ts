@@ -1,7 +1,8 @@
 import { useMutation } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
+import type { Ref } from 'vue'
 
-export function useAuth() {
+export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', '')) {
   const { mutate: requestSignInSubscriberMutate } = useMutation(gql`
     mutation RequestSignInSubscriber($email: Email!, $referer: String!, $from: String!) {
       requestSignInSubscriber(input: { email: $email, referer: $referer, from: $from })
@@ -32,15 +33,17 @@ export function useAuth() {
     try {
       const result = await requestSignInSubscriberMutate({
         email,
-        referer: location.origin,
-        from: document.referrer,
+        referer: document.referrer || location.origin,
+        from: location.href,
       })
       if (result?.data.requestSignInSubscriber) {
         return true
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('e: ', e)
     }
+    return false
   }
   const onSignup = async (email: string) => {
     try {
@@ -50,43 +53,51 @@ export function useAuth() {
         from: document.referrer,
       })
       if (result?.data.signUpSubscriber) {
-        localStorage.setItem('test-token', result?.data.signUpSubscriber)
+        tokenRef.value = result?.data.signUpSubscriber
         return result
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('e: ', e)
     }
+    return false
   }
   const onSignOut = async () => {
     try {
       const result = await signOutSubscriberMutate()
       if (result?.data.signOutSubscriber) {
-        localStorage.removeItem('test-token')
+        tokenRef.value = ''
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('e: ', e)
     }
+    return false
   }
   const onVerifyEmail = async (token: string) => {
     try {
       const result = await verifySubscriberEmailMutate({ token })
       return result
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('e: ', e)
     }
+    return false
   }
   const onSignInSubscriber = async (token: string) => {
     try {
       const result = await signInSubscriberMutate({ token })
       if (result?.data.signInSubscriber) {
-        localStorage.setItem('test-token', result?.data.signInSubscriber)
+        tokenRef.value = result?.data.signInSubscriber
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('e: ', e)
     }
+    return false
   }
 
-  const isAuth = localStorage.getItem('test-token')
+  const isAuth = computed(() => !!tokenRef.value)
 
   return {
     isAuth,

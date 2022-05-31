@@ -1,19 +1,17 @@
+import { noop } from 'lodash-es'
 import { useAuth } from './auth'
 import { useSubscription } from './subscription'
 
-export function useUserDialog(type) {
-  const { onLogin } = useAuth()
+export function useUserDialog(type: string, { onLogin } = useAuth()) {
   const { onUpdateSubscriber } = useSubscription()
+  const handlers: Record<string, (...args: any[]) => Promise<any>> = {
+    welcome: onLogin,
+    signupFree: onUpdateSubscriber,
+    freeAccount: onUpdateSubscriber,
+  }
 
   const switchApplyHandler = () => {
-    switch (type) {
-      case 'welcome':
-        return onLogin
-      case 'signupFree':
-        return onUpdateSubscriber
-      case 'freeAccount':
-        return onUpdateSubscriber
-    }
+    return handlers[type] || noop
   }
 
   return {

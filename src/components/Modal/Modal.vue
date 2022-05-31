@@ -33,7 +33,6 @@ const visible = useVModel(props, 'modelValue', emit)
 </script>
 
 <template>
-  <button @click="visible = true">open</button>
   <TransitionRoot as="template" :show="visible">
     <Dialog as="div" class="fixed inset-0 z-40 overflow-y-auto" @close="visible = false">
       <div class="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">

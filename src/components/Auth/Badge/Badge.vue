@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import CommentIcon from './CommentIcon.vue'
+
 const props = defineProps({
   loginState: {
     type: Boolean,
@@ -9,6 +11,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  hasComment: {
+    type: Boolean,
+    default: false,
+  },
   commentCount: {
     type: Number,
     default: 0,
@@ -16,6 +22,7 @@ const props = defineProps({
 })
 const emit = defineEmits<{
   (event: 'click'): void
+  (event: 'clickComment'): void
 }>()
 
 const pillText = computed(() => {
@@ -43,10 +50,14 @@ const onClick = () => {
     </div>
     <!-- if articles with comments, display comments count -->
     <!-- border -->
-    <div v-if="commentCount" class="contents before:h-3 before:border-l before:border-l-zinc-200">
+    <div v-if="hasComment" class="contents before:h-3 before:border-l before:border-l-zinc-200">
       <!-- comment count -->
-      <div role="button" class="flex h-full items-center px-3.5 transition duration-100 hover:bg-stone-100">
-        <img src="../../../../assets/comments.svg" class="mr-2" />
+      <div
+        role="button"
+        class="flex h-full items-center px-3.5 transition duration-100 hover:bg-stone-100"
+        @click="$emit('clickComment')"
+      >
+        <CommentIcon class="mr-2" />
         <span>{{ commentCount }}</span>
       </div>
     </div>
