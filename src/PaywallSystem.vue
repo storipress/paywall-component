@@ -44,7 +44,7 @@ const showBadge = $computed(() => {
     return false
   }
   const { state, paywall } = props.paywallMachine
-  return state.value === PaywallState.PaywallOrLogIn && !paywall.value
+  return (state.value === PaywallState.PaywallOrLogIn || state.value === PaywallState.LoggedIn) && !paywall.value
 })
 const showPaywall = $computed(() => {
   if (!ready) {
@@ -54,10 +54,10 @@ const showPaywall = $computed(() => {
   return state.value === PaywallState.PaywallOrLogIn && paywall.value
 })
 const { siteSubscriptionInfo } = useSite()
-const { subscriberProfile } = useSubscription()
+const { subscriberProfile, refetchSubscriber } = useSubscription()
 const auth = useAuth(tokenRef)
-const { onLogin, onSignup, onVerifyEmail, onSignInSubscriber } = auth
-const { switchApplyHandler } = useUserDialog(dialogType, auth)
+const { onLogin, onSignup } = auth
+const { switchApplyHandler } = useUserDialog($$(dialogType), auth)
 
 const onClick = async (email: string) => {
   switch (articleType) {
@@ -97,19 +97,12 @@ const onApplyHandler = async (params: any) => {
   }
 }
 
-const urlParams = new URLSearchParams(window.location.search)
-const actionQuery = urlParams.get('action')
-const token = urlParams.get('token')
-if (actionQuery && token) {
-  switch (actionQuery) {
-    case 'verify-email':
-      onVerifyEmail(token)
-      break
-    case 'sign-in':
-      onSignInSubscriber(token)
-      break
+watch(tokenRef, async (token) => {
+  if (token) {
+    await refetchSubscriber()
+    props.paywallMachine.checkPlan()
   }
-}
+})
 </script>
 
 <template>

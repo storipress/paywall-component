@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button } from '../../index'
 
-const props = defineProps({
+defineProps({
   button: {
     type: String,
     default: '',
