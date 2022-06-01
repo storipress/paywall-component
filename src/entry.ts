@@ -6,12 +6,14 @@ import { DefaultApolloClient, provideApolloClient } from '@vue/apollo-composable
 import PaywallSystem from './PaywallSystem.vue'
 import { createPaywallMachine } from './machine'
 import type { Article } from './types'
-import { useSubscription } from './composables'
+import type { RouterLike } from './composables'
+import { useAuth, useQueryAction, useSubscription } from './composables'
 export * from './components'
 export * from './composables'
 export * from './machine'
 export { PaywallSystem }
-export { ref, reactive, watch, watchEffect } from 'vue'
+export { ref, reactive, computed, watch, watchEffect } from 'vue'
+export { useStorage } from '@vueuse/core'
 
 export interface CommentInfo {
   enable: boolean
@@ -23,13 +25,16 @@ export interface MountPaywallInput {
   el: HTMLElement | string
   client: ApolloClient<NormalizedCacheObject>
   logo: string
+  router?: RouterLike
   comment: CommentInfo
   token: Ref<string | null>
 }
 
-export function mountPaywall({ el, client, token, logo, comment }: MountPaywallInput) {
+export function mountPaywall({ el, client, token, router, logo, comment }: MountPaywallInput) {
   provideApolloClient(client)
+  const auth = useAuth(token)
   const { refetchSubscriber, subscriberProfile } = useSubscription()
+  const check = useQueryAction({ auth, router, fallbackLocation: true })
   const paywallMachine = createPaywallMachine({
     getProfile: async () => {
       if (token.value && subscriberProfile.value.id) {
@@ -59,6 +64,7 @@ export function mountPaywall({ el, client, token, logo, comment }: MountPaywallI
       const updateToken = (t: string | null) => {
         token.value = t
       }
+
       return () => {
         return h(PaywallSystem, {
           key: reloadRef.value,
@@ -82,7 +88,7 @@ export function mountPaywall({ el, client, token, logo, comment }: MountPaywallI
     }
   })
 
-  watch(subscriberProfile, (p) => {
+  watch([subscriberProfile, token], ([p]) => {
     if (p && p.id) {
       reloadRef.value++
     }
@@ -90,6 +96,7 @@ export function mountPaywall({ el, client, token, logo, comment }: MountPaywallI
 
   return {
     paywallMachine,
+    check,
     reload() {
       reloadRef.value++
     },

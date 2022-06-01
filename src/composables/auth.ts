@@ -2,6 +2,8 @@ import { useMutation } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
 import type { Ref } from 'vue'
 
+export type AuthAPI = ReturnType<typeof useAuth>
+
 export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', '')) {
   const { mutate: requestSignInSubscriberMutate } = useMutation(gql`
     mutation RequestSignInSubscriber($email: Email!, $referer: String!, $from: String!) {
@@ -77,7 +79,9 @@ export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', 
   const onVerifyEmail = async (token: string) => {
     try {
       const result = await verifySubscriberEmailMutate({ token })
-      return result
+      if (result?.data.verifySubscriberEmail) {
+        return true
+      }
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log('e: ', e)
@@ -89,6 +93,7 @@ export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', 
       const result = await signInSubscriberMutate({ token })
       if (result?.data.signInSubscriber) {
         tokenRef.value = result?.data.signInSubscriber
+        return true
       }
     } catch (e) {
       // eslint-disable-next-line no-console

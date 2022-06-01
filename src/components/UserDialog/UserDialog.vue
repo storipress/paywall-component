@@ -85,6 +85,10 @@ const currentData = computed(() => {
 const onChangeDialogType = (type: string) => {
   currentType.value = type
 }
+
+function handleApply(params: any) {
+  emit('applyHandler', params)
+}
 </script>
 
 <template>
@@ -115,7 +119,7 @@ const onChangeDialogType = (type: string) => {
             :is="dialogType"
             v-bind="{ type, siteData, subscriberData, auth, button: currentData.button }"
             @change-dialog-type="onChangeDialogType"
-            @apply="(handler:any) => emit('applyHandler', handler)"
+            @apply="handleApply"
             @sign-out="emit('signOut')"
           />
         </slot>

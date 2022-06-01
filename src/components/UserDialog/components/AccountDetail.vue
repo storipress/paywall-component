@@ -45,8 +45,8 @@ const isPaidPlan = computed(() => {
   }
 })
 
-const first_name = toRef(props, 'subscriberData').value?.first_name
-const last_name = toRef(props, 'subscriberData').value?.last_name
+const first_name = ref(props.subscriberData?.first_name ?? '')
+const last_name = ref(props.subscriberData?.last_name ?? '')
 
 const selectedID = ref(isPaidPlan.value)
 const selected = computed({
@@ -112,5 +112,3 @@ const selected = computed({
     "
   />
 </template>
-
-<style scoped></style>
