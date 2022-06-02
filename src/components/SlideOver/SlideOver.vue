@@ -34,13 +34,13 @@ const onCloseDialog = () => {
           <DialogOverlay class="absolute inset-0 bg-zinc-800/50 backdrop-blur-[10px]" />
         </TransitionChild>
 
-        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
+        <div class="pointer-events-none fixed inset-y-0 right-0 z-[9999] flex max-w-full">
           <TransitionChild
             as="template"
-            enter="transform transition ease-in-out duration-500 sm:duration-700"
+            enter="transform transition ease-in-out duration-250 sm:duration-500"
             enter-from="translate-x-full"
             enter-to="translate-x-0"
-            leave="transform transition ease-in-out duration-500 sm:duration-700"
+            leave="transform transition ease-in-out duration-250 sm:duration-500"
             leave-from="translate-x-0"
             leave-to="translate-x-full"
           >
