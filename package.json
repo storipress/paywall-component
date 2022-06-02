@@ -35,8 +35,10 @@
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-docs": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
     "@storybook/builder-vite": "^0.1.38",
+    "@storybook/testing-library": "^0.0.11",
     "@storybook/vue3": "^6.5.9",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
@@ -56,6 +58,7 @@
     "eslint": "^8.19.0",
     "eslint-plugin-storybook": "^0.5.13",
     "jsdom": "^19.0.0",
+    "msw": "^0.42.0",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.11",
@@ -70,5 +73,8 @@
     "vue-eslint-parser": "^9.0.3",
     "vue-tsc": "^0.38.2"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.1",
+  "msw": {
+    "workerDirectory": "public"
+  }
 }
