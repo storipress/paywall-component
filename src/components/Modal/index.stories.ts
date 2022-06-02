@@ -1,5 +1,6 @@
 import type { Story } from '@storybook/vue3'
 import { ref } from 'vue'
+import { userEvent, within } from '@storybook/testing-library'
 import spLogo from '../../../assets/sp-logo-white.svg'
 import twitterLogo from '../../../assets/icons-twitter.svg'
 
@@ -11,17 +12,26 @@ export default {
   component: Modal,
 }
 
+async function play({ canvasElement }) {
+  const canvas = within(canvasElement)
+  const button = await canvas.getByRole('button', { name: 'open' })
+  await userEvent.click(button)
+}
+
 const Template: Story = (args) => ({
   components: { Modal },
   setup() {
     const visible = ref(false)
     return { args, visible }
   },
-  template: '<Modal v-model="visible" v-bind="args" @click="visible = false" />',
+  template:
+    '<button @click="visible = true">open</button><Modal v-model="visible" v-bind="args" @click="visible = false" />',
 })
 
 export const Default = Template.bind({})
 Default.args = {}
+Default.play = play
+
 export const LoginLink = Template.bind({})
 LoginLink.args = {
   logo: spLogo,
@@ -29,6 +39,8 @@ LoginLink.args = {
   sub: `If the email doesn't arrive in 3 minutes, check your spam folder.`,
   button: 'Close',
 }
+LoginLink.play = play
+
 export const Upgrade = Template.bind({})
 Upgrade.args = {
   logo: spLogo,
@@ -36,6 +48,8 @@ Upgrade.args = {
   sub: 'You’re subscribed as test@storipress.com',
   button: 'Next',
 }
+Upgrade.play = play
+
 export const UpgradeAndShare: Story = (args) => ({
   components: { Modal, Button },
   setup() {
@@ -47,6 +61,7 @@ export const UpgradeAndShare: Story = (args) => ({
     return { args, visible, twitterLogo }
   },
   template: `
+  <button @click="visible = true">open</button>
   <Modal v-model="visible" v-bind="args" @click="visible = false">
     <template #button>
       <div class="mt-[1.7rem] flex flex-col items-center">
@@ -64,3 +79,4 @@ export const UpgradeAndShare: Story = (args) => ({
   </Modal>
   `,
 })
+UpgradeAndShare.play = play
