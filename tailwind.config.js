@@ -1,5 +1,6 @@
 module.exports = {
   content: ['index.html', './src/**/*.{vue,ts,tsx,js,jsx}'],
+  important: '#paywall',
   theme: {
     boxShadow: {
       '0-layer': '0 0 0 0 rgba(0, 0, 0, 0)',
