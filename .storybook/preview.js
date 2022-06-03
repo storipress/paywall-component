@@ -20,3 +20,11 @@ export const parameters = {
     },
   },
 }
+
+export const decorators = [
+  (story) => ({
+    components: { story },
+    // paywall component css will scope under #paywall
+    template: '<div id="paywall"><story /></div>',
+  }),
+]
