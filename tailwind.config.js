@@ -1,6 +1,8 @@
 module.exports = {
   content: ['index.html', './src/**/*.{vue,ts,tsx,js,jsx}'],
-  important: '#paywall',
+  // scope our style within the #paywall and headless ui portal element
+  // HACK: we can't configure the headless ui portal element in code
+  important: ':is(#paywall, #headlessui-portal-root)',
   theme: {
     boxShadow: {
       '0-layer': '0 0 0 0 rgba(0, 0, 0, 0)',
