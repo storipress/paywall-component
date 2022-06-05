@@ -14,11 +14,11 @@ export default {
   },
 }
 
-export const Default: Story = (args, { argTypes }) => ({
+const Template: Story = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   setup: () => {
     useMockContext({
-      login: false,
+      ...args.context,
     })
 
     const token = ref('')
@@ -43,3 +43,17 @@ export const Default: Story = (args, { argTypes }) => ({
     }
   },
 })
+
+export const Default: Story = Template.bind({})
+Default.args = {
+  context: {
+    login: false,
+  },
+}
+
+export const LoggedIn: Story = Template.bind({})
+LoggedIn.args = {
+  context: {
+    login: true,
+  },
+}
