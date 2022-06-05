@@ -108,14 +108,24 @@ watch(tokenRef, async (token) => {
 
 <template>
   <div class="pointer-events-none fixed bottom-0 flex w-full justify-center">
-    <Badge
-      v-if="showBadge"
-      class="pointer-events-auto mb-8"
-      :account-avatar="subscriberProfile?.avatar"
-      :login-state="!!subscriberProfile.id"
-      @click="badgeClick"
-      @click-comment="$emit('clickComment')"
-    />
+    <transition
+      appear
+      enter-class="ease-in-out duration-500"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-class="ease-in-out duration-500"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <Badge
+        v-if="showBadge"
+        class="pointer-events-auto mb-8"
+        :account-avatar="subscriberProfile?.avatar"
+        :login-state="!!subscriberProfile.id"
+        @click="badgeClick"
+        @click-comment="$emit('clickComment')"
+      />
+    </transition>
     <Paywall
       v-if="showPaywall"
       class="pointer-events-auto"
