@@ -1,5 +1,7 @@
+const path = require('path')
 const turbosnap = require('vite-plugin-turbosnap')
 const AutoImport = require('unplugin-auto-import/vite')
+const Vue = require('@vitejs/plugin-vue')
 
 module.exports = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -9,6 +11,9 @@ module.exports = {
     builder: '@storybook/builder-vite',
   },
   viteFinal(config, { configType }) {
+    config.resolve = config.resolve || {}
+    config.resolve.alias = config.resolve.alias || {}
+    config.resolve.alias['@assets'] = `${path.resolve(__dirname, '../assets')}/`
     config.optimizeDeps =
       configType === 'PRODUCTION'
         ? config.optimizeDeps
@@ -21,8 +26,12 @@ module.exports = {
             ],
             exclude: ['path', 'fs', 'node:fs'],
           }
-    config.plugins = config.plugins || []
+    config.plugins = (config.plugins || []).filter((plugin) => plugin.name !== 'vite:vue')
+
     config.plugins.push(
+      Vue({
+        reactivityTransform: true,
+      }),
       // https://github.com/antfu/unplugin-auto-import
       AutoImport({
         imports: ['vue', 'vue/macros', 'vue-router', '@vueuse/core', '@vueuse/head', 'vue-i18n'],

@@ -2,7 +2,6 @@ import { app } from '@storybook/vue3'
 import { ApolloClients } from '@vue/apollo-composable'
 import { worker } from '../src/mocks/browser'
 import { apolloClient } from '../src/api/client'
-import '../assets/styles/iconfont.css'
 import '../src/styles/main.css'
 
 worker.start()

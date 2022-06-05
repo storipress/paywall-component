@@ -1,6 +1,15 @@
 import { graphql } from 'msw'
+import { context } from '../context'
 
 export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
+  if (!context.login) {
+    return res(
+      ctx.data({
+        subscriberProfile: null,
+      })
+    )
+  }
+
   return res(
     ctx.data({
       subscriberProfile: {
