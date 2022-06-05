@@ -4,6 +4,7 @@ import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
 import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount } from './components/index'
 import { data } from './data'
+import { CrossThin } from '~/components/Icons'
 
 const props = defineProps({
   type: {
@@ -104,9 +105,12 @@ function handleApply(params: any) {
       <div class="flex w-full justify-between px-6 pt-6 md:absolute md:top-0">
         <img :src="logo" class="max-h-8" />
         <button
-          class="icon-cross_thin ease-in-out' focus-none h-fit text-black/30 transition duration-100 md:text-white/30 md:hover:text-white"
+          class="focus-none h-fit text-black/30 transition duration-100 ease-in-out md:text-white/30 md:hover:text-white"
+          aria-label="close"
           @click="receiveProps?.onCloseDialog ? receiveProps.onCloseDialog() : noop()"
-        />
+        >
+          <CrossThin class="h-4 w-4" />
+        </button>
       </div>
 
       <div class="mt-8 flex flex-auto flex-col overflow-auto rounded-bl-2xl px-6 pb-6">

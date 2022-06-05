@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import CommentIcon from './CommentIcon.vue'
+import { User } from '~/components/Icons'
 
 const props = defineProps({
   loginState: {
@@ -45,7 +46,7 @@ const onClick = () => {
       <!-- if avatar, show photo -->
       <img v-if="accountAvatar" :src="accountAvatar" class="overflow-none mr-2 h-5 w-5 rounded-full" />
       <!-- if no avatar, show icon -->
-      <i v-else class="icon-user mr-2 text-base" />
+      <User v-else class="mr-2 h-4 w-4" />
       <span>{{ pillText }}</span>
     </div>
     <!-- if articles with comments, display comments count -->

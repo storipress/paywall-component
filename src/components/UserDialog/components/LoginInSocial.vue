@@ -24,7 +24,7 @@ import { Button } from '../../index'
 
     <Button primary rounded color-hex="#ffffff" class="layer-1 w-full">
       <template #buttonText>
-        <i class="icon-email text-2xl text-zinc-700" />
+        <Email class="h-6 w-6 text-zinc-700" />
         <span class="text-button w-full pr-6 text-zinc-700">Log in with Email</span>
       </template>
     </Button>
