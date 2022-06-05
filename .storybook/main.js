@@ -13,7 +13,11 @@ module.exports = {
   viteFinal(config, { configType }) {
     config.resolve = config.resolve || {}
     config.resolve.alias = config.resolve.alias || {}
-    config.resolve.alias['@assets'] = `${path.resolve(__dirname, '../assets')}/`
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '~': path.resolve(__dirname, '../src'),
+      '@assets': `${path.resolve(__dirname, '../assets')}/`,
+    }
     config.optimizeDeps =
       configType === 'PRODUCTION'
         ? config.optimizeDeps
