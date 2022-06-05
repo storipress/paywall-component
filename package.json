@@ -12,7 +12,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.5",
+    "@apollo/client": "^3.6.6",
     "@headlessui/vue": "^1.6.4",
     "@stripe/stripe-js": "^1.31.0",
     "@types/lodash-es": "^4.17.6",

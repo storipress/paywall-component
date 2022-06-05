@@ -1,13 +1,13 @@
 import './styles/utilties.css'
 import type { Ref } from 'vue'
 import { createApp } from 'vue'
-import type { ApolloClient, ApolloError, NormalizedCacheObject } from '@apollo/client/core'
-import { DefaultApolloClient, provideApolloClient } from '@vue/apollo-composable'
+import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core'
+import { DefaultApolloClient } from '@vue/apollo-composable'
 import PaywallSystem from './PaywallSystem.vue'
-import { createPaywallMachine } from './machine'
 import type { Article } from './types'
 import type { RouterLike } from './composables'
-import { useAuth, useQueryAction, useSubscription } from './composables'
+import { useAuth, useQueryAction } from './composables'
+import { usePaywallSystem } from './use-paywall'
 export * from './components'
 export * from './composables'
 export * from './machine'
@@ -30,46 +30,17 @@ export interface MountPaywallInput {
   token: Ref<string | null>
 }
 
-export function mountPaywall({ el, client, token, router, logo, comment }: MountPaywallInput) {
-  provideApolloClient(client)
+export function mountPaywall({ el, client, logo, token, router, comment }: MountPaywallInput) {
+  const { paywallMachine, updateToken, reload, reloadRef } = usePaywallSystem(token, client)
   const auth = useAuth(token)
-  const { refetchSubscriber, subscriberProfile } = useSubscription()
   const check = useQueryAction({ auth, router, fallbackLocation: true })
-  const paywallMachine = createPaywallMachine({
-    getProfile: async () => {
-      if (token.value && subscriberProfile.value.id) {
-        return subscriberProfile.value
-      }
-      try {
-        const res = await refetchSubscriber()
-        if (!res) {
-          return null
-        }
-        const { data } = res
-        return data.subscriberProfile
-      } catch (e) {
-        const err = e as ApolloError
-        const isUnauth = err.graphQLErrors.some(({ message }) => message.includes('Unauthenticated'))
-        if (isUnauth) {
-          token.value = null
-        }
-        return null
-      }
-    },
-  })
-  paywallMachine.setClient(client)
-  const reloadRef = ref(0)
   const app = createApp({
     setup: () => {
-      const updateToken = (t: string | null) => {
-        token.value = t
-      }
-
       return () => {
         return h(PaywallSystem, {
           key: reloadRef.value,
-          logo,
           token: token.value,
+          logo,
           paywallMachine,
           hasComment: comment.enable,
           commentCount: comment.count,
@@ -82,24 +53,10 @@ export function mountPaywall({ el, client, token, router, logo, comment }: Mount
   app.provide(DefaultApolloClient, client)
   app.mount(el)
 
-  watch(token, (t) => {
-    if (t) {
-      refetchSubscriber()
-    }
-  })
-
-  watch([subscriberProfile, token], ([p]) => {
-    if (p && p.id) {
-      reloadRef.value++
-    }
-  })
-
   return {
     paywallMachine,
     check,
-    reload() {
-      reloadRef.value++
-    },
+    reload,
     setArticle(article: Article) {
       paywallMachine.setArticle(article)
     },

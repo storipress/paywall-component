@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { useVModel } from '@vueuse/core'
 import { useAuth, useSite, useSubscription, useUserDialog } from './composables'
-import { Badge, Modal, Paywall, UserDialog } from './components'
+import { Badge, Paywall, UserDialog } from './components'
 import type { PaywallMachine } from './machine'
+import Modals from './Modals.vue'
 import { LoginReason, PaywallState } from './machine'
 import { ArticlePlan } from './types'
 
@@ -132,14 +133,6 @@ watch(tokenRef, async (token) => {
       :subscriber-data="subscriberProfile"
       @apply-handler="onApplyHandler"
     />
-    <Modal
-      v-model="modalVisible"
-      class="pointer-events-auto"
-      :logo="logo"
-      title="We’ve sent you a login link!"
-      sub="If the email doesn't arrive in 3 minutes, check your spam folder."
-      button="Close"
-      @click="modalVisible = false"
-    />
+    <Modals v-model="modalVisible" :logo="logo" :dialog-type="dialogType" :email="subscriberProfile?.email" />
   </div>
 </template>
