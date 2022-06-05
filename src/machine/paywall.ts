@@ -96,7 +96,7 @@ export function createPaywallMachine(api: API) {
       state.value = PaywallState.Ready
     },
     setArticle: (article: any) => {
-      if (state.value === PaywallState.Init) {
+      if (state.value === PaywallState.Init || context.article === article) {
         return
       }
       context.article = article
