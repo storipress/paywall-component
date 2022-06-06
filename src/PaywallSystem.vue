@@ -41,11 +41,7 @@ const articleType = $computed(() => {
 })
 const ready = $computed(() => props.paywallMachine.context.article)
 const showBadge = $computed(() => {
-  if (!ready) {
-    return false
-  }
-  const { state, paywall } = props.paywallMachine
-  return (state.value === PaywallState.PaywallOrLogIn || state.value === PaywallState.LoggedIn) && !paywall.value
+  return ready
 })
 const showPaywall = $computed(() => {
   if (!ready) {
@@ -108,24 +104,6 @@ watch(tokenRef, async (token) => {
 
 <template>
   <div class="pointer-events-none fixed bottom-0 flex w-full justify-center">
-    <transition
-      appear
-      enter-class="ease-in-out duration-500"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-class="ease-in-out duration-500"
-      leave-from-class="opacity-100"
-      leave-to-class="opacity-0"
-    >
-      <Badge
-        v-if="showBadge"
-        class="pointer-events-auto mb-8"
-        :account-avatar="subscriberProfile?.avatar"
-        :login-state="!!subscriberProfile.id"
-        @click="badgeClick"
-        @click-comment="$emit('clickComment')"
-      />
-    </transition>
     <Paywall
       v-if="showPaywall"
       class="pointer-events-auto"
@@ -134,6 +112,24 @@ watch(tokenRef, async (token) => {
       @click="onClick"
       @click-sign-in="visible = true"
     />
+    <transition
+      appear
+      enter-active-class="ease-in-out duration-500"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="ease-in-out duration-500"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <Badge
+        v-if="showBadge"
+        class="pointer-events-auto z-10 mb-8"
+        :account-avatar="subscriberProfile?.avatar"
+        :login-state="!!subscriberProfile.id"
+        @click="badgeClick"
+        @click-comment="$emit('clickComment')"
+      />
+    </transition>
     <UserDialog
       v-model="visible"
       class="pointer-events-auto"
