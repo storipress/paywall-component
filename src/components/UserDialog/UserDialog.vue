@@ -2,7 +2,7 @@
 import { noop } from 'lodash-es'
 import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
-import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount } from './components/index'
+import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount, OnlyButton } from './components/index'
 import { data } from './data'
 import { CrossThin } from '~/components/Icons'
 
@@ -68,6 +68,7 @@ const dialogMap: Record<string, unknown> = {
   freeAccount: ManageAccount,
   paidAccound: ManageAccount,
   subscribe: AccountDetail,
+  confirmation: OnlyButton,
 }
 
 const dialogType = computed(() => dialogMap[currentType.value])

@@ -87,6 +87,11 @@ ManagePaidAccount.args = {
   type: 'paidAccound',
 }
 
+export const VerifyEmail = UserDialogTemplate.bind({})
+VerifyEmail.args = {
+  type: 'confirmation',
+}
+
 const PreviewTemplate: Story = (args) => ({
   components: { UserDialog },
   setup() {

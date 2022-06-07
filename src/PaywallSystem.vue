@@ -87,11 +87,33 @@ function badgeClick() {
   visible = true
 }
 
+const UPDATE_DIALOG = new Set([
+  'signupFree',
+  'freeAccount',
+  'accountPlan',
+  'signupPremium',
+  'upgradeAccount',
+  'subscribe',
+])
+
 const onApplyHandler = async (params: any) => {
   const result = await switchApplyHandler()?.(params)
+  if (UPDATE_DIALOG.has(dialogType)) {
+    await refetchSubscriber()
+    const { subscribed, verified } = subscriberProfile.value
+    if (subscribed && !verified) {
+      dialogType = 'confirmation'
+      return
+    }
+  }
+
   if (result) {
-    visible = false
-    modalVisible = true
+    if (dialogType === 'confirmation') {
+      dialogType = 'accountPlan'
+    } else {
+      visible = false
+      modalVisible = true
+    }
   }
 }
 
