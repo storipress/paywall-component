@@ -24,13 +24,14 @@ export interface CommentInfo {
 export interface MountPaywallInput {
   el: HTMLElement | string
   client: ApolloClient<NormalizedCacheObject>
+  favicon: string
   logo: string
   router?: RouterLike
   comment: CommentInfo
   token: Ref<string | null>
 }
 
-export function mountPaywall({ el, client, logo, token, router, comment }: MountPaywallInput) {
+export function mountPaywall({ el, client, favicon, logo, token, router, comment }: MountPaywallInput) {
   const { paywallMachine, updateToken, reload, reloadRef } = usePaywallSystem(token, client)
   const auth = useAuth(token)
   const check = useQueryAction({ auth, router, fallbackLocation: true })
@@ -40,6 +41,7 @@ export function mountPaywall({ el, client, logo, token, router, comment }: Mount
         return h(PaywallSystem, {
           key: reloadRef.value,
           token: token.value,
+          favicon,
           logo,
           paywallMachine,
           hasComment: comment.enable,

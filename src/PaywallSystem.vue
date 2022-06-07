@@ -9,6 +9,7 @@ import { ArticlePlan } from './types'
 
 const props = defineProps<{
   token: string | null
+  favicon: string
   logo: string
   hasComment: boolean
   commentCount: number
@@ -124,7 +125,7 @@ watch(tokenRef, async (token) => {
       <Badge
         v-if="showBadge"
         class="pointer-events-auto z-10 mb-8"
-        :account-avatar="subscriberProfile?.avatar"
+        :account-avatar="subscriberProfile?.avatar || favicon"
         :login-state="!!subscriberProfile.id"
         @click="badgeClick"
         @click-comment="$emit('clickComment')"
