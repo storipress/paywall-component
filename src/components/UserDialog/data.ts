@@ -48,6 +48,6 @@ export const data: Record<string, Record<string, string>> = {
     <br /><br />
     Didn’t receive an email? Double-check your spam, or if you made a typo, change your email by clicking the button below.
     `,
-    button: 'Subscribe',
+    button: 'Change email',
   },
 }
