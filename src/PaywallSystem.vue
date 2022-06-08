@@ -147,7 +147,7 @@ watch(tokenRef, async (token) => {
       <Badge
         v-if="showBadge"
         class="pointer-events-auto z-10 mb-8"
-        :account-avatar="subscriberProfile?.avatar || favicon"
+        :account-avatar="subscriberProfile.id && (subscriberProfile?.avatar || favicon)"
         :login-state="!!subscriberProfile.id"
         @click="badgeClick"
         @click-comment="$emit('clickComment')"
