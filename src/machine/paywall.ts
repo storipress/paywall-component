@@ -1,5 +1,6 @@
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core'
 import { noop } from 'lodash-es'
+import type { Ref } from 'vue'
 import { markRaw, reactive, ref } from 'vue'
 import { P, match } from 'ts-pattern'
 import type { Article } from '../types'
@@ -20,7 +21,7 @@ export enum LoginReason {
 }
 
 export interface API {
-  getProfile: () => Promise<SubscriberProfile | null>
+  profile: Ref<SubscriberProfile | null>
 }
 
 export interface SubscriberProfile {
@@ -32,18 +33,17 @@ export interface SubscriberProfile {
 }
 
 // hand write state machine
-export function createPaywallMachine(api: API) {
+export function createPaywallMachine({ profile }: API) {
   const state = ref(PaywallState.Init)
   const context = reactive({
     client: null as ApolloClient<NormalizedCacheObject> | null,
     article: null as null | Article,
     reason: LoginReason.None,
-    profile: null as SubscriberProfile | null,
+    profile,
   })
 
   async function checkPlan() {
-    context.profile = await api.getProfile()
-    match([context.article?.plan, context.profile?.subscribed] as const)
+    match([context.article?.plan, profile.value?.subscribed] as const)
       .with([ArticlePlan.Free, undefined], () => {
         context.reason = LoginReason.None
         state.value = PaywallState.PaywallOrLogIn
@@ -72,9 +72,9 @@ export function createPaywallMachine(api: API) {
   }
 
   watch(
-    [state, () => context.article, () => context.profile],
+    [state, () => context.article, profile],
     ([s]) => {
-      if (s !== PaywallState.CheckPlan) {
+      if (s === PaywallState.Init || s === PaywallState.CheckPlan) {
         return
       }
       checkPlan()

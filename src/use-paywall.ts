@@ -8,26 +8,12 @@ export function usePaywallSystem(token: Ref<string | null>, client: ApolloClient
   provideApolloClient(client)
   const { refetchSubscriber, subscriberProfile } = useSubscription()
   const paywallMachine = createPaywallMachine({
-    getProfile: async () => {
+    profile: computed(() => {
       if (token.value && subscriberProfile.value.id) {
         return subscriberProfile.value
       }
-      try {
-        const res = await refetchSubscriber()
-        if (!res) {
-          return null
-        }
-        const { data } = res
-        return data.subscriberProfile
-      } catch (e) {
-        const err = e as ApolloError
-        const isUnauth = err.graphQLErrors.some(({ message }) => message.includes('Unauthenticated'))
-        if (isUnauth) {
-          token.value = null
-        }
-        return null
-      }
-    },
+      return null
+    }),
   })
   paywallMachine.setClient(client)
   const reloadRef = ref(0)
@@ -35,9 +21,16 @@ export function usePaywallSystem(token: Ref<string | null>, client: ApolloClient
     token.value = t
   }
 
-  watch(token, (t) => {
+  watch(token, async (t) => {
     if (t) {
-      refetchSubscriber()
+      try {
+        await refetchSubscriber()
+      } catch (e) {
+        const isUnauth = checkUnauth(e)
+        if (isUnauth) {
+          token.value = null
+        }
+      }
     }
   })
 
@@ -55,4 +48,9 @@ export function usePaywallSystem(token: Ref<string | null>, client: ApolloClient
     paywallMachine,
     updateToken,
   }
+}
+
+function checkUnauth(e: unknown) {
+  const err = e as ApolloError
+  return err.graphQLErrors.some(({ message }) => message.includes('Unauthenticated'))
 }
