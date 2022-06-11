@@ -1,7 +1,7 @@
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core'
 import { noop } from 'lodash-es'
 import type { Ref } from 'vue'
-import { markRaw, reactive, ref } from 'vue'
+import { markRaw, nextTick, reactive, ref } from 'vue'
 import { P, match } from 'ts-pattern'
 import type { Article } from '../types'
 import { ArticlePlan } from '../types'
@@ -48,7 +48,7 @@ export function createPaywallMachine({ profile }: API) {
         context.reason = LoginReason.None
         state.value = PaywallState.PaywallOrLogIn
       })
-      .with([P.union(ArticlePlan.Member, ArticlePlan.Subscriber), undefined], () => {
+      .with([P.union(ArticlePlan.Member, ArticlePlan.Subscriber), P.nullish], () => {
         context.reason = LoginReason.NotLoggedIn
         state.value = PaywallState.PaywallOrLogIn
       })
@@ -71,13 +71,24 @@ export function createPaywallMachine({ profile }: API) {
       .exhaustive()
   }
 
+  let isChecking = false
+  async function debounceCheckPlan() {
+    if (isChecking) {
+      return
+    }
+    isChecking = true
+    await nextTick()
+    isChecking = false
+    checkPlan()
+  }
+
   watch(
     [state, () => context.article, profile],
-    ([s]) => {
-      if (s === PaywallState.Init || s === PaywallState.CheckPlan) {
+    async ([s]) => {
+      if (s === PaywallState.Init) {
         return
       }
-      checkPlan()
+      debounceCheckPlan()
     },
     { immediate: true, deep: true }
   )
@@ -101,6 +112,7 @@ export function createPaywallMachine({ profile }: API) {
       }
       context.article = article
       state.value = PaywallState.CheckPlan
+      debounceCheckPlan()
     },
     reset(article: any) {
       context.article = article

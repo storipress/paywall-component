@@ -92,6 +92,9 @@ export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', 
     try {
       const result = await signInSubscriberMutate({ token })
       if (result?.data.signInSubscriber) {
+        try {
+          localStorage.setItem('storipress-token', result?.data.signInSubscriber)
+        } catch {}
         tokenRef.value = result?.data.signInSubscriber
         return true
       }
