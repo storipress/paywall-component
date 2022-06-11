@@ -13,7 +13,7 @@ export * from './composables'
 export * from './machine'
 export { PaywallSystem }
 export { ref, reactive, computed, watch, watchEffect } from 'vue'
-export { useStorage } from '@vueuse/core'
+export { useStorage, useStorageAsync, syncRef } from '@vueuse/core'
 
 export interface CommentInfo {
   enable: boolean
