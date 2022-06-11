@@ -1,6 +1,8 @@
 import type { ApolloClient, ApolloError, NormalizedCacheObject } from '@apollo/client/core'
 import { provideApolloClient } from '@vue/apollo-composable'
 import type { Ref } from 'vue'
+import { nextTick } from 'vue'
+import pRetry from 'p-retry'
 import { useSubscription } from './composables'
 import { createPaywallMachine } from './machine'
 
@@ -24,7 +26,8 @@ export function usePaywallSystem(token: Ref<string | null>, client: ApolloClient
   watch(token, async (t) => {
     if (t) {
       try {
-        await refetchSubscriber()
+        await nextTick()
+        await pRetry(() => refetchSubscriber(), { retries: 3 })
       } catch (e) {
         const isUnauth = checkUnauth(e)
         if (isUnauth) {
