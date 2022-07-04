@@ -19,7 +19,7 @@ jobs:
       - uses: reviewdog/action-eslint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          eslint_flags: 'stories/**/*.{vue,ts,js,tsx,jsx}'
+          eslint_flags: 'src/**/*.{vue,ts,js,tsx,jsx}'
 
       - uses: reviewdog/action-setup@v1
         with:
