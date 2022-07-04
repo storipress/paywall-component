@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['@antfu', '@vue/prettier', 'plugin:storybook/recommended'],
+  extends: ['@antfu/vue', '@vue/prettier', 'plugin:storybook/recommended'],
   parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 13,
