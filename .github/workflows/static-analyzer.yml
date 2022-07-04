@@ -10,9 +10,6 @@ jobs:
       NODE_OPTIONS: --max-old-space-size=6144
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
-          submodules: 'recursive'
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
