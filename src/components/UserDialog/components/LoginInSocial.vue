@@ -4,7 +4,7 @@ import { Button } from '../../index'
 
 <template>
   <div class="flex-auto">
-    <Button primary rounded color-hex="#55acee" class="layer-1 w-full mb-6">
+    <Button primary rounded color-hex="#55acee" class="layer-1 mb-6 w-full">
       <template #buttonText>
         <img src="../../../../assets/icons-twitter.svg" />
         <span class="text-button w-full pr-6 text-white">Continue with Twitter</span>
@@ -17,15 +17,15 @@ import { Button } from '../../index'
       </template>
     </Button>
 
-    <div class="relative flex items-center justify-center h-6 my-6">
+    <div class="relative my-6 flex h-6 items-center justify-center">
       <span class="absolute h-px w-full bg-[#979797]" />
       <span class="absolute bg-zinc-50 px-[0.6rem] text-lg font-semibold">Or</span>
     </div>
 
     <Button primary rounded color-hex="#ffffff" class="layer-1 w-full">
       <template #buttonText>
-        <i class="icon-email text-zinc-700 text-2xl" />
-        <span class="text-button text-zinc-700 w-full pr-6">Log in with Email</span>
+        <i class="icon-email text-2xl text-zinc-700" />
+        <span class="text-button w-full pr-6 text-zinc-700">Log in with Email</span>
       </template>
     </Button>
   </div>

@@ -45,11 +45,11 @@ const onChangeDialogType = () => {
       v-if="!isPaidPlan"
       text="View plans"
       primary
-      class="w-full mb-4 text-lg font-semibold"
+      class="mb-4 w-full text-lg font-semibold"
       @click="onChangeDialogType"
     />
 
-    <ul class="layer-1 w-full bg-white rounded-sm">
+    <ul class="layer-1 w-full rounded-sm bg-white">
       <ListItem
         :title="subscriberData?.full_name"
         :info="subscriberData?.email"
@@ -86,12 +86,12 @@ const onChangeDialogType = () => {
     </ul>
   </div>
 
-  <div class="flex justify-between mt-12">
+  <div class="mt-12 flex justify-between">
     <Button text="Sign out" rounded @click="emit('signOut')" />
     <Button primary rounded>
       <template #buttonText>
         <!-- TODO api site.email -->
-        <a :href="`mailto:#${siteData?.email}`" class="flex items-center h-full">Contact Support</a>
+        <a :href="`mailto:#${siteData?.email}`" class="flex h-full items-center">Contact Support</a>
       </template>
     </Button>
   </div>

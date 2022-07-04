@@ -34,7 +34,7 @@ const onCloseDialog = () => {
           <DialogOverlay class="absolute inset-0 bg-zinc-800/50 backdrop-blur-[10px]" />
         </TransitionChild>
 
-        <div class="fixed inset-y-0 right-0 flex max-w-full pointer-events-none">
+        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
           <TransitionChild
             as="template"
             enter="transform transition ease-in-out duration-500 sm:duration-700"

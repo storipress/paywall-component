@@ -68,26 +68,26 @@ const selected = computed({
       </RadioGroupOption>
     </RadioGroup>
     <!-- signup name input -->
-    <div class="gap-x-2 md:gap-x-3 grid grid-cols-2 mb-4">
+    <div class="mb-4 grid grid-cols-2 gap-x-2 md:gap-x-3">
       <input
         v-model="first_name"
         type="text"
         placeholder="First name"
-        class="text-inputs border-zinc-700 h-12 px-4 py-3 bg-transparent border"
+        class="text-inputs h-12 border border-zinc-700 bg-transparent px-4 py-3"
       />
       <input
         v-model="last_name"
         type="text"
         placeholder="Last name"
-        class="text-inputs border-zinc-700 h-12 px-4 py-3 bg-transparent border"
+        class="text-inputs h-12 border border-zinc-700 bg-transparent px-4 py-3"
       />
     </div>
     <!-- if choose a paid plan, show card number input  -->
     <div v-if="siteData?.subscription && selected?.value !== 'free'" class="mb-4">
-      <div ref="reference" class="text-inputs border-zinc-700 grid items-center h-12 px-4 py-3 bg-transparent border" />
+      <div ref="reference" class="text-inputs grid h-12 items-center border border-zinc-700 bg-transparent px-4 py-3" />
     </div>
 
-    <div class="text-zinc-700 text-xs">
+    <div class="text-xs text-zinc-700">
       {{ siteData?.name }} uses Storipress for membership. By registering you agree to Storipress’
       <u><a href="#">Terms</a></u>
       and
@@ -100,12 +100,12 @@ const selected = computed({
     :text="button"
     primary
     rounded
-    class="w-full mt-12"
+    class="mt-12 w-full"
     @click="
       emit('apply', {
         input: {
-          first_name: first_name,
-          last_name: last_name,
+          first_name,
+          last_name,
           selected,
         },
       })

@@ -56,10 +56,10 @@ function onClick() {
     v-model="input"
     :disabled="disabled"
     :class="[enabledClass, classname[type], disabledClass]"
-    class="focus:outline-none relative inline-flex flex-shrink-0 transition-colors duration-200 ease-in-out rounded-full cursor-pointer"
+    class="relative inline-flex flex-shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none"
     @click.stop="onClick"
   >
-    <span aria-hidden="true" :class="[translateClass, classname.toggleCircle]" class="mix-blend-screen bg-white">
+    <span aria-hidden="true" :class="[translateClass, classname.toggleCircle]" class="bg-white mix-blend-screen">
       <i :class="{ 'icon-tick block scale-50 leading-5': isEnabled }" />
     </span>
     <!-- circle outline shadow. If placed in the same <span> due to mix-blend-screen, the circle border will cause problems above the colored background -->

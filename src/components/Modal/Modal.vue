@@ -36,7 +36,7 @@ const visible = useVModel(props, 'modelValue', emit)
   <button @click="visible = true">open</button>
   <TransitionRoot as="template" :show="visible">
     <Dialog as="div" class="fixed inset-0 z-40 overflow-y-auto" @close="visible = false">
-      <div class="sm:block sm:p-0 flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center">
+      <div class="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <TransitionChild
           as="template"
           enter="ease-out duration-300"
@@ -49,7 +49,7 @@ const visible = useVModel(props, 'modelValue', emit)
           <DialogOverlay class="fixed inset-0 bg-zinc-800/50 backdrop-blur-[10px]" />
         </TransitionChild>
 
-        <span class="sm:inline-block sm:h-screen sm:align-middle hidden" aria-hidden="true">&#8203;</span>
+        <span class="hidden sm:inline-block sm:h-screen sm:align-middle" aria-hidden="true">&#8203;</span>
         <TransitionChild
           as="template"
           enter="ease-out duration-300"

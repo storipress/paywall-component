@@ -38,12 +38,12 @@ const isUpgrade = computed(() => {
     <div
       class="layer-2 fixed bottom-9 w-full overflow-scroll rounded-t-2xl bg-zinc-50 px-6 py-5 md:h-fit md:w-[70vw] md:min-w-[45rem] md:max-w-[60rem] md:rounded-2xl md:py-8 md:px-10"
     >
-      <div class="text-zinc-700 md:mr-4 md:mb-11 mb-4">
+      <div class="mb-4 text-zinc-700 md:mr-4 md:mb-11">
         <div class="text-display-large font-black md:text-[2.625rem] md:leading-[1.05]" v-html="currentData.title" />
-        <div class="text-heading md:block hidden mt-4">{{ currentData.sub }}</div>
+        <div class="text-heading mt-4 hidden md:block">{{ currentData.sub }}</div>
       </div>
 
-      <div class="flex flex-col w-full">
+      <div class="flex w-full flex-col">
         <div class="md:flex">
           <input
             v-if="!isUpgrade"
