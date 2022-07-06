@@ -6,12 +6,12 @@ export type AuthAPI = ReturnType<typeof useAuth>
 
 export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', '')) {
   const { mutate: requestSignInSubscriberMutate } = useMutation(gql`
-    mutation RequestSignInSubscriber($email: Email!, $referer: String!, $from: String!) {
+    mutation RequestSignInSubscriber($email: EmailString!, $referer: String!, $from: String!) {
       requestSignInSubscriber(input: { email: $email, referer: $referer, from: $from })
     }
   `)
   const { mutate: signUpSubscriberMutate } = useMutation(gql`
-    mutation SignUpSubscriber($email: Email!, $referer: String!, $from: String!) {
+    mutation SignUpSubscriber($email: EmailString!, $referer: String!, $from: String!) {
       signUpSubscriber(input: { email: $email, referer: $referer, from: $from })
     }
   `)
