@@ -1,7 +1,7 @@
 interface ModalText {
   title: string
   sub: string
-  button: string
+  button?: string
 }
 
 const login: ModalText = {
@@ -18,5 +18,9 @@ export const modalTexts: Record<string, ModalText> = {
     title: 'Thank you!',
     sub: 'You’re subscribed as __EMAIL__',
     button: 'Next',
+  },
+  shareToTwitter: {
+    title: 'Spread the word',
+    sub: 'If you want to help __PUBLICATION_NAME__ even more, share your reason for subscribing.',
   },
 }

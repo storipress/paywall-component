@@ -93,6 +93,7 @@ const UPDATE_DIALOG = new Set([
   'accountPlan',
   'signupPremium',
   'upgradeAccount',
+  'shareToTwitter',
   'subscribe',
 ])
 
@@ -114,6 +115,15 @@ const onApplyHandler = async (params: any) => {
       visible = false
       modalVisible = true
     }
+  }
+}
+
+const onConfirmModal = () => {
+  if (dialogType === 'upgradeAccount') {
+    setTimeout(() => {
+      dialogType = 'shareToTwitter'
+      modalVisible = true
+    }, 300)
   }
 }
 
@@ -162,6 +172,13 @@ watch(tokenRef, async (token) => {
       :subscriber-data="subscriberProfile"
       @apply-handler="onApplyHandler"
     />
-    <Modals v-model="modalVisible" :logo="logo" :dialog-type="dialogType" :email="subscriberProfile?.email" />
+    <Modals
+      v-model="modalVisible"
+      :logo="logo"
+      :dialog-type="dialogType"
+      :publication-name="siteSubscriptionInfo?.name"
+      :email="subscriberProfile?.email"
+      @confirm="onConfirmModal"
+    />
   </div>
 </template>
