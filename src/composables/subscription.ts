@@ -29,7 +29,7 @@ export function useSubscription() {
   })
 
   const { mutate: updateSubscriberMutate } = useMutation(gql`
-    mutation UpdateSubscriber($email: Email, $first_name: String, $last_name: String, $newsletter: Boolean) {
+    mutation UpdateSubscriber($email: EmailString, $first_name: String, $last_name: String, $newsletter: Boolean) {
       updateSubscriber(
         input: { email: $email, first_name: $first_name, last_name: $last_name, newsletter: $newsletter }
       ) {
