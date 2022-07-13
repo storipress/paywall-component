@@ -29,6 +29,7 @@ const email = ref('')
       type="text"
       placeholder="Email address"
       class="text-inputs h-12 w-full border border-zinc-700 bg-transparent px-4 py-3"
+      @keydown.enter="emit('apply', { email })"
     />
   </div>
 
