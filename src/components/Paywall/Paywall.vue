@@ -51,6 +51,7 @@ const isUpgrade = computed(() => {
             type="email"
             placeholder="Email Address"
             class="text-inputs layer-1 mb-3 h-12 w-full bg-transparent px-4 pt-3.5 pb-[0.8rem] text-zinc-500 md:mb-0 md:mr-[1.125rem] md:max-w-[47.6%]"
+            @keydown.enter="emit('click', email)"
           />
           <Button
             :text="currentData.button"
