@@ -1,7 +1,7 @@
 version = 1
 
 [[analyzers]]
-name = "shell"
+name = "secrets"
 enabled = true
 
 [[analyzers]]
@@ -12,11 +12,7 @@ enabled = true
   plugins = ["vue"]
 
 [[analyzers]]
-name = "secrets"
-enabled = true
-
-[[transformers]]
-name = "standardjs"
+name = "test-coverage"
 enabled = true
 
 [[transformers]]
