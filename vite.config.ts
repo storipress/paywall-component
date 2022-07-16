@@ -46,6 +46,6 @@ export default defineConfig({
 
   // https://github.com/vitest-dev/vitest
   test: {
-    environment: 'jsdom',
+    environment: 'happy-dom',
   },
 })
