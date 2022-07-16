@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import type { LocaleMessages, VueMessageType } from 'vue-i18n';
+import type { LocaleMessages, VueMessageType } from 'vue-i18n'
 import { createI18n } from 'vue-i18n'
 import routes from 'virtual:generated-pages'
 import App from './App.vue'
