@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     default: '',
@@ -21,7 +21,7 @@ const emit = defineEmits<{
 <template>
   <li class="flex min-h-[4.25rem] items-center justify-between px-6 py-4">
     <div class="flex flex-col">
-      <span class="text-body font-bold text-neutral-800">{{ title }}</span>
+      <span class="text-body text-neutral-800 font-bold">{{ title }}</span>
       <span class="text-caption text-gray-400">{{ info }}</span>
     </div>
     <slot name="itemRight">
