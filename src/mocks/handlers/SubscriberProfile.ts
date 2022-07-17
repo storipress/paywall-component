@@ -14,11 +14,11 @@ export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
     ctx.data({
       subscriberProfile: {
         id: '1',
-        email: 'david@storipress.com',
+        email: 'alex@storipress.com',
         verified: true,
-        first_name: '',
-        last_name: '',
-        full_name: '',
+        first_name: 'Alex',
+        last_name: 'Pan',
+        full_name: 'Alex Pan',
         avatar: '',
         newsletter: true,
         renew_on: '',
