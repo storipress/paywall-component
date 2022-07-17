@@ -1,12 +1,25 @@
 import type { Story } from '@storybook/vue3'
-import { onMounted, ref, watch } from 'vue'
+import { defineComponent, h, onMounted, ref, watch } from 'vue'
 
 import { UserDialog } from '../index'
 import { useAuth, useSite, useSubscription } from '../../composables'
+// @ts-expect-error can't load type in a story
 import spLogo from '../../../assets/sp-logo-white.svg'
 
 export default {
   title: 'UserDialog',
+  parameters: {
+    layout: 'fullscreen',
+  },
+  component: UserDialog,
+  decorators: [
+    (story) =>
+      defineComponent({
+        setup() {
+          return () => h('div', { style: { width: '100vw', height: '100vh' } }, h(story()))
+        },
+      }),
+  ],
 }
 
 function useDialog() {
