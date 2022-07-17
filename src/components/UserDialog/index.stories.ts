@@ -1,4 +1,4 @@
-import type { Story, Meta } from '@storybook/vue3'
+import type { Meta, Story } from '@storybook/vue3'
 import { defineComponent, h, onMounted, ref, watch } from 'vue'
 
 import { UserDialog } from '../index'
