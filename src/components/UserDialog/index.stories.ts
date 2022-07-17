@@ -1,4 +1,4 @@
-import type { Story } from '@storybook/vue3'
+import type { Story, Meta } from '@storybook/vue3'
 import { defineComponent, h, onMounted, ref, watch } from 'vue'
 
 import { UserDialog } from '../index'
@@ -6,20 +6,21 @@ import { useAuth, useSite, useSubscription } from '../../composables'
 // @ts-expect-error can't load type in a story
 import spLogo from '../../../assets/sp-logo-white.svg'
 
+const fullScreenDecorators: Meta['decorators'] = [
+  (story) =>
+    defineComponent({
+      setup() {
+        return () => h('div', { style: { width: '100vw', height: '100vh' } }, h(story()))
+      },
+    }),
+]
+
 export default {
   title: 'UserDialog',
   parameters: {
     layout: 'fullscreen',
   },
   component: UserDialog,
-  decorators: [
-    (story) =>
-      defineComponent({
-        setup() {
-          return () => h('div', { style: { width: '100vw', height: '100vh' } }, h(story()))
-        },
-      }),
-  ],
 }
 
 function useDialog() {
@@ -71,41 +72,49 @@ const UserDialogTemplate: Story = (args) => ({
   `,
 })
 
-export const EmailLogin = UserDialogTemplate.bind({})
+export const EmailLogin: Story = UserDialogTemplate.bind({})
 EmailLogin.args = {
   type: 'welcome',
 }
-export const SocialLogin = UserDialogTemplate.bind({})
+EmailLogin.decorators = fullScreenDecorators
+export const SocialLogin: Story = UserDialogTemplate.bind({})
 SocialLogin.args = {
   type: 'welcomeInSocial',
 }
+SocialLogin.decorators = fullScreenDecorators
 
-export const SignupFreeArticle = UserDialogTemplate.bind({})
+export const SignupFreeArticle: Story = UserDialogTemplate.bind({})
 SignupFreeArticle.args = {
   type: 'signupFree',
 }
-export const SignupPaid = UserDialogTemplate.bind({})
+SignupFreeArticle.decorators = fullScreenDecorators
+export const SignupPaid: Story = UserDialogTemplate.bind({})
 SignupPaid.args = {
   type: 'signupPremium',
 }
-export const UpgradeAccount = UserDialogTemplate.bind({})
+SignupPaid.decorators = fullScreenDecorators
+export const UpgradeAccount: Story = UserDialogTemplate.bind({})
 UpgradeAccount.args = {
   type: 'upgradeAccount',
 }
+UpgradeAccount.decorators = fullScreenDecorators
 
-export const ManageFreeAccount = UserDialogTemplate.bind({})
+export const ManageFreeAccount: Story = UserDialogTemplate.bind({})
 ManageFreeAccount.args = {
   type: 'freeAccount',
 }
-export const ManagePaidAccount = UserDialogTemplate.bind({})
+ManageFreeAccount.decorators = fullScreenDecorators
+export const ManagePaidAccount: Story = UserDialogTemplate.bind({})
 ManagePaidAccount.args = {
   type: 'paidAccount',
 }
+ManagePaidAccount.decorators = fullScreenDecorators
 
-export const VerifyEmail = UserDialogTemplate.bind({})
+export const VerifyEmail: Story = UserDialogTemplate.bind({})
 VerifyEmail.args = {
   type: 'confirmation',
 }
+VerifyEmail.decorators = fullScreenDecorators
 
 const PreviewTemplate: Story = (args) => ({
   components: { UserDialog },
@@ -117,7 +126,7 @@ const PreviewTemplate: Story = (args) => ({
   template: '<UserDialog v-bind="args" />',
 })
 
-export const PreviewFree = PreviewTemplate.bind({})
+export const PreviewFree: Story = PreviewTemplate.bind({})
 PreviewFree.args = {
   type: 'subscribe',
   useSlideOver: false,
@@ -126,7 +135,7 @@ PreviewFree.args = {
     subscription: false,
   },
 }
-export const PreviewDefault = PreviewTemplate.bind({})
+export const PreviewDefault: Story = PreviewTemplate.bind({})
 PreviewDefault.args = {
   type: 'subscribe',
   useSlideOver: false,
