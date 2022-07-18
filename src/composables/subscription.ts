@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
+import type { SubscriberInput, SubscriptionPlan } from '../components/UserDialog/definition'
 
 export function useSubscription() {
   const { result, refetch } = useQuery(gql`
@@ -40,14 +41,72 @@ export function useSubscription() {
       }
     }
   `)
-  const onUpdateSubscriber = async ({ input }: { input: object }) => {
+
+  const { mutate: createSubscriberSubscriptionMutate } = useMutation(gql`
+    mutation CreateSubscriberSubscription($price_id: String!) {
+      createSubscriberSubscription(price_id: $price_id)
+    }
+  `)
+
+  const { mutate: changeSubscriberSubscriptionMutate } = useMutation(gql`
+    mutation ChangeSubscriberSubscription($price_id: String!) {
+      changeSubscriberSubscription(price_id: $price_id)
+    }
+  `)
+
+  const { mutate: cancelSubscriberSubscriptionMutate } = useMutation(gql`
+    mutation CancelSubscriberSubscription {
+      cancelSubscriberSubscription
+    }
+  `)
+
+  const updateSubscriber = async ({ input }: { input: SubscriberInput }) => {
     try {
-      await updateSubscriberMutate(input)
+      const result = await updateSubscriberMutate(input)
+      return result?.data.updateSubscriber
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log('e: ', e)
     }
   }
 
-  return { subscriberProfile, refetchSubscriber: refetch, onUpdateSubscriber }
+  const createSubscription = async ({ input, plan }: { input: SubscriberInput; plan: SubscriptionPlan }) => {
+    try {
+      await updateSubscriberMutate(input)
+      const result = await createSubscriberSubscriptionMutate({ price_id: plan.priceId })
+      return result?.data.createSubscriberSubscription
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log('e: ', e)
+    }
+  }
+
+  const changeSubscription = async ({ input, plan }: { input: SubscriberInput; plan: SubscriptionPlan }) => {
+    try {
+      await updateSubscriberMutate(input)
+      await changeSubscriberSubscriptionMutate({ price_id: plan.priceId })
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log('e: ', e)
+    }
+  }
+
+  const cancelSubscription = async ({ input }: { input: SubscriberInput }) => {
+    try {
+      await updateSubscriberMutate(input)
+      await cancelSubscriberSubscriptionMutate()
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log('e: ', e)
+    }
+  }
+
+  return {
+    subscriberProfile,
+    refetchSubscriber: refetch,
+    updateSubscriber,
+    createSubscription,
+    changeSubscription,
+    cancelSubscription,
+  }
 }

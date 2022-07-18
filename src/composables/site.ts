@@ -8,7 +8,9 @@ export function useSite() {
         name
         email
         subscription
+        monthly_price_id
         monthly_price
+        yearly_price_id
         yearly_price
       }
     }

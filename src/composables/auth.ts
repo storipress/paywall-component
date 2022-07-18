@@ -38,9 +38,7 @@ export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', 
         referer: document.referrer || location.origin,
         from: location.href,
       })
-      if (result?.data.requestSignInSubscriber) {
-        return true
-      }
+      return result?.data.requestSignInSubscriber
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log('e: ', e)
@@ -70,6 +68,7 @@ export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', 
       if (result?.data.signOutSubscriber) {
         tokenRef.value = ''
       }
+      return result?.data.signOutSubscriber
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log('e: ', e)

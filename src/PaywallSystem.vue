@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 import { useVModel } from '@vueuse/core'
-import { useAuth, useSite, useSubscription, useUserDialog } from './composables'
+import type {
+  ApplyHandlerType,
+  SubscriberInput,
+  SubscriptionPlan,
+  UserDialogParams,
+} from './components/UserDialog/definition'
+import { useAuth, useSite, useSubscription } from './composables'
 import { Badge, Paywall, UserDialog } from './components'
 import type { PaywallMachine } from './machine'
 import Modals from './Modals.vue'
@@ -52,10 +58,16 @@ const showPaywall = $computed(() => {
   return state.value === PaywallState.PaywallOrLogIn && paywall.value
 })
 const { siteSubscriptionInfo } = useSite()
-const { subscriberProfile, refetchSubscriber } = useSubscription()
+const {
+  subscriberProfile,
+  refetchSubscriber,
+  updateSubscriber,
+  createSubscription,
+  changeSubscription,
+  cancelSubscription,
+} = useSubscription()
 const auth = useAuth(tokenRef)
-const { onLogin, onSignup } = auth
-const { switchApplyHandler } = useUserDialog($$(dialogType), auth)
+const { onLogin, onSignup, onSignOut } = auth
 
 const onClick = async (email: string) => {
   switch (articleType) {
@@ -82,8 +94,11 @@ const onClick = async (email: string) => {
   }
 }
 
+const currentSubscriptionPlan = computed(() => {
+  return subscriberProfile.value.subscription_type === 'free' ? 'freeAccount' : 'paidAccound'
+})
 function badgeClick() {
-  dialogType = subscriberProfile.value.id ? 'accountPlan' : 'welcome'
+  dialogType = subscriberProfile.value.id ? currentSubscriptionPlan.value : 'welcome'
   visible = true
 }
 
@@ -97,12 +112,24 @@ const UPDATE_DIALOG = new Set([
   'subscribe',
 ])
 
-const onApplyHandler = async (params: any) => {
-  const result = await switchApplyHandler()?.(params)
+const handlers: Record<
+  ApplyHandlerType,
+  (params: { email: string; input: SubscriberInput; plan: SubscriptionPlan }) => Promise<any>
+> = {
+  login: onLogin,
+  logout: onSignOut,
+  update: updateSubscriber,
+  create: createSubscription,
+  change: changeSubscription,
+  cancel: cancelSubscription,
+}
+
+const onApplyHandler = async ({ type, ...params }: UserDialogParams) => {
+  const result = await handlers[type](params)
   if (UPDATE_DIALOG.has(dialogType)) {
     await refetchSubscriber()
-    const { subscribed, verified } = subscriberProfile.value
-    if (subscribed && !verified) {
+    const { verified } = subscriberProfile.value
+    if (type === 'create' && !verified && !result) {
       dialogType = 'confirmation'
       return
     }
@@ -112,8 +139,8 @@ const onApplyHandler = async (params: any) => {
     if (dialogType === 'confirmation') {
       dialogType = 'accountPlan'
     } else {
-      visible = false
       modalVisible = true
+      visible = false
     }
   }
 }

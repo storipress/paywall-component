@@ -2,6 +2,7 @@
 import { noop } from 'lodash-es'
 import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
+import type { UserDialogParams } from './definition'
 import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount, OnlyButton } from './components/index'
 import { data } from './data'
 import { CrossThin } from '~/components/Icons'
@@ -38,8 +39,7 @@ const props = defineProps({
   },
 })
 const emit = defineEmits<{
-  (event: 'applyHandler', result: any): void
-  (event: 'signOut'): void
+  (event: 'applyHandler', params: UserDialogParams): void
 }>()
 
 const currentType = ref('')
@@ -66,7 +66,7 @@ const dialogMap: Record<string, unknown> = {
   signupPremium: AccountDetail,
   upgradeAccount: AccountDetail,
   freeAccount: ManageAccount,
-  paidAccound: ManageAccount,
+  paidAccount: ManageAccount,
   subscribe: AccountDetail,
   confirmation: OnlyButton,
 }
@@ -86,10 +86,6 @@ const currentData = computed(() => {
 
 const onChangeDialogType = (type: string) => {
   currentType.value = type
-}
-
-function handleApply(params: any) {
-  emit('applyHandler', params)
 }
 </script>
 
@@ -122,10 +118,10 @@ function handleApply(params: any) {
         <slot>
           <component
             :is="dialogType"
-            v-bind="{ type, siteData, subscriberData, auth, button: currentData.button }"
+            v-bind="{ siteData, subscriberData, auth, type: currentType, button: currentData.button }"
             @change-dialog-type="onChangeDialogType"
-            @apply="handleApply"
-            @sign-out="emit('signOut')"
+            @close="receiveProps.onCloseDialog()"
+            @apply="(params: UserDialogParams) => emit('applyHandler', params)"
           />
         </slot>
       </div>

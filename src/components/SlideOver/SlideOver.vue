@@ -20,7 +20,7 @@ const onCloseDialog = () => {
 
 <template>
   <TransitionRoot as="template" :show="visible">
-    <Dialog as="div" class="fixed inset-0 z-[9999] overflow-hidden" @close="onCloseDialog">
+    <Dialog as="div" static class="fixed inset-0 z-[9999] overflow-hidden" @close="onCloseDialog">
       <div class="absolute inset-0 overflow-hidden">
         <TransitionChild
           as="template"
