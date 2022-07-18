@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ErrorMessage as VeeErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
-import * as Yup from 'yup'
+import { object as yupObject, string as yupString } from 'yup'
 import { Button } from '../../index'
 import { Email } from '~/components/Icons'
 
@@ -14,8 +14,8 @@ const emit = defineEmits<{
   (event: 'apply', handler: any): void
 }>()
 
-const schema = Yup.object().shape({
-  email: Yup.string().email().required(),
+const schema = yupObject().shape({
+  email: yupString().email().required(),
 })
 
 const onSubmit = function (formData: any, submitEvent: any) {
