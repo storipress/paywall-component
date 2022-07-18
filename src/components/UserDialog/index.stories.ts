@@ -2,7 +2,7 @@ import type { Story } from '@storybook/vue3'
 import { onMounted, ref, watch } from 'vue'
 
 import { UserDialog } from '../index'
-import { useAuth, useSite, useSubscription, useUserDialog } from '../../composables'
+import { useAuth, useSite, useSubscription } from '../../composables'
 import spLogo from '../../../assets/sp-logo-white.svg'
 
 export default {
@@ -26,10 +26,11 @@ const UserDialogTemplate: Story = (args) => ({
   components: { UserDialog },
   setup() {
     const { visible } = useDialog()
-    const { switchApplyHandler } = useUserDialog(args.type)
     const { siteSubscriptionInfo } = useSite()
-    const { isAuth, onSignOut } = useAuth()
-    const { subscriberProfile } = useSubscription()
+    const { isAuth } = useAuth()
+    const { subscriberProfile, updateSubscriber, createSubscription, changeSubscription, cancelSubscription } =
+      useSubscription()
+    const { onLogin, onSignOut } = useAuth()
 
     args.logo = spLogo
     args.auth = isAuth
@@ -37,11 +38,19 @@ const UserDialogTemplate: Story = (args) => ({
     //   args.type = 'welcome'
     // }
 
-    const onApplyHandler = (handler) => {
-      switchApplyHandler()?.(handler)
+    const handlers = {
+      login: onLogin,
+      logout: onSignOut,
+      update: updateSubscriber,
+      create: createSubscription,
+      change: changeSubscription,
+      cancel: cancelSubscription,
+    }
+    const onApplyHandler = ({ type, ...params }) => {
+      handlers[type](params)
     }
 
-    return { args, visible, onApplyHandler, onSignOut, siteSubscriptionInfo, subscriberProfile, isAuth }
+    return { args, visible, siteSubscriptionInfo, subscriberProfile, isAuth, onApplyHandler }
   },
   template: `
   login status: {{ !!isAuth }}
@@ -51,7 +60,6 @@ const UserDialogTemplate: Story = (args) => ({
     :site-data="siteSubscriptionInfo"
     :subscriber-data="subscriberProfile"
     @apply-handler="onApplyHandler"
-    @sign-out="onSignOut"
   />
   `,
 })
@@ -84,7 +92,7 @@ ManageFreeAccount.args = {
 }
 export const ManagePaidAccount = UserDialogTemplate.bind({})
 ManagePaidAccount.args = {
-  type: 'paidAccound',
+  type: 'paidAccount',
 }
 
 export const VerifyEmail = UserDialogTemplate.bind({})

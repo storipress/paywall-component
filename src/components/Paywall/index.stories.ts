@@ -2,7 +2,7 @@ import type { Story } from '@storybook/vue3'
 import { ref } from 'vue'
 
 import { Modal, UserDialog } from '../index'
-import { useAuth, useSite, useSubscription, useUserDialog } from '../../composables'
+import { useAuth, useSite, useSubscription } from '../../composables'
 import spLogo from '../../../assets/sp-logo-white.svg'
 import Paywall from './Paywall.vue'
 
@@ -19,7 +19,6 @@ const PaywallTemplate: Story = (args) => ({
     const { siteSubscriptionInfo } = useSite()
     const { subscriberProfile } = useSubscription()
     const { isAuth, onLogin, onSignup, onVerifyEmail, onSignInSubscriber } = useAuth()
-    const { switchApplyHandler } = useUserDialog(dialogType.value)
 
     const onClick = async (email) => {
       switch (args.type) {
@@ -46,8 +45,8 @@ const PaywallTemplate: Story = (args) => ({
       }
     }
 
-    const onApplyHandler = async (params: any) => {
-      const result = await switchApplyHandler()?.(params)
+    const onApplyHandler = async ({ email }) => {
+      const result = await onLogin({ email })
       if (result) {
         visible.value = false
         modalVisible.value = true

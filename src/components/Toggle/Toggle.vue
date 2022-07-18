@@ -54,23 +54,24 @@ function onClick() {
 </script>
 
 <template>
-  <Switch
-    v-model="input"
-    :disabled="disabled"
-    :class="[enabledClass, classname[type], disabledClass]"
-    class="relative inline-flex flex-shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none"
-    @click.stop="onClick"
-  >
-    <span
-      aria-hidden="true"
-      :class="[translateClass, classname.toggleCircle]"
-      class="flex items-center justify-center bg-white mix-blend-screen"
+  <div @click.stop="onClick">
+    <Switch
+      v-model="input"
+      :disabled="disabled"
+      :class="[enabledClass, classname[type], disabledClass]"
+      class="relative inline-flex flex-shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none"
     >
-      <Tick class="scale-50" :class="isEnabled ? 'block' : 'hidden'" />
-    </span>
-    <!-- circle outline shadow. If placed in the same <span> due to mix-blend-screen, the circle border will cause problems above the colored background -->
-    <span v-if="type === 'short'" :class="[translateClass, classname.toggleCircle]" class="layer-1" />
-  </Switch>
+      <span
+        aria-hidden="true"
+        :class="[translateClass, classname.toggleCircle]"
+        class="flex items-center justify-center bg-white mix-blend-screen"
+      >
+        <Tick class="scale-50" :class="isEnabled ? 'block' : 'hidden'" />
+      </span>
+      <!-- circle outline shadow. If placed in the same <span> due to mix-blend-screen, the circle border will cause problems above the colored background -->
+      <span v-if="type === 'short'" :class="[translateClass, classname.toggleCircle]" class="layer-1" />
+    </Switch>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

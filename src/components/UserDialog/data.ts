@@ -12,7 +12,7 @@ export const data: Record<string, Record<string, string>> = {
     title: 'Your account.',
     sub: 'You are currently on a free membership. Upgrade to a paid subscription for full access.',
   },
-  paidAccound: {
+  paidAccount: {
     title: 'Your account.',
     sub: 'You are currently on a __PAID_PLAN__ membership. Your subscription renews on __RENEWS_DATE__.',
   },

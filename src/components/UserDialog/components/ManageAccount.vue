@@ -14,8 +14,7 @@ const props = defineProps({
 })
 const emit = defineEmits<{
   (event: 'changeDialogType', type: string): void
-  (event: 'signOut'): void
-  (event: 'apply', handler: any): void
+  (event: 'apply', params: any): void
 }>()
 
 const subscriptionPlan = computed(() => {
@@ -31,8 +30,12 @@ const newsletterStatus = computed(() => {
   return props.subscriberData?.newsletter ? 'Subscribed' : 'Unsubscribed'
 })
 const isPaidPlan = computed(() => {
-  return props.type === 'paidAccound'
+  return props.type === 'paidAccount'
 })
+
+const onClickSignOut = async () => {
+  emit('apply', { type: 'logout' })
+}
 
 const onChangeDialogType = () => {
   emit('changeDialogType', 'accountPlan')
@@ -79,7 +82,7 @@ const onChangeDialogType = () => {
             :checked="subscriberData?.newsletter"
             type="simple"
             color="bg-green-600"
-            @click="emit('apply', { input: { newsletter: !subscriberData?.newsletter } })"
+            @click="emit('apply', { type: 'update', input: { newsletter: !subscriberData?.newsletter } })"
           />
         </template>
       </ListItem>
@@ -87,11 +90,10 @@ const onChangeDialogType = () => {
   </div>
 
   <div class="mt-12 flex justify-between">
-    <Button text="Sign out" rounded @click="emit('signOut')" />
+    <Button text="Sign out" rounded @click="onClickSignOut" />
     <Button primary rounded>
       <template #buttonText>
-        <!-- TODO api site.email -->
-        <a :href="`mailto:#${siteData?.email}`" class="flex h-full items-center">Contact Support</a>
+        <a :href="`mailto:${siteData?.email}`" class="flex h-full items-center">Contact Support</a>
       </template>
     </Button>
   </div>
