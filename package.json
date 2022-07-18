@@ -25,9 +25,11 @@
     "lodash-es": "^4.17.21",
     "p-retry": "^5.1.1",
     "ts-pattern": "^4.0.3",
+    "vee-validate": "^4.6.2",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.10",
-    "vue-router": "^4.0.15"
+    "vue-router": "^4.0.15",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.25.2",
