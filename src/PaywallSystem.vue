@@ -95,7 +95,7 @@ const onClick = async (email: string) => {
 }
 
 const currentSubscriptionPlan = computed(() => {
-  return subscriberProfile.value.subscription_type === 'free' ? 'freeAccount' : 'paidAccound'
+  return subscriberProfile.value.subscription_type === 'free' ? 'freeAccount' : 'paidAccount'
 })
 function badgeClick() {
   dialogType = subscriberProfile.value.id ? currentSubscriptionPlan.value : 'welcome'
