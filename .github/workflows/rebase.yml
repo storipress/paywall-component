@@ -16,8 +16,6 @@ jobs:
       - name: Checkout the latest code
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT_TOKEN }}
-          submodules: 'recursive'
           fetch-depth: 0
       - name: Automatic Rebase
         uses: cirrus-actions/rebase@1.7
