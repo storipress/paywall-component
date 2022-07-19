@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import type { PropType } from 'vue'
 import { Button, ListItem, Toggle } from '../../index'
+import type { UserDialogParams, UserDialogType } from '../definition'
 
 const props = defineProps({
   type: {
-    type: String,
+    type: String as PropType<UserDialogType>,
   },
   siteData: {
     type: Object,
@@ -14,7 +16,7 @@ const props = defineProps({
 })
 const emit = defineEmits<{
   (event: 'changeDialogType', type: string): void
-  (event: 'apply', params: any): void
+  (event: 'apply', params: UserDialogParams): void
 }>()
 
 const subscriptionPlan = computed(() => {
