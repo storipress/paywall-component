@@ -2,9 +2,9 @@
 import { useVModel } from '@vueuse/core'
 import type {
   ApplyHandlerType,
-  SubscriberInput,
-  SubscriptionPlan,
+  UserDialogHandler,
   UserDialogParams,
+  UserDialogType,
 } from './components/UserDialog/definition'
 import { useAuth, useSite, useSubscription } from './composables'
 import { Badge, Paywall, UserDialog } from './components'
@@ -29,7 +29,7 @@ const emit = defineEmits<{
 
 let visible = $ref(false)
 let modalVisible = $ref(false)
-let dialogType = $ref('welcome')
+let dialogType = $ref<UserDialogType>('welcome')
 
 const tokenRef = useVModel(props, 'token', emit)
 const articleType = $computed(() => {
@@ -94,7 +94,7 @@ const onClick = async (email: string) => {
   }
 }
 
-const currentSubscriptionPlan = computed(() => {
+const currentSubscriptionPlan = computed<UserDialogType>(() => {
   return subscriberProfile.value.subscription_type === 'free' ? 'freeAccount' : 'paidAccount'
 })
 function badgeClick() {
@@ -112,16 +112,13 @@ const UPDATE_DIALOG = new Set([
   'subscribe',
 ])
 
-const handlers: Record<
-  ApplyHandlerType,
-  (params: { email: string; input: SubscriberInput; plan: SubscriptionPlan }) => Promise<any>
-> = {
-  login: onLogin,
+const handlers: Record<ApplyHandlerType, UserDialogHandler> = {
+  login: onLogin as UserDialogHandler,
   logout: onSignOut,
-  update: updateSubscriber,
-  create: createSubscription,
-  change: changeSubscription,
-  cancel: cancelSubscription,
+  update: updateSubscriber as UserDialogHandler,
+  create: createSubscription as UserDialogHandler,
+  change: changeSubscription as UserDialogHandler,
+  cancel: cancelSubscription as UserDialogHandler,
 }
 
 const onApplyHandler = async ({ type, ...params }: UserDialogParams) => {

@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { noop } from 'lodash-es'
+import type { Component, PropType } from 'vue'
 import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
-import type { UserDialogParams } from './definition'
+import type { UserDialogParams, UserDialogType } from './definition'
 import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount, OnlyButton } from './components/index'
 import { data } from './data'
 import { CrossThin } from '~/components/Icons'
 
 const props = defineProps({
   type: {
-    type: String,
+    type: String as PropType<UserDialogType>,
     default: '',
   },
   colorHex: {
@@ -42,7 +43,7 @@ const emit = defineEmits<{
   (event: 'applyHandler', params: UserDialogParams): void
 }>()
 
-const currentType = ref('')
+const currentType = ref<UserDialogType | ''>('')
 const type = toRef(props, 'type')
 const result = computed<Record<string, string>>(() => ({
   __PAID_PLAN__: props.subscriberData?.subscription?.interval ?? '',
@@ -58,7 +59,7 @@ watch(
   { immediate: true }
 )
 
-const dialogMap: Record<string, unknown> = {
+const dialogMap: Record<UserDialogType | '', Component | undefined> = {
   welcome: LoginInEmail,
   welcomeInSocial: LoginInSocial,
   accountPlan: AccountDetail,
@@ -69,6 +70,8 @@ const dialogMap: Record<string, unknown> = {
   paidAccount: ManageAccount,
   subscribe: AccountDetail,
   confirmation: OnlyButton,
+  shareToTwitter: undefined,
+  '': undefined,
 }
 
 const dialogType = computed(() => dialogMap[currentType.value])
@@ -84,7 +87,7 @@ const currentData = computed(() => {
   }
 })
 
-const onChangeDialogType = (type: string) => {
+const onChangeDialogType = (type: UserDialogType | '') => {
   currentType.value = type
 }
 </script>
