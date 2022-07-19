@@ -23,6 +23,12 @@ export interface SubscriptionPlan {
   priceId?: string
 }
 
+export interface DialogText {
+  title: string
+  sub: string
+  button?: string
+}
+
 interface ProfileParams {
   type: 'update'
   input: SubscriberInput
