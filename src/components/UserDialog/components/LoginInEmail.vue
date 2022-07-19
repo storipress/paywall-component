@@ -2,6 +2,7 @@
 import { ErrorMessage as VeeErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
 import { object as yupObject, string as yupString } from 'yup'
 import { Button } from '../../index'
+import type { UserDialogParams } from '../definition'
 import { Email } from '~/components/Icons'
 
 defineProps({
@@ -11,7 +12,7 @@ defineProps({
   },
 })
 const emit = defineEmits<{
-  (event: 'apply', params: any): void
+  (event: 'apply', params: UserDialogParams): void
 }>()
 
 const schema = yupObject().shape({
@@ -20,7 +21,10 @@ const schema = yupObject().shape({
 
 const onSubmit = function (formData: any, submitEvent: any) {
   submitEvent.evt.preventDefault()
-  emit('apply', formData.email)
+  emit('apply', {
+    type: 'login',
+    email: formData.email,
+  })
 }
 </script>
 
