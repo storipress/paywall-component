@@ -89,9 +89,9 @@ const selected = computed({
 
     <div class="text-xs text-zinc-700">
       {{ siteData?.name }} uses Storipress for membership. By registering you agree to Storipress’
-      <u><a href="#">Terms</a></u>
+      <u><a target="_blank" href="https://storipress.com/legal/terms">Terms</a></u>
       and
-      <u><a href="#">Privacy Policy</a></u
+      <u><a target="_blank" href="https://storipress.com/legal/global-privacy-policy">Privacy Policy</a></u
       >.
     </div>
   </div>
