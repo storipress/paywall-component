@@ -1,4 +1,11 @@
-export const data: Record<string, Record<string, string>> = {
+import type { DialogText, UserDialogType } from './definition'
+
+const EMPTY: DialogText = {
+  title: '',
+  sub: '',
+}
+
+export const data: Record<UserDialogType | '', DialogText> = {
   welcome: {
     title: 'Welcome back.',
     sub: 'Enter your email below',
@@ -50,4 +57,6 @@ export const data: Record<string, Record<string, string>> = {
     `,
     button: 'Change email',
   },
+  shareToTwitter: EMPTY,
+  '': EMPTY,
 }
