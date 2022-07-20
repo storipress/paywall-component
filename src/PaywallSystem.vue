@@ -57,6 +57,9 @@ const showPaywall = $computed(() => {
   const { state, paywall } = props.paywallMachine
   return state.value === PaywallState.PaywallOrLogIn && paywall.value
 })
+let showPaywallForSignup = $ref(false)
+let defaultEmailForSignup = $ref('')
+
 const { siteSubscriptionInfo } = useSite()
 const {
   subscriberProfile,
@@ -140,6 +143,11 @@ const onApplyHandler = async ({ type, ...params }: UserDialogParams) => {
       visible = false
     }
   }
+  if (type === 'login' && showPaywall && articleType !== 'upgrade' && 'email' in params) {
+    visible = false
+    showPaywallForSignup = true
+    defaultEmailForSignup = params.email
+  }
 }
 
 const onConfirmModal = () => {
@@ -170,10 +178,11 @@ watch(tokenRef, async (token) => {
       leave-to-class="transform scale-95 opacity-0"
     >
       <Paywall
-        v-if="showPaywall"
-        class="pointer-events-auto"
+        v-if="showPaywall || showPaywallForSignup"
+        class="paywall pointer-events-auto"
         :type="articleType"
         :publication-name="siteSubscriptionInfo?.name"
+        :default-email="defaultEmailForSignup"
         @click="onClick"
         @click-sign-in="visible = true"
       />
