@@ -49,8 +49,8 @@ export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', 
     try {
       const result = await signUpSubscriberMutate({
         email,
-        referer: location.origin,
-        from: document.referrer,
+        referer: document.referrer || location.origin,
+        from: location.href,
       })
       if (result?.data.signUpSubscriber) {
         tokenRef.value = result?.data.signUpSubscriber
