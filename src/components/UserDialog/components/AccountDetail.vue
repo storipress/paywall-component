@@ -177,10 +177,14 @@ const onSubmit = async () => {
 
     <div class="text-xs text-zinc-700">
       {{ siteData?.name }} uses Storipress for membership. By registering you agree to Storipress’
-      <u><a target="_blank" href="https://storipress.com/legal/terms">Terms</a></u>
+      <u><a target="_blank" rel="noreferrer noopener" href="https://storipress.com/legal/terms">Terms</a></u>
       and
-      <u><a target="_blank" href="https://storipress.com/legal/global-privacy-policy">Privacy Policy</a></u
-      >.
+      <u>
+        <a target="_blank" rel="noreferrer noopener" href="https://storipress.com/legal/global-privacy-policy">
+          Privacy Policy
+        </a>
+      </u>
+      .
     </div>
   </div>
   <Button :disabled="isLoading" :text="button" primary rounded class="mt-12 w-full" @click="onSubmit" />
