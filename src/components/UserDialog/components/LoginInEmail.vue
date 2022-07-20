@@ -20,7 +20,7 @@ const schema = yupObject().shape({
 })
 
 const onSubmit = function (formData: any, submitEvent: any) {
-  submitEvent.evt.preventDefault()
+  submitEvent?.evt.preventDefault()
   emit('apply', {
     type: 'login',
     email: formData.email,

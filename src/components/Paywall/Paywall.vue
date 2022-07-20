@@ -37,7 +37,7 @@ const isUpgrade = computed(() => {
 })
 
 const onSubmit = function (formData: any, submitEvent: any) {
-  submitEvent.evt.preventDefault()
+  submitEvent?.evt.preventDefault()
   emit('click', formData.email)
 }
 </script>
