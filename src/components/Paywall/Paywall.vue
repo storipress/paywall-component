@@ -13,6 +13,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  defaultEmail: {
+    type: String,
+    default: '',
+  },
 })
 const emit = defineEmits<{
   (event: 'click', val: string): void
@@ -40,6 +44,13 @@ const onSubmit = function (formData: any, submitEvent: any) {
   submitEvent?.evt.preventDefault()
   emit('click', formData.email)
 }
+
+const emailRef = ref()
+watch([() => props.defaultEmail, emailRef], () => {
+  if (emailRef.value !== undefined) {
+    emailRef.value.reset({ value: props.defaultEmail })
+  }
+})
 </script>
 
 <template>
@@ -56,6 +67,7 @@ const onSubmit = function (formData: any, submitEvent: any) {
         <VeeForm class="md:flex" :validation-schema="schema" @submit="onSubmit">
           <div v-if="!isUpgrade" class="mb-3 w-full md:mb-0 md:mr-[1.125rem] md:max-w-[47.6%]">
             <VeeField
+              ref="emailRef"
               name="email"
               type="email"
               placeholder="Email Address"
