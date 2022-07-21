@@ -64,7 +64,7 @@ watch([() => props.defaultEmail, emailRef], () => {
       </div>
 
       <div class="flex w-full flex-col">
-        <VeeForm class="md:flex" :validation-schema="schema" @submit="onSubmit">
+        <VeeForm class="md:flex" :validation-schema="!isUpgrade ? schema : undefined" @submit="onSubmit">
           <div v-if="!isUpgrade" class="mb-3 w-full md:mb-0 md:mr-[1.125rem] md:max-w-[47.6%]">
             <VeeField
               ref="emailRef"
