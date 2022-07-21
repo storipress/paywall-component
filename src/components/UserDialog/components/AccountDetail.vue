@@ -17,12 +17,12 @@ interface TProps {
     yearly_price_id: string
   }
   subscriberData?: {
+    email: string
     first_name: string
     last_name: string
     subscription: { interval: string; price: string }
     subscription_type: string
   }
-  auth?: string
 }
 const props = withDefaults(defineProps<TProps>(), {
   button: '',
@@ -41,12 +41,12 @@ const plans = computed(() => {
       { name: 'Free', type: 'free' },
       {
         name: `$${props.siteData?.monthly_price}/Month`,
-        type: 'monthly',
+        type: 'month',
         priceId: props.siteData.monthly_price_id,
       },
       {
         name: `$${props.siteData?.yearly_price}/Year`,
-        type: 'yearly',
+        type: 'year',
         priceId: props.siteData.yearly_price_id,
       },
     ]
@@ -55,18 +55,15 @@ const plans = computed(() => {
 })
 
 const userPlan = computed(() => {
-  if (props.auth) {
-    if (props.type === 'accountPlan') {
-      const index = plans.value?.findIndex((plan) => plan.type === props.subscriberData?.subscription?.price)
-      return props.subscriberData?.subscription_type === 'subscribed' ? index : 0
-    } else {
-      return props.type === 'signupFree' ? 0 : 1
-    }
+  if (props.type === 'accountPlan') {
+    const index = plans.value?.findIndex((plan) => plan.type === props.subscriberData?.subscription?.interval)
+    return index !== -1 ? index : 0
   } else {
-    return 0
+    return props.type === 'signupFree' ? 0 : 1
   }
 })
 
+const email = ref(props.subscriberData?.email ?? '')
 const firstName = ref(props.subscriberData?.first_name ?? '')
 const lastName = ref(props.subscriberData?.last_name ?? '')
 const selectedPlan = ref(userPlan.value)
@@ -133,14 +130,16 @@ const onSubmit = async () => {
         updateSubscriber()
       }
     } else {
-      const checkPaymentStatus = await confirmPayment()
+      if (selected.value.type === props.subscriberData?.subscription?.interval) {
+        updateSubscriber()
+        return
+      }
 
-      if (checkPaymentStatus) {
-        if (props.subscriberData?.subscription_type === 'free') {
-          createSubscription()
-        } else {
-          changeSubscription()
-        }
+      if (props.subscriberData?.subscription_type === 'free') {
+        const checkPaymentStatus = await confirmPayment()
+        checkPaymentStatus && createSubscription()
+      } else {
+        changeSubscription()
       }
     }
   }
@@ -156,7 +155,14 @@ const onSubmit = async () => {
       </RadioGroupOption>
     </RadioGroup>
     <!-- signup name input -->
-    <div class="mb-4 grid grid-cols-2 gap-x-2 md:gap-x-3">
+    <div class="mb-4 grid grid-cols-2 gap-x-2 gap-y-3 md:gap-x-3">
+      <input
+        v-if="type === 'accountPlan'"
+        v-model="email"
+        type="email"
+        placeholder="Email"
+        class="text-inputs col-[1/-1] h-12 border border-zinc-700 bg-transparent px-4 py-3"
+      />
       <input
         v-model="firstName"
         type="text"
