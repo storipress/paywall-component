@@ -142,8 +142,7 @@ const onApplyHandler = async ({ type, ...params }: UserDialogParams) => {
       modalVisible = true
       visible = false
     }
-  }
-  if (type === 'login' && showPaywall && articleType !== 'upgrade' && 'email' in params) {
+  } else if (type === 'login' && articleType !== 'upgrade' && 'email' in params) {
     visible = false
     showPaywallForSignup = true
     defaultEmailForSignup = params.email
