@@ -23,6 +23,10 @@ export function usePaywallSystem(token: Ref<string | null>, client: ApolloClient
     token.value = t
   }
 
+  function reload() {
+    reloadRef.value++
+  }
+
   watch(token, async (t) => {
     if (t) {
       try {
@@ -34,20 +38,14 @@ export function usePaywallSystem(token: Ref<string | null>, client: ApolloClient
           token.value = null
         }
       }
-    }
-  })
-
-  watch([subscriberProfile, token], ([p]) => {
-    if (p && p.id) {
-      reloadRef.value++
+    } else {
+      reload()
     }
   })
 
   return {
     reloadRef,
-    reload: () => {
-      reloadRef.value++
-    },
+    reload,
     paywallMachine,
     updateToken,
   }

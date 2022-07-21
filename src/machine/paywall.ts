@@ -93,6 +93,11 @@ export function createPaywallMachine({ profile }: API) {
     { immediate: true, deep: true }
   )
 
+  function resetState() {
+    context.reason = LoginReason.None
+    state.value = PaywallState.CheckPlan
+  }
+
   return markRaw({
     state,
     context,
@@ -116,8 +121,8 @@ export function createPaywallMachine({ profile }: API) {
     },
     reset(article: any) {
       context.article = article
-      context.reason = LoginReason.None
-      state.value = PaywallState.CheckPlan
+      resetState()
     },
+    resetState,
   })
 }
