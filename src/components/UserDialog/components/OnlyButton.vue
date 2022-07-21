@@ -1,15 +1,26 @@
 <script setup lang="ts">
 import { Button } from '../../index'
 
-withDefaults(defineProps<{ button?: string }>(), {
+const props = withDefaults(defineProps<{ type: string; button?: string }>(), {
   button: '',
   useSlideOver: true,
 })
 
-defineEmits(['apply'])
+const emit = defineEmits<{
+  (event: 'changeDialogType', type: string): void
+  (event: 'apply'): void
+}>()
+
+const onClick = () => {
+  if (props.type === 'confirmation') {
+    emit('changeDialogType', 'accountPlan')
+  } else {
+    emit('apply')
+  }
+}
 </script>
 
 <template>
   <div class="flex-auto" v-bind="$attrs" />
-  <Button :text="button" primary rounded class="mt-12 w-full" @click="$emit('apply')" />
+  <Button :text="button" primary rounded class="mt-12 w-full" @click="onClick" />
 </template>
