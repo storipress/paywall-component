@@ -35,29 +35,17 @@ const props = defineProps({
   subscriberData: {
     type: Object,
   },
-  auth: {
-    type: String,
-  },
 })
 const emit = defineEmits<{
   (event: 'applyHandler', params: UserDialogParams): void
+  (event: 'update:type', type: UserDialogType | ''): void
 }>()
 
-const currentType = ref<UserDialogType | ''>('')
-const type = toRef(props, 'type')
 const result = computed<Record<string, string>>(() => ({
   __PAID_PLAN__: props.subscriberData?.subscription?.interval ?? '',
   __RENEWS_DATE__: props.subscriberData?.subscription?.renew_on ?? '',
   __PUBLICATION_NAME__: props.siteData?.name ?? '',
 }))
-
-watch(
-  type,
-  (type) => {
-    currentType.value = type
-  },
-  { immediate: true }
-)
 
 const dialogMap: Record<UserDialogType | '', Component | undefined> = {
   welcome: LoginInEmail,
@@ -74,10 +62,10 @@ const dialogMap: Record<UserDialogType | '', Component | undefined> = {
   '': undefined,
 }
 
-const dialogType = computed(() => dialogMap[currentType.value])
+const dialogType = computed(() => dialogMap[props.type])
 
 const currentData = computed(() => {
-  const current = data[currentType.value]
+  const current = data[props.type]
   return {
     title: current.title,
     sub: current.sub.replace(/\b(__PAID_PLAN__|__RENEWS_DATE__|__PUBLICATION_NAME__)\b/g, (match) => {
@@ -86,10 +74,6 @@ const currentData = computed(() => {
     button: current.button,
   }
 })
-
-const onChangeDialogType = (type: UserDialogType | '') => {
-  currentType.value = type
-}
 </script>
 
 <template>
@@ -121,8 +105,8 @@ const onChangeDialogType = (type: UserDialogType | '') => {
         <slot>
           <component
             :is="dialogType"
-            v-bind="{ siteData, subscriberData, auth, type: currentType, button: currentData.button }"
-            @change-dialog-type="onChangeDialogType"
+            v-bind="{ siteData, subscriberData, type, button: currentData.button }"
+            @change-dialog-type="(type: UserDialogType | '') => emit('update:type', type)"
             @close="receiveProps.onCloseDialog()"
             @apply="(params: UserDialogParams) => emit('applyHandler', params)"
           />

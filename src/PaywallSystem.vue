@@ -118,6 +118,7 @@ function badgeClick() {
 const UPDATE_DIALOG = new Set([
   'signupFree',
   'freeAccount',
+  'paidAccount',
   'accountPlan',
   'signupPremium',
   'upgradeAccount',
@@ -219,11 +220,11 @@ watch(tokenRef, async (token) => {
     </transition>
     <UserDialog
       v-model="visible"
-      class="pointer-events-auto"
-      :type="dialogType"
+      v-model:type="dialogType"
       :logo="logo"
       :site-data="siteSubscriptionInfo"
       :subscriber-data="profile || {}"
+      class="pointer-events-auto"
       @apply-handler="onApplyHandler"
     />
     <Modals
