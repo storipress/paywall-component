@@ -64,8 +64,12 @@ export function useQueryAction({
       const performAction = actions[action] || noop
 
       const res = await performAction(token)
-      router.push(router.currentRoute.path)
-      return { result: res, action }
+      if (res) {
+        router.push(router.currentRoute.path)
+        return { result: res, action }
+      } else {
+        router.push('/404')
+      }
     }
     return { result: true, action: null }
   }
