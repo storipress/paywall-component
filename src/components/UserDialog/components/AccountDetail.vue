@@ -135,11 +135,13 @@ const onSubmit = async () => {
         return
       }
 
-      if (props.subscriberData?.subscription_type === 'free') {
-        const checkPaymentStatus = await confirmPayment()
-        checkPaymentStatus && createSubscription()
-      } else {
-        changeSubscription()
+      const checkPaymentStatus = await confirmPayment()
+      if (checkPaymentStatus) {
+        if (props.subscriberData?.subscription_type === 'free') {
+          createSubscription()
+        } else {
+          changeSubscription()
+        }
       }
     }
   }
