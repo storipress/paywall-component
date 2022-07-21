@@ -27,16 +27,11 @@ const UserDialogTemplate: Story = (args) => ({
   setup() {
     const { visible } = useDialog()
     const { siteSubscriptionInfo } = useSite()
-    const { isAuth } = useAuth()
     const { subscriberProfile, updateSubscriber, createSubscription, changeSubscription, cancelSubscription } =
       useSubscription()
     const { onLogin, onSignOut } = useAuth()
 
     args.logo = spLogo
-    args.auth = isAuth
-    // if (!isAuth) {
-    //   args.type = 'welcome'
-    // }
 
     const handlers = {
       login: onLogin,
@@ -50,10 +45,9 @@ const UserDialogTemplate: Story = (args) => ({
       handlers[type](params)
     }
 
-    return { args, visible, siteSubscriptionInfo, subscriberProfile, isAuth, onApplyHandler }
+    return { args, visible, siteSubscriptionInfo, subscriberProfile, onApplyHandler }
   },
   template: `
-  login status: {{ !!isAuth }}
   <UserDialog
     v-model="visible"
     v-bind="args"
