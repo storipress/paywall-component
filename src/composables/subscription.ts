@@ -2,6 +2,25 @@ import { useMutation, useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
 import type { SubscriberInput, SubscriptionPlan } from '../components/UserDialog/definition'
 
+export interface SubscriberProfile {
+  id: string
+  email: string
+  verified: boolean
+  first_name: string
+  last_name: string
+  full_name: string
+  avatar: string
+  newsletter: boolean
+  renew_on: string
+  card_last_four: string
+  subscribed: boolean
+  subscription_type: string
+  subscription: {
+    interval: string
+    price: string
+  }
+}
+
 export function useSubscription() {
   const { result, refetch } = useQuery(gql`
     query SubscriberProfile {
@@ -25,7 +44,7 @@ export function useSubscription() {
       }
     }
   `)
-  const subscriberProfile = computed(() => {
+  const subscriberProfile = computed<SubscriberProfile>(() => {
     return result.value?.subscriberProfile ?? {}
   })
 

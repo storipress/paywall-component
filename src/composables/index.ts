@@ -1,5 +1,5 @@
 export * from './stripe'
 export * from './auth'
 export * from './site'
-export * from './subscription'
+export { useSubscription } from './subscription'
 export * from './query-action'

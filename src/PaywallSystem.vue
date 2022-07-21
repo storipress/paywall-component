@@ -69,6 +69,13 @@ const {
 const auth = useAuth(tokenRef)
 const { onLogin, onSignup, onSignOut } = auth
 
+const profile = $computed(() => {
+  if (!tokenRef.value) {
+    return null
+  }
+  return subscriberProfile.value
+})
+
 const onClick = async (email: string) => {
   switch (articleType) {
     case 'free': {
@@ -95,10 +102,10 @@ const onClick = async (email: string) => {
 }
 
 const currentSubscriptionPlan = computed<UserDialogType>(() => {
-  return subscriberProfile.value.subscription_type === 'free' ? 'freeAccount' : 'paidAccount'
+  return !profile || profile?.subscription_type === 'free' ? 'freeAccount' : 'paidAccount'
 })
 function badgeClick() {
-  dialogType = subscriberProfile.value.id ? currentSubscriptionPlan.value : 'welcome'
+  dialogType = profile?.id ? currentSubscriptionPlan.value : 'welcome'
   visible = true
 }
 
@@ -125,7 +132,7 @@ const onApplyHandler = async ({ type, ...params }: UserDialogParams) => {
   const result = await handlers[type](params)
   if (UPDATE_DIALOG.has(dialogType)) {
     await refetchSubscriber()
-    const { verified } = subscriberProfile.value
+    const { verified = false } = profile || {}
     if (type === 'create' && !verified && !result) {
       dialogType = 'confirmation'
       return
@@ -155,6 +162,9 @@ watch(tokenRef, async (token) => {
   if (token) {
     await refetchSubscriber()
     props.paywallMachine.checkPlan()
+  } else {
+    props.paywallMachine.resetState()
+    dialogType = 'welcome'
   }
 })
 </script>
@@ -190,8 +200,8 @@ watch(tokenRef, async (token) => {
       <Badge
         v-if="showBadge"
         class="pointer-events-auto z-10 mb-8"
-        :account-avatar="subscriberProfile.id && (subscriberProfile?.avatar || favicon)"
-        :login-state="!!subscriberProfile.id"
+        :account-avatar="profile?.id && (profile?.avatar || favicon)"
+        :login-state="!!profile?.id"
         @click="badgeClick"
         @click-comment="$emit('clickComment')"
       />
@@ -202,7 +212,7 @@ watch(tokenRef, async (token) => {
       :type="dialogType"
       :logo="logo"
       :site-data="siteSubscriptionInfo"
-      :subscriber-data="subscriberProfile"
+      :subscriber-data="profile || {}"
       @apply-handler="onApplyHandler"
     />
     <Modals
@@ -210,7 +220,7 @@ watch(tokenRef, async (token) => {
       :logo="logo"
       :dialog-type="dialogType"
       :publication-name="siteSubscriptionInfo?.name"
-      :email="subscriberProfile?.email"
+      :email="profile?.email"
       @confirm="onConfirmModal"
     />
   </div>
