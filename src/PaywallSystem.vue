@@ -73,23 +73,26 @@ const auth = useAuth(tokenRef)
 const { onLogin, onSignup, onSignOut } = auth
 
 const onClick = async (email: string) => {
+  const checkExistEmailAndShowDialog = async (showDialogType: UserDialogType) => {
+    const result = await onSignup(email)
+    if (result && result?.data.signUpSubscriber) {
+      dialogType = showDialogType
+      visible = true
+    } else {
+      onLogin({ email })
+      modalVisible = true
+    }
+  }
+
   switch (articleType) {
     case 'free': {
-      const result = await onSignup(email)
-      if (result && result?.data.signUpSubscriber) {
-        dialogType = 'signupFree'
-        visible = true
-      } else {
-        onLogin({ email })
-        modalVisible = true
-      }
+      await checkExistEmailAndShowDialog('signupFree')
       break
     }
-    case 'paid':
-      await onSignup(email)
-      dialogType = 'signupPremium'
-      visible = true
+    case 'paid': {
+      await checkExistEmailAndShowDialog('signupPremium')
       break
+    }
     case 'upgrade':
       dialogType = 'upgradeAccount'
       visible = true
