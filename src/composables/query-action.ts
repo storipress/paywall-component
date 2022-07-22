@@ -84,7 +84,7 @@ export function useQueryAction({
         cache[key]?.finally(() => (cache[key] = undefined))
       }
 
-      return cache[`${action} ${token}`]
+      return cache[key]
     }
   }
 }
