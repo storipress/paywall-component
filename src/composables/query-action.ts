@@ -48,29 +48,43 @@ const locationRouter: RouterLike = {
 }
 
 export function useQueryAction({
-  auth: { onVerifyEmail, onSignInSubscriber } = useAuth(),
+  auth: { isAuth, onVerifyEmail, onSignInSubscriber } = useAuth(),
   router,
   fallbackLocation,
 }: UseLoginInput) {
-  return async () => {
-    router = router || (fallbackLocation ? locationRouter : noopRouter)
-    const actions: Record<string, (token: string) => Promise<boolean>> = {
-      'verify-email': onVerifyEmail,
-      'sign-in': onSignInSubscriber,
-    }
-    const { action, token } = router.currentRoute.query
-
+  router = router || (fallbackLocation ? locationRouter : noopRouter)
+  const cache: { [key: string]: Promise<{ result: boolean; action: string | null }> | undefined } = {}
+  const actions: Record<string, (token: string) => Promise<boolean>> = {
+    'verify-email': onVerifyEmail,
+    'sign-in': onSignInSubscriber,
+  }
+  const callAction = async (action: string, token: string) => {
     if (action && token && !Array.isArray(action) && !Array.isArray(token)) {
       const performAction = actions[action] || noop
 
       const res = await performAction(token)
       if (res) {
-        router.push(router.currentRoute.path)
+        router?.push(router.currentRoute.path)
         return { result: res, action }
       } else {
-        router.push('/404')
+        setTimeout(() => {
+          router?.push(isAuth.value ? router.currentRoute.path : '/404')
+        }, 2000)
       }
     }
+
     return { result: true, action: null }
+  }
+  return () => {
+    const { action, token } = router?.currentRoute.query ?? {}
+    if (action && token) {
+      const key = `${action.toString()} ${token.toString()}`
+      if (cache[key] === undefined) {
+        cache[key] = callAction(action.toString(), token.toString())
+        cache[key]?.finally(() => (cache[key] = undefined))
+      }
+
+      return cache[`${action} ${token}`]
+    }
   }
 }
