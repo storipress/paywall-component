@@ -47,7 +47,7 @@ const onSubmit = function (formData: any, submitEvent: any) {
 
 const emailRef = ref()
 watch([() => props.defaultEmail, emailRef], () => {
-  if (emailRef.value !== undefined) {
+  if (emailRef.value != null) {
     emailRef.value.reset({ value: props.defaultEmail })
   }
 })
