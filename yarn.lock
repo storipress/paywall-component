@@ -2295,6 +2295,7 @@ __metadata:
     prettier-plugin-tailwindcss: ^0.1.11
     tailwind-scrollbar-hide: ^1.1.7
     tailwindcss: ^3.0.24
+    tiny-invariant: ^1.2.0
     ts-pattern: ^4.0.3
     typescript: ^4.7.4
     unplugin-auto-import: ^0.9.2
@@ -15799,6 +15800,13 @@ __metadata:
   dependencies:
     setimmediate: ^1.0.4
   checksum: ec37ae299066bef6c464dcac29c7adafba1999e7227a9bdc4e105a459bee0f0b27234a46bfd7ab4041da79619e06a58433472867a913d01c26f8a203f87cee70
+  languageName: node
+  linkType: hard
+
+"tiny-invariant@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "tiny-invariant@npm:1.2.0"
+  checksum: e09a718a7c4a499ba592cdac61f015d87427a0867ca07f50c11fd9b623f90cdba18937b515d4a5e4f43dac92370498d7bdaee0d0e7a377a61095e02c4a92eade
   languageName: node
   linkType: hard
 

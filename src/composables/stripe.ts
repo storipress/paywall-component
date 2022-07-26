@@ -1,27 +1,34 @@
-import type { Stripe } from '@stripe/stripe-js'
+import type { Stripe, StripeElements } from '@stripe/stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { useMutation } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
+import invariant from 'tiny-invariant'
+
+const appearance = {
+  rules: {
+    '.Input': {
+      border: '1px solid #3f3f46',
+    },
+  },
+  variables: {
+    colorBackground: 'transparent',
+    colorText: '#27272a',
+    fontSizeBase: '16px',
+    colorTextPlaceholder: '#9ba3af',
+    borderRadius: '0px',
+  },
+}
+
+let publishableKey: string
+
+export function setStripeKey(key: string) {
+  publishableKey = key
+}
 
 export function useStripe() {
   const reference = ref()
-  const elements = shallowRef()
+  const elements = shallowRef<StripeElements>()
   const error = ref()
-
-  const appearance = {
-    rules: {
-      '.Input': {
-        border: '1px solid #3f3f46',
-      },
-    },
-    variables: {
-      colorBackground: 'transparent',
-      colorText: '#27272a',
-      fontSizeBase: '16px',
-      colorTextPlaceholder: '#9ba3af',
-      borderRadius: '0px',
-    },
-  }
 
   const createCard = (stripe: Stripe, clientSecret: string) => {
     elements.value = stripe.elements({
@@ -48,9 +55,8 @@ export function useStripe() {
       return
     }
 
-    stripe.value = (await loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLEKEY, {
-      stripeAccount: import.meta.env.VITE_STRIPE_ACCOUNT,
-    })) as Stripe
+    invariant(publishableKey, 'Stripe key is not set')
+    stripe.value = (await loadStripe(publishableKey)) as Stripe
     createCard(stripe.value, data.requestSetupIntent)
   })
   onError(() => {
@@ -72,7 +78,7 @@ export function useStripe() {
     try {
       const { setupIntent, error } =
         (await stripe.value?.confirmSetup({
-          elements: elements.value,
+          elements: elements.value as StripeElements,
           redirect: 'if_required',
           confirmParams: {
             return_url: window.location.href,
