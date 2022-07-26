@@ -2,7 +2,10 @@ import { app } from '@storybook/vue3'
 import { ApolloClients } from '@vue/apollo-composable'
 import { worker } from '../src/mocks/browser'
 import { apolloClient } from '../src/api/client'
+import { setStripeKey } from '../src/composables/stripe'
 import '../src/styles/main.css'
+
+setStripeKey(import.meta.env.VITE_STRIPE_PUBLISHABLEKEY)
 
 worker.start()
 
