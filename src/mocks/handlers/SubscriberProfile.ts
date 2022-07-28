@@ -22,7 +22,7 @@ export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
         avatar: '',
         newsletter: true,
         renew_on: '',
-        card_last_four: '1234',
+        pm_last_four: '1234',
         subscribed: true,
         subscription_type: 'monthly',
         subscription: {
