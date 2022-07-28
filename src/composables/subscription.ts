@@ -34,7 +34,7 @@ export function useSubscription() {
         avatar
         newsletter
         renew_on
-        card_last_four
+        pm_last_four
         subscribed
         subscription_type
         subscription {
