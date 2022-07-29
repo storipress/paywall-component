@@ -63,6 +63,7 @@ const dialogMap: Record<UserDialogType | '', Component | undefined> = {
 }
 
 const dialogType = computed(() => dialogMap[props.type])
+const showBilling = ref(false)
 
 const currentData = computed(() => {
   const current = data[props.type]
@@ -74,6 +75,11 @@ const currentData = computed(() => {
     button: current.button,
   }
 })
+
+const onChangeDialogType = (type: UserDialogType | '', show: boolean) => {
+  showBilling.value = show
+  emit('update:type', type)
+}
 </script>
 
 <template>
@@ -105,8 +111,8 @@ const currentData = computed(() => {
         <slot>
           <component
             :is="dialogType"
-            v-bind="{ siteData, subscriberData, type, button: currentData.button }"
-            @change-dialog-type="(type: UserDialogType | '') => emit('update:type', type)"
+            v-bind="{ siteData, subscriberData, type, showBilling, button: currentData.button }"
+            @change-dialog-type="onChangeDialogType"
             @close="receiveProps.onCloseDialog()"
             @apply="(params: UserDialogParams) => emit('applyHandler', params)"
           />

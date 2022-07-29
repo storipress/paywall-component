@@ -13,6 +13,7 @@ export type UserDialogType =
   | 'shareToTwitter'
 
 export interface SubscriberInput {
+  email?: string
   first_name?: string
   last_name?: string
   newsletter?: boolean

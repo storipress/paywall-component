@@ -23,6 +23,7 @@ interface TProps {
     subscription: { interval: string; price: string }
     subscription_type: string
   }
+  showBilling: boolean
 }
 const props = withDefaults(defineProps<TProps>(), {
   button: '',
@@ -75,76 +76,51 @@ const selected = computed({
     selectedPlan.value = plans.value.findIndex((plan) => plan === val)
   },
 })
+const subscriptionOption = computed(() => {
+  if (!props.siteData?.subscription) {
+    return 'update'
+  } else {
+    if (selected.value.type === 'free') {
+      return props.subscriberData?.subscription_type !== 'free' ? 'cancel' : 'update'
+    } else {
+      if (selected.value.type === props.subscriberData?.subscription?.interval) {
+        return 'update'
+      } else {
+        return props.subscriberData?.subscription_type === 'free' ? 'create' : 'change'
+      }
+    }
+  }
+})
 
-const updateSubscriber = () => {
-  emit('apply', {
-    type: 'update',
-    input: {
-      first_name: firstName.value,
-      last_name: lastName.value,
-    },
-  })
-}
-const createSubscription = () => {
-  emit('apply', {
-    type: 'create',
-    plan: selected.value,
-    input: {
-      first_name: firstName.value,
-      last_name: lastName.value,
-    },
-  })
-}
-const changeSubscription = () => {
-  emit('apply', {
-    type: 'change',
-    plan: selected.value,
-    input: {
-      first_name: firstName.value,
-      last_name: lastName.value,
-    },
-  })
-}
-const cancelSubscription = () => {
-  emit('apply', {
-    type: 'cancel',
-    plan: selected.value,
-    input: {
-      first_name: firstName.value,
-      last_name: lastName.value,
-    },
-  })
-}
+const showBillingInput = computed(() => {
+  return (
+    props.siteData?.subscription &&
+    (props.subscriberData?.subscription_type === 'free' || props.showBilling) &&
+    selected.value.type !== 'free'
+  )
+})
 
 const onSubmit = async () => {
   if (isLoading.value) {
     return
   }
-  if (!props.siteData?.subscription) {
-    updateSubscriber()
-  } else {
-    if (selected.value.type === 'free') {
-      if (props.subscriberData?.subscription_type !== 'free') {
-        cancelSubscription()
-      } else {
-        updateSubscriber()
-      }
-    } else {
-      if (selected.value.type === props.subscriberData?.subscription?.interval) {
-        updateSubscriber()
-        return
-      }
 
-      const checkPaymentStatus = await confirmPayment()
-      if (checkPaymentStatus) {
-        if (props.subscriberData?.subscription_type === 'free') {
-          createSubscription()
-        } else {
-          changeSubscription()
-        }
-      }
+  if (showBillingInput.value) {
+    const checkPaymentStatus = await confirmPayment()
+    if (!checkPaymentStatus) {
+      return
     }
   }
+
+  emit('apply', {
+    type: subscriptionOption.value,
+    plan: selected.value,
+    input: {
+      email: email.value,
+      first_name: firstName.value,
+      last_name: lastName.value,
+    },
+  })
 }
 </script>
 
@@ -179,7 +155,7 @@ const onSubmit = async () => {
       />
     </div>
     <!-- if choose a paid plan, show card number input  -->
-    <div v-if="siteData?.subscription && selected?.type !== 'free'" class="mb-4">
+    <div v-if="showBillingInput" class="mb-4">
       <div ref="reference" class="text-inputs" />
     </div>
 

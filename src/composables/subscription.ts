@@ -54,6 +54,7 @@ export function useSubscription() {
         input: { email: $email, first_name: $first_name, last_name: $last_name, newsletter: $newsletter }
       ) {
         id
+        email
         first_name
         last_name
         full_name

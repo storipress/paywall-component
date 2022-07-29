@@ -15,7 +15,7 @@ const props = defineProps({
   },
 })
 const emit = defineEmits<{
-  (event: 'changeDialogType', type: string): void
+  (event: 'changeDialogType', type: UserDialogType, showBilling: boolean): void
   (event: 'apply', params: UserDialogParams): void
 }>()
 
@@ -39,8 +39,8 @@ const onClickSignOut = async () => {
   emit('apply', { type: 'logout' })
 }
 
-const onChangeDialogType = () => {
-  emit('changeDialogType', 'accountPlan')
+const onChangeDialogType = (showBilling = false) => {
+  emit('changeDialogType', 'accountPlan', showBilling)
 }
 </script>
 
@@ -75,7 +75,7 @@ const onChangeDialogType = () => {
           :info="subscriberCardInfo"
           button-text="Update"
           class="border-b border-[#e3e3e3]"
-          @click="onChangeDialogType"
+          @click="onChangeDialogType(true)"
         />
       </template>
       <ListItem title="Email Newsletter" :info="newsletterStatus">
