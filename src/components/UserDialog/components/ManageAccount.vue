@@ -25,7 +25,7 @@ const subscriptionPlan = computed(() => {
 })
 
 const subscriberCardInfo = computed(() => {
-  return props.subscriberData?.card_last_four && `**** **** **** ${props.subscriberData?.card_last_four}`
+  return props.subscriberData?.pm_last_four && `**** **** **** ${props.subscriberData?.pm_last_four}`
 })
 
 const newsletterStatus = computed(() => {
