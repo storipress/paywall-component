@@ -75,13 +75,14 @@ const selected = computed({
     selectedPlan.value = plans.value.findIndex((plan) => plan === val)
   },
 })
-
+const changedEmail = computed(() => props.type === 'accountPlan' && props.subscriberData?.email !== email.value)
 const updateSubscriber = () => {
   emit('apply', {
     type: 'update',
     input: {
       first_name: firstName.value,
       last_name: lastName.value,
+      ...(changedEmail.value ? { email: email.value } : null),
     },
   })
 }
@@ -92,6 +93,7 @@ const createSubscription = () => {
     input: {
       first_name: firstName.value,
       last_name: lastName.value,
+      ...(changedEmail.value ? { email: email.value } : null),
     },
   })
 }
@@ -102,6 +104,7 @@ const changeSubscription = () => {
     input: {
       first_name: firstName.value,
       last_name: lastName.value,
+      ...(changedEmail.value ? { email: email.value } : null),
     },
   })
 }
@@ -112,6 +115,7 @@ const cancelSubscription = () => {
     input: {
       first_name: firstName.value,
       last_name: lastName.value,
+      ...(changedEmail.value ? { email: email.value } : null),
     },
   })
 }
