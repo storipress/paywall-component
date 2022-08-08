@@ -46,7 +46,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
           paywallMachine,
           hasComment: comment.enable,
           commentCount: comment.count,
-          onCommentClick: comment.onClick,
+          onClickComment: comment.onClick,
           'onUpdate:token': updateToken,
         })
       }

@@ -76,21 +76,6 @@ const selected = computed({
     selectedPlan.value = plans.value.findIndex((plan) => plan === val)
   },
 })
-const subscriptionOption = computed(() => {
-  if (!props.siteData?.subscription) {
-    return 'update'
-  } else {
-    if (selected.value.type === 'free') {
-      return props.subscriberData?.subscription_type !== 'free' ? 'cancel' : 'update'
-    } else {
-      if (selected.value.type === props.subscriberData?.subscription?.interval) {
-        return 'update'
-      } else {
-        return props.subscriberData?.subscription_type === 'free' ? 'create' : 'change'
-      }
-    }
-  }
-})
 
 const showBillingInput = computed(() => {
   return (
@@ -99,6 +84,50 @@ const showBillingInput = computed(() => {
     selected.value.type !== 'free'
   )
 })
+const changedEmail = computed(() => props.type === 'accountPlan' && props.subscriberData?.email !== email.value)
+const updateSubscriber = () => {
+  emit('apply', {
+    type: 'update',
+    input: {
+      first_name: firstName.value,
+      last_name: lastName.value,
+      ...(changedEmail.value ? { email: email.value } : null),
+    },
+  })
+}
+const createSubscription = () => {
+  emit('apply', {
+    type: 'create',
+    plan: selected.value,
+    input: {
+      first_name: firstName.value,
+      last_name: lastName.value,
+      ...(changedEmail.value ? { email: email.value } : null),
+    },
+  })
+}
+const changeSubscription = () => {
+  emit('apply', {
+    type: 'change',
+    plan: selected.value,
+    input: {
+      first_name: firstName.value,
+      last_name: lastName.value,
+      ...(changedEmail.value ? { email: email.value } : null),
+    },
+  })
+}
+const cancelSubscription = () => {
+  emit('apply', {
+    type: 'cancel',
+    plan: selected.value,
+    input: {
+      first_name: firstName.value,
+      last_name: lastName.value,
+      ...(changedEmail.value ? { email: email.value } : null),
+    },
+  })
+}
 
 const onSubmit = async () => {
   if (isLoading.value) {
@@ -112,15 +141,30 @@ const onSubmit = async () => {
     }
   }
 
-  emit('apply', {
-    type: subscriptionOption.value,
-    plan: selected.value,
-    input: {
-      email: email.value,
-      first_name: firstName.value,
-      last_name: lastName.value,
-    },
-  })
+  if (!props.siteData?.subscription) {
+    updateSubscriber()
+  } else {
+    if (selected.value.type === 'free') {
+      if (props.subscriberData?.subscription_type !== 'free') {
+        cancelSubscription()
+      } else {
+        updateSubscriber()
+      }
+    } else {
+      if (selected.value.type === props.subscriberData?.subscription?.interval) {
+        updateSubscriber()
+        return
+      }
+      const checkPaymentStatus = await confirmPayment()
+      if (checkPaymentStatus) {
+        if (props.subscriberData?.subscription_type === 'free') {
+          createSubscription()
+        } else {
+          changeSubscription()
+        }
+      }
+    }
+  }
 }
 </script>
 
