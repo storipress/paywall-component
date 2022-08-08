@@ -23,6 +23,7 @@ interface TProps {
     subscription: { interval: string; price: string }
     subscription_type: string
   }
+  showBilling: boolean
 }
 const props = withDefaults(defineProps<TProps>(), {
   button: '',
@@ -75,6 +76,14 @@ const selected = computed({
     selectedPlan.value = plans.value.findIndex((plan) => plan === val)
   },
 })
+
+const showBillingInput = computed(() => {
+  return (
+    props.siteData?.subscription &&
+    (props.subscriberData?.subscription_type === 'free' || props.showBilling) &&
+    selected.value.type !== 'free'
+  )
+})
 const changedEmail = computed(() => props.type === 'accountPlan' && props.subscriberData?.email !== email.value)
 const updateSubscriber = () => {
   emit('apply', {
@@ -124,6 +133,14 @@ const onSubmit = async () => {
   if (isLoading.value) {
     return
   }
+
+  if (showBillingInput.value) {
+    const checkPaymentStatus = await confirmPayment()
+    if (!checkPaymentStatus) {
+      return
+    }
+  }
+
   if (!props.siteData?.subscription) {
     updateSubscriber()
   } else {
@@ -138,7 +155,6 @@ const onSubmit = async () => {
         updateSubscriber()
         return
       }
-
       const checkPaymentStatus = await confirmPayment()
       if (checkPaymentStatus) {
         if (props.subscriberData?.subscription_type === 'free') {
@@ -183,7 +199,7 @@ const onSubmit = async () => {
       />
     </div>
     <!-- if choose a paid plan, show card number input  -->
-    <div v-if="siteData?.subscription && selected?.type !== 'free'" class="mb-4">
+    <div v-if="showBillingInput" class="mb-4">
       <div ref="reference" class="text-inputs" />
     </div>
 
