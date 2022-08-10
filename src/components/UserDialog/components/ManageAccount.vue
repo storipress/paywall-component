@@ -16,7 +16,7 @@ const props = defineProps({
 })
 const emit = defineEmits<{
   (event: 'changeDialogType', type: UserDialogType, showBilling: boolean): void
-  (event: 'apply', params: UserDialogParams): void
+  (event: 'apply', params: UserDialogParams, showDialog?: boolean): void
 }>()
 
 const subscriptionPlan = computed(() => {
@@ -84,7 +84,7 @@ const onChangeDialogType = (showBilling = false) => {
             :checked="subscriberData?.newsletter"
             type="simple"
             color="bg-green-600"
-            @click="emit('apply', { type: 'update', input: { newsletter: !subscriberData?.newsletter } })"
+            @click="emit('apply', { type: 'update', input: { newsletter: !subscriberData?.newsletter } }, true)"
           />
         </template>
       </ListItem>

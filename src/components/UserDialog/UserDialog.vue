@@ -37,7 +37,7 @@ const props = defineProps({
   },
 })
 const emit = defineEmits<{
-  (event: 'applyHandler', params: UserDialogParams): void
+  (event: 'applyHandler', params: UserDialogParams, showDialog: boolean): void
   (event: 'update:type', type: UserDialogType | ''): void
 }>()
 
@@ -114,7 +114,7 @@ const onChangeDialogType = (type: UserDialogType | '', show: boolean) => {
             v-bind="{ siteData, subscriberData, type, showBilling, button: currentData.button }"
             @change-dialog-type="onChangeDialogType"
             @close="receiveProps.onCloseDialog()"
-            @apply="(params: UserDialogParams) => emit('applyHandler', params)"
+            @apply="(params: UserDialogParams, showDialog = false) => emit('applyHandler', params, showDialog)"
           />
         </slot>
       </div>

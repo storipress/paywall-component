@@ -135,7 +135,7 @@ const handlers: Record<ApplyHandlerType, UserDialogHandler> = {
   cancel: cancelSubscription as UserDialogHandler,
 }
 
-const onApplyHandler = async ({ type, ...params }: UserDialogParams) => {
+const onApplyHandler = async ({ type, ...params }: UserDialogParams, showDialog: boolean) => {
   const result = await handlers[type](params)
   if (UPDATE_DIALOG.has(dialogType)) {
     await refetchSubscriber()
@@ -151,7 +151,7 @@ const onApplyHandler = async ({ type, ...params }: UserDialogParams) => {
       dialogType = 'accountPlan'
     } else {
       modalVisible = true
-      visible = false
+      visible = showDialog
     }
   } else if (type === 'login' && articleType !== 'upgrade' && 'email' in params) {
     visible = false
