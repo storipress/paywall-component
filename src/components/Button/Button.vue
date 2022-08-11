@@ -55,7 +55,7 @@ const isRounded = computed(() => {
     :class="[{ 'cursor-not-allowed': disabled }, isRounded]"
     @click="onClick"
   >
-    <SpinnerIcon v-if="isLoading" class="ml-2 h-5 w-5 animate-spin" />
+    <SpinnerIcon v-if="isLoading" class="h-5 w-5 animate-spin" />
     <slot v-else name="buttonText">
       {{ text }}
     </slot>

@@ -33,3 +33,21 @@ SecondaryInactive.args = {
   rounded: true,
   primary: true,
 }
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  text: 'Submit',
+  disabled: true,
+  rounded: true,
+  primary: true,
+  class: 'w-72',
+}
+
+export const Loading = Template.bind({})
+Loading.args = {
+  text: 'Submit',
+  isLoading: true,
+  rounded: true,
+  primary: true,
+  class: 'w-72',
+}
