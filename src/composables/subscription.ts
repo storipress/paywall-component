@@ -48,7 +48,7 @@ export function useSubscription() {
     return result.value?.subscriberProfile ?? {}
   })
 
-  const { mutate: updateSubscriberMutate } = useMutation(gql`
+  const { mutate: updateSubscriberMutate, loading: updateSubscriberLoading } = useMutation(gql`
     mutation UpdateSubscriber($email: EmailString, $first_name: String, $last_name: String, $newsletter: Boolean) {
       updateSubscriber(
         input: { email: $email, first_name: $first_name, last_name: $last_name, newsletter: $newsletter }
@@ -62,19 +62,19 @@ export function useSubscription() {
     }
   `)
 
-  const { mutate: createSubscriberSubscriptionMutate } = useMutation(gql`
+  const { mutate: createSubscriberSubscriptionMutate, loading: createSubscriberSubscriptionLoading } = useMutation(gql`
     mutation CreateSubscriberSubscription($price_id: String!) {
       createSubscriberSubscription(price_id: $price_id)
     }
   `)
 
-  const { mutate: changeSubscriberSubscriptionMutate } = useMutation(gql`
+  const { mutate: changeSubscriberSubscriptionMutate, loading: changeSubscriberSubscriptionLoading } = useMutation(gql`
     mutation ChangeSubscriberSubscription($price_id: String!) {
       changeSubscriberSubscription(price_id: $price_id)
     }
   `)
 
-  const { mutate: cancelSubscriberSubscriptionMutate } = useMutation(gql`
+  const { mutate: cancelSubscriberSubscriptionMutate, loading: cancelSubscriberSubscriptionLoading } = useMutation(gql`
     mutation CancelSubscriberSubscription {
       cancelSubscriberSubscription
     }
@@ -121,6 +121,15 @@ export function useSubscription() {
     }
   }
 
+  const isLoading = computed(() => {
+    return (
+      updateSubscriberLoading ||
+      createSubscriberSubscriptionLoading ||
+      changeSubscriberSubscriptionLoading ||
+      cancelSubscriberSubscriptionLoading
+    )
+  })
+
   return {
     subscriberProfile,
     refetchSubscriber: refetch,
@@ -128,5 +137,6 @@ export function useSubscription() {
     createSubscription,
     changeSubscription,
     cancelSubscription,
+    isLoading,
   }
 }

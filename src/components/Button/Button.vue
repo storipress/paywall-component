@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SpinnerIcon from './SpinnerIcon.vue'
+
 const props = defineProps({
   text: {
     type: String,
@@ -20,13 +22,19 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
 })
 const emit = defineEmits<{
   (event: 'click'): void
 }>()
 
 const onClick = () => {
-  emit('click')
+  if (!props.disabled) {
+    emit('click')
+  }
 }
 
 const isPrimary = computed(() => {
@@ -47,7 +55,8 @@ const isRounded = computed(() => {
     :class="[{ 'cursor-not-allowed': disabled }, isRounded]"
     @click="onClick"
   >
-    <slot name="buttonText">
+    <SpinnerIcon v-if="isLoading" class="ml-2 h-5 w-5 animate-spin" />
+    <slot v-else name="buttonText">
       {{ text }}
     </slot>
   </button>

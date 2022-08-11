@@ -11,7 +11,7 @@ import { Badge, Paywall, UserDialog } from './components'
 import type { PaywallMachine } from './machine'
 import Modals from './Modals.vue'
 import { LoginReason, PaywallState } from './machine'
-import { ArticlePlan } from './types'
+import { ArticlePlan, LOADING_KEY } from './types'
 
 const props = defineProps<{
   token: string | null
@@ -68,9 +68,12 @@ const {
   createSubscription,
   changeSubscription,
   cancelSubscription,
+  isLoading,
 } = useSubscription()
 const auth = useAuth(tokenRef)
 const { onLogin, onSignup, onSignOut } = auth
+
+provide(LOADING_KEY, isLoading.value)
 
 const profile = $computed(() => {
   if (!tokenRef.value) {
