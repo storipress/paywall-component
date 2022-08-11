@@ -3,6 +3,7 @@ import { RadioGroup, RadioGroupOption } from '@headlessui/vue'
 import { Button } from '../../index'
 import { useStripe } from '../../../composables'
 import type { UserDialogParams } from '../definition'
+import { LOADING_KEY } from '../../../types'
 
 interface TProps {
   type?: string
@@ -34,7 +35,8 @@ const emit = defineEmits<{
   (event: 'apply', params: UserDialogParams): void
 }>()
 
-const { reference, confirmPayment, isLoading } = useStripe()
+const { reference, confirmPayment, isLoading: isPaymentLoading } = useStripe()
+const isSubscriptionLoading = inject(LOADING_KEY, false)
 
 const plans = computed(() => {
   if (props.siteData?.subscription) {
@@ -85,6 +87,9 @@ const showBillingInput = computed(() => {
   )
 })
 const changedEmail = computed(() => props.type === 'accountPlan' && props.subscriberData?.email !== email.value)
+const isLoading = computed(() => {
+  return unref(isSubscriptionLoading) || isPaymentLoading.value
+})
 const updateSubscriber = () => {
   emit('apply', {
     type: 'update',
@@ -130,7 +135,7 @@ const cancelSubscription = () => {
 }
 
 const onSubmit = async () => {
-  if (isLoading.value) {
+  if (isPaymentLoading.value) {
     return
   }
 
@@ -212,5 +217,13 @@ const onSubmit = async () => {
       .
     </div>
   </div>
-  <Button :disabled="isLoading" :text="button" primary rounded class="mt-12 w-full" @click="onSubmit" />
+  <Button
+    :disabled="isLoading"
+    :is-loading="isLoading"
+    :text="button"
+    primary
+    rounded
+    class="mt-12 w-full"
+    @click="onSubmit"
+  />
 </template>
