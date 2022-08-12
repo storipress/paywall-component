@@ -41,9 +41,26 @@ const emit = defineEmits<{
   (event: 'update:type', type: UserDialogType | ''): void
 }>()
 
+const formattedRenewalDate = computed(() => {
+  const dateString = props.subscriberData?.renew_on ?? ''
+  if (!dateString) {
+    return 'N/A'
+  }
+
+  const date = new Date(dateString)
+  if (Number.isNaN(date.getTime())) {
+    return 'N/A'
+  }
+
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return `${year}/${month}/${day}`
+})
+
 const result = computed<Record<string, string>>(() => ({
   __PAID_PLAN__: props.subscriberData?.subscription?.interval ?? '',
-  __RENEWS_DATE__: props.subscriberData?.subscription?.renew_on ?? '',
+  __RENEWS_DATE__: formattedRenewalDate.value,
   __PUBLICATION_NAME__: props.siteData?.name ?? '',
 }))
 
