@@ -73,7 +73,7 @@ const {
 const auth = useAuth(tokenRef)
 const { onLogin, onSignup, onSignOut } = auth
 
-provide(LOADING_KEY, isLoading.value)
+provide(LOADING_KEY, isLoading)
 
 const profile = $computed(() => {
   if (!tokenRef.value) {
