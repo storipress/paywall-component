@@ -27,7 +27,7 @@ export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
         subscription_type: 'monthly',
         subscription: {
           interval: '12',
-          price: '5',
+          price: '500',
         },
       },
     })
