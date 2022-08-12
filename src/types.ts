@@ -11,4 +11,4 @@ export interface Article {
   plan: ArticlePlan
 }
 
-export const LOADING_KEY: InjectionKey<Ref<boolean> | boolean> = Symbol('isLoading')
+export const LOADING_KEY: InjectionKey<Readonly<Ref<boolean>> | boolean> = Symbol('isLoading')

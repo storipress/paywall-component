@@ -123,10 +123,10 @@ export function useSubscription() {
 
   const isLoading = computed(() => {
     return (
-      updateSubscriberLoading ||
-      createSubscriberSubscriptionLoading ||
-      changeSubscriberSubscriptionLoading ||
-      cancelSubscriberSubscriptionLoading
+      updateSubscriberLoading.value ||
+      createSubscriberSubscriptionLoading.value ||
+      changeSubscriberSubscriptionLoading.value ||
+      cancelSubscriberSubscriptionLoading.value
     )
   })
 
