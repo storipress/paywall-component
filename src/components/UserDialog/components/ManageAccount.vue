@@ -19,9 +19,19 @@ const emit = defineEmits<{
   (event: 'apply', params: UserDialogParams, showDialog?: boolean): void
 }>()
 
+function addDecimal(text?: string | number | null) {
+  if (Number.isNaN(Number(text))) return '0.00'
+  if (typeof text === 'number' || /\d+\.\d+/.test(String(text))) {
+    text = Number(text).toFixed(2)
+  }
+  return Number(`${text ?? 0}`.replace(/\B(?=\d{2}$)/, '.'))
+    .toFixed(2)
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
 const subscriptionPlan = computed(() => {
   const { interval = '', price = '' } = props.subscriberData?.subscription ?? {}
-  return props.subscriberData?.subscription && `$${price}/${interval}`
+  return props.subscriberData?.subscription && `$${addDecimal(price)}/${interval}`
 })
 
 const subscriberCardInfo = computed(() => {
