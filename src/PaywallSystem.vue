@@ -184,25 +184,25 @@ watch(tokenRef, async (token) => {
 </script>
 
 <template>
+  <transition
+    enter-active-class="transition duration-100 ease-out"
+    enter-from-class="transform scale-95 opacity-0"
+    enter-to-class="transform scale-100 opacity-100"
+    leave-active-class="transition duration-75 ease-in"
+    leave-from-class="transform scale-100 opacity-100"
+    leave-to-class="transform scale-95 opacity-0"
+  >
+    <Paywall
+      v-if="showPaywall || showPaywallForSignup"
+      class="paywall pointer-events-auto"
+      :type="articleType"
+      :publication-name="siteSubscriptionInfo?.name"
+      :default-email="defaultEmailForSignup"
+      @click="onClick"
+      @click-sign-in="visible = true"
+    />
+  </transition>
   <div class="pointer-events-none fixed bottom-0 flex w-full justify-center">
-    <transition
-      enter-active-class="transition duration-100 ease-out"
-      enter-from-class="transform scale-95 opacity-0"
-      enter-to-class="transform scale-100 opacity-100"
-      leave-active-class="transition duration-75 ease-in"
-      leave-from-class="transform scale-100 opacity-100"
-      leave-to-class="transform scale-95 opacity-0"
-    >
-      <Paywall
-        v-if="showPaywall || showPaywallForSignup"
-        class="paywall pointer-events-auto"
-        :type="articleType"
-        :publication-name="siteSubscriptionInfo?.name"
-        :default-email="defaultEmailForSignup"
-        @click="onClick"
-        @click-sign-in="visible = true"
-      />
-    </transition>
     <transition
       appear
       enter-active-class="ease-in-out duration-500"
@@ -214,7 +214,7 @@ watch(tokenRef, async (token) => {
     >
       <Badge
         v-if="showBadge"
-        class="pointer-events-auto z-10 mb-8"
+        class="pointer-events-auto z-10 mb-4"
         :account-avatar="profile?.id && (profile?.avatar || favicon)"
         :has-comment="hasComment"
         :comment-count="commentCount"
