@@ -51,10 +51,10 @@ const showBadge = $computed(() => {
   return ready
 })
 const showPaywall = $computed(() => {
+  const { state, paywall } = props.paywallMachine
   if (!ready) {
     return false
   }
-  const { state, paywall } = props.paywallMachine
   return state.value === PaywallState.PaywallOrLogIn && paywall.value
 })
 let showPaywallForSignup = $ref(false)
