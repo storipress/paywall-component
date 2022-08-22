@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useVModel } from '@vueuse/core'
+import { useEventBus, useVModel } from '@vueuse/core'
 import type {
   ApplyHandlerType,
   UserDialogHandler,
@@ -12,11 +12,13 @@ import type { PaywallMachine } from './machine'
 import Modals from './Modals.vue'
 import { LoginReason, PaywallState } from './machine'
 import { ArticlePlan, LOADING_KEY } from './types'
+import { SIGNUP_KEY } from './definitions'
 
 const props = defineProps<{
   token: string | null
   favicon: string
   logo: string
+  inArticle: boolean
   hasComment: boolean
   commentCount: number
   paywallMachine: PaywallMachine
@@ -48,7 +50,7 @@ const articleType = $computed(() => {
 })
 const ready = $computed(() => props.paywallMachine.context.article)
 const showBadge = $computed(() => {
-  return ready
+  return props.inArticle && ready
 })
 const showPaywall = $computed(() => {
   const { state, paywall } = props.paywallMachine
@@ -82,7 +84,7 @@ const profile = $computed(() => {
   return subscriberProfile.value
 })
 
-const onClick = async (email: string) => {
+const handleSignup = async (email: string) => {
   const checkExistEmailAndShowDialog = async (showDialogType: UserDialogType) => {
     const result = await onSignup(email)
     if (result && result?.data.signUpSubscriber) {
@@ -110,6 +112,9 @@ const onClick = async (email: string) => {
   }
 }
 
+const { on } = useEventBus(SIGNUP_KEY)
+on(handleSignup)
+
 const currentSubscriptionPlan = computed<UserDialogType>(() => {
   return !profile || profile?.subscription_type === 'free' ? 'freeAccount' : 'paidAccount'
 })
@@ -117,6 +122,23 @@ function badgeClick() {
   dialogType = profile?.id ? currentSubscriptionPlan.value : 'welcome'
   visible = true
 }
+
+// workaround for scroll lock by headlessui
+function forceEnableScroll() {
+  if (visible || modalVisible) {
+    return
+  }
+
+  document.documentElement.style.removeProperty('overflow')
+  document.documentElement.style.removeProperty('padding-right')
+}
+
+watch([$$(visible), $$(modalVisible)], (visibleValue, modalVisibleValue) => {
+  if (visibleValue || modalVisibleValue) {
+    return
+  }
+  setTimeout(forceEnableScroll, 100)
+})
 
 const UPDATE_DIALOG = new Set([
   'signupFree',
@@ -193,12 +215,12 @@ watch(tokenRef, async (token) => {
     leave-to-class="transform scale-95 opacity-0"
   >
     <Paywall
-      v-if="showPaywall || showPaywallForSignup"
+      v-if="inArticle && (showPaywall || showPaywallForSignup)"
       class="paywall pointer-events-auto"
       :type="articleType"
       :publication-name="siteSubscriptionInfo?.name"
       :default-email="defaultEmailForSignup"
-      @click="onClick"
+      @click="handleSignup"
       @click-sign-in="visible = true"
     />
   </transition>
