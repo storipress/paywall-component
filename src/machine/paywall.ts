@@ -108,7 +108,7 @@ export function createPaywallMachine({ profile }: API) {
         return
       }
 
-      context.client = client
+      context.client = markRaw(client)
       state.value = PaywallState.Ready
     },
     setArticle: (article: any) => {

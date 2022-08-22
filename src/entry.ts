@@ -3,17 +3,20 @@ import type { Ref } from 'vue'
 import { createApp } from 'vue'
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core'
 import { DefaultApolloClient } from '@vue/apollo-composable'
+import { useEventBus } from '@vueuse/core'
 import PaywallSystem from './PaywallSystem.vue'
 import type { Article } from './types'
 import type { RouterLike } from './composables'
 import { useAuth, useQueryAction } from './composables'
 import { usePaywallSystem } from './use-paywall'
+import { SIGNUP_KEY } from './definitions'
 export * from './components'
 export * from './composables'
 export * from './machine'
 export { PaywallSystem }
 export { ref, reactive, computed, watch, watchEffect } from 'vue'
-export { useStorage, useStorageAsync, syncRef } from '@vueuse/core'
+export { SIGNUP_KEY } from './definitions'
+export { useStorage, useStorageAsync, syncRef, useEventBus } from '@vueuse/core'
 
 export interface CommentInfo {
   enable: boolean
@@ -35,6 +38,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
   const { paywallMachine, updateToken, reload, reloadRef } = usePaywallSystem(token, client)
   const auth = useAuth(token)
   const check = useQueryAction({ auth, router, fallbackLocation: true })
+  const inArticle = ref(false)
   const app = createApp({
     setup: () => {
       return () => {
@@ -44,6 +48,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
           favicon,
           logo,
           paywallMachine,
+          inArticle: inArticle.value,
           hasComment: comment.enable,
           commentCount: comment.count,
           onClickComment: comment.onClick,
@@ -55,10 +60,16 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
   app.provide(DefaultApolloClient, client)
   app.mount(el)
 
+  const { emit } = useEventBus(SIGNUP_KEY)
+
   return {
     paywallMachine,
     check,
     reload,
+    signUp: emit,
+    setInArticle: (value: boolean) => {
+      inArticle.value = value
+    },
     setArticle(article: Article) {
       paywallMachine.setArticle(article)
     },
