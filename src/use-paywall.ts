@@ -44,6 +44,7 @@ export function usePaywallSystem(token: Ref<string | null>, client: ApolloClient
   })
 
   return {
+    profile: subscriberProfile,
     reloadRef,
     reload,
     paywallMachine,
