@@ -35,7 +35,7 @@ export interface MountPaywallInput {
 }
 
 export function mountPaywall({ el, client, favicon, logo, token, router, comment }: MountPaywallInput) {
-  const { paywallMachine, updateToken, reload, reloadRef } = usePaywallSystem(token, client)
+  const { paywallMachine, updateToken, reload, reloadRef, profile } = usePaywallSystem(token, client)
   const auth = useAuth(token)
   const check = useQueryAction({ auth, router, fallbackLocation: true })
   const inArticle = ref(false)
@@ -63,6 +63,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
   const { emit } = useEventBus(SIGNUP_KEY)
 
   return {
+    profile,
     paywallMachine,
     check,
     reload,
