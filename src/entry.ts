@@ -52,7 +52,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
           inArticle: inArticle.value,
           hasComment: comment.enable,
           commentCount: comment.count,
-          // there can not directly use the outside ref varialbe, this app will not be notify if the ref is updated. So there uses an computed function to wrap the ref to manully add an listener for the ref change.
+          // Here can not directly use the outside ref varialbe, this app will not be notify if the ref is updated. So here uses an computed function to wrap the ref to manully add an listener for the ref change.
           mapElementIdToArticleForPaywall: computed(() => mapElementIdToArticleForPaywall.value).value,
           hideFloatingPaywall: true,
           onClickComment: comment.onClick,
