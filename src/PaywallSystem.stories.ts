@@ -35,8 +35,11 @@ const Template: Story = (args, { argTypes }) => ({
         token: token.value,
         logo,
         paywallMachine,
+        inArticle: true,
         hasComment: true,
         commentCount: 27,
+        mapElementIdToArticleForPaywall: {},
+        hideFloatingPaywall: false,
         onCommentClick: () => {},
         'onUpdate:token': updateToken,
       })
