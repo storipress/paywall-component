@@ -39,6 +39,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
   const auth = useAuth(token)
   const check = useQueryAction({ auth, router, fallbackLocation: true })
   const inArticle = ref(false)
+  const mapElementIdToArticleForPaywall = ref<Record<string, Article>>({})
   const app = createApp({
     setup: () => {
       return () => {
@@ -51,6 +52,8 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
           inArticle: inArticle.value,
           hasComment: comment.enable,
           commentCount: comment.count,
+          mapElementIdToArticleForPaywall: computed(() => mapElementIdToArticleForPaywall.value).value,
+          hideFloatingPaywall: true,
           onClickComment: comment.onClick,
           'onUpdate:token': updateToken,
         })
@@ -74,7 +77,17 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
     setArticle(article: Article) {
       paywallMachine.setArticle(article)
     },
+    mountArticlePaywall(id: string, article: Article) {
+      mapElementIdToArticleForPaywall.value = {
+        ...mapElementIdToArticleForPaywall.value,
+        [id]: article,
+      }
+    },
+    unmountAllArticlePaywall() {
+      mapElementIdToArticleForPaywall.value = {}
+    },
     unmount() {
+      mapElementIdToArticleForPaywall.value = {}
       app.unmount()
     },
   }

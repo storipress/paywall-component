@@ -32,6 +32,8 @@ export interface SubscriberProfile {
   subscribed: boolean
 }
 
+export type PaywallType = 'hide' | 'free' | 'paid' | 'upgrade'
+
 // hand write state machine
 export function createPaywallMachine({ profile }: API) {
   const state = ref(PaywallState.Init)
@@ -69,6 +71,18 @@ export function createPaywallMachine({ profile }: API) {
       )
       .with([P.nullish, P.union(P.nullish, P.boolean)], noop)
       .exhaustive()
+  }
+
+  function getPaywallTypeForArticle(article: Article): PaywallType {
+    return match<[ArticlePlan, boolean, boolean], PaywallType>([
+      article.plan,
+      Boolean(profile.value),
+      profile.value?.subscribed ?? false,
+    ])
+      .with([ArticlePlan.Member, false, P.boolean], () => 'free')
+      .with([ArticlePlan.Subscriber, false, P.boolean], () => 'paid')
+      .with([ArticlePlan.Subscriber, true, false], () => 'upgrade')
+      .otherwise(() => 'hide')
   }
 
   let isChecking = false
@@ -124,5 +138,6 @@ export function createPaywallMachine({ profile }: API) {
       resetState()
     },
     resetState,
+    getPaywallTypeForArticle,
   })
 }

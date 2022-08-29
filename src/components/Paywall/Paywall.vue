@@ -3,21 +3,20 @@ import { ErrorMessage as VeeErrorMessage, Field as VeeField, Form as VeeForm } f
 import { object as yupObject, string as yupString } from 'yup'
 import { Button } from '../index'
 import { data } from './data'
+import type { PaywallType } from '~/machine/paywall'
 
-const props = defineProps({
-  type: {
-    type: String,
-    default: '',
-  },
-  publicationName: {
-    type: String,
-    default: '',
-  },
-  defaultEmail: {
-    type: String,
-    default: '',
-  },
-})
+const props = withDefaults(
+  defineProps<{
+    type: PaywallType
+    publicationName: string
+    defaultEmail: string
+  }>(),
+  {
+    type: 'hide',
+    publicationName: '',
+    defaultEmail: '',
+  }
+)
 const emit = defineEmits<{
   (event: 'click', val: string): void
   (event: 'clickSignIn'): void

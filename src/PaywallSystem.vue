@@ -13,6 +13,7 @@ import Modals from './Modals.vue'
 import { LoginReason, PaywallState } from './machine'
 import { ArticlePlan, LOADING_KEY } from './types'
 import { SIGNUP_KEY } from './definitions'
+import type { Article } from './types'
 
 const props = defineProps<{
   token: string | null
@@ -22,6 +23,8 @@ const props = defineProps<{
   hasComment: boolean
   commentCount: number
   paywallMachine: PaywallMachine
+  mapElementIdToArticleForPaywall: Record<string, Article>
+  hideFloatingPaywall: boolean
 }>()
 
 const emit = defineEmits<{
@@ -206,6 +209,16 @@ watch(tokenRef, async (token) => {
 </script>
 
 <template>
+  <Teleport v-for="(value, key, index) in mapElementIdToArticleForPaywall" :key="`${index}-${key}`" :to="`#${key}`">
+    <Paywall
+      class="paywall"
+      :type="props.paywallMachine.getPaywallTypeForArticle(value)"
+      :publication-name="siteSubscriptionInfo?.name"
+      :default-email="defaultEmailForSignup"
+      @click="handleSignup"
+      @click-sign-in="visible = true"
+    />
+  </Teleport>
   <transition
     enter-active-class="transition duration-100 ease-out"
     enter-from-class="transform scale-95 opacity-0"
@@ -215,7 +228,7 @@ watch(tokenRef, async (token) => {
     leave-to-class="transform scale-95 opacity-0"
   >
     <Paywall
-      v-if="inArticle && (showPaywall || showPaywallForSignup)"
+      v-if="!hideFloatingPaywall && inArticle && (showPaywall || showPaywallForSignup)"
       class="paywall pointer-events-auto"
       :type="articleType"
       :publication-name="siteSubscriptionInfo?.name"
