@@ -229,7 +229,7 @@ watch(tokenRef, async (token) => {
   >
     <Paywall
       v-if="!hideFloatingPaywall && inArticle && (showPaywall || showPaywallForSignup)"
-      class="paywall pointer-events-auto"
+      class="paywall pointer-events-auto fixed bottom-9"
       :type="articleType"
       :publication-name="siteSubscriptionInfo?.name"
       :default-email="defaultEmailForSignup"

@@ -55,7 +55,7 @@ watch([() => props.defaultEmail, emailRef], () => {
 <template>
   <div class="flex justify-center">
     <div
-      class="layer-2 fixed bottom-9 w-full overflow-scroll rounded-t-2xl bg-zinc-50 px-6 py-5 md:py-8 md:px-10 lg:h-fit lg:w-[70vw] lg:min-w-[45rem] lg:max-w-[60rem] lg:rounded-2xl"
+      class="layer-2 w-full overflow-scroll rounded-t-2xl bg-zinc-50 px-6 py-5 md:py-8 md:px-10 lg:h-fit lg:w-[70vw] lg:min-w-[45rem] lg:max-w-[60rem] lg:rounded-2xl"
     >
       <div class="mb-4 text-zinc-700 md:mr-4 md:mb-11">
         <div class="text-display-large font-black md:text-[2.625rem] md:leading-[1.05]" v-html="currentData.title" />
