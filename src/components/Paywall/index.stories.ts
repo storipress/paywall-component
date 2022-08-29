@@ -82,7 +82,7 @@ const PaywallTemplate: Story = (args) => ({
   },
   template: `
   login status: {{ !!isAuth }}
-  <Paywall v-bind="args" :publication-name="siteSubscriptionInfo?.name" @click="onClick" @click-sign-in="visible = true" />
+  <Paywall class="fixed bottom-9" v-bind="args" :publication-name="siteSubscriptionInfo?.name" @click="onClick" @click-sign-in="visible = true" />
   <UserDialog v-model="visible" :type="dialogType" :logo="spLogo" :site-data="siteSubscriptionInfo" :subscriber-data="subscriberProfile" @apply-handler="onApplyHandler" />
   <Modal v-model="modalVisible" :logo="spLogo" title="We’ve sent you a login link!" sub="If the email doesn't arrive in 3 minutes, check your spam folder." button="Close" @click="modalVisible = false" />
   `,

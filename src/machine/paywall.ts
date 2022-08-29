@@ -44,7 +44,7 @@ export function createPaywallMachine({ profile }: API) {
     profile,
   })
 
-  async function checkPlan() {
+  function checkPlan() {
     match([context.article?.plan, profile.value?.subscribed] as const)
       .with([ArticlePlan.Free, undefined], () => {
         context.reason = LoginReason.None
@@ -102,7 +102,7 @@ export function createPaywallMachine({ profile }: API) {
       if (s === PaywallState.Init) {
         return
       }
-      debounceCheckPlan()
+      await debounceCheckPlan()
     },
     { immediate: true, deep: true }
   )
