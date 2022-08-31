@@ -87,7 +87,7 @@ const profile = $computed(() => {
   return subscriberProfile.value
 })
 
-const handleSignup = async (email: string) => {
+const handleSignup = async (email: string, customArticleType?: string) => {
   const checkExistEmailAndShowDialog = async (showDialogType: UserDialogType) => {
     const result = await onSignup(email)
     if (result && result?.data.signUpSubscriber) {
@@ -99,7 +99,7 @@ const handleSignup = async (email: string) => {
     }
   }
 
-  switch (articleType) {
+  switch (customArticleType || articleType) {
     case 'free': {
       await checkExistEmailAndShowDialog('signupFree')
       break
@@ -217,7 +217,7 @@ watch(tokenRef, async (token) => {
       :type="props.paywallMachine.getPaywallTypeForArticle(value)"
       :publication-name="siteSubscriptionInfo?.name"
       :default-email="defaultEmailForSignup"
-      @click="handleSignup"
+      @click="handleSignup($event, props.paywallMachine.getPaywallTypeForArticle(value))"
       @click-sign-in="visible = true"
     />
   </Teleport>
