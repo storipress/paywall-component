@@ -49,6 +49,7 @@ const confirm = () => {
 const shareToTwitter = () => {
   window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(location.origin)}`, '_blank', 'noopener')
   modalVisible.value = false
+  emit('confirm')
 }
 </script>
 
@@ -77,7 +78,7 @@ const shareToTwitter = () => {
             <span class="text-caption w-full pr-6 font-bold text-white">Tweet</span>
           </template>
         </Button>
-        <button class="text-caption font-bold text-black/50" @click="modalVisible = false">
+        <button class="text-caption font-bold text-black/50" @click="confirm">
           <u>Maybe later</u>
         </button>
       </div>

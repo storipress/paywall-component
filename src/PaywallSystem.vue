@@ -178,7 +178,9 @@ const onApplyHandler = async ({ type, ...params }: UserDialogParams, showDialog:
     if (dialogType === 'confirmation') {
       dialogType = 'accountPlan'
     } else {
-      modalVisible = true
+      setTimeout(() => {
+        modalVisible = true
+      }, 1000)
       visible = showDialog
     }
   } else if (type === 'login' && articleType !== 'upgrade' && 'email' in params) {
