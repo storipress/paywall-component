@@ -17,11 +17,11 @@ export const data: Record<UserDialogType | '', DialogText> = {
   },
   freeAccount: {
     title: 'Your account.',
-    sub: 'You are currently on a free membership. Upgrade to a paid subscription for full access.',
+    sub: 'You are currently on a free membership.<br /> Upgrade to a paid subscription for full access.',
   },
   paidAccount: {
     title: 'Your account.',
-    sub: 'You are currently on a __PAID_PLAN__ membership. Your subscription renews on __RENEWS_DATE__.',
+    sub: 'You are currently on a __PAID_PLAN__ membership.<br /> Your subscription renews on __RENEWS_DATE__.',
   },
   accountPlan: {
     title: 'Your account.',
