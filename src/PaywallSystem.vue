@@ -165,6 +165,7 @@ const handlers: Record<ApplyHandlerType, UserDialogHandler> = {
 
 const onApplyHandler = async ({ type, ...params }: UserDialogParams, showDialog: boolean) => {
   const result = await handlers[type](params)
+  if (type === 'logout') window.location.reload()
   if (UPDATE_DIALOG.has(dialogType)) {
     await refetchSubscriber()
     const { verified = false } = profile || {}
