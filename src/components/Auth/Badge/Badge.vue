@@ -27,7 +27,7 @@ const emit = defineEmits<{
 }>()
 
 const pillText = computed(() => {
-  return props.loginState ? 'Account settings' : 'Login'
+  return props.loginState ? 'Account settings' : 'Signup or Login'
 })
 
 const onClick = () => {

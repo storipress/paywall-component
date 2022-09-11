@@ -83,7 +83,7 @@ watch([() => props.defaultEmail, emailRef], () => {
           />
         </VeeForm>
         <div v-if="!isUpgrade" class="mt-1.5 text-xs text-zinc-600 md:mt-2.5">
-          Already have an account? <button @click="emit('clickSignIn')"><u>Sign in</u></button>
+          Already have an account? <button @click="emit('clickSignIn')"><u>Next</u></button>
         </div>
       </div>
     </div>
