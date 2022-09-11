@@ -22,7 +22,7 @@ import { Button } from '../../index'
       <span class="absolute bg-zinc-50 px-[0.6rem] text-lg font-semibold">Or</span>
     </div>
 
-    <Button primary rounded color-hex="#ffffff" class="layer-1 w-full hidden">
+    <Button primary rounded color-hex="#ffffff" class="layer-1 w-full">
       <template #buttonText>
         <Email class="h-6 w-6 text-zinc-700" />
         <span class="text-button w-full pr-6 text-zinc-700">Log in with Email</span>
