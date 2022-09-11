@@ -31,7 +31,7 @@ const onSubmit = function (formData: any, submitEvent: any) {
 <template>
   <VeeForm :validation-schema="schema" @submit="onSubmit">
     <div class="relative flex-auto" v-bind="$attrs">
-      <Button primary rounded color-hex="#ffffff" class="layer-1 mb-6 w-full display-hidden" type="button">
+      <Button primary rounded color-hex="#ffffff" class="layer-1 mb-6 w-full hidden" type="button">
         <template #buttonText>
           <Email class="h-6 w-6 text-zinc-700" />
           <span class="text-button w-full pr-6 text-zinc-700">Log in with Email</span>
