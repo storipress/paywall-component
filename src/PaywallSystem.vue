@@ -184,10 +184,11 @@ const onApplyHandler = async ({ type, ...params }: UserDialogParams, showDialog:
       }, 1000)
       visible = showDialog
     }
-  } else if (type === 'login' && articleType !== 'upgrade' && 'email' in params) {
+  } else if (type === 'login' && 'email' in params) {
     visible = false
-    showPaywallForSignup = true
-    defaultEmailForSignup = params.email
+    setTimeout(() => {
+      handleSignup(params.email, 'free')
+    }, 1000)
   }
 }
 
