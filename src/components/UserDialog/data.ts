@@ -7,9 +7,9 @@ const EMPTY: DialogText = {
 
 export const data: Record<UserDialogType | '', DialogText> = {
   welcome: {
-    title: 'Signup or login.',
+    title: 'Subscribe or Login.',
     sub: 'Enter your email below',
-    button: 'Sign in',
+    button: 'Next',
   },
   welcomeInSocial: {
     title: 'Welcome back.',
