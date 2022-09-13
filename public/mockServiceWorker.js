@@ -16,7 +16,7 @@ self.addEventListener('install', function () {
   return self.skipWaiting()
 })
 
-self.addEventListener('activate', async function (event) {
+self.addEventListener('activate',  function (event) {
   return self.clients.claim()
 })
 
