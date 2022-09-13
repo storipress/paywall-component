@@ -3,10 +3,10 @@ import { noop } from 'lodash-es'
 import type { Component, PropType } from 'vue'
 import { SlideOver } from '../index'
 import defaultBackground from '../../../assets/subs-default.png'
+import { CrossThin } from '../Icons'
 import type { UserDialogParams, UserDialogType } from './definition'
 import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount, OnlyButton } from './components/index'
 import { data } from './data'
-import { CrossThin } from '~/components/Icons'
 
 const props = defineProps({
   type: {

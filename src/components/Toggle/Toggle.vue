@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { Switch } from '@headlessui/vue'
+import { Tick } from '../Icons'
 import { classname } from './classname'
-import { Tick } from '~/components/Icons'
 
 const props = defineProps({
   type: {

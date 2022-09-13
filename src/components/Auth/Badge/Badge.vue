@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { User } from '../../Icons'
 import CommentIcon from './CommentIcon.vue'
-import { User } from '~/components/Icons'
 
 const props = defineProps({
   loginState: {

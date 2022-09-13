@@ -3,7 +3,7 @@ import { ErrorMessage as VeeErrorMessage, Field as VeeField, Form as VeeForm } f
 import { object as yupObject, string as yupString } from 'yup'
 import { Button } from '../../index'
 import type { UserDialogParams } from '../definition'
-import { Email } from '~/components/Icons'
+import { Email } from '../../Icons'
 
 defineProps({
   button: {
@@ -31,7 +31,7 @@ const onSubmit = function (formData: any, submitEvent: any) {
 <template>
   <VeeForm :validation-schema="schema" @submit="onSubmit">
     <div class="relative flex-auto" v-bind="$attrs">
-      <Button primary rounded color-hex="#ffffff" class="layer-1 mb-6 w-full hidden" type="button">
+      <Button primary rounded color-hex="#ffffff" class="layer-1 mb-6 hidden w-full" type="button">
         <template #buttonText>
           <Email class="h-6 w-6 text-zinc-700" />
           <span class="text-button w-full pr-6 text-zinc-700">Log in with Email</span>
