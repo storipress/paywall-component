@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   .layer-0 {
     @apply border border-black/5 shadow-0-layer;
@@ -14,44 +13,44 @@
     @apply border border-black/5 shadow-2-layer;
   }
   .layer-3 {
-    @apply shadow-3-layer
+    @apply shadow-3-layer;
   }
 
   .text-default {
-    @apply text-zinc-800
+    @apply text-zinc-800;
   }
 
   .text-display-x-large {
-    @apply text-default text-[2.625rem] font-medium leading-[2.75rem]
+    @apply text-default text-[2.625rem] font-medium leading-[2.75rem];
   }
   .text-display-large {
-    @apply text-default text-[1.75rem] font-medium leading-8 
+    @apply text-default text-[1.75rem] font-medium leading-8;
   }
   .text-display-medium {
-    @apply text-default text-[1.625rem] font-normal leading-8 
+    @apply text-default text-[1.625rem] font-normal leading-8;
   }
   .text-pageheading {
-    @apply text-default text-xl font-semibold leading-6
+    @apply text-default text-xl font-semibold leading-6;
   }
   .text-display-small {
-    @apply text-default text-xl font-semibold leading-[1.2rem]
+    @apply text-default text-xl font-semibold leading-[1.2rem];
   }
   .text-heading {
-    @apply text-default text-base font-medium
+    @apply text-default text-base font-medium;
   }
   .text-inputs {
-    @apply text-default text-base font-normal
+    @apply text-default text-base font-normal;
   }
   .text-button {
-    @apply text-default text-sm font-medium leading-4
+    @apply text-default text-sm font-medium leading-4;
   }
   .text-body {
-    @apply text-default text-sm font-normal
+    @apply text-default text-sm font-normal;
   }
   .text-subheading {
-    @apply text-default text-xs font-semibold leading-4 uppercase
+    @apply text-default text-xs font-semibold leading-4 uppercase;
   }
   .text-caption {
-    @apply text-default text-xs font-normal
+    @apply text-default text-xs font-normal;
   }
 }
