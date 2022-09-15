@@ -1792,12 +1792,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/vue@npm:^1.6.4":
-  version: 1.6.5
-  resolution: "@headlessui/vue@npm:1.6.5"
+"@headlessui/vue@npm:^1.7.1":
+  version: 1.7.1
+  resolution: "@headlessui/vue@npm:1.7.1"
   peerDependencies:
     vue: ^3.2.0
-  checksum: 1c6419fc439684700dc76c67ec329b5281b65c75ee6aeffbfa5fd7905e925f619a5dc09e338e840670d476aa7f699bba74327c27ec59183b07b7cc7dd2875689
+  checksum: 4c3f473282f8f05af44cc362554fb99665e0ae99bb32ffd650bb2385a07dc8c7780b807a3236955de47a67f9852362c869c20618a4cef8f0a619bd863ff194a8
   languageName: node
   linkType: hard
 
@@ -2251,7 +2251,7 @@ __metadata:
     "@antfu/eslint-config-vue": ^0.25.2
     "@apollo/client": ^3.6.6
     "@babel/core": ^7.18.6
-    "@headlessui/vue": ^1.6.4
+    "@headlessui/vue": ^1.7.1
     "@intlify/vite-plugin-vue-i18n": ^3.4.0
     "@storybook/addon-actions": ^6.5.9
     "@storybook/addon-docs": ^6.5.9
