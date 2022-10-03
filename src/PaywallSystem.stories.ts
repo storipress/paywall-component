@@ -40,7 +40,7 @@ const Template: Story = (args, { argTypes }) => ({
         commentCount: 27,
         mapElementIdToArticleForPaywall: {},
         hideFloatingPaywall: false,
-        onCommentClick: () => {},
+        onClickComment: () => {},
         'onUpdate:token': updateToken,
       })
     }
