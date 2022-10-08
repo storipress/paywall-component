@@ -14,7 +14,9 @@ const { t } = useI18n()
   <div>
     <div class="inline-block text-4xl" />
     <p>
-      <a rel="noopener noreferrer noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank"> Vitesse Lite </a>
+      <a rel="noopener noreferrer noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
+        Vitesse Lite
+      </a>
     </p>
     <p>
       <em text-sm op75>Opinionated Vite Starter Template</em>
