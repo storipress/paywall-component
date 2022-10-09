@@ -14,5 +14,6 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'antfu/if-newline': 'off',
+    'vue/component-name-in-template-casing': 'off',
   },
 }
