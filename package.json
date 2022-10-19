@@ -20,7 +20,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepack": "yarn build"
   },
   "dependencies": {
     "@apollo/client": "^3.6.6",
