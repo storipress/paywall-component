@@ -6,6 +6,9 @@
   "exports": {
     ".": {
       "import": "./dist/builder-component.mjs"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css"
     }
   },
   "scripts": {
