@@ -2,10 +2,9 @@
 
 ## [1.0.1](https://github.com/storipress/builder-component/compare/v1.0.0...v1.0.1) (2022-10-19)
 
-
 ### Bug Fixes
 
-* add README ([8ef675e](https://github.com/storipress/builder-component/commit/8ef675e56741296b24e6a64ea287893f83c80348))
+- add README ([8ef675e](https://github.com/storipress/builder-component/commit/8ef675e56741296b24e6a64ea287893f83c80348))
 
 ## 1.0.0 (2022-10-19)
 
