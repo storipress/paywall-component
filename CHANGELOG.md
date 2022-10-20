@@ -2,10 +2,9 @@
 
 ## [1.1.0](https://github.com/storipress/builder-component/compare/v1.0.1...v1.1.0) (2022-10-20)
 
-
 ### Features
 
-* add typescript definition[SPMVP-3964] ([bd4b00c](https://github.com/storipress/builder-component/commit/bd4b00c479780aac6666d337aff613342d18f11c))
+- add typescript definition[SPMVP-3964] ([bd4b00c](https://github.com/storipress/builder-component/commit/bd4b00c479780aac6666d337aff613342d18f11c))
 
 ## [1.0.1](https://github.com/storipress/builder-component/compare/v1.0.0...v1.0.1) (2022-10-19)
 
