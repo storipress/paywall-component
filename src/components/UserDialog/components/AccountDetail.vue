@@ -10,7 +10,7 @@ const props = withDefaults(
   defineProps<{
     type?: string
     button?: string
-    siteData?: {
+    siteData: {
       name: string
       email: string
       subscription: boolean
@@ -19,7 +19,7 @@ const props = withDefaults(
       monthly_price_id: string
       yearly_price_id: string
     }
-    subscriberData?: {
+    subscriberData: {
       email: string
       first_name: string
       last_name: string
@@ -29,6 +29,7 @@ const props = withDefaults(
     showBilling: boolean
   }>(),
   {
+    type: 'free',
     button: '',
     useSlideOver: true,
   }
