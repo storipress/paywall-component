@@ -4324,7 +4324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-dom@npm:3.2.37, @vue/compiler-dom@npm:^3.2.0, @vue/compiler-dom@npm:^3.2.37":
+"@vue/compiler-dom@npm:3.2.37":
   version: 3.2.37
   resolution: "@vue/compiler-dom@npm:3.2.37"
   dependencies:
@@ -4334,7 +4334,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-dom@npm:3.2.40, @vue/compiler-dom@npm:^3.2.38":
+"@vue/compiler-dom@npm:3.2.40, @vue/compiler-dom@npm:^3.2.0, @vue/compiler-dom@npm:^3.2.37, @vue/compiler-dom@npm:^3.2.38":
   version: 3.2.40
   resolution: "@vue/compiler-dom@npm:3.2.40"
   dependencies:
@@ -4344,7 +4344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-sfc@npm:3.2.37, @vue/compiler-sfc@npm:^3.2.0, @vue/compiler-sfc@npm:^3.2.37":
+"@vue/compiler-sfc@npm:3.2.37":
   version: 3.2.37
   resolution: "@vue/compiler-sfc@npm:3.2.37"
   dependencies:
@@ -4362,7 +4362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-sfc@npm:^3.2.38":
+"@vue/compiler-sfc@npm:^3.2.0, @vue/compiler-sfc@npm:^3.2.37, @vue/compiler-sfc@npm:^3.2.38":
   version: 3.2.40
   resolution: "@vue/compiler-sfc@npm:3.2.40"
   dependencies:
