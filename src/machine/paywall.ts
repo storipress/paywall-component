@@ -1,6 +1,6 @@
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core'
 import { noop } from 'lodash-es'
-import type { Ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import { markRaw, nextTick, reactive, ref } from 'vue'
 import { P, match } from 'ts-pattern'
 import type { Article } from '../types'
@@ -34,8 +34,26 @@ export interface SubscriberProfile {
 
 export type PaywallType = 'hide' | 'free' | 'paid' | 'upgrade'
 
+export interface PaywallMachineContext {
+  article: null | Article
+  reason: LoginReason
+  profile: SubscriberProfile | null
+}
+
+export interface PaywallMachine {
+  state: Ref<PaywallState>
+  context: PaywallMachineContext
+  paywall: ComputedRef<boolean>
+  checkPlan: () => void
+  setClient: (client: ApolloClient<NormalizedCacheObject>) => void
+  setArticle: (article: any) => void
+  reset(article: any): void
+  resetState: () => void
+  getPaywallTypeForArticle: (article: Article) => PaywallType
+}
+
 // hand write state machine
-export function createPaywallMachine({ profile }: API) {
+export function createPaywallMachine({ profile }: API): PaywallMachine {
   const state = ref(PaywallState.Init)
   const context = reactive({
     client: null as ApolloClient<NormalizedCacheObject> | null,

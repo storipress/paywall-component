@@ -3,17 +3,19 @@
   "version": "1.0.1",
   "repository": "git@github.com:storipress/builder-component.git",
   "main": "./dist/builder-component.mjs",
+  "types": "./dist/src/entry.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/builder-component.mjs"
+      "import": "./dist/builder-component.mjs",
+      "types": "./dist/src/entry.d.ts"
     },
     "./dist/style.css": {
       "import": "./dist/style.css"
     }
   },
   "scripts": {
-    "build": "vite build",
-    "build:browser": "vite build --mode browser",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "build:browser": "vite build --mode browser && vue-tsc --emitDeclarationOnly",
     "dev": "vite --port 3333 --open",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",

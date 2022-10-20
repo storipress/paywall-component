@@ -13,6 +13,8 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "declaration": true,
     "types": ["vite/client", "vite-plugin-pages/client"],
     "paths": {
       "~/*": ["src/*"]
