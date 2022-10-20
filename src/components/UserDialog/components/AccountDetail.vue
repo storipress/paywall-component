@@ -5,31 +5,34 @@ import { useStripe } from '../../../composables'
 import type { UserDialogParams } from '../definition'
 import { LOADING_KEY } from '../../../types'
 
-interface TProps {
-  type?: string
-  button?: string
-  siteData?: {
-    name: string
-    email: string
-    subscription: boolean
-    monthly_price: string
-    yearly_price: string
-    monthly_price_id: string
-    yearly_price_id: string
+// ref: https://github.com/johnsoncodehk/volar/issues/1232, https://github.com/vitejs/vite/issues/8001
+const props = withDefaults(
+  defineProps<{
+    type?: string
+    button?: string
+    siteData?: {
+      name: string
+      email: string
+      subscription: boolean
+      monthly_price: string
+      yearly_price: string
+      monthly_price_id: string
+      yearly_price_id: string
+    }
+    subscriberData?: {
+      email: string
+      first_name: string
+      last_name: string
+      subscription: { interval: string; price: string }
+      subscription_type: string
+    }
+    showBilling: boolean
+  }>(),
+  {
+    button: '',
+    useSlideOver: true,
   }
-  subscriberData?: {
-    email: string
-    first_name: string
-    last_name: string
-    subscription: { interval: string; price: string }
-    subscription_type: string
-  }
-  showBilling: boolean
-}
-const props = withDefaults(defineProps<TProps>(), {
-  button: '',
-  useSlideOver: true,
-})
+)
 
 const emit = defineEmits<{
   (event: 'apply', params: UserDialogParams): void
