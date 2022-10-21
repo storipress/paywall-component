@@ -25,6 +25,10 @@
     "build-storybook": "build-storybook",
     "prepack": "yarn build"
   },
+  "files": [
+    "./dist/**/*",
+    "./src/**/*"
+  ],
   "dependencies": {
     "@apollo/client": "^3.6.6",
     "@headlessui/vue": "^1.7.1",
