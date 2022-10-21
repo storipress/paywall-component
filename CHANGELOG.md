@@ -2,10 +2,9 @@
 
 ## [1.1.1](https://github.com/storipress/builder-component/compare/v1.1.0...v1.1.1) (2022-10-21)
 
-
 ### Bug Fixes
 
-* setup files in package.json ([7fc451e](https://github.com/storipress/builder-component/commit/7fc451eb751b5d20c29394bf5eee443a369573ed))
+- setup files in package.json ([7fc451e](https://github.com/storipress/builder-component/commit/7fc451eb751b5d20c29394bf5eee443a369573ed))
 
 ## [1.1.0](https://github.com/storipress/builder-component/compare/v1.0.1...v1.1.0) (2022-10-20)
 
