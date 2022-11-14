@@ -39,7 +39,12 @@ const emit = defineEmits<{
   (event: 'apply', params: UserDialogParams): void
 }>()
 
-const { reference, confirmPayment, isLoading: isPaymentLoading } = useStripe()
+const enabledStripe = computed(() => {
+  // stripe is not enabled if the site does not offer a paid subscription or is in preview mode
+  return props.siteData?.subscription && props.type !== 'subscribe'
+})
+
+const { reference, confirmPayment, isLoading: isPaymentLoading } = useStripe(enabledStripe.value)
 const isSubscriptionLoading = inject(LOADING_KEY, false)
 
 const plans = computed(() => {
