@@ -25,7 +25,7 @@ export function setStripeKey(key: string) {
   publishableKey = key
 }
 
-export function useStripe() {
+export function useStripe(enabledStripe: boolean) {
   const reference = ref()
   const elements = shallowRef<StripeElements>()
   const error = ref()
@@ -48,7 +48,7 @@ export function useStripe() {
   `)
 
   onMounted(() => {
-    mutate()
+    if (enabledStripe) mutate()
   })
   onDone(async ({ data }) => {
     if (!data) {
