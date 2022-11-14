@@ -85,20 +85,15 @@ export function useStripe(enabledStripe: boolean) {
           },
         })) || {}
 
-      if (error) {
+      if (error || setupIntent?.status !== 'succeeded') {
         isLoading.value = false
         isError.value = true
         return
       }
 
-      if (setupIntent?.status === 'succeeded') {
-        const result = await updatePaymentMethodMutate({ pm_id: setupIntent.payment_method as string })
-        isLoading.value = false
-        return result?.data.updatePaymentMethod
-      } else {
-        isLoading.value = false
-        isError.value = true
-      }
+      const result = await updatePaymentMethodMutate({ pm_id: setupIntent.payment_method as string })
+      isLoading.value = false
+      return result?.data.updatePaymentMethod
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log('e: ', e)
