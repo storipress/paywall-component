@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.2](https://github.com/storipress/builder-component/compare/v1.1.1...v1.1.2) (2022-11-15)
+
+### Bug Fixes
+
+- don't enable stripe in preview mode [SPMVP-4094] ([4cb2214](https://github.com/storipress/builder-component/commit/4cb221411beb0c178e6970d8c75a2cfd98476f64))
+
 ## [1.1.1](https://github.com/storipress/builder-component/compare/v1.1.0...v1.1.1) (2022-10-21)
 
 ### Bug Fixes
