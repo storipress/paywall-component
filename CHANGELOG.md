@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/storipress/builder-component/compare/v1.1.2...v1.1.3) (2023-01-12)
+
+
+### Bug Fixes
+
+* don't render paywall if type is hide ([8043f8a](https://github.com/storipress/builder-component/commit/8043f8a3b33bf2b9f0527297629d71a335b84613))
+
 ## [1.1.2](https://github.com/storipress/builder-component/compare/v1.1.1...v1.1.2) (2022-11-15)
 
 ### Bug Fixes
