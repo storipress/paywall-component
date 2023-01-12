@@ -53,7 +53,7 @@ watch([() => props.defaultEmail, emailRef], () => {
 </script>
 
 <template>
-  <div class="flex w-full justify-center">
+  <div v-if="type !== 'hide'" class="flex w-full justify-center">
     <div
       class="layer-2 w-full overflow-scroll rounded-t-2xl bg-zinc-50 px-6 py-5 md:py-8 md:px-10 lg:h-fit lg:w-[70vw] lg:min-w-[45rem] lg:max-w-[60rem] lg:rounded-2xl"
     >
