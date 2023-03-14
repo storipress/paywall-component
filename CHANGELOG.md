@@ -2,10 +2,9 @@
 
 ## [1.2.2](https://github.com/storipress/builder-component/compare/v1.2.1...v1.2.2) (2023-03-14)
 
-
 ### Bug Fixes
 
-* use unplugin vue i18n ([badefc4](https://github.com/storipress/builder-component/commit/badefc44a6a42a4922718c7a1482292d5c62de89))
+- use unplugin vue i18n ([badefc4](https://github.com/storipress/builder-component/commit/badefc44a6a42a4922718c7a1482292d5c62de89))
 
 ## [1.2.1](https://github.com/storipress/builder-component/compare/v1.2.0...v1.2.1) (2023-03-14)
 
