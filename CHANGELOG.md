@@ -2,10 +2,9 @@
 
 ## [1.2.4](https://github.com/storipress/builder-component/compare/v1.2.3...v1.2.4) (2023-03-14)
 
-
 ### Bug Fixes
 
-* fix publish config ([16b04ec](https://github.com/storipress/builder-component/commit/16b04ecda0d9fd187b6fcc4a632c85b935483bad))
+- fix publish config ([16b04ec](https://github.com/storipress/builder-component/commit/16b04ecda0d9fd187b6fcc4a632c85b935483bad))
 
 ## [1.2.3](https://github.com/storipress/builder-component/compare/v1.2.2...v1.2.3) (2023-03-14)
 
