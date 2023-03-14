@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:js-lib", ":maintainLockFilesWeekly", "helpers:disableTypesNodeMajor", ":reviewer(DanSnow)"],
+  "postUpdateOptions": ["yarnDedupeHighest"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "excludePackagePatterns": ["@headlessui/vue"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-dependencies-minor-patch"
+    },
+    {
+      "matchPackagePatterns": ["*"],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major devDependencies",
+      "groupSlug": "all-devDependencies-minor-patch"
+    },
+    {
+      "matchPackagePatterns": ["*"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchDepTypes": ["engines", "peerDependencies"],
+      "rangeStrategy": "auto"
+    }
+  ],
+  "hostRules": [
+    {
+      "matchHost": "https://npm.pkg.github.com/",
+      "hostType": "npm",
+      "encrypted": {
+        "token": "wcFMA/xDdHCJBTolAQ//ZXYxZ69VbwdKLoawSUXWpt6zf36ITkvAib4gf9DUdkqF1fiwDx9TO59Yq0BMpR74FxqgLPL3HnVmdrl0V+YkczSmz+uF6wYitG1k7jyGirpPqVyncvw01bwbvBOwWGIVf6ks44u1hVaEGb6wwwPex+WCbWm9a0WtC34uWLloDKeBaRR8o/ZuTqC4kMuQpfaSCZ1P+WJIph6ayEx+JOY+GI0twUeDuzl45u4y6tpNuPKFgBN3gS4JtX0RZE5A5S6GnSlt49qV9+x4EqQST/Z5CF9NCmgYcSMFpXU+AISpE1wnHqpjur2ujD45PGfRckey2GNscyeSSdA0iPvj9jCAbnkhzuDRvuA9ZOKMZVNefnY7lsGeCxUUJOzw7z2RMoWav/5clTGWq4WafqE098ZWrZmDa8zaJ1Xp6/jER63WbPOdK+ezY06+tl12sB/tk8hpQm0XKk6ipSBbCs9Bo5Npu4+oLRIUTOSI/noEXDC4AnnR/QtohL3Sraai0wQAIK8hJ9yTudjxXvhJQakJPjkI0Wbgc+ArCODmIDDAUnCkwDC5sQswmyKQMs9I55doNd5OPbJ6g7HAIE5tDJpgGb4QMtVC3rQjeD+tVIUKv6Zq4crcC5LMpPgW7HXjw/tsVxCdtBB0kZJ1IKmJz3rq8GjzxPPUC7H+Yu8zTY6YLHGPsN3SeQEiq2aVNz/EJmLFde80+TsLiZKtc5BTE1Zjg63+Jp+tE+N9P4tXTC43jWHvkcgo9jPzOTN7AeswN3K4K50UG3CEljbjZLMPVs+8BV5TN4sKgSIiA8zwXBBUvbBzx0Rn+J0SpzYzdAVGVOVbUNfTZqytC2UccMlGbdc"
+      }
+    }
+  ],
+  "npmrc": "@storipress:registry=https://npm.pkg.github.com/"
+}
