@@ -12,7 +12,7 @@ import type { PaywallMachine } from './machine'
 import Modals from './Modals.vue'
 import { LoginReason, PaywallState } from './machine'
 import { ArticlePlan, LOADING_KEY } from './types'
-import { SIGNUP_KEY } from './definitions'
+import { SHOW_USER_DIALOG_KEY, SIGNUP_KEY } from './definitions'
 import type { Article } from './types'
 
 const props = defineProps<{
@@ -62,8 +62,8 @@ const showPaywall = $computed(() => {
   }
   return state.value === PaywallState.PaywallOrLogIn && paywall.value
 })
-let showPaywallForSignup = $ref(false)
-let defaultEmailForSignup = $ref('')
+const showPaywallForSignup = $ref(false)
+const defaultEmailForSignup = $ref('')
 
 const { siteSubscriptionInfo } = useSite()
 const {
@@ -125,6 +125,8 @@ function badgeClick() {
   dialogType = profile?.id ? currentSubscriptionPlan.value : 'welcome'
   visible = true
 }
+const { on: onBadge } = useEventBus(SHOW_USER_DIALOG_KEY)
+onBadge(badgeClick)
 
 // workaround for scroll lock by headlessui
 function forceEnableScroll() {
