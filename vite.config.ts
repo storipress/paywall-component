@@ -79,6 +79,10 @@ export default defineConfig(({ mode }) => {
   if (mode === 'browser') {
     return {
       ...baseConfig,
+      mode: 'production',
+      define: {
+        'process.env.NODE_ENV': JSON.stringify('production'),
+      },
       build: {
         lib: {
           entry: './src/entry.ts',
@@ -88,6 +92,14 @@ export default defineConfig(({ mode }) => {
         },
         minify: false,
       },
+      plugins: [
+        baseConfig.plugins,
+
+        Vue({
+          isProduction: true,
+          reactivityTransform: true,
+        }),
+      ],
     }
   }
 
