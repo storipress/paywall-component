@@ -48,10 +48,6 @@ const baseConfig: UserConfig = {
     minify: false,
   },
   plugins: [
-    Vue({
-      reactivityTransform: true,
-    }),
-
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),
 
@@ -103,5 +99,14 @@ export default defineConfig(({ mode }) => {
     }
   }
 
-  return baseConfig
+  return {
+    ...baseConfig,
+    plugins: [
+      baseConfig.plugins,
+
+      Vue({
+        reactivityTransform: true,
+      }),
+    ],
+  }
 })
