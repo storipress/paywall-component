@@ -1,12 +1,12 @@
 /// <reference types="vitest" />
 
-import path from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import type { UserConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import AutoImport from 'unplugin-auto-import/vite'
-import VueI18n from '@intlify/vite-plugin-vue-i18n'
+import VueI18n from '@intlify/unplugin-vue-i18n'
 
 const baseConfig: UserConfig = {
   resolve: {
