@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/storipress/builder-component/compare/v1.1.3...v1.2.0) (2023-03-14)
+
+
+### Features
+
+* expose click badge API ([2bf0d41](https://github.com/storipress/builder-component/commit/2bf0d41bbfad8ca2e0d08ec3567a5c71dbc559dc))
+
 ## [1.1.3](https://github.com/storipress/builder-component/compare/v1.1.2...v1.1.3) (2023-01-12)
 
 ### Bug Fixes
