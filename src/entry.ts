@@ -9,13 +9,13 @@ import type { Article } from './types'
 import type { RouterLike } from './composables'
 import { useAuth, useQueryAction } from './composables'
 import { usePaywallSystem } from './use-paywall'
-import { SIGNUP_KEY } from './definitions'
+import { SHOW_USER_DIALOG_KEY, SIGNUP_KEY } from './definitions'
 export * from './components'
 export * from './composables'
 export * from './machine'
 export { PaywallSystem }
 export { ref, reactive, computed, watch, watchEffect } from 'vue'
-export { SIGNUP_KEY } from './definitions'
+export { SIGNUP_KEY, SHOW_USER_DIALOG_KEY } from './definitions'
 export { useStorage, useStorageAsync, syncRef, useEventBus } from '@vueuse/core'
 
 export interface CommentInfo {
@@ -65,6 +65,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
   app.mount(el)
 
   const { emit } = useEventBus(SIGNUP_KEY)
+  const { emit: emitBadge } = useEventBus(SHOW_USER_DIALOG_KEY)
 
   return {
     profile,
@@ -72,6 +73,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
     check,
     reload,
     signUp: emit,
+    showUserDialog: emitBadge,
     setInArticle: (value: boolean) => {
       inArticle.value = value
     },
