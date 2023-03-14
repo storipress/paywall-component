@@ -2,10 +2,9 @@
 
 ## [1.2.1](https://github.com/storipress/builder-component/compare/v1.2.0...v1.2.1) (2023-03-14)
 
-
 ### Bug Fixes
 
-* publish ([85fe44c](https://github.com/storipress/builder-component/commit/85fe44ccf0f2950f35f0b7c642e61f209ba6d427))
+- publish ([85fe44c](https://github.com/storipress/builder-component/commit/85fe44ccf0f2950f35f0b7c642e61f209ba6d427))
 
 ## [1.2.0](https://github.com/storipress/builder-component/compare/v1.1.3...v1.2.0) (2023-03-14)
 
