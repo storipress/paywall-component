@@ -2,11 +2,10 @@
 
 ## [1.2.3](https://github.com/storipress/builder-component/compare/v1.2.2...v1.2.3) (2023-03-14)
 
-
 ### Bug Fixes
 
-* fix unplugin-vue-i18n usage ([74ac78c](https://github.com/storipress/builder-component/commit/74ac78cd0bc250b86799a10a91249eaeb4986ed9))
-* retry publish ([c49b5af](https://github.com/storipress/builder-component/commit/c49b5af78bbd25a4c860b78c24618d9f97229ac4))
+- fix unplugin-vue-i18n usage ([74ac78c](https://github.com/storipress/builder-component/commit/74ac78cd0bc250b86799a10a91249eaeb4986ed9))
+- retry publish ([c49b5af](https://github.com/storipress/builder-component/commit/c49b5af78bbd25a4c860b78c24618d9f97229ac4))
 
 ## [1.2.2](https://github.com/storipress/builder-component/compare/v1.2.1...v1.2.2) (2023-03-14)
 
