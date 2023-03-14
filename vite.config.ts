@@ -6,7 +6,7 @@ import type { UserConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import AutoImport from 'unplugin-auto-import/vite'
-import VueI18n from '@intlify/unplugin-vue-i18n'
+import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 
 const baseConfig: UserConfig = {
   resolve: {
