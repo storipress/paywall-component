@@ -1,6 +1,6 @@
 import './styles/utilties.css'
 import type { Ref } from 'vue'
-import { createApp } from 'vue'
+import { computed, createApp, ref } from 'vue'
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import { useEventBus } from '@vueuse/core'
@@ -42,6 +42,7 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
   const mapElementIdToArticleForPaywall = ref<Record<string, Article>>({})
   const app = createApp({
     setup: () => {
+      const mapIdToArticle = computed(() => mapElementIdToArticleForPaywall.value)
       return () => {
         return h(PaywallSystem, {
           key: reloadRef.value,
@@ -52,8 +53,8 @@ export function mountPaywall({ el, client, favicon, logo, token, router, comment
           inArticle: inArticle.value,
           hasComment: comment.enable,
           commentCount: comment.count,
-          // Here can not directly use the outside ref varialbe, this app will not be notify if the ref is updated. So here uses an computed function to wrap the ref to manully add an listener for the ref change.
-          mapElementIdToArticleForPaywall: computed(() => mapElementIdToArticleForPaywall.value).value,
+          // Here can not directly use the outside ref variable, this app will not be notify if the ref is updated. So here uses an computed function to wrap the ref to manully add an listener for the ref change.
+          mapElementIdToArticleForPaywall: mapIdToArticle.value,
           hideFloatingPaywall: true,
           onClickComment: comment.onClick,
           'onUpdate:token': updateToken,
