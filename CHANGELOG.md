@@ -2,11 +2,10 @@
 
 ## [1.2.5](https://github.com/storipress/builder-component/compare/v1.2.4...v1.2.5) (2023-03-21)
 
-
 ### Bug Fixes
 
-* fix bug ([c86daa7](https://github.com/storipress/builder-component/commit/c86daa757997fae0d2da2b7e2d11536e57bf07cd))
-* **paywall:** hide scroll [SPMVP-4889] ([95164c8](https://github.com/storipress/builder-component/commit/95164c86dc5b6100629d13146f0c513de6817752))
+- fix bug ([c86daa7](https://github.com/storipress/builder-component/commit/c86daa757997fae0d2da2b7e2d11536e57bf07cd))
+- **paywall:** hide scroll [SPMVP-4889] ([95164c8](https://github.com/storipress/builder-component/commit/95164c86dc5b6100629d13146f0c513de6817752))
 
 ## [1.2.4](https://github.com/storipress/builder-component/compare/v1.2.3...v1.2.4) (2023-03-14)
 
