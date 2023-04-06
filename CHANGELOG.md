@@ -2,15 +2,13 @@
 
 ## [1.3.0](https://github.com/storipress/builder-component/compare/v1.2.5...v1.3.0) (2023-04-06)
 
-
 ### Features
 
-* lazy load stripe [SPMVP-5024] ([3209255](https://github.com/storipress/builder-component/commit/32092556ddd07416f440bf4cf0dc3642223d1e57))
-
+- lazy load stripe [SPMVP-5024] ([3209255](https://github.com/storipress/builder-component/commit/32092556ddd07416f440bf4cf0dc3642223d1e57))
 
 ### Bug Fixes
 
-* upgrade vueuse to v9 ([405e80c](https://github.com/storipress/builder-component/commit/405e80c2946f287702746b37a840353de015340c))
+- upgrade vueuse to v9 ([405e80c](https://github.com/storipress/builder-component/commit/405e80c2946f287702746b37a840353de015340c))
 
 ## [1.2.5](https://github.com/storipress/builder-component/compare/v1.2.4...v1.2.5) (2023-03-21)
 
