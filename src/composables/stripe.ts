@@ -1,5 +1,4 @@
 import type { Stripe, StripeElements } from '@stripe/stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
 import { useMutation } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
 import invariant from 'tiny-invariant'
@@ -56,7 +55,7 @@ export function useStripe(enabledStripe: boolean) {
     }
 
     invariant(publishableKey, 'Stripe key is not set')
-    stripe.value = (await loadStripe(publishableKey)) as Stripe
+    stripe.value = (await getStripe(publishableKey)) as Stripe
     createCard(stripe.value, data.requestSetupIntent)
   })
   onError(() => {
@@ -111,4 +110,9 @@ export function useStripe(enabledStripe: boolean) {
     isLoading,
     isError,
   }
+}
+
+async function getStripe(key: string) {
+  const { loadStripe } = await import('@stripe/stripe-js')
+  return await loadStripe(key)
 }
