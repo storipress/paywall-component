@@ -1,8 +1,6 @@
-/// <reference types="vitest" />
-
 import path from 'node:path'
-import { defineConfig } from 'vite'
-import type { UserConfig } from 'vite'
+import type { UserConfig } from 'vitest/config'
+import { defineConfig } from 'vitest/config'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -71,7 +69,7 @@ const baseConfig: UserConfig = {
   },
 }
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode }): UserConfig => {
   if (mode === 'browser') {
     return {
       ...baseConfig,
