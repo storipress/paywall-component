@@ -20,5 +20,6 @@
       "~/*": ["src/*"]
     }
   },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.json", "src/**/*.vue", ".storybook/**/*.ts"],
   "exclude": ["dist", "node_modules", "**/*.stories.ts", "storybook-static"]
 }

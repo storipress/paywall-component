@@ -1,4 +1,4 @@
-import { app } from '@storybook/vue3'
+import { setup, Parameters, Decorator } from '@storybook/vue3'
 import { ApolloClients } from '@vue/apollo-composable'
 import { worker } from '../src/mocks/browser'
 import { apolloClient } from '../src/api/client'
@@ -9,11 +9,13 @@ setStripeKey(import.meta.env.VITE_STRIPE_PUBLISHABLEKEY)
 
 worker.start()
 
-app.provide(ApolloClients, {
-  default: apolloClient,
+setup((app) => {
+  app.provide(ApolloClients, {
+    default: apolloClient,
+  })
 })
 
-export const parameters = {
+export const parameters: Parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
@@ -23,7 +25,7 @@ export const parameters = {
   },
 }
 
-export const decorators = [
+export const decorators: Decorator[] = [
   (story) => ({
     components: { story },
     // paywall component css will scope under #paywall
