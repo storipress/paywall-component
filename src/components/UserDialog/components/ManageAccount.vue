@@ -45,11 +45,11 @@ const isPaidPlan = computed(() => {
   return props.type === 'paidAccount'
 })
 
-const onClickSignOut = async () => {
+async function onClickSignOut() {
   emit('apply', { type: 'logout' })
 }
 
-const onChangeDialogType = (showBilling = false) => {
+function onChangeDialogType(showBilling = false) {
   emit('changeDialogType', 'accountPlan', showBilling)
 }
 </script>

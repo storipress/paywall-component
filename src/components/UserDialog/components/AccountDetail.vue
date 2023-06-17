@@ -99,7 +99,7 @@ const changedEmail = computed(() => props.type === 'accountPlan' && props.subscr
 const isLoading = computed(() => {
   return unref(isSubscriptionLoading) || isPaymentLoading.value
 })
-const updateSubscriber = () => {
+function updateSubscriber() {
   emit('apply', {
     type: 'update',
     input: {
@@ -109,7 +109,7 @@ const updateSubscriber = () => {
     },
   })
 }
-const createSubscription = () => {
+function createSubscription() {
   emit('apply', {
     type: 'create',
     plan: selected.value,
@@ -120,7 +120,7 @@ const createSubscription = () => {
     },
   })
 }
-const changeSubscription = () => {
+function changeSubscription() {
   emit('apply', {
     type: 'change',
     plan: selected.value,
@@ -131,7 +131,7 @@ const changeSubscription = () => {
     },
   })
 }
-const cancelSubscription = () => {
+function cancelSubscription() {
   emit('apply', {
     type: 'cancel',
     plan: selected.value,
@@ -143,7 +143,7 @@ const cancelSubscription = () => {
   })
 }
 
-const onSubmit = async () => {
+async function onSubmit() {
   if (isPaymentLoading.value) {
     return
   }

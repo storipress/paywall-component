@@ -35,7 +35,7 @@ const visible = useVModel(props, 'modelValue', emit)
 <template>
   <TransitionRoot as="template" :show="visible">
     <Dialog as="div" class="fixed inset-0 z-40 overflow-y-auto" @close="visible = false">
-      <div class="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+      <div class="flex min-h-screen items-end justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0">
         <TransitionChild
           as="template"
           enter="ease-out duration-300"
@@ -59,7 +59,7 @@ const visible = useVModel(props, 'modelValue', emit)
           leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div
-            class="layer-3 relative inline-block w-[21rem] transform overflow-hidden rounded-2xl bg-white px-6 pt-8 pb-4 align-middle transition-all"
+            class="layer-3 relative inline-block w-[21rem] transform overflow-hidden rounded-2xl bg-white px-6 pb-4 pt-8 align-middle transition-all"
           >
             <div class="text-neutral-800">
               <!-- publication logo -->

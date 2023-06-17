@@ -11,7 +11,7 @@ const emit = defineEmits<{
   (event: 'apply'): void
 }>()
 
-const onClick = () => {
+function onClick() {
   if (props.type === 'confirmation') {
     emit('changeDialogType', 'accountPlan')
   } else {

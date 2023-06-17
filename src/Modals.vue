@@ -42,11 +42,11 @@ whenever(
     emit('update:modelValue', false)
   }
 )
-const confirm = () => {
+function confirm() {
   modalVisible.value = false
   emit('confirm')
 }
-const shareToTwitter = () => {
+function shareToTwitter() {
   window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(location.origin)}`, '_blank', 'noopener')
   modalVisible.value = false
   emit('confirm')
@@ -70,7 +70,7 @@ const shareToTwitter = () => {
           primary
           rounded
           color-hex="#55acee"
-          class="mb-[0.56rem] mb-2 h-8 min-h-[2rem] w-[5.1rem]"
+          class="mb-2 mb-[0.56rem] h-8 min-h-[2rem] w-[5.1rem]"
           @click="shareToTwitter"
         >
           <template #buttonText>

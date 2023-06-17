@@ -30,7 +30,7 @@ const pillText = computed(() => {
   return props.loginState ? 'Account settings' : 'Subscribe | Login'
 })
 
-const onClick = () => {
+function onClick() {
   emit('click')
 }
 </script>

@@ -87,7 +87,7 @@ const profile = $computed(() => {
   return subscriberProfile.value
 })
 
-const handleSignup = async (email: string, customArticleType?: string) => {
+async function handleSignup(email: string, customArticleType?: string) {
   const checkExistEmailAndShowDialog = async (showDialogType: UserDialogType) => {
     const result = await onSignup(email)
     if (result && result?.data.signUpSubscriber) {
@@ -165,7 +165,7 @@ const handlers: Record<ApplyHandlerType, UserDialogHandler> = {
   cancel: cancelSubscription as UserDialogHandler,
 }
 
-const onApplyHandler = async ({ type, ...params }: UserDialogParams, showDialog: boolean) => {
+async function onApplyHandler({ type, ...params }: UserDialogParams, showDialog: boolean) {
   const result = await handlers[type](params)
   if (type === 'logout') window.location.reload()
   if (UPDATE_DIALOG.has(dialogType)) {
@@ -194,7 +194,7 @@ const onApplyHandler = async ({ type, ...params }: UserDialogParams, showDialog:
   }
 }
 
-const onConfirmModal = () => {
+function onConfirmModal() {
   if (dialogType === 'upgradeAccount') {
     setTimeout(() => {
       dialogType = 'shareToTwitter'

@@ -13,7 +13,7 @@ const emit = defineEmits<{
 
 const visible = useVModel(props, 'modelValue', emit)
 
-const onCloseDialog = () => {
+function onCloseDialog() {
   visible.value = false
 }
 </script>

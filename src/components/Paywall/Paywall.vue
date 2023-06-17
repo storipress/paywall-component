@@ -55,9 +55,9 @@ watch([() => props.defaultEmail, emailRef], () => {
 <template>
   <div v-if="type !== 'hide'" class="flex w-full justify-center">
     <div
-      class="layer-2 w-full overflow-hidden rounded-t-2xl bg-zinc-50 px-6 py-5 md:py-8 md:px-10 lg:h-fit lg:w-[70vw] lg:min-w-[45rem] lg:max-w-[60rem] lg:rounded-2xl"
+      class="layer-2 w-full overflow-hidden rounded-t-2xl bg-zinc-50 px-6 py-5 md:px-10 md:py-8 lg:h-fit lg:w-[70vw] lg:min-w-[45rem] lg:max-w-[60rem] lg:rounded-2xl"
     >
-      <div class="mb-4 text-zinc-700 md:mr-4 md:mb-11">
+      <div class="mb-4 text-zinc-700 md:mb-11 md:mr-4">
         <div class="text-display-large font-black md:text-[2.625rem] md:leading-[1.05]" v-html="currentData.title" />
         <div class="text-heading mt-4 hidden md:block">{{ currentData.sub }}</div>
       </div>
@@ -70,7 +70,7 @@ watch([() => props.defaultEmail, emailRef], () => {
               name="email"
               type="email"
               placeholder="Email Address"
-              class="text-inputs layer-1 h-12 w-full bg-transparent px-4 pt-3.5 pb-[0.8rem] text-zinc-500"
+              class="text-inputs layer-1 h-12 w-full bg-transparent px-4 pb-[0.8rem] pt-3.5 text-zinc-500"
             />
             <VeeErrorMessage name="email" class="text-caption bottom-[calc(-1.5_*_1em)] text-red-700" />
           </div>

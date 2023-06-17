@@ -93,7 +93,7 @@ const currentData = computed(() => {
   }
 })
 
-const onChangeDialogType = (type: UserDialogType | '', show: boolean) => {
+function onChangeDialogType(type: UserDialogType | '', show: boolean) {
   showBilling.value = show
   emit('update:type', type)
 }

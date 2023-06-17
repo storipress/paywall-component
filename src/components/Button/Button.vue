@@ -31,7 +31,7 @@ const emit = defineEmits<{
   (event: 'click'): void
 }>()
 
-const onClick = () => {
+function onClick() {
   if (!props.disabled) {
     emit('click')
   }
