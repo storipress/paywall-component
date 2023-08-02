@@ -36,7 +36,7 @@ export const LoginLink = Template.bind({})
 LoginLink.args = {
   logo: spLogo,
   title: 'We’ve sent you a login link!',
-  sub: `If the email doesn't arrive in 3 minutes, check your spam folder.`,
+  sub: "If the email doesn't arrive in 3 minutes, check your spam folder.",
   button: 'Close',
 }
 LoginLink.play = play

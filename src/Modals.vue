@@ -28,7 +28,7 @@ const texts = computed(() => {
 
   return {
     ...text,
-    sub: text.sub.replace('__EMAIL__', props.email || '').replace('__PUBLICATION_NAME__', props.publicationName || ''),
+    sub: text.sub.replace('__EMAIL__', props.email ?? '').replace('__PUBLICATION_NAME__', props.publicationName ?? ''),
   }
 })
 
@@ -66,13 +66,7 @@ function shareToTwitter() {
   >
     <template v-if="dialogType === 'shareToTwitter'" #button>
       <div class="mt-[1.7rem] flex flex-col items-center">
-        <Button
-          primary
-          rounded
-          color-hex="#55acee"
-          class="mb-2 mb-[0.56rem] h-8 min-h-[2rem] w-[5.1rem]"
-          @click="shareToTwitter"
-        >
+        <Button primary rounded color-hex="#55acee" class="mb-2 h-8 min-h-[2rem] w-[5.1rem]" @click="shareToTwitter">
           <template #buttonText>
             <img :src="twitterLogo" class="mr-1 w-4" />
             <span class="text-caption w-full pr-6 font-bold text-white">Tweet</span>

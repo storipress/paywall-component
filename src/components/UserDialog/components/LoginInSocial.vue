@@ -30,5 +30,3 @@ import { Button } from '../../index'
     </Button>
   </div>
 </template>
-
-<style scoped></style>

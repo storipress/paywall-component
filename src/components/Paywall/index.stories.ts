@@ -42,6 +42,8 @@ const PaywallTemplate: Story = (args) => ({
           dialogType.value = 'upgradeAccount'
           visible.value = true
           break
+
+        // no default
       }
     }
 
@@ -64,6 +66,8 @@ const PaywallTemplate: Story = (args) => ({
         case 'sign-in':
           onSignInSubscriber(token)
           break
+
+        // no default
       }
     }
 
