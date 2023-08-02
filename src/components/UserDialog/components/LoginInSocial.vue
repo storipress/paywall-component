@@ -6,13 +6,13 @@ import { Button } from '../../index'
   <div class="flex-auto">
     <Button primary rounded color-hex="#55acee" class="layer-1 mb-6 w-full">
       <template #buttonText>
-        <img src="../../../../assets/icons-twitter.svg" />
+        <img src="../../../assets/icons-twitter.svg" />
         <span class="text-button w-full pr-6 text-white">Continue with Twitter</span>
       </template>
     </Button>
     <Button primary rounded color-hex="#1977f3" class="layer-1 w-full">
       <template #buttonText>
-        <img src="../../../../assets/icons-facebook.svg" />
+        <img src="../../../assets/icons-facebook.svg" />
         <span class="text-button w-full pr-6 text-white">Continue with Facebook</span>
       </template>
     </Button>

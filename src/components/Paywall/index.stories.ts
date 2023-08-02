@@ -1,9 +1,9 @@
 import type { Story } from '@storybook/vue3'
 import { ref } from 'vue'
 
+import spLogo from '@assets/sp-logo-white.svg'
 import { Modal, UserDialog } from '../index'
 import { useAuth, useSite, useSubscription } from '../../composables'
-import spLogo from '../../../assets/sp-logo-white.svg'
 import Paywall from './Paywall.vue'
 
 export default {

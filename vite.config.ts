@@ -10,7 +10,7 @@ const baseConfig: UserConfig = {
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
-      '@assets': `${path.resolve(__dirname, 'assets')}/`,
+      '@assets/': `${path.resolve(__dirname, 'src/assets')}/`,
     },
   },
   build: {
@@ -91,7 +91,6 @@ export default defineConfig(({ mode }): UserConfig => {
 
         Vue({
           isProduction: true,
-          reactivityTransform: true,
         }),
       ],
     }
@@ -99,12 +98,6 @@ export default defineConfig(({ mode }): UserConfig => {
 
   return {
     ...baseConfig,
-    plugins: [
-      baseConfig.plugins,
-
-      Vue({
-        reactivityTransform: true,
-      }),
-    ],
+    plugins: [baseConfig.plugins],
   }
 })

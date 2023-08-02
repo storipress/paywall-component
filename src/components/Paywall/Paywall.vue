@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue'
 import { ErrorMessage as VeeErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
 import { object as yupObject, string as yupString } from 'yup'
 import { Button } from '../index'
+import type { PaywallType } from '../../machine/paywall'
 import { data } from './data'
-import type { PaywallType } from '~/machine/paywall'
 
 const props = withDefaults(
   defineProps<{
@@ -15,7 +16,7 @@ const props = withDefaults(
     type: 'hide',
     publicationName: '',
     defaultEmail: '',
-  }
+  },
 )
 const emit = defineEmits<{
   (event: 'click', val: string): void

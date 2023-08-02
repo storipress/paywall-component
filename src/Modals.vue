@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useVModel, whenever } from '@vueuse/core'
-import twitterLogo from '../assets/icons-twitter.svg'
 import { Button, Modal } from './components'
 import { modalTexts } from './modal-text'
+import twitterLogo from './assets/icons-twitter.svg'
 
 const props = defineProps<{
   dialogType: string
@@ -40,7 +40,7 @@ whenever(
       return
     }
     emit('update:modelValue', false)
-  }
+  },
 )
 function confirm() {
   modalVisible.value = false

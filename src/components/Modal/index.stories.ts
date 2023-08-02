@@ -1,8 +1,8 @@
 import type { Story } from '@storybook/vue3'
 import { ref } from 'vue'
 import { userEvent, within } from '@storybook/testing-library'
-import spLogo from '../../../assets/sp-logo-white.svg'
-import twitterLogo from '../../../assets/icons-twitter.svg'
+import spLogo from '@assets/sp-logo-white.svg'
+import twitterLogo from '@assets/icons-twitter.svg'
 
 import { Button } from '../index'
 import Modal from './Modal.vue'
