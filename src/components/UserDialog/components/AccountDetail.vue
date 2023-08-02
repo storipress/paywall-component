@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed, inject, ref, unref } from 'vue'
 import { RadioGroup, RadioGroupOption } from '@headlessui/vue'
 import { Button } from '../../index'
 import { useStripe } from '../../../composables'
@@ -32,7 +33,7 @@ const props = withDefaults(
     type: 'free',
     button: '',
     useSlideOver: true,
-  }
+  },
 )
 
 const emit = defineEmits<{
