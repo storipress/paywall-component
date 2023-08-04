@@ -98,6 +98,6 @@ export default defineConfig(({ mode }): UserConfig => {
 
   return {
     ...baseConfig,
-    plugins: [baseConfig.plugins],
+    plugins: [baseConfig.plugins, Vue()],
   }
 })
