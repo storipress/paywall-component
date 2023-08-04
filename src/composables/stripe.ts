@@ -1,7 +1,9 @@
 import type { Stripe, StripeElements } from '@stripe/stripe-js'
 import { useMutation } from '@vue/apollo-composable'
+import { whenever } from '@vueuse/core'
 import gql from 'graphql-tag'
 import invariant from 'tiny-invariant'
+import { onMounted, ref, shallowRef } from 'vue'
 
 const appearance = {
   rules: {

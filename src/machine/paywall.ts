@@ -1,7 +1,7 @@
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core'
 import { noop } from 'lodash-es'
 import type { ComputedRef, Ref } from 'vue'
-import { markRaw, nextTick, reactive, ref } from 'vue'
+import { computed, markRaw, nextTick, reactive, ref, watch } from 'vue'
 import { P, match } from 'ts-pattern'
 import type { Article } from '../types'
 import { ArticlePlan } from '../types'
@@ -80,12 +80,12 @@ export function createPaywallMachine({ profile }: API): PaywallMachine {
         P.union(
           [ArticlePlan.Free, P.boolean] as const,
           [ArticlePlan.Member, P.boolean] as const,
-          [ArticlePlan.Subscriber, true] as const
+          [ArticlePlan.Subscriber, true] as const,
         ),
         () => {
           context.reason = LoginReason.None
           state.value = PaywallState.LoggedIn
-        }
+        },
       )
       .with([P.nullish, P.union(P.nullish, P.boolean)], noop)
       .exhaustive()
@@ -122,7 +122,7 @@ export function createPaywallMachine({ profile }: API): PaywallMachine {
       }
       await debounceCheckPlan()
     },
-    { immediate: true, deep: true }
+    { immediate: true, deep: true },
   )
 
   function resetState() {

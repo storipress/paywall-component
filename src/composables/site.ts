@@ -1,5 +1,6 @@
 import { useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
+import { computed } from 'vue'
 
 export function useSite() {
   const { result } = useQuery(gql`

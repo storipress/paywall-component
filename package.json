@@ -53,8 +53,6 @@
   "devDependencies": {
     "@antfu/eslint-config-vue": "0.40.0",
     "@babel/core": "7.22.9",
-    "@intlify/unplugin-vue-i18n": "0.12.2",
-    "@intlify/vite-plugin-vue-i18n": "7.0.0",
     "@storybook/addon-actions": "7.2.1",
     "@storybook/addon-docs": "7.2.1",
     "@storybook/addon-essentials": "7.2.1",
@@ -93,7 +91,6 @@
     "unbuild": "1.2.1",
     "unplugin-auto-import": "0.16.6",
     "vite": "4.4.8",
-    "vite-plugin-pages": "0.31.0",
     "vite-plugin-turbosnap": "1.0.2",
     "vitest": "0.34.1",
     "vue-eslint-parser": "9.3.1",

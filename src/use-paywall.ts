@@ -1,7 +1,7 @@
 import type { ApolloClient, ApolloError, NormalizedCacheObject } from '@apollo/client/core'
 import { provideApolloClient } from '@vue/apollo-composable'
 import type { Ref } from 'vue'
-import { nextTick } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import pRetry from 'p-retry'
 import { useSubscription } from './composables'
 import { createPaywallMachine } from './machine'

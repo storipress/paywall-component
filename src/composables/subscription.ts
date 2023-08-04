@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
+import { computed } from 'vue'
 import type { SubscriberInput, SubscriptionPlan } from '../components/UserDialog/definition'
 
 export interface SubscriberProfile {

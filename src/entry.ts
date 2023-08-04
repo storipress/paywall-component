@@ -1,6 +1,6 @@
 import './styles/utilties.css'
 import type { Ref } from 'vue'
-import { computed, createApp, ref } from 'vue'
+import { computed, createApp, h, ref } from 'vue'
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import { useEventBus } from '@vueuse/core'

@@ -2,9 +2,6 @@ import path from 'node:path'
 import type { UserConfig } from 'vitest/config'
 import { defineConfig } from 'vitest/config'
 import Vue from '@vitejs/plugin-vue'
-import Pages from 'vite-plugin-pages'
-import AutoImport from 'unplugin-auto-import/vite'
-import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 
 const baseConfig: UserConfig = {
   resolve: {
@@ -45,23 +42,7 @@ const baseConfig: UserConfig = {
     },
     minify: false,
   },
-  plugins: [
-    // https://github.com/hannoeru/vite-plugin-pages
-    Pages(),
-
-    // https://github.com/antfu/unplugin-auto-import
-    AutoImport({
-      imports: ['vue', 'vue/macros', 'vue-router', '@vueuse/core', '@vueuse/head', 'vue-i18n'],
-      dts: true,
-    }),
-
-    // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
-    VueI18n({
-      runtimeOnly: true,
-      compositionOnly: true,
-      include: [path.resolve(__dirname, 'locales/**')],
-    }),
-  ],
+  plugins: [],
 
   // https://github.com/vitest-dev/vitest
   test: {
