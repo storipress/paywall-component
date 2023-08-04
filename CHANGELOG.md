@@ -2,10 +2,9 @@
 
 ## [1.4.1](https://github.com/storipress/builder-component/compare/v1.4.0...v1.4.1) (2023-08-04)
 
-
 ### Bug Fixes
 
-* remove auto import and fix import error ([68f6c62](https://github.com/storipress/builder-component/commit/68f6c623fb7ad704dab2bb747326a12a0b792cc9))
+- remove auto import and fix import error ([68f6c62](https://github.com/storipress/builder-component/commit/68f6c623fb7ad704dab2bb747326a12a0b792cc9))
 
 ## [1.4.0](https://github.com/storipress/builder-component/compare/v1.3.0...v1.4.0) (2023-08-04)
 
