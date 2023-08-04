@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.4.0](https://github.com/storipress/builder-component/compare/v1.3.0...v1.4.0) (2023-08-04)
+
+
+### Features
+
+* reduce builder component bundle size [SPMVP-6056] ([#92](https://github.com/storipress/builder-component/issues/92)) ([fe2f8e9](https://github.com/storipress/builder-component/commit/fe2f8e93e9fedc547c4f6e8a9ca71681c56e6f4a))
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([30e2caf](https://github.com/storipress/builder-component/commit/30e2caf6de354b929fd5229e6c67b5a3a73b8abf))
+* upgrade deps ([e52aa36](https://github.com/storipress/builder-component/commit/e52aa3607a6c3df6c2afd6a0ea9b17c6eb55b8e5))
+* upgrade deps ([dc02e97](https://github.com/storipress/builder-component/commit/dc02e97b210b29060ed9fbc282e84d27e32845eb))
+* upgrade deps ([e012114](https://github.com/storipress/builder-component/commit/e01211458785e74f4eab5645258a39eae55e2c07))
+
 ## [1.3.0](https://github.com/storipress/builder-component/compare/v1.2.5...v1.3.0) (2023-04-06)
 
 ### Features
