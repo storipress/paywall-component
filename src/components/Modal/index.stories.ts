@@ -1,8 +1,8 @@
 import type { Story } from '@storybook/vue3'
 import { ref } from 'vue'
 import { userEvent, within } from '@storybook/testing-library'
-import spLogo from '../../../assets/sp-logo-white.svg'
-import twitterLogo from '../../../assets/icons-twitter.svg'
+import spLogo from '@assets/sp-logo-white.svg'
+import twitterLogo from '@assets/icons-twitter.svg'
 
 import { Button } from '../index'
 import Modal from './Modal.vue'
@@ -36,7 +36,7 @@ export const LoginLink = Template.bind({})
 LoginLink.args = {
   logo: spLogo,
   title: 'We’ve sent you a login link!',
-  sub: `If the email doesn't arrive in 3 minutes, check your spam folder.`,
+  sub: "If the email doesn't arrive in 3 minutes, check your spam folder.",
   button: 'Close',
 }
 LoginLink.play = play

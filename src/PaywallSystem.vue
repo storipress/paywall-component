@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useEventBus, useVModel } from '@vueuse/core'
+import { computed, provide, ref, watch } from 'vue'
 import type {
   ApplyHandlerType,
   UserDialogHandler,
@@ -32,12 +33,12 @@ const emit = defineEmits<{
   (event: 'update:token', token: string | null): void
 }>()
 
-let visible = $ref(false)
-let modalVisible = $ref(false)
-let dialogType = $ref<UserDialogType>('welcome')
+const visible = ref(false)
+const modalVisible = ref(false)
+const dialogType = ref<UserDialogType>('welcome')
 
 const tokenRef = useVModel(props, 'token', emit)
-const articleType = $computed(() => {
+const articleType = computed(() => {
   const { reason, article } = props.paywallMachine.context
   if (!article) {
     return 'free'
@@ -51,19 +52,19 @@ const articleType = $computed(() => {
     return 'upgrade'
   }
 })
-const ready = $computed(() => props.paywallMachine.context.article)
-const showBadge = $computed(() => {
-  return props.inArticle && ready
+const ready = computed(() => props.paywallMachine.context.article)
+const showBadge = computed(() => {
+  return props.inArticle && ready.value
 })
-const showPaywall = $computed(() => {
+const showPaywall = computed(() => {
   const { state, paywall } = props.paywallMachine
-  if (!ready) {
+  if (!ready.value) {
     return false
   }
   return state.value === PaywallState.PaywallOrLogIn && paywall.value
 })
-const showPaywallForSignup = $ref(false)
-const defaultEmailForSignup = $ref('')
+const showPaywallForSignup = ref(false)
+const defaultEmailForSignup = ref('')
 
 const { siteSubscriptionInfo } = useSite()
 const {
@@ -80,7 +81,7 @@ const { onLogin, onSignup, onSignOut } = auth
 
 provide(LOADING_KEY, isLoading)
 
-const profile = $computed(() => {
+const profile = computed(() => {
   if (!tokenRef.value) {
     return null
   }
@@ -91,15 +92,15 @@ async function handleSignup(email: string, customArticleType?: string) {
   const checkExistEmailAndShowDialog = async (showDialogType: UserDialogType) => {
     const result = await onSignup(email)
     if (result && result?.data.signUpSubscriber) {
-      dialogType = showDialogType
-      visible = true
+      dialogType.value = showDialogType
+      visible.value = true
     } else {
       onLogin({ email })
-      modalVisible = true
+      modalVisible.value = true
     }
   }
 
-  switch (customArticleType || articleType) {
+  switch (customArticleType || articleType.value) {
     case 'free': {
       await checkExistEmailAndShowDialog('signupFree')
       break
@@ -109,8 +110,8 @@ async function handleSignup(email: string, customArticleType?: string) {
       break
     }
     case 'upgrade':
-      dialogType = 'upgradeAccount'
-      visible = true
+      dialogType.value = 'upgradeAccount'
+      visible.value = true
       break
   }
 }
@@ -119,18 +120,18 @@ const { on } = useEventBus(SIGNUP_KEY)
 on(handleSignup)
 
 const currentSubscriptionPlan = computed<UserDialogType>(() => {
-  return !profile || profile?.subscription_type === 'free' ? 'freeAccount' : 'paidAccount'
+  return !profile.value || profile.value?.subscription_type === 'free' ? 'freeAccount' : 'paidAccount'
 })
 function badgeClick() {
-  dialogType = profile?.id ? currentSubscriptionPlan.value : 'welcome'
-  visible = true
+  dialogType.value = profile.value?.id ? currentSubscriptionPlan.value : 'welcome'
+  visible.value = true
 }
 const { on: onBadge } = useEventBus(SHOW_USER_DIALOG_KEY)
 onBadge(badgeClick)
 
 // workaround for scroll lock by headlessui
 function forceEnableScroll() {
-  if (visible || modalVisible) {
+  if (visible.value || modalVisible.value) {
     return
   }
 
@@ -138,7 +139,7 @@ function forceEnableScroll() {
   document.documentElement.style.removeProperty('padding-right')
 }
 
-watch([$$(visible), $$(modalVisible)], (visibleValue, modalVisibleValue) => {
+watch([visible, modalVisible], (visibleValue, modalVisibleValue) => {
   if (visibleValue || modalVisibleValue) {
     return
   }
@@ -168,26 +169,26 @@ const handlers: Record<ApplyHandlerType, UserDialogHandler> = {
 async function onApplyHandler({ type, ...params }: UserDialogParams, showDialog: boolean) {
   const result = await handlers[type](params)
   if (type === 'logout') window.location.reload()
-  if (UPDATE_DIALOG.has(dialogType)) {
+  if (UPDATE_DIALOG.has(dialogType.value)) {
     await refetchSubscriber()
-    const { verified = false } = profile || {}
+    const { verified = false } = profile.value || {}
     if (type === 'create' && !verified && !result) {
-      dialogType = 'confirmation'
+      dialogType.value = 'confirmation'
       return
     }
   }
 
   if (result) {
-    if (dialogType === 'confirmation') {
-      dialogType = 'accountPlan'
+    if (dialogType.value === 'confirmation') {
+      dialogType.value = 'accountPlan'
     } else {
       setTimeout(() => {
-        modalVisible = true
+        modalVisible.value = true
       }, 1000)
-      visible = showDialog
+      visible.value = showDialog
     }
   } else if (type === 'login' && 'email' in params) {
-    visible = false
+    visible.value = false
     setTimeout(() => {
       handleSignup(params.email, 'free')
     }, 1000)
@@ -195,10 +196,10 @@ async function onApplyHandler({ type, ...params }: UserDialogParams, showDialog:
 }
 
 function onConfirmModal() {
-  if (dialogType === 'upgradeAccount') {
+  if (dialogType.value === 'upgradeAccount') {
     setTimeout(() => {
-      dialogType = 'shareToTwitter'
-      modalVisible = true
+      dialogType.value = 'shareToTwitter'
+      modalVisible.value = true
     }, 300)
   }
 }
@@ -209,7 +210,7 @@ watch(tokenRef, async (token) => {
     props.paywallMachine.checkPlan()
   } else {
     props.paywallMachine.resetState()
-    dialogType = 'welcome'
+    dialogType.value = 'welcome'
   }
 })
 </script>

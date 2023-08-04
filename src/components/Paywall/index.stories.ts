@@ -1,9 +1,9 @@
 import type { Story } from '@storybook/vue3'
 import { ref } from 'vue'
 
+import spLogo from '@assets/sp-logo-white.svg'
 import { Modal, UserDialog } from '../index'
 import { useAuth, useSite, useSubscription } from '../../composables'
-import spLogo from '../../../assets/sp-logo-white.svg'
 import Paywall from './Paywall.vue'
 
 export default {
@@ -42,6 +42,8 @@ const PaywallTemplate: Story = (args) => ({
           dialogType.value = 'upgradeAccount'
           visible.value = true
           break
+
+        // no default
       }
     }
 
@@ -64,6 +66,8 @@ const PaywallTemplate: Story = (args) => ({
         case 'sign-in':
           onSignInSubscriber(token)
           break
+
+        // no default
       }
     }
 

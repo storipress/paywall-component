@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { PropType } from 'vue'
 import { Button, ListItem, Toggle } from '../../index'
 import type { UserDialogParams, UserDialogType } from '../definition'

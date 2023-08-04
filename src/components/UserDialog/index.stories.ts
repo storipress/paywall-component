@@ -1,9 +1,9 @@
 import type { Story } from '@storybook/vue3'
 import { onMounted, ref, watch } from 'vue'
 
+import spLogo from '@assets/sp-logo-white.svg'
 import { UserDialog } from '../index'
 import { useAuth, useSite, useSubscription } from '../../composables'
-import spLogo from '../../../assets/sp-logo-white.svg'
 
 export default {
   title: 'UserDialog',

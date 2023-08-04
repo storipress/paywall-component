@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { noop } from 'lodash-es'
+import { computed, ref } from 'vue'
 import type { Component, PropType } from 'vue'
 import { SlideOver } from '../index'
-import defaultBackground from '../../../assets/subs-default.png'
 import { CrossThin } from '../Icons'
+import defaultBackground from '../../assets/subs-default.png'
 import type { UserDialogParams, UserDialogType } from './definition'
 import { AccountDetail, LoginInEmail, LoginInSocial, ManageAccount, OnlyButton } from './components/index'
 import { data } from './data'
