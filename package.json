@@ -1,6 +1,6 @@
 {
   "name": "@storipress/builder-component",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "repository": "git@github.com:storipress/builder-component.git",
   "main": "./dist/entry.mjs",
   "types": "./dist/entry.d.ts",
