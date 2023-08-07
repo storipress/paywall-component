@@ -2940,7 +2940,7 @@ __metadata:
     "@storybook/testing-library": 0.2.0
     "@storybook/vue3": 7.2.1
     "@storybook/vue3-vite": 7.2.1
-    "@stripe/stripe-js": ^1.54.1
+    "@stripe/stripe-js": ^2.0.0
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/forms": 0.5.4
     "@types/lodash-es": ^4.17.8
@@ -3911,10 +3911,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stripe/stripe-js@npm:^1.54.1":
-  version: 1.54.2
-  resolution: "@stripe/stripe-js@npm:1.54.2"
-  checksum: d5c4a71383c33da3f3badd2ac03073a90250fc0e04b2ecd571f73f34db2266c9fdfc64947410845d58dce074547424bd133f8f24bf86de69dfeb73d140c0bdc8
+"@stripe/stripe-js@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@stripe/stripe-js@npm:2.0.0"
+  checksum: eb01a5a8cfec45bc33be2def37a25a8361f853620aaede2c97d9fdab33f6297a5ddeedf46842e186d8801732e1955b7fce4f354db2d7a2eaea2c7753dc782429
   languageName: node
   linkType: hard
 
