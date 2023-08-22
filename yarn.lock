@@ -3063,9 +3063,9 @@ __metadata:
     "@storybook/vue3-vite": 7.3.2
     "@stripe/stripe-js": ^2.0.0
     "@tailwindcss/aspect-ratio": 0.4.2
-    "@tailwindcss/forms": 0.5.4
+    "@tailwindcss/forms": 0.5.5
     "@types/lodash-es": ^4.17.8
-    "@types/node": 18.17.7
+    "@types/node": 18.17.8
     "@typescript-eslint/eslint-plugin": 6.4.1
     "@typescript-eslint/parser": 6.4.1
     "@vitejs/plugin-vue": 4.3.3
@@ -4039,14 +4039,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/forms@npm:0.5.4":
-  version: 0.5.4
-  resolution: "@tailwindcss/forms@npm:0.5.4"
+"@tailwindcss/forms@npm:0.5.5":
+  version: 0.5.5
+  resolution: "@tailwindcss/forms@npm:0.5.5"
   dependencies:
     mini-svg-data-uri: ^1.2.3
   peerDependencies:
     tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1"
-  checksum: 3b8c6fe6fd02bf0e346a8c7a7386b6a7df2052ba36292037ce79db3ce51562ef34fee43798984a06c0626c041d9b8de5e3b89fa81790f9b8927594d0da72a53d
+  checksum: 2748699d2d182e6c565afc38f927cc86544f349e6ab939cda9a97952f405fed00152cb00454a0c586f41ff0dc6854f1044c59523f31564b5f8027facbd2302e9
   languageName: node
   linkType: hard
 
@@ -4388,10 +4388,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.17.7":
-  version: 18.17.7
-  resolution: "@types/node@npm:18.17.7"
-  checksum: cb327da222eb9dc2a8e86c957bef58b16f20a2f6b109e43ff10267e83b342bcba5257e800438dd54deb2bd66bb7815539a759c6dcf91e1b0b08b3add1d5886c8
+"@types/node@npm:18.17.8":
+  version: 18.17.8
+  resolution: "@types/node@npm:18.17.8"
+  checksum: ebb71526368c9c58f03e2c2408bfda4aa686c13d84226e2c9b48d9c4aee244fb82e672aaf4aa8ccb6e4993b4274d5f4b2b3d52d0a2e57ab187ae653903376411
   languageName: node
   linkType: hard
 
