@@ -8,9 +8,7 @@ const props = defineProps({
     default: false,
   },
 })
-const emit = defineEmits<{
-  (event: 'update:modelValue', value: boolean): void
-}>()
+const emit = defineEmits<(event: 'update:modelValue', value: boolean) => void>()
 
 const visible = useVModel(props, 'modelValue', emit)
 
