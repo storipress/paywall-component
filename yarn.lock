@@ -3065,7 +3065,7 @@ __metadata:
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/forms": 0.5.5
     "@types/lodash-es": ^4.17.8
-    "@types/node": 18.17.11
+    "@types/node": 18.17.12
     "@typescript-eslint/eslint-plugin": 6.4.1
     "@typescript-eslint/parser": 6.4.1
     "@vitejs/plugin-vue": 4.3.3
@@ -3086,7 +3086,7 @@ __metadata:
     graphql-tag: ^2.12.6
     jsdom: 22.1.0
     lodash-es: ^4.17.21
-    msw: 1.2.4
+    msw: 1.2.5
     p-retry: ^6.0.0
     postcss: 8.4.28
     prettier: 3.0.2
@@ -4388,10 +4388,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.17.11":
-  version: 18.17.11
-  resolution: "@types/node@npm:18.17.11"
-  checksum: c31d9f4a6f7c5c413b6548ded0fab046571832718361c5cda325960f32d6b386dd0a7fa9228911111fee54c180d09df82a622efdabdbef89fa9e1923891892bc
+"@types/node@npm:18.17.12":
+  version: 18.17.12
+  resolution: "@types/node@npm:18.17.12"
+  checksum: 79f8bcca3067a3c529f30e172df8d14f25ab9e4cd6a05ed897a924ab1dec774e8ea172ef5c4a67ffec433d423a0c81778f17db22606d574bc83871b60aab298e
   languageName: node
   linkType: hard
 
@@ -10369,9 +10369,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:1.2.4":
-  version: 1.2.4
-  resolution: "msw@npm:1.2.4"
+"msw@npm:1.2.5":
+  version: 1.2.5
+  resolution: "msw@npm:1.2.5"
   dependencies:
     "@mswjs/cookies": ^0.2.2
     "@mswjs/interceptors": ^0.17.5
@@ -10399,7 +10399,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: ff32efd2e89b6e4e0b646362907658c2b37756a92d46a294171e0ef5c4488217f87381b7740a6c9e5d7ed9c490ce33474f56f5dba8524340233cd89f1de0b0e1
+  checksum: 652c44a100cba0382d6cdf4c2a4dfb90edd9665c7d06bc10f15bd96fe458c6a6f4943c2dec3f1a9d5efef0f7d59ae805ebdf289b52991956d95601e5f42fb8b1
   languageName: node
   linkType: hard
 
