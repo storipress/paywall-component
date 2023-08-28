@@ -105,7 +105,7 @@ export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', 
     return false
   }
 
-  const isAuth = computed(() => !!tokenRef.value)
+  const isAuth = computed(() => Boolean(tokenRef.value))
 
   return {
     isAuth,
