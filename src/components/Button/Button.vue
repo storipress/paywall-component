@@ -28,9 +28,7 @@ const props = defineProps({
     default: false,
   },
 })
-const emit = defineEmits<{
-  (event: 'click'): void
-}>()
+const emit = defineEmits<(event: 'click') => void>()
 
 function onClick() {
   if (!props.disabled) {

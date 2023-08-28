@@ -36,9 +36,7 @@ const props = withDefaults(
   },
 )
 
-const emit = defineEmits<{
-  (event: 'apply', params: UserDialogParams): void
-}>()
+const emit = defineEmits<(event: 'apply', params: UserDialogParams) => void>()
 
 const enabledStripe = computed(() => {
   // stripe is not enabled if the site does not offer a paid subscription or is in preview mode
