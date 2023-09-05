@@ -91,7 +91,7 @@
     "unbuild": "1.2.1",
     "unplugin-auto-import": "0.16.6",
     "vite": "4.4.9",
-    "vite-plugin-turbosnap": "1.0.2",
+    "vite-plugin-turbosnap": "1.0.3",
     "vitest": "0.34.3",
     "vue-eslint-parser": "9.3.1",
     "vue-tsc": "1.8.8"
