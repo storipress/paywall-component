@@ -3078,7 +3078,7 @@ __metadata:
     "@vueuse/head": ^1.1.26
     autoprefixer: 10.4.15
     babel-loader: 9.1.3
-    chromatic: 7.0.0
+    chromatic: 7.1.0
     dayjs: ^1.11.9
     eslint: 8.48.0
     eslint-plugin-storybook: 0.6.13
@@ -6106,14 +6106,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:7.0.0":
-  version: 7.0.0
-  resolution: "chromatic@npm:7.0.0"
+"chromatic@npm:7.1.0":
+  version: 7.1.0
+  resolution: "chromatic@npm:7.1.0"
   bin:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 654be2eaf365a865fa718f9913fb1b7ef7bdb2788f57912c56fa28422c79e8e71a12342fd61db032994196334ddce4a900ea92f7daab5c14f023155cd4435ad6
+  checksum: 0b948419867b95731e522265c5a891d5996ca56837fce853897978c4b504033fe509934b6a39f1d356725c38b39b6a2be1c862f6c0cbc3d95ffd3543c9fc3279
   languageName: node
   linkType: hard
 
