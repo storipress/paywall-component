@@ -51,7 +51,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config-vue": "0.41.0",
+    "@antfu/eslint-config-vue": "0.41.2",
     "@babel/core": "7.22.17",
     "@storybook/addon-actions": "7.4.1",
     "@storybook/addon-docs": "7.4.1",
