@@ -3087,7 +3087,6 @@ __metadata:
     "@vue/server-renderer": 3.3.4
     "@vue/test-utils": 2.4.1
     "@vueuse/core": ^10.2.1
-    "@vueuse/head": ^1.1.26
     autoprefixer: 10.4.15
     babel-loader: 9.1.3
     chromatic: 7.1.0
@@ -4735,59 +4734,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unhead/dom@npm:1.2.2, @unhead/dom@npm:^1.1.26":
-  version: 1.2.2
-  resolution: "@unhead/dom@npm:1.2.2"
-  dependencies:
-    "@unhead/schema": 1.2.2
-    "@unhead/shared": 1.2.2
-  checksum: 41211fb5c6c5d0ad377b5cee9b2d7bc896fcf7693dbaa5a2af645aa77d12a7f9d6e91e149c3d80621430db898cbc9725600b2866ec3203e487ba0572df065af4
-  languageName: node
-  linkType: hard
-
-"@unhead/schema@npm:1.2.2, @unhead/schema@npm:^1.1.26":
-  version: 1.2.2
-  resolution: "@unhead/schema@npm:1.2.2"
-  dependencies:
-    hookable: ^5.5.3
-    zhead: ^2.0.10
-  checksum: f11d8504d56300df13e6b7921405c8181a79471df9c321fd8c57c9d46fb38a093bf0e01a253343c53e946935eb6d532f278991b456e0c22781f1b0d2906044b6
-  languageName: node
-  linkType: hard
-
-"@unhead/shared@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@unhead/shared@npm:1.2.2"
-  dependencies:
-    "@unhead/schema": 1.2.2
-  checksum: a6b1a05d893f7d62bb40f5d8d45b5f563de4957d766882d3c63372468945de026b26dd3f15705b83a4708b0f70239f64c49705b2ded679cb49ef8324ea5d37b7
-  languageName: node
-  linkType: hard
-
-"@unhead/ssr@npm:^1.1.26":
-  version: 1.2.2
-  resolution: "@unhead/ssr@npm:1.2.2"
-  dependencies:
-    "@unhead/schema": 1.2.2
-    "@unhead/shared": 1.2.2
-  checksum: 7f8624aa9cd4814ac17423fb6f76c7e997a7e70b8159c14a500a84e76c6a70fc4c8afda857fb641f6e39cee7944a8074658841ea3a9d84d254f0ecca6ed4a313
-  languageName: node
-  linkType: hard
-
-"@unhead/vue@npm:^1.1.26":
-  version: 1.2.2
-  resolution: "@unhead/vue@npm:1.2.2"
-  dependencies:
-    "@unhead/schema": 1.2.2
-    "@unhead/shared": 1.2.2
-    hookable: ^5.5.3
-    unhead: 1.2.2
-  peerDependencies:
-    vue: ">=2.7 || >=3"
-  checksum: 09a050409bce64a87e809a8eb1e84cfb614a289f6dcfe2e340d5f037bd49387958cd8a1aa170df953e3fdea8db6a904aa5604144ae6ffc44fcba08af13dfab35
-  languageName: node
-  linkType: hard
-
 "@vitejs/plugin-vue@npm:4.3.4, @vitejs/plugin-vue@npm:^4.0.0":
   version: 4.3.4
   resolution: "@vitejs/plugin-vue@npm:4.3.4"
@@ -5106,20 +5052,6 @@ __metadata:
     "@vueuse/shared": 10.3.0
     vue-demi: ">=0.14.5"
   checksum: 54af7ab9f2aff8cc795dfc9d846aa9a27dc0949d7a6eec79697819e7dc8cb17b1682f267e7501382afa45736b6877363e640e381b7ac1fd6bc18dc860911afd8
-  languageName: node
-  linkType: hard
-
-"@vueuse/head@npm:^1.1.26":
-  version: 1.1.26
-  resolution: "@vueuse/head@npm:1.1.26"
-  dependencies:
-    "@unhead/dom": ^1.1.26
-    "@unhead/schema": ^1.1.26
-    "@unhead/ssr": ^1.1.26
-    "@unhead/vue": ^1.1.26
-  peerDependencies:
-    vue: ">=2.7 || >=3"
-  checksum: f9c6f71b693bc91a04558477049bb6975e1fe4ab5bf1fd3727977105455566e235a72d8e5e520f2e66ad5b5403cd14dd57d8d37f66560cec403b64dc017cf8d1
   languageName: node
   linkType: hard
 
@@ -13424,18 +13356,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unhead@npm:1.2.2":
-  version: 1.2.2
-  resolution: "unhead@npm:1.2.2"
-  dependencies:
-    "@unhead/dom": 1.2.2
-    "@unhead/schema": 1.2.2
-    "@unhead/shared": 1.2.2
-    hookable: ^5.5.3
-  checksum: 5f6528c062380945ff41507e12c2e1d13e1c650c82f16bbb92108a3be97844ea055e95356b1eca2235805119e124e3c40d75c1783b895ad2495de8fbf490c731
-  languageName: node
-  linkType: hard
-
 "unicode-canonical-property-names-ecmascript@npm:^2.0.0":
   version: 2.0.0
   resolution: "unicode-canonical-property-names-ecmascript@npm:2.0.0"
@@ -14526,12 +14446,5 @@ __metadata:
   version: 0.8.15
   resolution: "zen-observable@npm:0.8.15"
   checksum: b7289084bc1fc74a559b7259faa23d3214b14b538a8843d2b001a35e27147833f4107590b1b44bf5bc7f6dfe6f488660d3a3725f268e09b3925b3476153b7821
-  languageName: node
-  linkType: hard
-
-"zhead@npm:^2.0.10":
-  version: 2.0.10
-  resolution: "zhead@npm:2.0.10"
-  checksum: f76deca036032d9500a0057fa1fd32ebf71b0a7f289baba64cc89c00f61e5536b6bb90c1c3f30d16722fd8d73caf85974775155f6ed22fc4775ec4dac5b10315
   languageName: node
   linkType: hard
