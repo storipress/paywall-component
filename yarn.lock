@@ -29,11 +29,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antfu/eslint-config-basic@npm:0.41.3":
-  version: 0.41.3
-  resolution: "@antfu/eslint-config-basic@npm:0.41.3"
+"@antfu/eslint-config-basic@npm:0.42.0":
+  version: 0.42.0
+  resolution: "@antfu/eslint-config-basic@npm:0.42.0"
   dependencies:
-    eslint-plugin-antfu: 0.41.3
+    eslint-plugin-antfu: 0.42.0
     eslint-plugin-eslint-comments: ^3.2.0
     eslint-plugin-html: ^7.1.0
     eslint-plugin-import: "npm:eslint-plugin-i@2.28.1"
@@ -50,36 +50,36 @@ __metadata:
     yaml-eslint-parser: ^1.2.2
   peerDependencies:
     eslint: ">=7.4.0"
-  checksum: 2e58f46ef123386d2a2562fec08b0cf95796ee2fc38f21fc3e33953de34acf2fe71b8101a63e62095c469df1702675f94488915de271ef07c899446ead0f8ddf
+  checksum: 28fa01024a52f20039c7f47a9e094494b780dc251e50ba33a230b9d8c113ca864d94bbda5323b550887e5968568e594073a6dc82e201dc0e97497d0b8980c386
   languageName: node
   linkType: hard
 
-"@antfu/eslint-config-ts@npm:0.41.3":
-  version: 0.41.3
-  resolution: "@antfu/eslint-config-ts@npm:0.41.3"
+"@antfu/eslint-config-ts@npm:0.42.0":
+  version: 0.42.0
+  resolution: "@antfu/eslint-config-ts@npm:0.42.0"
   dependencies:
-    "@antfu/eslint-config-basic": 0.41.3
+    "@antfu/eslint-config-basic": 0.42.0
     "@typescript-eslint/eslint-plugin": ^6.7.0
     "@typescript-eslint/parser": ^6.7.0
     eslint-plugin-jest: ^27.2.3
   peerDependencies:
     eslint: ">=7.4.0"
     typescript: ">=3.9"
-  checksum: a6ebed65ddb0d3c548501e02ebec2a274dff499e3a86cde88986642d18c9882d765f38a747093d3494f5cb457d9986e075fee1b2b948c2a87d8a9c51e98b42f1
+  checksum: 5d32eb45842b73a35743dd9ccd563a899072250205d5bbf1de18f1e1d30b49e5c092d59b29da8ce9b0f077bb7d3dadcc1416668d7eaa8bbd193083bad4e0c54c
   languageName: node
   linkType: hard
 
-"@antfu/eslint-config-vue@npm:0.41.3":
-  version: 0.41.3
-  resolution: "@antfu/eslint-config-vue@npm:0.41.3"
+"@antfu/eslint-config-vue@npm:0.42.0":
+  version: 0.42.0
+  resolution: "@antfu/eslint-config-vue@npm:0.42.0"
   dependencies:
-    "@antfu/eslint-config-basic": 0.41.3
-    "@antfu/eslint-config-ts": 0.41.3
+    "@antfu/eslint-config-basic": 0.42.0
+    "@antfu/eslint-config-ts": 0.42.0
     eslint-plugin-vue: ^9.17.0
     local-pkg: ^0.4.3
   peerDependencies:
     eslint: ">=7.4.0"
-  checksum: 3cf45a0a86913054beccb1e19c3159518596a86afe69329322b59eb4850a57b00c289b76d36aa3aae5956f42f7ae7c519c02d140f588a92dfdfb6df6549faa35
+  checksum: dfec6afe9a646026515418259daaece64da2aa38f2683d6d83e959c891343282ee7ca3bdbcbe508fcc8eb48d0bfdbd1558e0e2acd04abe0cb29e286cd18ecda8
   languageName: node
   linkType: hard
 
@@ -3061,7 +3061,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@storipress/builder-component@workspace:."
   dependencies:
-    "@antfu/eslint-config-vue": 0.41.3
+    "@antfu/eslint-config-vue": 0.42.0
     "@apollo/client": ^3.7.17
     "@babel/core": 7.22.17
     "@headlessui/vue": ^1.7.13
@@ -3104,7 +3104,7 @@ __metadata:
     prettier-plugin-tailwindcss: 0.5.4
     react: 18.2.0
     react-dom: 18.2.0
-    sass: 1.66.1
+    sass: 1.67.0
     storybook: 7.4.1
     tailwind-scrollbar-hide: 1.1.7
     tailwindcss: 3.3.3
@@ -7232,12 +7232,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-antfu@npm:0.41.3":
-  version: 0.41.3
-  resolution: "eslint-plugin-antfu@npm:0.41.3"
+"eslint-plugin-antfu@npm:0.42.0":
+  version: 0.42.0
+  resolution: "eslint-plugin-antfu@npm:0.42.0"
   dependencies:
     "@typescript-eslint/utils": ^6.7.0
-  checksum: 293ef25a4b2a3291784f1876e165cc0b1b4240a55a6099b392a1c879b2e668da2a040b490bd0b16130567dd3458abd0e1c959735108b59da4281457019eb5e31
+  checksum: 74f62fda0ce60415f7b0f154e758fe11cc2fd8f6479607708a64cbb10e272ff02e516ea62194bfc0f3a1a811d795c635537761370a25e3c5ca03d20407bcac55
   languageName: node
   linkType: hard
 
@@ -12218,16 +12218,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.66.1":
-  version: 1.66.1
-  resolution: "sass@npm:1.66.1"
+"sass@npm:1.67.0":
+  version: 1.67.0
+  resolution: "sass@npm:1.67.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 74fc11d0fcd5e16c5331b57dd59865705a299c64e89f2b99646869caeb011dc8d0b6144a6c74a90c264e9ef70654207dbf44fc9b7e3393f8bd14809b904c8a52
+  checksum: 9e7566e8b7386cf265dddcdb266a023fb5759c5a8f48a11da199c8bf419e5f08f4ff6404d85d6bf5eac01e1f7c7061fdb6b7b65cbfda164e59b0a06b72ac8567
   languageName: node
   linkType: hard
 
