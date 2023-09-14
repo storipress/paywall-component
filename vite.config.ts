@@ -25,7 +25,6 @@ const baseConfig: UserConfig = {
         '@types/lodash-es',
         '@vue/apollo-composable',
         '@vueuse/core',
-        '@vueuse/head',
         'dayjs',
         'graphql',
         'graphql-tag',
