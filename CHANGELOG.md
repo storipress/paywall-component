@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.2](https://github.com/storipress/builder-component/compare/v1.4.1...v1.4.2) (2023-09-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @stripe/stripe-js to v2 ([98521aa](https://github.com/storipress/builder-component/commit/98521aa8aa0e464e410b9eb1acf4dc7e6ca367e0))
+* **deps:** update dependency p-retry to v6 ([4b1e92c](https://github.com/storipress/builder-component/commit/4b1e92c11e6894a33534c5195d6868134dcd47fd))
+
 ## [1.4.1](https://github.com/storipress/builder-component/compare/v1.4.0...v1.4.1) (2023-08-04)
 
 ### Bug Fixes
