@@ -11,14 +11,14 @@ import './styles/main.css'
 // https://vitejs.dev/guide/features.html#glob-import
 const messages = Object.fromEntries(
   Object.entries(
-    import.meta.glob<{ default: LocaleMessages<VueMessageType> }>('../locales/*.y(a)?ml', { eager: true })
+    import.meta.glob<{ default: LocaleMessages<VueMessageType> }>('../locales/*.y(a)?ml', { eager: true }),
   ).map(([key, value]) => [
     key
       .split('/')
       .at(-1)
       ?.replace(/\.ya?ml$/, ''),
     value.default,
-  ])
+  ]),
 )
 
 const app = createApp(App)

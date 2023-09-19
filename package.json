@@ -1,18 +1,22 @@
 {
   "name": "@storipress/builder-component",
   "version": "1.4.2",
+  "packageManager": "yarn@3.6.3",
   "repository": "git@github.com:storipress/builder-component.git",
-  "main": "./dist/entry.mjs",
-  "types": "./dist/entry.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/entry.mjs",
-      "types": "./dist/entry.d.ts"
+      "types": "./dist/entry.d.ts",
+      "import": "./dist/entry.mjs"
     },
     "./dist/style.css": {
       "import": "./dist/style.css"
     }
   },
+  "main": "./dist/entry.mjs",
+  "types": "./dist/entry.d.ts",
+  "files": [
+    "./dist/**/*"
+  ],
   "scripts": {
     "build": "vite build && unbuild",
     "build:browser": "vite build --mode browser && vue-tsc --emitDeclarationOnly",
@@ -25,9 +29,6 @@
     "build-storybook": "storybook build",
     "prepack": "yarn build"
   },
-  "files": [
-    "./dist/**/*"
-  ],
   "dependencies": {
     "@apollo/client": "^3.7.17",
     "@headlessui/vue": "^1.7.13",
@@ -96,7 +97,6 @@
     "vue-eslint-parser": "9.3.1",
     "vue-tsc": "1.8.13"
   },
-  "packageManager": "yarn@3.6.3",
   "msw": {
     "workerDirectory": "public"
   }

@@ -4,6 +4,6 @@ export const handler = graphql.mutation('RequestSignInSubscriber', (_req, res, c
   return res(
     ctx.data({
       requestSignInSubscriber: true,
-    })
+    }),
   )
 })
