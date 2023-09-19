@@ -6,7 +6,7 @@ export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
     return res(
       ctx.data({
         subscriberProfile: null,
-      })
+      }),
     )
   }
 
@@ -14,7 +14,7 @@ export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
     ctx.data({
       subscriberProfile: {
         id: '1',
-        email: 'david@storipress.com',
+        email: 'hello@example.com',
         verified: true,
         first_name: '',
         last_name: '',
@@ -30,6 +30,6 @@ export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
           price: '500',
         },
       },
-    })
+    }),
   )
 })

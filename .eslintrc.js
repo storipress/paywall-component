@@ -4,15 +4,11 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['@antfu/vue', '@vue/prettier', 'plugin:storybook/recommended'],
-  parser: 'vue-eslint-parser',
-  parserOptions: {
-    ecmaVersion: 13,
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
-  },
-  plugins: ['vue', '@typescript-eslint'],
+  extends: ['@antfu', 'prettier', 'prettier/prettier', 'plugin:storybook/recommended'],
+  plugins: ['prettier'],
   rules: {
+    'prettier/prettier': 'error',
+
     'antfu/if-newline': 'off',
     'vue/component-name-in-template-casing': 'off',
   },
