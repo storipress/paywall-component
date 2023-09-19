@@ -3026,6 +3026,7 @@ __metadata:
     "@storybook/vue3": 7.4.3
     "@storybook/vue3-vite": 7.4.3
     "@stripe/stripe-js": ^2.1.6
+    "@t3-oss/env-core": ^0.6.1
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/forms": 0.5.6
     "@types/lodash-es": ^4.17.9
@@ -3073,6 +3074,7 @@ __metadata:
     vue-router: ^4.2.4
     vue-tsc: 1.8.13
     yup: ^1.2.0
+    zod: ^3.22.2
   languageName: unknown
   linkType: soft
 
@@ -4011,6 +4013,16 @@ __metadata:
     eslint: "*"
     typescript: "*"
   checksum: 7761d00900efa48a1e244879c31dedded3c72b61383532e718e821be5de8f10160a0fb220d57f7c699a2fc26705797e73795ce832f82b8036ee893c01494197f
+  languageName: node
+  linkType: hard
+
+"@t3-oss/env-core@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "@t3-oss/env-core@npm:0.6.1"
+  peerDependencies:
+    typescript: ">=4.7.2"
+    zod: ^3.0.0
+  checksum: 6a1dd9d2f88643f6315a3add7eb6053a436a953a3c2b59b9743a2d8f28dbafcdaf4f6bccf0e7dfe424189834f75fbb53b9ac3891076a19b289468e4b406a340b
   languageName: node
   linkType: hard
 
@@ -14225,5 +14237,12 @@ __metadata:
   version: 0.8.15
   resolution: "zen-observable@npm:0.8.15"
   checksum: b7289084bc1fc74a559b7259faa23d3214b14b538a8843d2b001a35e27147833f4107590b1b44bf5bc7f6dfe6f488660d3a3725f268e09b3925b3476153b7821
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.2":
+  version: 3.22.2
+  resolution: "zod@npm:3.22.2"
+  checksum: 231e2180c8eabb56e88680d80baff5cf6cbe6d64df3c44c50ebe52f73081ecd0229b1c7215b9552537f537a36d9e36afac2737ddd86dc14e3519bdbc777e82b9
   languageName: node
   linkType: hard
