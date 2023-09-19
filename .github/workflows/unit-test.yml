@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   unit-test:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     name: Test
     env:
       NODE_OPTIONS: --max-old-space-size=6144

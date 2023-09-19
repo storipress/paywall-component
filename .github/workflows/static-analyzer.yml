@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   static-analyzer:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     name: Static Analyzer
     env:
       NODE_OPTIONS: --max-old-space-size=6144
