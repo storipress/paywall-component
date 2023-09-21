@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['index.html', './src/**/*.{vue,ts,tsx,js,jsx}'],
+  content: ['./src/**/*.{vue,ts,tsx,js,jsx}'],
   // scope our style within the #paywall and headless ui portal element
   // HACK: we can't configure the headless ui portal element in code
   important: ':is(#paywall, #headlessui-portal-root, .paywall-container)',

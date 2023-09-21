@@ -1,5 +1,6 @@
 import { StorybookConfig } from '@storybook/vue3-vite'
 import turbosnap from 'vite-plugin-turbosnap'
+import { mergeConfig } from 'vite'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -10,14 +11,20 @@ const config: StorybookConfig = {
   },
   viteFinal(config, { configType }) {
     if (configType === 'PRODUCTION') {
-      config.plugins ??= []
-      config.plugins.push(
-        turbosnap({
-          rootDir: config.root as string,
-        })
-      )
+      return mergeConfig(config, {
+        plugins: [
+          turbosnap({
+            rootDir: config.root as string,
+          }),
+        ],
+      })
     }
-    return config
+
+    return mergeConfig(config, {
+      server: {
+        ignore: ['./env.example'],
+      },
+    })
   },
   docs: {
     autodocs: true,
