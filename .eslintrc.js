@@ -11,5 +11,8 @@ module.exports = {
 
     'antfu/if-newline': 'off',
     'vue/component-name-in-template-casing': 'off',
+
+    '@stylistic/ts/brace-style': 'off',
+    '@stylistic/js/operator-linebreak': 'off',
   },
 }
