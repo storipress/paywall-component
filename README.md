@@ -1,1 +1,1 @@
-# builder-component
+# paywall-component
