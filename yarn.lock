@@ -3063,7 +3063,7 @@ __metadata:
     "@vue/test-utils": 2.4.1
     "@vueuse/core": ^10.2.1
     autoprefixer: 10.4.16
-    chromatic: 7.2.3
+    chromatic: 7.3.0
     dayjs: ^1.11.9
     eslint: 8.51.0
     eslint-config-prettier: 9.0.0
@@ -3080,7 +3080,7 @@ __metadata:
     prettier-plugin-tailwindcss: 0.5.5
     react: 18.2.0
     react-dom: 18.2.0
-    sass: 1.69.1
+    sass: 1.69.2
     storybook: 7.4.6
     tailwind-scrollbar-hide: 1.1.7
     tailwindcss: 3.3.3
@@ -5994,14 +5994,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:7.2.3":
-  version: 7.2.3
-  resolution: "chromatic@npm:7.2.3"
+"chromatic@npm:7.3.0":
+  version: 7.3.0
+  resolution: "chromatic@npm:7.3.0"
   bin:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 841962ec63e7de86957bc39bf1b743cd36d2bdf467c754f6669e4df067f57224f501a75ad6129e943605f32bf2b5b57190a478be5454ae92d0847998eb94399f
+  checksum: 0f8bc34aa0cb7f20398ef64c9dbdd2abdd8f33546495b805773e054b2f3eac1902b15608eaabd98b7fca6c1a4ac366976d2aa8eceecfeb8a24fa194eab524750
   languageName: node
   linkType: hard
 
@@ -12081,16 +12081,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.69.1":
-  version: 1.69.1
-  resolution: "sass@npm:1.69.1"
+"sass@npm:1.69.2":
+  version: 1.69.2
+  resolution: "sass@npm:1.69.2"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: e3f0754fc8e1ffc239919cba8d1cc8d89908d596161992c562d0679a6aa1e1c57b0a11846726f9222f96622495a5bfc00461b3f31182e71a54ad91a86dd10a8f
+  checksum: 25c6aaf993a40ce33e66c6c3a25690ce573a3c890024ba3dea5416a17c7db6ec39542d4b4e62c2c429005737630d6b48ab841f99fd534ac1b441f37d2c34e0c4
   languageName: node
   linkType: hard
 
