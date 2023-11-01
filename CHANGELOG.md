@@ -2,10 +2,9 @@
 
 ## [1.4.3](https://github.com/storipress/paywall-component/compare/v1.4.2...v1.4.3) (2023-11-01)
 
-
 ### Bug Fixes
 
-* sign-in/sign-up form shows success even if API was not sent successfully [SPMVP-6214] ([a433d90](https://github.com/storipress/paywall-component/commit/a433d907e26c48042929ad7c097760bb7c3d6838))
+- sign-in/sign-up form shows success even if API was not sent successfully [SPMVP-6214] ([a433d90](https://github.com/storipress/paywall-component/commit/a433d907e26c48042929ad7c097760bb7c3d6838))
 
 ## [1.4.2](https://github.com/storipress/builder-component/compare/v1.4.1...v1.4.2) (2023-09-14)
 
