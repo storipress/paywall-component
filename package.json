@@ -1,6 +1,6 @@
 {
   "name": "@storipress/builder-component",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "packageManager": "yarn@4.0.1",
   "repository": "git@github.com:storipress/builder-component.git",
   "exports": {
