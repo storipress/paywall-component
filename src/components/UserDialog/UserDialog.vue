@@ -77,6 +77,7 @@ const dialogMap: Record<UserDialogType | '', Component | undefined> = {
   subscribe: AccountDetail,
   confirmation: OnlyButton,
   shareToTwitter: undefined,
+  error: undefined,
   '': undefined,
 }
 

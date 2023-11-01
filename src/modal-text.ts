@@ -23,4 +23,9 @@ export const modalTexts: Record<string, ModalText> = {
     title: 'Spread the word',
     sub: 'If you want to help __PUBLICATION_NAME__ even more, share your reason for subscribing.',
   },
+  error: {
+    title: 'An error occurred',
+    sub: 'Please retry later.',
+    button: 'Close',
+  },
 }
