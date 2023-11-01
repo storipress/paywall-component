@@ -11,6 +11,7 @@ export type UserDialogType =
   | 'subscribe'
   | 'confirmation'
   | 'shareToTwitter'
+  | 'error'
 
 export interface SubscriberInput {
   email?: string

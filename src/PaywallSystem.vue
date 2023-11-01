@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ApolloError } from '@apollo/client/core'
 import { useEventBus, useVModel } from '@vueuse/core'
 import { computed, provide, ref, watch } from 'vue'
 import type {
@@ -91,11 +92,15 @@ const profile = computed(() => {
 async function handleSignup(email: string, customArticleType?: string) {
   const checkExistEmailAndShowDialog = async (showDialogType: UserDialogType) => {
     const result = await onSignup(email)
-    if (result && result?.data.signUpSubscriber) {
+    if (result instanceof ApolloError) {
+      const result = await onLogin({ email })
+      if (!result) dialogType.value = 'error'
+      modalVisible.value = true
+    } else if (result && result?.data.signUpSubscriber) {
       dialogType.value = showDialogType
       visible.value = true
     } else {
-      onLogin({ email })
+      dialogType.value = 'error'
       modalVisible.value = true
     }
   }
@@ -201,6 +206,8 @@ function onConfirmModal() {
       dialogType.value = 'shareToTwitter'
       modalVisible.value = true
     }, 300)
+  } else if (dialogType.value === 'error') {
+    dialogType.value = 'welcome'
   }
 }
 

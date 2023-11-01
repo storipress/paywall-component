@@ -2,6 +2,7 @@ import { useMutation } from '@vue/apollo-composable'
 import { useStorage } from '@vueuse/core'
 import gql from 'graphql-tag'
 import { type Ref, computed } from 'vue'
+import { ApolloError } from '@apollo/client/core'
 
 export type AuthAPI = ReturnType<typeof useAuth>
 
@@ -58,6 +59,12 @@ export function useAuth(tokenRef: Ref<string | null> = useStorage('test-token', 
         return result
       }
     } catch (e) {
+      if (e instanceof ApolloError) {
+        const errorMessage = e.graphQLErrors[0]?.message
+        if (errorMessage === 'Bad Request.') {
+          return e
+        }
+      }
       // eslint-disable-next-line no-console
       console.log('e: ', e)
     }
