@@ -3054,10 +3054,10 @@ __metadata:
     "@tailwindcss/aspect-ratio": "npm:0.4.2"
     "@tailwindcss/forms": "npm:0.5.6"
     "@types/lodash-es": "npm:^4.17.9"
-    "@types/node": "npm:18.18.8"
+    "@types/node": "npm:18.18.9"
     "@typescript-eslint/eslint-plugin": "npm:6.10.0"
     "@typescript-eslint/parser": "npm:6.10.0"
-    "@vitejs/plugin-vue": "npm:4.4.0"
+    "@vitejs/plugin-vue": "npm:4.4.1"
     "@vitest/coverage-v8": "npm:0.34.6"
     "@vue/apollo-composable": "npm:^4.0.0-beta.11"
     "@vue/test-utils": "npm:2.4.1"
@@ -3077,7 +3077,7 @@ __metadata:
     p-retry: "npm:^6.0.0"
     postcss: "npm:8.4.31"
     prettier: "npm:3.0.3"
-    prettier-plugin-tailwindcss: "npm:0.5.6"
+    prettier-plugin-tailwindcss: "npm:0.5.7"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     sass: "npm:1.69.5"
@@ -4407,12 +4407,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.18.8, @types/node@npm:^18.0.0":
-  version: 18.18.8
-  resolution: "@types/node@npm:18.18.8"
+"@types/node@npm:18.18.9, @types/node@npm:^18.0.0":
+  version: 18.18.9
+  resolution: "@types/node@npm:18.18.9"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 25346cda374c3bb630a9055cf8b7dd49729d53502b81ba647336f459c751f66c73ae9ba755a63d7bd05b07afa2c90b5627af985998ef5cdb0bafb2db5ec7b520
+  checksum: ebd98b117c868edc597807cd0dab214b6110b9cd5ee406632641d0cf5b8bd7cb199caaac657a046d9203c441dbcfb3c71154ffa2d615ec89f80e6972143e6ec8
   languageName: node
   linkType: hard
 
@@ -4751,13 +4751,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:4.4.0, @vitejs/plugin-vue@npm:^4.0.0":
-  version: 4.4.0
-  resolution: "@vitejs/plugin-vue@npm:4.4.0"
+"@vitejs/plugin-vue@npm:4.4.1, @vitejs/plugin-vue@npm:^4.0.0":
+  version: 4.4.1
+  resolution: "@vitejs/plugin-vue@npm:4.4.1"
   peerDependencies:
     vite: ^4.0.0
     vue: ^3.2.25
-  checksum: d1ce98135f3b38a3daa57993f429c40cc20259ea6b9b303f65d1787a8c08edad17ae470cc2e85f9802b1d507af0c5ee01e6ed54da30bac0dc1a548d0c549d892
+  checksum: 7e2e9f9dd7c1040496c26abdd6cd4b7646095c21994cde751fc1f315e674e510fd574332235be918138758dcb3495c59e55050e02d4bd96ef4d2c8d5b282410b
   languageName: node
   linkType: hard
 
@@ -11091,9 +11091,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:0.5.6":
-  version: 0.5.6
-  resolution: "prettier-plugin-tailwindcss@npm:0.5.6"
+"prettier-plugin-tailwindcss@npm:0.5.7":
+  version: 0.5.7
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.7"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
@@ -11140,7 +11140,7 @@ __metadata:
       optional: true
     prettier-plugin-twig-melody:
       optional: true
-  checksum: 95c9f736b8b170c42101e8a97b938a48a909281135d17d4b7ddefca1891fa9f3dc596f4fdde0c4cea10828545ce89241ec8e4879c093f1a8192b98dad08f08d5
+  checksum: fb53766b6543bb46b5ba544d75e220c01d51fcf29403d3b908a0bcedf3a8c0e7481c8e6d7bb321bae8c96ae4f31d4d1c39e5e3e888b495d575705f6809854076
   languageName: node
   linkType: hard
 
