@@ -50,7 +50,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "0.43.1",
+    "@antfu/eslint-config": "1.2.1",
     "@storybook/addon-actions": "7.5.3",
     "@storybook/addon-docs": "7.5.3",
     "@storybook/addon-essentials": "7.5.3",
