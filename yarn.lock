@@ -3113,10 +3113,10 @@ __metadata:
     "@tailwindcss/aspect-ratio": "npm:0.4.2"
     "@tailwindcss/forms": "npm:0.5.7"
     "@types/lodash-es": "npm:^4.17.9"
-    "@types/node": "npm:18.19.3"
+    "@types/node": "npm:18.19.4"
     "@typescript-eslint/eslint-plugin": "npm:6.16.0"
     "@typescript-eslint/parser": "npm:6.16.0"
-    "@vitejs/plugin-vue": "npm:4.6.0"
+    "@vitejs/plugin-vue": "npm:4.6.1"
     "@vitest/coverage-v8": "npm:1.1.0"
     "@vue/apollo-composable": "npm:^4.0.0-beta.11"
     "@vue/test-utils": "npm:2.4.3"
@@ -4294,12 +4294,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.19.3, @types/node@npm:^18.0.0":
-  version: 18.19.3
-  resolution: "@types/node@npm:18.19.3"
+"@types/node@npm:18.19.4, @types/node@npm:^18.0.0":
+  version: 18.19.4
+  resolution: "@types/node@npm:18.19.4"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: b95d0c0be342275e27d882bb6ca73c0b757d1672a121cae1fc3249eda4f86a8abeb5745e5c5c1150914bcfda323a3fc51526cd34e2097f8355bf7cbf12fa6bcb
+  checksum: 4eaf6e1bb588da960c7e5974e8a0112633138b5468f0e48fc959d5585863baca549bc8c5f5f7b751c61dd282b8c2879842220f6eeed33aa54c255e876ec16536
   languageName: node
   linkType: hard
 
@@ -4646,13 +4646,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:4.6.0, @vitejs/plugin-vue@npm:^4.0.0":
-  version: 4.6.0
-  resolution: "@vitejs/plugin-vue@npm:4.6.0"
+"@vitejs/plugin-vue@npm:4.6.1, @vitejs/plugin-vue@npm:^4.0.0":
+  version: 4.6.1
+  resolution: "@vitejs/plugin-vue@npm:4.6.1"
   peerDependencies:
     vite: ^4.0.0 || ^5.0.0
     vue: ^3.2.25
-  checksum: ecf4495fe58c62c6aa08d9d51dee431104c11f667104bba0e41cb54e53e470375fd771fe2099f17f2847e7080eaa88268e86422fc9a3bb75d887166df1691244
+  checksum: 3a0111e8654185c895b6007fb05043236d90ed9b22e9e371a20ee8755ca83a4937a634cb8962af9ea5e9f3137469fe3d340e527c4e729c9905f88adaba125d6a
   languageName: node
   linkType: hard
 
