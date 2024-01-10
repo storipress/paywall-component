@@ -3133,7 +3133,7 @@ __metadata:
     "@vue/test-utils": "npm:2.4.3"
     "@vueuse/core": "npm:^10.2.1"
     autoprefixer: "npm:10.4.16"
-    chromatic: "npm:10.2.0"
+    chromatic: "npm:10.2.1"
     dayjs: "npm:^1.11.9"
     eslint: "npm:8.56.0"
     eslint-config-prettier: "npm:9.1.0"
@@ -5922,14 +5922,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:10.2.0":
-  version: 10.2.0
-  resolution: "chromatic@npm:10.2.0"
+"chromatic@npm:10.2.1":
+  version: 10.2.1
+  resolution: "chromatic@npm:10.2.1"
   bin:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 8df1b4a828c7d5eb2614fcab9a1685f5be947a68f5f31733ebf2bbfab86f6b02c0ee99064bfe62b1457f05ddef285c1d36d5674208f778c815714c51c72a68bd
+  checksum: 416cfc320e06a7ea538eb523a78918e0290aa9622e06de4c3c06f5304c92411e9a4e7dd10c9fc5d45367cd44e0c17fe813e57c611fcdb61ca2b446def0547183
   languageName: node
   linkType: hard
 
