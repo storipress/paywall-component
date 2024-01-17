@@ -3182,10 +3182,10 @@ __metadata:
     graphql-tag: "npm:^2.12.6"
     jsdom: "npm:23.2.0"
     lodash-es: "npm:^4.17.21"
-    msw: "npm:2.1.0"
+    msw: "npm:2.1.1"
     p-retry: "npm:^6.0.0"
     postcss: "npm:8.4.33"
-    prettier: "npm:3.2.2"
+    prettier: "npm:3.2.3"
     prettier-plugin-tailwindcss: "npm:0.5.11"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
@@ -10261,9 +10261,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:2.1.0":
-  version: 2.1.0
-  resolution: "msw@npm:2.1.0"
+"msw@npm:2.1.1":
+  version: 2.1.1
+  resolution: "msw@npm:2.1.1"
   dependencies:
     "@bundled-es-modules/cookie": "npm:^2.0.0"
     "@bundled-es-modules/js-levenshtein": "npm:^2.0.1"
@@ -10293,7 +10293,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: 6c689586dba62fb4ff681e856e6767203dff20338faa385d1a518f542468a581404f224ca65d299667a10b590f79473b72946e537a1ada72a1cf215d18236718
+  checksum: 854434e3bfc3d7594e5d8ace221ac0d03c87a1daca32d340c968a43476713af86063119bd3eaceb391fc050eecf01910eb7e9fe7fb1d9206dc9077d6b7356b22
   languageName: node
   linkType: hard
 
@@ -11163,12 +11163,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.2.2":
-  version: 3.2.2
-  resolution: "prettier@npm:3.2.2"
+"prettier@npm:3.2.3":
+  version: 3.2.3
+  resolution: "prettier@npm:3.2.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: ab9470ff6cfd19f28bc424f22e58f2fc4a488d148b9384f6c3739235017c8350cae82b3697392c23d9b098b9d8dfaa1cc9ff4ef25fd45f54c97b95f9cc7a1f7d
+  checksum: cc05f25f22aa18f6b602b4cd923f388f077fe0a9fa15be100b25d4b406e8f1a50d534e5513a129f12f3fc40bc8058006a41dbf68d72c86a1a6b8009e59ffeb66
   languageName: node
   linkType: hard
 
