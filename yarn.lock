@@ -3172,7 +3172,7 @@ __metadata:
     "@vue/test-utils": "npm:2.4.3"
     "@vueuse/core": "npm:^10.2.1"
     autoprefixer: "npm:10.4.16"
-    chromatic: "npm:10.3.0"
+    chromatic: "npm:10.3.1"
     dayjs: "npm:^1.11.9"
     eslint: "npm:8.56.0"
     eslint-config-prettier: "npm:9.1.0"
@@ -3182,7 +3182,7 @@ __metadata:
     graphql-tag: "npm:^2.12.6"
     jsdom: "npm:23.2.0"
     lodash-es: "npm:^4.17.21"
-    msw: "npm:2.1.1"
+    msw: "npm:2.1.2"
     p-retry: "npm:^6.0.0"
     postcss: "npm:8.4.33"
     prettier: "npm:3.2.4"
@@ -5928,14 +5928,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:10.3.0":
-  version: 10.3.0
-  resolution: "chromatic@npm:10.3.0"
+"chromatic@npm:10.3.1":
+  version: 10.3.1
+  resolution: "chromatic@npm:10.3.1"
   bin:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 34c164e5532193354e29afb3047210a7343a7486c1617fe0ade1a8e31657ff94e25a29c987965a44fc4c820546948cfd6669452f86a4f5efa7dabf0d8d0392c4
+  checksum: dcd07ee8bb485288430dea2fda4409dfb131524718c14a700d46f4e048ac540e08efed3cc31db6b92ef5cb83ce206dfb8a40788cb53d381be9d3e67685b3303f
   languageName: node
   linkType: hard
 
@@ -10260,9 +10260,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:2.1.1":
-  version: 2.1.1
-  resolution: "msw@npm:2.1.1"
+"msw@npm:2.1.2":
+  version: 2.1.2
+  resolution: "msw@npm:2.1.2"
   dependencies:
     "@bundled-es-modules/cookie": "npm:^2.0.0"
     "@bundled-es-modules/js-levenshtein": "npm:^2.0.1"
@@ -10292,7 +10292,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: 854434e3bfc3d7594e5d8ace221ac0d03c87a1daca32d340c968a43476713af86063119bd3eaceb391fc050eecf01910eb7e9fe7fb1d9206dc9077d6b7356b22
+  checksum: ecaccd5a5b0c1e61fdabf2e035586695bb52697c39673a34b6fc871ab97d11aa303967970ab851886a0dffa54e66377d151d1ba994bb659cc45feb7bb8a854ad
   languageName: node
   linkType: hard
 
