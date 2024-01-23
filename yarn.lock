@@ -1585,15 +1585,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bundled-es-modules/js-levenshtein@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@bundled-es-modules/js-levenshtein@npm:2.0.1"
-  dependencies:
-    js-levenshtein: "npm:^1.1.6"
-  checksum: 13d0cbd2b00e563e09a797559dcff8c7e208c1f71e1787535a3d248f7e3d33ef3f0809b9f498d41788ab5fd399882dcca79917d70d97921b7dde94a282c1b7d8
-  languageName: node
-  linkType: hard
-
 "@bundled-es-modules/statuses@npm:^1.0.1":
   version: 1.0.1
   resolution: "@bundled-es-modules/statuses@npm:1.0.1"
@@ -3161,7 +3152,7 @@ __metadata:
     "@vue/test-utils": "npm:2.4.3"
     "@vueuse/core": "npm:^10.2.1"
     autoprefixer: "npm:10.4.17"
-    chromatic: "npm:10.3.1"
+    chromatic: "npm:10.4.0"
     dayjs: "npm:^1.11.9"
     eslint: "npm:8.56.0"
     eslint-config-prettier: "npm:9.1.0"
@@ -3171,7 +3162,7 @@ __metadata:
     graphql-tag: "npm:^2.12.6"
     jsdom: "npm:24.0.0"
     lodash-es: "npm:^4.17.21"
-    msw: "npm:2.1.3"
+    msw: "npm:2.1.4"
     p-retry: "npm:^6.0.0"
     postcss: "npm:8.4.33"
     prettier: "npm:3.2.4"
@@ -4228,13 +4219,6 @@ __metadata:
   dependencies:
     "@types/istanbul-lib-report": "npm:*"
   checksum: f1ad54bc68f37f60b30c7915886b92f86b847033e597f9b34f2415acdbe5ed742fa559a0a40050d74cdba3b6a63c342cac1f3a64dba5b68b66a6941f4abd7903
-  languageName: node
-  linkType: hard
-
-"@types/js-levenshtein@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "@types/js-levenshtein@npm:1.1.3"
-  checksum: eb338696da976925ea8448a42d775d7615a14323dceeb08909f187d0b3d3b4c1f67a1c36ef586b1c2318b70ab141bba8fc58311ba1c816711704605aec09db8b
   languageName: node
   linkType: hard
 
@@ -5908,14 +5892,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:10.3.1":
-  version: 10.3.1
-  resolution: "chromatic@npm:10.3.1"
+"chromatic@npm:10.4.0":
+  version: 10.4.0
+  resolution: "chromatic@npm:10.4.0"
   bin:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: dcd07ee8bb485288430dea2fda4409dfb131524718c14a700d46f4e048ac540e08efed3cc31db6b92ef5cb83ce206dfb8a40788cb53d381be9d3e67685b3303f
+  checksum: a53ee89bd84c16d71972e247d96bd35f02036dc51d6ebe97088d1085c46a560f8a99b39701759ca1064d58f58efced7545502c933d9e83e91a69db880a7c9cdb
   languageName: node
   linkType: hard
 
@@ -9291,13 +9275,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-levenshtein@npm:^1.1.6":
-  version: 1.1.6
-  resolution: "js-levenshtein@npm:1.1.6"
-  checksum: bb034043fdebab606122fe5b5c0316036f1bb0ea352038af8b0ba4cda4b016303b24f64efb59d9918f66e3680eea97ff421396ff3c153cb00a6f982908f61f8a
-  languageName: node
-  linkType: hard
-
 "js-stringify@npm:^1.0.2":
   version: 1.0.2
   resolution: "js-stringify@npm:1.0.2"
@@ -10223,18 +10200,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:2.1.3":
-  version: 2.1.3
-  resolution: "msw@npm:2.1.3"
+"msw@npm:2.1.4":
+  version: 2.1.4
+  resolution: "msw@npm:2.1.4"
   dependencies:
     "@bundled-es-modules/cookie": "npm:^2.0.0"
-    "@bundled-es-modules/js-levenshtein": "npm:^2.0.1"
     "@bundled-es-modules/statuses": "npm:^1.0.1"
     "@mswjs/cookies": "npm:^1.1.0"
     "@mswjs/interceptors": "npm:^0.25.14"
     "@open-draft/until": "npm:^2.1.0"
     "@types/cookie": "npm:^0.6.0"
-    "@types/js-levenshtein": "npm:^1.1.3"
     "@types/statuses": "npm:^2.0.4"
     chalk: "npm:^4.1.2"
     chokidar: "npm:^3.4.2"
@@ -10242,7 +10217,6 @@ __metadata:
     headers-polyfill: "npm:^4.0.2"
     inquirer: "npm:^8.2.0"
     is-node-process: "npm:^1.2.0"
-    js-levenshtein: "npm:^1.1.6"
     outvariant: "npm:^1.4.2"
     path-to-regexp: "npm:^6.2.0"
     strict-event-emitter: "npm:^0.5.1"
@@ -10255,7 +10229,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: c7c622255e69e976c5c9456cc707ddc771fca5708eb418e30865155242d380557ae8965985503521bc20bf33b24eea13e71cdfea7ee1674fbc45aa0870f88e33
+  checksum: 06b0b008ff00e12e79bce50ab9406022052db83b1829aea2d645243139243868d21530ace8352ce64ed162847d9d933b3a8055d7b94e7d0ab318f6120a4274c9
   languageName: node
   linkType: hard
 
