@@ -3146,7 +3146,7 @@ __metadata:
     "@types/node": "npm:18.19.8"
     "@typescript-eslint/eslint-plugin": "npm:6.19.1"
     "@typescript-eslint/parser": "npm:6.19.1"
-    "@vitejs/plugin-vue": "npm:4.6.2"
+    "@vitejs/plugin-vue": "npm:5.0.3"
     "@vitest/coverage-v8": "npm:1.2.1"
     "@vue/apollo-composable": "npm:^4.0.0-beta.11"
     "@vue/test-utils": "npm:2.4.3"
@@ -4649,7 +4649,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:4.6.2, @vitejs/plugin-vue@npm:^4.0.0":
+"@vitejs/plugin-vue@npm:5.0.3":
+  version: 5.0.3
+  resolution: "@vitejs/plugin-vue@npm:5.0.3"
+  peerDependencies:
+    vite: ^5.0.0
+    vue: ^3.2.25
+  checksum: fc744003c48841c8ace5f462cba23576df3a362e3c492c0396f7d0047db3bb6320dd401f805432e1d4344bcfebe9d0770330cbff39990b387ab15a2c86e34cf9
+  languageName: node
+  linkType: hard
+
+"@vitejs/plugin-vue@npm:^4.0.0":
   version: 4.6.2
   resolution: "@vitejs/plugin-vue@npm:4.6.2"
   peerDependencies:
