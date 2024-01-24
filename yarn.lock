@@ -3139,11 +3139,11 @@ __metadata:
     "@storybook/vue3": "npm:7.6.10"
     "@storybook/vue3-vite": "npm:7.6.10"
     "@stripe/stripe-js": "npm:^2.1.6"
-    "@t3-oss/env-core": "npm:0.7.3"
+    "@t3-oss/env-core": "npm:0.8.0"
     "@tailwindcss/aspect-ratio": "npm:0.4.2"
     "@tailwindcss/forms": "npm:0.5.7"
     "@types/lodash-es": "npm:^4.17.9"
-    "@types/node": "npm:18.19.8"
+    "@types/node": "npm:18.19.9"
     "@typescript-eslint/eslint-plugin": "npm:6.19.1"
     "@typescript-eslint/parser": "npm:6.19.1"
     "@vitejs/plugin-vue": "npm:5.0.3"
@@ -3152,7 +3152,7 @@ __metadata:
     "@vue/test-utils": "npm:2.4.3"
     "@vueuse/core": "npm:^10.2.1"
     autoprefixer: "npm:10.4.17"
-    chromatic: "npm:10.4.0"
+    chromatic: "npm:10.5.0"
     dayjs: "npm:^1.11.9"
     eslint: "npm:8.56.0"
     eslint-config-prettier: "npm:9.1.0"
@@ -3967,16 +3967,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@t3-oss/env-core@npm:0.7.3":
-  version: 0.7.3
-  resolution: "@t3-oss/env-core@npm:0.7.3"
+"@t3-oss/env-core@npm:0.8.0":
+  version: 0.8.0
+  resolution: "@t3-oss/env-core@npm:0.8.0"
   peerDependencies:
-    typescript: ">=4.7.2"
+    typescript: ">=5.0.0"
     zod: ^3.0.0
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 4ca72d7b58e6a6d63c4d7c05c58343a07d1d6245066b1ed5ff3a31912ea56405b9b4c23237c0297b4c8904ac3078200c93c92e61a6369712040b1f1879291839
+  checksum: 5b6de9ddc0dab88a7cb0e12c316a1f272df1b4801351e1b4d1897671d675c7572eb6f0c77b3d44b25b05a14d9ec179e357ed4608582549b550f4827652cbf8ba
   languageName: node
   linkType: hard
 
@@ -4299,12 +4299,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.19.8, @types/node@npm:^18.0.0":
-  version: 18.19.8
-  resolution: "@types/node@npm:18.19.8"
+"@types/node@npm:18.19.9, @types/node@npm:^18.0.0":
+  version: 18.19.9
+  resolution: "@types/node@npm:18.19.9"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 3fb90057208d7c3d1750eb9151b7ff2e048c4192ccf9837c9af4e843fbf9c76ead0c5a658187769adcf0b012cd348656c48695dd7a358bd2b3174b1575b1982b
+  checksum: ac7187b2fec8354e0cbefe89baa94f88f48a9b496a0aaf234e811c1c133fd606097a98c7746e8e3b3b060237ddb86cacf6c704640badeaa81b53d1fc014f1fdb
   languageName: node
   linkType: hard
 
@@ -5902,14 +5902,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:10.4.0":
-  version: 10.4.0
-  resolution: "chromatic@npm:10.4.0"
+"chromatic@npm:10.5.0":
+  version: 10.5.0
+  resolution: "chromatic@npm:10.5.0"
+  peerDependencies:
+    chromatic-cypress: ^0.4.0 || ^1.0.0
+    chromatic-playwright: ^0.4.0 || ^1.0.0
+  peerDependenciesMeta:
+    chromatic-cypress:
+      optional: true
+    chromatic-playwright:
+      optional: true
   bin:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: a53ee89bd84c16d71972e247d96bd35f02036dc51d6ebe97088d1085c46a560f8a99b39701759ca1064d58f58efced7545502c933d9e83e91a69db880a7c9cdb
+  checksum: c236561d13d7bdca11e6e0b8f93c0be0e652b77cc0c97adb4076f17bd4081affe41f81d98f277fcfbeee1a753047244079dba677da30c5fef8d3f60428583ccf
   languageName: node
   linkType: hard
 
