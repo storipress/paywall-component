@@ -3143,7 +3143,7 @@ __metadata:
     "@tailwindcss/aspect-ratio": "npm:0.4.2"
     "@tailwindcss/forms": "npm:0.5.7"
     "@types/lodash-es": "npm:^4.17.9"
-    "@types/node": "npm:18.19.9"
+    "@types/node": "npm:18.19.10"
     "@typescript-eslint/eslint-plugin": "npm:6.19.1"
     "@typescript-eslint/parser": "npm:6.19.1"
     "@vitejs/plugin-vue": "npm:5.0.3"
@@ -3152,7 +3152,7 @@ __metadata:
     "@vue/test-utils": "npm:2.4.4"
     "@vueuse/core": "npm:^10.2.1"
     autoprefixer: "npm:10.4.17"
-    chromatic: "npm:10.5.2"
+    chromatic: "npm:10.6.0"
     dayjs: "npm:^1.11.9"
     eslint: "npm:8.56.0"
     eslint-config-prettier: "npm:9.1.0"
@@ -4299,12 +4299,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.19.9, @types/node@npm:^18.0.0":
-  version: 18.19.9
-  resolution: "@types/node@npm:18.19.9"
+"@types/node@npm:18.19.10, @types/node@npm:^18.0.0":
+  version: 18.19.10
+  resolution: "@types/node@npm:18.19.10"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: ac7187b2fec8354e0cbefe89baa94f88f48a9b496a0aaf234e811c1c133fd606097a98c7746e8e3b3b060237ddb86cacf6c704640badeaa81b53d1fc014f1fdb
+  checksum: 95795b1aee78f2ca364caa14aeec6d793581be2d228e0293180ef1fe700fc3af12aa28afe94ee042d794c60ba51dbf7ac94fbfa074dba35512812f5f5ed506a7
   languageName: node
   linkType: hard
 
@@ -5902,9 +5902,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:10.5.2":
-  version: 10.5.2
-  resolution: "chromatic@npm:10.5.2"
+"chromatic@npm:10.6.0":
+  version: 10.6.0
+  resolution: "chromatic@npm:10.6.0"
   peerDependencies:
     chromatic-cypress: ^0.4.0 || ^1.0.0
     chromatic-playwright: ^0.4.0 || ^1.0.0
@@ -5917,7 +5917,7 @@ __metadata:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: f95202d5c9996c8666da7454990b302c0752a60bc4ac39314645b6b4946c86701eab428f41e3d9d104eabc29c93f8e645eb1c9c927f80e62bead4c5fe9212d60
+  checksum: 0831a692eb98799b7f9fc6b13888c265966bb60d67872d717f4dd73aa90d20bcd7847910bd4561c828d12bfa8ada7ba020fe17393b1d80bb64ad8ab75e556d71
   languageName: node
   linkType: hard
 
