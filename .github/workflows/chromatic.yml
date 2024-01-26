@@ -9,6 +9,7 @@ concurrency:
 
 jobs:
   chromatic-deploy:
+    if: false
     runs-on: ubuntu-latest
     env:
       NODE_OPTIONS: --max-old-space-size=6144
