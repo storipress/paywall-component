@@ -67,7 +67,7 @@
     "@typescript-eslint/parser": "6.19.1",
     "@vitejs/plugin-vue": "5.0.3",
     "@vitest/coverage-v8": "1.2.1",
-    "@vue/test-utils": "2.4.3",
+    "@vue/test-utils": "2.4.4",
     "autoprefixer": "10.4.17",
     "chromatic": "10.5.2",
     "eslint": "8.56.0",
