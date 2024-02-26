@@ -1,9 +1,9 @@
-import { graphql } from 'msw'
+import { HttpResponse, graphql } from 'msw'
 
-export const handler = graphql.mutation('RequestSignInSubscriber', (_req, res, ctx) => {
-  return res(
-    ctx.data({
+export const handler = graphql.mutation('RequestSignInSubscriber', () => {
+  return HttpResponse.json({
+    data: {
       requestSignInSubscriber: true,
-    }),
-  )
+    },
+  })
 })

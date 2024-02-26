@@ -1,17 +1,17 @@
-import { graphql } from 'msw'
+import { HttpResponse, graphql } from 'msw'
 import { context } from '../context'
 
-export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
+export const handler = graphql.query('SubscriberProfile', () => {
   if (!context.login) {
-    return res(
-      ctx.data({
+    return HttpResponse.json({
+      data: {
         subscriberProfile: null,
-      }),
-    )
+      },
+    })
   }
 
-  return res(
-    ctx.data({
+  return HttpResponse.json({
+    data: {
       subscriberProfile: {
         id: '1',
         email: 'hello@example.com',
@@ -30,6 +30,6 @@ export const handler = graphql.query('SubscriberProfile', (_req, res, ctx) => {
           price: '500',
         },
       },
-    }),
-  )
+    },
+  })
 })
