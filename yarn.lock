@@ -29,7 +29,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antfu/eslint-config@npm:^2.6.4":
+"@antfu/eslint-config@npm:2.6.4":
   version: 2.6.4
   resolution: "@antfu/eslint-config@npm:2.6.4"
   dependencies:
@@ -3193,7 +3193,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@storipress/builder-component@workspace:."
   dependencies:
-    "@antfu/eslint-config": "npm:^2.6.4"
+    "@antfu/eslint-config": "npm:2.6.4"
     "@apollo/client": "npm:^3.8.3"
     "@headlessui/vue": "npm:^1.7.16"
     "@storybook/addon-actions": "npm:7.6.17"
