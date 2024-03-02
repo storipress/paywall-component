@@ -47,7 +47,7 @@ export interface PaywallMachine {
   checkPlan: () => void
   setClient: (client: ApolloClient<NormalizedCacheObject>) => void
   setArticle: (article: any) => void
-  reset(article: any): void
+  reset: (article: any) => void
   resetState: () => void
   getPaywallTypeForArticle: (article: Article) => PaywallType
 }

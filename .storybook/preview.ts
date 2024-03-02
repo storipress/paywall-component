@@ -1,9 +1,10 @@
-import { setup, Parameters, Decorator } from '@storybook/vue3'
+import type { Decorator, Parameters } from '@storybook/vue3'
+import { setup } from '@storybook/vue3'
 import { ApolloClients } from '@vue/apollo-composable'
 import { worker } from '../src/mocks/browser'
 import { apolloClient } from '../src/api/client'
-import { env } from './env'
 import { setStripeKey } from '../src/composables/stripe'
+import { env } from './env'
 import '../src/styles/main.css'
 
 setStripeKey(env.VITE_STRIPE_PUBLISHABLEKEY)

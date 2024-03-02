@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'yarn'
+          cache: yarn
       - run: yarn
 
       - uses: reviewdog/action-eslint@v1
@@ -28,13 +28,13 @@ jobs:
         shell: bash
         env:
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          INPUT_WORKDIR: '.'
-          INPUT_LEVEL: 'error'
-          INPUT_REPORTER: 'github-pr-review'
-          INPUT_FILTER_MODE: 'added'
+          INPUT_WORKDIR: .
+          INPUT_LEVEL: error
+          INPUT_REPORTER: github-pr-review
+          INPUT_FILTER_MODE: added
           INPUT_FAIL_ON_ERROR: 'false'
           INPUT_REVIEWDOG_FLAGS: ''
-          INPUT_TOOL_NAME: 'vue-tsc'
+          INPUT_TOOL_NAME: vue-tsc
           INPUT_TSC_FLAGS: ''
 
       - run: yarn typecheck
