@@ -2791,7 +2791,7 @@ __metadata:
     graphql-tag: "npm:^2.12.6"
     jsdom: "npm:24.0.0"
     lodash-es: "npm:^4.17.21"
-    msw: "npm:2.2.3"
+    msw: "npm:2.2.4"
     p-retry: "npm:^6.0.0"
     postcss: "npm:8.4.35"
     prettier: "npm:3.2.5"
@@ -9794,9 +9794,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:2.2.3":
-  version: 2.2.3
-  resolution: "msw@npm:2.2.3"
+"msw@npm:2.2.4":
+  version: 2.2.4
+  resolution: "msw@npm:2.2.4"
   dependencies:
     "@bundled-es-modules/cookie": "npm:^2.0.0"
     "@bundled-es-modules/statuses": "npm:^1.0.1"
@@ -9822,7 +9822,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: 10/9660de12e5a1fe66fe935a6be65ba6bf9dc15342125f1dbba92ee622b2da1dfedd2825324a2a48638d9a09e41314dd91d603db8dbf5dc0e1f54f93071a21bdc2
+  checksum: 10/6b7f50ad4067db36397674de00942075cb8f840fdcd0ea5f31849ca5e3a585f86ac78581e77904b25b980ddc41de580ef8d48f21223326b5b54ad21c8db2c851
   languageName: node
   linkType: hard
 
