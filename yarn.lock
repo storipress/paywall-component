@@ -2775,7 +2775,7 @@ __metadata:
     "@vue/test-utils": "npm:2.4.5"
     "@vueuse/core": "npm:^10.2.1"
     autoprefixer: "npm:10.4.18"
-    chromatic: "npm:11.0.8"
+    chromatic: "npm:11.1.0"
     dayjs: "npm:^1.11.9"
     eslint: "npm:8.57.0"
     eslint-config-prettier: "npm:9.1.0"
@@ -2785,7 +2785,7 @@ __metadata:
     graphql-tag: "npm:^2.12.6"
     jsdom: "npm:24.0.0"
     lodash-es: "npm:^4.17.21"
-    msw: "npm:2.2.7"
+    msw: "npm:2.2.8"
     p-retry: "npm:^6.0.0"
     postcss: "npm:8.4.36"
     prettier: "npm:3.2.5"
@@ -5641,9 +5641,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:11.0.8":
-  version: 11.0.8
-  resolution: "chromatic@npm:11.0.8"
+"chromatic@npm:11.1.0":
+  version: 11.1.0
+  resolution: "chromatic@npm:11.1.0"
   peerDependencies:
     "@chromatic-com/cypress": ^0.*.* || ^1.0.0
     "@chromatic-com/playwright": ^0.*.* || ^1.0.0
@@ -5656,7 +5656,7 @@ __metadata:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 10/f51a43d0f164b939d0330ce6f073a942e47dda83d446a0dc04fdac0c260b8b882841c022b24a4c5cf5ea554988e503c622174b6ee36d7d82dca3a428ee71e1b8
+  checksum: 10/fcf5d102916bb7f602ceb3c3c76b258a68fa2f110fc121eb0c6c13f6e3922205d81b638aa828f414a87ed4dd31a479b2d1ac6eed1112bcde39b6d2c3b6c0df90
   languageName: node
   linkType: hard
 
@@ -9877,9 +9877,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:2.2.7":
-  version: 2.2.7
-  resolution: "msw@npm:2.2.7"
+"msw@npm:2.2.8":
+  version: 2.2.8
+  resolution: "msw@npm:2.2.8"
   dependencies:
     "@bundled-es-modules/cookie": "npm:^2.0.0"
     "@bundled-es-modules/statuses": "npm:^1.0.1"
@@ -9905,7 +9905,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: 10/6b75beb61406f1272f7c6ba427f01f39ca2dc3a8cd656b2e18bfea4674625daf23bc54c98fa68a5eee1e8412fa6837a65aa862ecac7da3ac68b04c4adb9036f3
+  checksum: 10/ffb158e40b3b8a41f5752b7e2ea1184adf3fbe3794d152f9f5e7d5bffb8793ac0983ef70560dcdb200f2a63e201fedbefaff41e2511d43f4f8cc00e14a221b5d
   languageName: node
   linkType: hard
 
