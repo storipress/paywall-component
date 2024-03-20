@@ -2775,7 +2775,7 @@ __metadata:
     "@vue/test-utils": "npm:2.4.5"
     "@vueuse/core": "npm:^10.2.1"
     autoprefixer: "npm:10.4.18"
-    chromatic: "npm:11.1.0"
+    chromatic: "npm:11.1.1"
     dayjs: "npm:^1.11.9"
     eslint: "npm:8.57.0"
     eslint-config-prettier: "npm:9.1.0"
@@ -5641,9 +5641,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:11.1.0":
-  version: 11.1.0
-  resolution: "chromatic@npm:11.1.0"
+"chromatic@npm:11.1.1":
+  version: 11.1.1
+  resolution: "chromatic@npm:11.1.1"
   peerDependencies:
     "@chromatic-com/cypress": ^0.*.* || ^1.0.0
     "@chromatic-com/playwright": ^0.*.* || ^1.0.0
@@ -5656,7 +5656,7 @@ __metadata:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 10/fcf5d102916bb7f602ceb3c3c76b258a68fa2f110fc121eb0c6c13f6e3922205d81b638aa828f414a87ed4dd31a479b2d1ac6eed1112bcde39b6d2c3b6c0df90
+  checksum: 10/0fde7bfc60d5c2c5f143040177e5fb3cb8271ab21d0a1b809290f7dd9a2fdb1956237ac016136cf8eaf8c4f1c605ede47f5104d34bea49af6475aed0084061dc
   languageName: node
   linkType: hard
 
