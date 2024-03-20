@@ -2761,7 +2761,7 @@ __metadata:
     "@storybook/testing-library": "npm:0.2.2"
     "@storybook/vue3": "npm:8.0.2"
     "@storybook/vue3-vite": "npm:8.0.2"
-    "@stripe/stripe-js": "npm:^2.1.6"
+    "@stripe/stripe-js": "npm:^3.0.0"
     "@t3-oss/env-core": "npm:0.9.2"
     "@tailwindcss/aspect-ratio": "npm:0.4.2"
     "@tailwindcss/forms": "npm:0.5.7"
@@ -3581,10 +3581,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stripe/stripe-js@npm:^2.1.6":
-  version: 2.1.6
-  resolution: "@stripe/stripe-js@npm:2.1.6"
-  checksum: 10/51491f2a1de3fc84614f55b568045030114b394f48a152c4813d22a414ea4d5c4ac41e9221259fea932bc939011b59a799f458a08f30263411f49fddd9b457e0
+"@stripe/stripe-js@npm:^3.0.0":
+  version: 3.0.10
+  resolution: "@stripe/stripe-js@npm:3.0.10"
+  checksum: 10/35fecfa1b463e446cf3737f912fbf35101c29d9d1338e15f1b0e1133041dee8d5ce06b56f4255fb90c9271c85795046d24c17ccf8c41e9da59dc6a636396fce9
   languageName: node
   linkType: hard
 
