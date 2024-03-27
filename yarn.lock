@@ -36,16 +36,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antfu/eslint-config@npm:2.10.1":
-  version: 2.10.1
-  resolution: "@antfu/eslint-config@npm:2.10.1"
+"@antfu/eslint-config@npm:2.11.0":
+  version: 2.11.0
+  resolution: "@antfu/eslint-config@npm:2.11.0"
   dependencies:
-    "@antfu/eslint-define-config": "npm:^1.23.0-2"
     "@antfu/install-pkg": "npm:^0.3.1"
     "@clack/prompts": "npm:^0.7.0"
-    "@eslint-types/jsdoc": "npm:48.2.1"
-    "@eslint-types/typescript-eslint": "npm:^7.2.0"
-    "@eslint-types/unicorn": "npm:^51.0.1"
     "@stylistic/eslint-plugin": "npm:^1.7.0"
     "@typescript-eslint/eslint-plugin": "npm:^7.4.0"
     "@typescript-eslint/parser": "npm:^7.4.0"
@@ -115,14 +111,7 @@ __metadata:
       optional: true
   bin:
     eslint-config: bin/index.js
-  checksum: 10/940eb93f4265b3bf8dc740c90c843439dd1e39737a803162c2e4876da5e385d98f1aeac52426ddc454ca2bed05b3f675858973059e91c6a70e1587b1118e6cb6
-  languageName: node
-  linkType: hard
-
-"@antfu/eslint-define-config@npm:^1.23.0-2":
-  version: 1.23.0-2
-  resolution: "@antfu/eslint-define-config@npm:1.23.0-2"
-  checksum: 10/b647c10d48b5ba99a16dfb970a8e7892dea1696c455b4a19fadde75a69d5fc26aa28502430779fd28940dcb87766a543c7477cb5f9f325f58d27a614677cb7de
+  checksum: 10/75df79854499b1c40fa89f9d606d6f20db8becb28408ece5e197a6316e634b97595e8a66343eeaedcfacb6620327f7742fc00c9ceee6bfadb0fda5b887babd18
   languageName: node
   linkType: hard
 
@@ -2163,27 +2152,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint-types/jsdoc@npm:48.2.1":
-  version: 48.2.1
-  resolution: "@eslint-types/jsdoc@npm:48.2.1"
-  checksum: 10/1558f1ef6c199810a6ce55287f298308e038bfd634107fbd3e938cf9426755733946d06bb4b5bdf7881d4e8064567f0479e5ed2fb8f190f3a1c23e0c40494c3d
-  languageName: node
-  linkType: hard
-
-"@eslint-types/typescript-eslint@npm:^7.2.0":
-  version: 7.2.0
-  resolution: "@eslint-types/typescript-eslint@npm:7.2.0"
-  checksum: 10/14f304167ce5754ff99bcc2d20d58d09af37a96608b5794260ddccab5543e9695906e70d9ec3f207851a972bbb0b9917730a2f6827f2b283cdd5955eee4af180
-  languageName: node
-  linkType: hard
-
-"@eslint-types/unicorn@npm:^51.0.1":
-  version: 51.0.1
-  resolution: "@eslint-types/unicorn@npm:51.0.1"
-  checksum: 10/16b3e2ced779aed684377dab8b21dbe08a26f1ae1a860fb6d40191c38f689559b32b583794249e212b30815e711eb1c1baa8c8ee9840439713e85c3332bd2d02
-  languageName: node
-  linkType: hard
-
 "@eslint/eslintrc@npm:^2.1.4":
   version: 2.1.4
   resolution: "@eslint/eslintrc@npm:2.1.4"
@@ -2415,9 +2383,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mswjs/interceptors@npm:^0.25.16":
-  version: 0.25.16
-  resolution: "@mswjs/interceptors@npm:0.25.16"
+"@mswjs/interceptors@npm:^0.26.12":
+  version: 0.26.13
+  resolution: "@mswjs/interceptors@npm:0.26.13"
   dependencies:
     "@open-draft/deferred-promise": "npm:^2.2.0"
     "@open-draft/logger": "npm:^0.3.0"
@@ -2425,7 +2393,7 @@ __metadata:
     is-node-process: "npm:^1.2.0"
     outvariant: "npm:^1.2.1"
     strict-event-emitter: "npm:^0.5.1"
-  checksum: 10/d8fb74db45a63971e9da7367c8d120343c8f49fec7bcc3f0c77c04c3f628d307b70875f52e4a99df561547b92d0d53edacc421e42d69940d44999254b5d028b5
+  checksum: 10/f6764f9f6178196fe5bb1ea6e2d9e124e938fd4e94dcc8ed7f911a12a8154edf6d3e71881220199233247c1fa793c19c08b733539f4dafc2095d939e0aa2d635
   languageName: node
   linkType: hard
 
@@ -2758,7 +2726,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@storipress/builder-component@workspace:."
   dependencies:
-    "@antfu/eslint-config": "npm:2.10.1"
+    "@antfu/eslint-config": "npm:2.11.0"
     "@apollo/client": "npm:^3.8.3"
     "@headlessui/vue": "npm:^1.7.16"
     "@storybook/addon-actions": "npm:8.0.4"
@@ -2793,7 +2761,7 @@ __metadata:
     graphql-tag: "npm:^2.12.6"
     jsdom: "npm:24.0.0"
     lodash-es: "npm:^4.17.21"
-    msw: "npm:2.2.11"
+    msw: "npm:2.2.12"
     p-retry: "npm:^6.0.0"
     postcss: "npm:8.4.38"
     prettier: "npm:3.2.5"
@@ -9892,15 +9860,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:2.2.11":
-  version: 2.2.11
-  resolution: "msw@npm:2.2.11"
+"msw@npm:2.2.12":
+  version: 2.2.12
+  resolution: "msw@npm:2.2.12"
   dependencies:
     "@bundled-es-modules/cookie": "npm:^2.0.0"
     "@bundled-es-modules/statuses": "npm:^1.0.1"
     "@inquirer/confirm": "npm:^3.0.0"
     "@mswjs/cookies": "npm:^1.1.0"
-    "@mswjs/interceptors": "npm:^0.25.16"
+    "@mswjs/interceptors": "npm:^0.26.12"
     "@open-draft/until": "npm:^2.1.0"
     "@types/cookie": "npm:^0.6.0"
     "@types/statuses": "npm:^2.0.4"
@@ -9920,7 +9888,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: 10/1b1ac93969594e339f4cea68ca9b91638f20cc01a9d7eaebc84f54481af37822099b4e3f88122f950f8d8be72018b62fcfe0b14aab28f93a916e7ddd90f040cd
+  checksum: 10/cd16f1697d99fe8e85bad72b16976514a56a3ac6a0e4c644303c138a02a24307d9a57eadb248f0edffac8e7dbb731bbb4ab4330b3c6eb8c49d47367c66ea92af
   languageName: node
   linkType: hard
 
