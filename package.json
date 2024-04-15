@@ -50,7 +50,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.13.3",
+    "@antfu/eslint-config": "2.14.0",
     "@storybook/addon-actions": "8.0.8",
     "@storybook/addon-docs": "8.0.8",
     "@storybook/addon-essentials": "8.0.8",
@@ -63,8 +63,8 @@
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.7",
     "@types/node": "18.19.31",
-    "@typescript-eslint/eslint-plugin": "7.6.0",
-    "@typescript-eslint/parser": "7.6.0",
+    "@typescript-eslint/eslint-plugin": "7.7.0",
+    "@typescript-eslint/parser": "7.7.0",
     "@vitejs/plugin-vue": "5.0.4",
     "@vitest/coverage-v8": "1.5.0",
     "@vue/test-utils": "2.4.5",
@@ -78,7 +78,7 @@
     "msw": "2.2.13",
     "postcss": "8.4.38",
     "prettier": "3.2.5",
-    "prettier-plugin-tailwindcss": "0.5.13",
+    "prettier-plugin-tailwindcss": "0.5.14",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "1.75.0",
