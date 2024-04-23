@@ -2765,7 +2765,7 @@ __metadata:
     "@storybook/vue3": "npm:8.0.9"
     "@storybook/vue3-vite": "npm:8.0.9"
     "@stripe/stripe-js": "npm:^3.0.0"
-    "@t3-oss/env-core": "npm:0.10.0"
+    "@t3-oss/env-core": "npm:0.10.1"
     "@tailwindcss/aspect-ratio": "npm:0.4.2"
     "@tailwindcss/forms": "npm:0.5.7"
     "@types/lodash-es": "npm:^4.17.9"
@@ -3661,16 +3661,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@t3-oss/env-core@npm:0.10.0":
-  version: 0.10.0
-  resolution: "@t3-oss/env-core@npm:0.10.0"
+"@t3-oss/env-core@npm:0.10.1":
+  version: 0.10.1
+  resolution: "@t3-oss/env-core@npm:0.10.1"
   peerDependencies:
     typescript: ">=5.0.0"
     zod: ^3.0.0
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/e1886abf66f4f01efb91527a61a86ac3f4335f1307d7d7c3cc8665d694d4b5f41ddd3b8fae59f2fb35c3daa47cdf35248690b0a2f00a3d8847875b62b254ad0e
+  checksum: 10/6d975d026f51ff49f25b7d3bcce1e2750c690523de2b125683e3309addd39ca43a0bdf91e8acb003123225fa4b4d06c6f2ca1aca75118fadd899c716c018a014
   languageName: node
   linkType: hard
 
