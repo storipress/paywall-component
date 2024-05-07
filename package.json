@@ -50,7 +50,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.16.1",
+    "@antfu/eslint-config": "2.16.2",
     "@storybook/addon-actions": "8.0.10",
     "@storybook/addon-docs": "8.0.10",
     "@storybook/addon-essentials": "8.0.10",
@@ -62,12 +62,12 @@
     "@t3-oss/env-core": "0.10.1",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.7",
-    "@types/node": "18.19.31",
+    "@types/node": "18.19.32",
     "@typescript-eslint/eslint-plugin": "7.8.0",
     "@typescript-eslint/parser": "7.8.0",
     "@vitejs/plugin-vue": "5.0.4",
     "@vitest/coverage-v8": "1.6.0",
-    "@vue/test-utils": "2.4.5",
+    "@vue/test-utils": "2.4.6",
     "autoprefixer": "10.4.19",
     "chromatic": "11.3.0",
     "eslint": "9.2.0",
