@@ -3099,7 +3099,7 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:0.5.14"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
-    sass: "npm:1.77.1"
+    sass: "npm:1.77.2"
     storybook: "npm:8.1.1"
     tailwind-scrollbar-hide: "npm:1.1.7"
     tailwindcss: "npm:3.4.3"
@@ -3115,7 +3115,7 @@ __metadata:
     vue-eslint-parser: "npm:9.4.2"
     vue-i18n: "npm:^9.4.1"
     vue-router: "npm:^4.2.4"
-    vue-tsc: "npm:2.0.18"
+    vue-tsc: "npm:2.0.19"
     yup: "npm:^1.2.0"
     zod: "npm:3.23.8"
   languageName: unknown
@@ -4887,9 +4887,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/language-core@npm:2.0.18":
-  version: 2.0.18
-  resolution: "@vue/language-core@npm:2.0.18"
+"@vue/language-core@npm:2.0.19":
+  version: 2.0.19
+  resolution: "@vue/language-core@npm:2.0.19"
   dependencies:
     "@volar/language-core": "npm:~2.2.4"
     "@vue/compiler-dom": "npm:^3.4.0"
@@ -4903,7 +4903,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/38fcc3ae105cfb2f18c494fe325ab5686f7da21e92db3701426387a39dbe62cb889e59988e2129790c9dde0a2d23a3b610ea1b26ba56aba35c1142ed98735ee0
+  checksum: 10/c59e195b3fb3c3b4c341153858febbfeda27c183d0792c4cc855518c6a0365c415f377742c524aaea9ff0a706c62e0d7b6ceab0d306f4ec4e75a8d0e35cd1964
   languageName: node
   linkType: hard
 
@@ -12107,16 +12107,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.77.1":
-  version: 1.77.1
-  resolution: "sass@npm:1.77.1"
+"sass@npm:1.77.2":
+  version: 1.77.2
+  resolution: "sass@npm:1.77.2"
   dependencies:
     chokidar: "npm:>=3.0.0 <4.0.0"
     immutable: "npm:^4.0.0"
     source-map-js: "npm:>=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 10/df9fdd9b729786d0f637a20c3ad65e50864c00ae92d9493ea42fd5ca80a2d0852c5d1b06da49db7e0b8066a75b593a1e34d999a3af3b1e7abb417aae0a4df75c
+  checksum: 10/4df71f1a01cd59613e7a25bfcec96ddf06e3546c238ba3238b96c6ac0dcf34b9ce238b4de7b39656f6cb0a5e7acccde19f53b521ae4abcdcbe600e0de9c97644
   languageName: node
   linkType: hard
 
@@ -13761,18 +13761,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-tsc@npm:2.0.18":
-  version: 2.0.18
-  resolution: "vue-tsc@npm:2.0.18"
+"vue-tsc@npm:2.0.19":
+  version: 2.0.19
+  resolution: "vue-tsc@npm:2.0.19"
   dependencies:
     "@volar/typescript": "npm:~2.2.4"
-    "@vue/language-core": "npm:2.0.18"
+    "@vue/language-core": "npm:2.0.19"
     semver: "npm:^7.5.4"
   peerDependencies:
     typescript: "*"
   bin:
     vue-tsc: bin/vue-tsc.js
-  checksum: 10/126c57a0914de2cf9af15d9170671c5064b77e9c79f318b8ce8555ff39238f44a5720eedbf284b171248dd302b71bbbd6d6e5c27986a494fb6107136926efa5c
+  checksum: 10/b95afad59e59314338f2588e1d8b826a25b5eeeddb3118dd6d40f539e267561ef8553a082e4a3a29c0a424196a88035df3ef1acb87d53921f7c9b38462c90e63
   languageName: node
   linkType: hard
 
