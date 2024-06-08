@@ -50,7 +50,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.20.0",
+    "@antfu/eslint-config": "2.21.0",
     "@storybook/addon-actions": "8.1.6",
     "@storybook/addon-docs": "8.1.6",
     "@storybook/addon-essentials": "8.1.6",
@@ -91,7 +91,7 @@
     "vite-plugin-turbosnap": "1.0.3",
     "vitest": "1.6.0",
     "vue-eslint-parser": "9.4.3",
-    "vue-tsc": "2.0.19",
+    "vue-tsc": "2.0.21",
     "zod": "3.23.8"
   },
   "msw": {
