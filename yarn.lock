@@ -3217,7 +3217,7 @@ __metadata:
     "@tailwindcss/aspect-ratio": "npm:0.4.2"
     "@tailwindcss/forms": "npm:0.5.7"
     "@types/lodash-es": "npm:^4.17.9"
-    "@types/node": "npm:18.19.35"
+    "@types/node": "npm:18.19.37"
     "@typescript-eslint/eslint-plugin": "npm:7.13.1"
     "@typescript-eslint/parser": "npm:7.13.1"
     "@vitejs/plugin-vue": "npm:5.0.5"
@@ -4430,12 +4430,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.19.35, @types/node@npm:^18.0.0":
-  version: 18.19.35
-  resolution: "@types/node@npm:18.19.35"
+"@types/node@npm:18.19.37, @types/node@npm:^18.0.0":
+  version: 18.19.37
+  resolution: "@types/node@npm:18.19.37"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/55202071644ce6b0a1365f42bc6dd72b09ccc75ccb6f89e4fdc2089f9a0a668b897831eded15a4da72daca5d2af8768d6afb6ae5c6ba9f8d1c534c1c8a8bb68e
+  checksum: 10/c0307df7b510e1bdbe548317d361d71d866a62df9878137a31844d4ea9e744e9190c1afabf86531c829cf243e7765de7ab56e3d3083dd08b578eb1551c2248c6
   languageName: node
   linkType: hard
 
