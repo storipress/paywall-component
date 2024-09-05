@@ -2,10 +2,9 @@
 
 ## [1.4.4](https://github.com/storipress/paywall-component/compare/v1.4.3...v1.4.4) (2024-09-05)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency @stripe/stripe-js to v3 ([518b477](https://github.com/storipress/paywall-component/commit/518b4772b1d9d949d6f7ee0efeae56359daec335))
+- **deps:** update dependency @stripe/stripe-js to v3 ([518b477](https://github.com/storipress/paywall-component/commit/518b4772b1d9d949d6f7ee0efeae56359daec335))
 
 ## [1.4.3](https://github.com/storipress/paywall-component/compare/v1.4.2...v1.4.3) (2023-11-01)
 
